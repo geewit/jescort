@@ -71,7 +71,6 @@
         <dependency org="org.apache.lucene" name="lucene-core" rev="${lucene.version}" conf="compile->default"/>
         <dependency org="org.apache.lucene" name="lucene-analyzers" rev="${lucene.version}" conf="compile->default"/>
         <dependency org="org.apache.lucene" name="lucene-highlighter" rev="${lucene.version}" conf="compile->default"/>
-        <dependency org="org.wltea" name="IKAnalyzere" rev="${IKAnalyzer.version}" conf="compile->default"/>
         <dependency org="org.apache.shiro" name="shiro-core" rev="${shiro.version}" conf="compile->default"/>
         <dependency org="org.apache.shiro" name="shiro-web" rev="${shiro.version}" conf="compile->default"/>
         <dependency org="org.apache.shiro" name="shiro-spring" rev="${shiro.version}" conf="compile->default"/>

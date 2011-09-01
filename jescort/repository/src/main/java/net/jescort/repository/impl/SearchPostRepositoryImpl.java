@@ -7,20 +7,15 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.TokenStream;
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.queryParser.MultiFieldQueryParser;
 import org.apache.lucene.search.*;
-import org.apache.lucene.search.highlight.Highlighter;
-import org.apache.lucene.search.highlight.QueryScorer;
-import org.apache.lucene.search.highlight.SimpleFragmenter;
-import org.apache.lucene.search.highlight.SimpleHTMLFormatter;
 import org.apache.lucene.store.*;
 import org.apache.lucene.util.Version;
-import org.wltea.analyzer.lucene.IKAnalyzer;
 
 import javax.annotation.Resource;
 import java.io.File;
@@ -42,7 +37,7 @@ public class SearchPostRepositoryImpl implements SearchPostRepository
 
     private final String INDEXPATH = "k:\\index";
     //private Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_33);
-    private Analyzer analyzer = new IKAnalyzer();
+    private Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_33);
     private Directory ramDir;
     private Directory fsDir;
 
