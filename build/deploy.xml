@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="escort.deploy" xmlns:ivy="antlib:org.apache.ivy.ant">
-    <target name="escort.resetting">
+<project name="jescort.deploy" xmlns:ivy="antlib:org.apache.ivy.ant">
+    <target name="jescort.resetting">
         <propertyfile file="${exploded.classes.dir}/log4j.properties">
             <entry key="log4j.rootCategory" value="WARN"/>
             <entry key="log4j.logger.org.springframework" value="ERROR, FILE"/>
@@ -45,7 +45,7 @@
 
         <input privateMessage="MySQL Password:" addproperty="jdbc.mysql.password"/>
 
-        <propertyfile file="${exploded.classes.dir}/escort.properties">
+        <propertyfile file="${exploded.classes.dir}/jescort.properties">
             <entry key="jdbc.mysql.password" value="${jdbc.mysql.password}"/>
         </propertyfile>
         <replace dir="${exploded.spring.dir}">

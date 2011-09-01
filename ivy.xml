@@ -84,8 +84,7 @@
         </dependency>
         <dependency org="org.springframework" name="spring-beans" rev="${spring.version}" conf="compile->default"/>
         <dependency org="org.springframework" name="spring-context" rev="${spring.version}" conf="compile->default"/>
-        <dependency org="org.springframework" name="spring-context-support" rev="${spring.version}"
-                    conf="compile->default">
+        <dependency org="org.springframework" name="spring-context-support" rev="${spring.version}" conf="compile->default">
             <exclude org="quartz" module="quartz"/>
         </dependency>
         <dependency org="org.springframework" name="spring-core" rev="${spring.version}" conf="compile->default"/>
