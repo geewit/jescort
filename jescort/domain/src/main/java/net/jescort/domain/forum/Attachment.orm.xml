@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+    <entity metadata-complete="true" name="Attachment" class="net.jescort.domain.forum.Attachment" access="PROPERTY">
+        <table name="attachments"/>
+        <entity-listeners>
+            <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.AttachmentListener">
+                <pre-persist method-name="prePersist"/>
+            </entity-listener>
+        </entity-listeners>
+        <attributes>
+            <id name="id">
+                <column name="id" unique="true"/>
+                <!--<generated-value strategy="TABLE" generator="attachmentIdGenerator"/>
+                <table-generator name="attachmentIdGenerator" table="pk_gen" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="attachment_id" allocation-size="1" initial-value="1"/>-->
+            </id>
+            <basic name="originalName">
+                <column name="original_name" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="contentType">
+                <column name="content_type" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="size">
+                <column name="size" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="downloads">
+                <column name="downloads" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="createdate" mutable="true">
+                <column name="createdate" insertable="true" updatable="true" unique="false"/>
+                <temporal>TIMESTAMP</temporal>
+            </basic>
+            <basic-map name="properties" fetch="LAZY">
+                <key-column name="key"/>
+                <value-column name="value"/>
+                <collection-table name="attachment_properties">
+                    <primary-key-join-column name="id" referenced-column-name="id"/>
+                </collection-table>
+            </basic-map>
+            <one-to-one name="attachmentData" target-entity="net.jescort.domain.forum.AttachmentData" fetch="LAZY">
+                <join-column name="id" referenced-column-name="id" insertable="false" updatable="false"/>
+            </one-to-one>
+            <!--
+            <transient name="kiloBytes"/>
+            <transient name="megaBytes"/>-->
+        </attributes>
+    </entity>
+</entity-mappings>

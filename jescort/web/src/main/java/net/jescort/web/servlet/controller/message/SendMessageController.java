@@ -1,0 +1,55 @@
+package net.jescort.web.servlet.controller.message;
+
+import net.jescort.domain.forum.Message;
+import net.jescort.domain.user.User;
+import net.jescort.repository.UserRepository;
+import org.apache.shiro.SecurityUtils;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: admin@gelif.net
+ * Date: 11-8-11
+ * Time: 上午11:55
+ */
+@Controller
+@SessionAttributes(types = Message.class)
+public class SendMessageController
+{
+    @Resource(name = "userRepository")
+    private UserRepository userRepository;
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String showSendMessageForm(@ModelAttribute Message message, Model model)
+    {
+        model.addAttribute("message", new Message());
+        return "auth/signup";
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public String sendMessageForm(@RequestParam("recipientIds") Integer[] recipientIds, @ModelAttribute("message") @Valid Message message, BindingResult result)
+    {
+        if (result.hasErrors())
+        {
+            return "auth/signup";
+        }
+        User currentUser = (User)SecurityUtils.getSubject().getPrincipal();
+        message.setSender(currentUser);
+        List<User> recipients = new ArrayList<User>(recipientIds.length);
+        for(Integer recipientId : recipientIds)
+        {
+            recipients.add(new User(recipientId));
+        }
+        message.setRecipients(recipients);
+        userRepository.sendMessage(message);
+        return "redirect:/";
+    }
+}

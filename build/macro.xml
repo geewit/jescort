@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="jescort.macro" xmlns:ivy="antlib:org.apache.ivy.ant">
+    <tstamp>
+        <format property="timestamp" pattern="yyyy-MM-dd HH:mm:ss" timezone="GMT"/>
+    </tstamp>
+
+    <macrodef name="compile">
+        <attribute name="dest.dir"/>
+        <attribute name="src.dir"/>
+        <sequential>
+            <javac destdir="@{dest.dir}" debug="${javac.debug}" deprecation="${javac.deprecation}"
+                   optimize="${javac.optimize}" source="${javac.source}" target="${javac.target}"
+                   encoding="${javac.encoding}" includeantruntime="on">
+                <classpath>
+                    <path refid="compile.classpath"/>
+                    <fileset dir="${exploded.lib.dir}">
+                        <include name="*.jar"/>
+                    </fileset>
+                </classpath>
+                <src>
+                    <pathelement location="@{src.dir}"/>
+                </src>
+            </javac>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="copyfiles">
+        <attribute name="fromdir"/>
+        <attribute name="todir"/>
+        <sequential>
+            <copy todir="@{todir}" includeEmptyDirs="no">
+                <fileset dir="@{fromdir}/java" erroronmissingdir="false">
+                    <include name="net/gelif/**/*.xml"/>
+                    <include name="net/gelif/**/*.properties"/>
+                    <include name="net/jescort/**/*.xml"/>
+                    <include name="net/jescort/**/*.properties"/>
+                    <exclude name="**/.svn"/>
+                    <exclude name="**/*.iml"/>
+                </fileset>
+            </copy>
+            <copy todir="@{todir}" includeEmptyDirs="no">
+                <fileset dir="@{fromdir}/resources" erroronmissingdir="false">
+                    <include name="**/*.xml"/>
+                    <include name="**/*.properties"/>
+                    <exclude name="**/.svn"/>
+                </fileset>
+            </copy>
+        </sequential>
+    </macrodef>
+</project>

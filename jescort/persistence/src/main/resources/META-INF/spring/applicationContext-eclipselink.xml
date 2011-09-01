@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <!--<context:load-time-weaver aspectj-weaving="on"/>
+    <context:load-time-weaver/>-->
+    <context:load-time-weaver weaver-class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" aspectj-weaving="on"/>
+
+    <!---->
+    <context:component-scan base-package="net.jescort.persistence.dao.jpa" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+
+
+    <!--<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler"/>-->
+    <!--
+    <beans>
+        <jee:jndi-lookup id="entityManagerFactory" jndi-name="persistence/escort"/>
+    </beans>
+    -->
+    <bean id="persistenceUnitManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+        <property name="persistenceXmlLocations">
+            <list>
+                <value>classpath:META-INF/persistence.xml</value>
+            </list>
+        </property>
+        <property name="defaultDataSource" ref="dataSource"/>
+    </bean>
+
+
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName"    value="escort"/>
+        <property name="persistenceUnitManager" ref="persistenceUnitManager"/>
+        <property name="jpaVendorAdapter"       ref="jpaAdapter"/>
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect"/>
+        </property>
+        <property name="loadTimeWeaver">
+            <bean class="org.springframework.instrument.classloading.ReflectiveLoadTimeWeaver"/>
+        </property>
+        <!--<property name="loadTimeWeaver">
+            <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+        </property>-->
+        <!--
+        <property name="loadTimeWeaver">
+            <bean class="org.springframework.instrument.classloading.SimpleLoadTimeWeaver"/>
+        </property>-->
+    </bean>
+    
+    <bean id="jpaAdapter" class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+        <property name="databasePlatform"       value="org.eclipse.persistence.platform.database.MySQLPlatform"/>
+        <property name="generateDdl"            value="false"/>
+        <property name="showSql"                value="true"/>
+    </bean>
+
+    <!-- Needed so the @PersistenceUnit annotation is recognized-->
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+</beans>

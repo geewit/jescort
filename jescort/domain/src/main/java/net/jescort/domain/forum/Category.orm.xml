@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+    <entity metadata-complete="true" name="Category" class="net.jescort.domain.forum.Category" access="PROPERTY">
+        <table name="categories"/>
+        <converter name="categoryStatus" class="net.jescort.persistence.eclipselink.mappings.converters.CategoryStatusConverter"/>
+        <attributes>
+            <id name="id">
+                <column name="id" unique="true"/>
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="subject">
+                <column name="subject" insertable="true" updatable="true" unique="false" />
+            </basic>
+            <basic name="description">
+                <column name="description" insertable="true" updatable="true" unique="false" />
+            </basic>
+            <basic name="priority">
+                <column name="priority" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="status">
+                <column name="status" insertable="true" updatable="true" unique="false"/>
+                <convert>categoryStatus</convert>
+            </basic>
+            <basic-map name="properties" fetch="LAZY">
+                <key-column name="key"/>
+                <value-column name="value"/>
+                <collection-table name="category_properties">
+                    <primary-key-join-column name="id" referenced-column-name="id"/>
+                </collection-table>
+            </basic-map>
+            <one-to-many name="forums" target-entity="net.jescort.domain.forum.Forum" mapped-by="category" fetch="LAZY">
+                <order-by>priority</order-by>
+                <cascade>
+                    <cascade-all/>
+                </cascade>
+            </one-to-many>
+            <many-to-many name="moderators" target-entity="net.jescort.domain.user.User" fetch="LAZY">
+                <join-table name="category_moderator_map">
+                    <join-column name="category_id" referenced-column-name="id"/>
+                    <inverse-join-column name="moderator_id" referenced-column-name="id"/>
+                </join-table>
+            </many-to-many>
+        </attributes>
+    </entity>
+</entity-mappings>

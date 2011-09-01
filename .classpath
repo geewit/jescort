@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="**/.svn/" kind="src" output="kernel/core/target/classes" path="kernel/core/src/main/java"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="kernel/persistence/target/classes" path="kernel/persistence/src/main/java"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="modules/bbcode/target/classes" path="modules/bbcode/src/main/java"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="modules/bbcode/target/classes" path="modules/bbcode/src/main/resources"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="modules/memcached/target/classes" path="modules/memcached/src/main/java"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="modules/memcached/target/classes" path="modules/memcached/src/main/resources"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="modules/sendmail/target/classes" path="modules/sendmail/src/main/java"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="modules/sendmail/target/classes" path="modules/sendmail/src/main/resources"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="modules/session/target/classes" path="modules/session/src/main/java"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="jescort/domain/target/classes" path="jescort/domain/src/main/java"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="jescort/persistence/target/classes" path="jescort/persistence/src/main/java"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="jescort/persistence/target/classes" path="jescort/persistence/src/main/resources"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="jescort/repository/target/classes" path="jescort/repository/src/main/java"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="jescort/repository/target/classes" path="jescort/repository/src/main/resources"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="jescort/security/target/classes" path="jescort/security/src/main/java"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="jescort/security/target/classes" path="jescort/security/src/main/resources"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="jescort/web/target/classes" path="jescort/web/src/main/java"/>
+	<classpathentry excluding="**/.svn/" kind="src" output="jescort/web/target/classes" path="jescort/web/src/main/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/userlib"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+    <entity metadata-complete="true" name="Ranking" class="net.jescort.domain.forum.Ranking" access="PROPERTY">
+        <table name="rankings"/>
+        <converter name="rankingStatus" class="net.jescort.persistence.eclipselink.mappings.converters.RankingStatusConverter"/>
+        <attributes>
+            <id name="id">
+                <column name="id" unique="true"/>
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="minScore">
+                <column name="min_score" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="maxScore">
+                <column name="max_score" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="name">
+                <column name="name" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="image">
+                <column name="image" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="status">
+                <column name="status" insertable="true" updatable="true" unique="false"/>
+                <convert>rankingStatus</convert>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

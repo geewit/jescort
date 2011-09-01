@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+    <entity metadata-complete="true" name="Location" class="net.jescort.domain.Location" access="PROPERTY" cacheable="true">
+        <table name="locations"/>
+        <attributes>
+        	<id name="id">
+                <column name="id" unique="true"/>
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="name">
+                <column name="name" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="abbreviation">
+                <column name="abbreviation" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="level">
+                <column name="level" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="available">
+                <column name="available" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <!---->
+            <many-to-one name="parent" target-entity="net.jescort.domain.Location" fetch="LAZY">
+                <join-column name="parent_id" referenced-column-name="id" insertable="true" updatable="true" nullable="true"/>
+            </many-to-one>
+            <one-to-many name="children" mapped-by="parent" target-entity="net.jescort.domain.Location" fetch="LAZY">
+                <cascade>
+                    <cascade-remove/>
+                </cascade>
+            </one-to-many>
+            <!--<transient name="dao"/>-->
+        </attributes>
+    </entity>
+</entity-mappings>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="jescort.build" xmlns:ivy="antlib:org.apache.ivy.ant">
+    <!--build init-->
+    <target name="init">
+        <mkdir dir="${exploded.temp.classes.dir}"/>
+        <mkdir dir="${exploded.lib.dir}"/>
+    </target>
+
+    <target name="jar" depends="init">
+        <sequential>
+            <antcall target="jar.kernel.core"/>
+            <antcall target="jar.kernel.persistence"/>
+            <antcall target="jar.modules.bbcode"/>
+            <antcall target="jar.modules.memcached"/>
+            <antcall target="jar.modules.sendmail"/>
+            <antcall target="jar.jescort.domain"/>
+            <antcall target="jar.jescort.persistence"/>
+            <antcall target="jar.jescort.repository"/>
+            <antcall target="jar.jescort.security"/>
+            <antcall target="jar.jescort.web"/>
+        </sequential>
+    </target>
+
+    <!-- compile &build-compile;-->
+    <target name="jescort.compile" description="Compile And Exploded the web common application">
+        <antcall target="jar"/>
+        <!---->
+        <!--
+			<copyfiles fromdir="${modules.sendmail.main.dir}" todir="${exploded.classes.dir}"/>
+		-->
+        <copyfiles fromdir="${jescort.domain.main.dir}" todir="${exploded.classes.dir}"/>
+        <copyfiles fromdir="${jescort.persistence.main.dir}" todir="${exploded.classes.dir}"/>
+        <copyfiles fromdir="${jescort.repository.main.dir}" todir="${exploded.classes.dir}"/>
+        <copyfiles fromdir="${jescort.security.main.dir}" todir="${exploded.classes.dir}"/>
+        <copyfiles fromdir="${jescort.web.main.dir}" todir="${exploded.classes.dir}"/>
+    </target>
+
+    <target name="jescort.copy-static-file" description="Compile And Exploded the web common application">
+        <mkdir dir="${exploded.dir}"/>
+        <copy todir="${exploded.dir}" includeEmptyDirs="no">
+            <fileset dir="${jescort.web.webapp.dir}">
+                <exclude name="**/.svn"/>
+                <exclude name="**/*.iml"/>
+            </fileset>
+        </copy>
+        <!--dependency libraries-->
+        <mkdir dir="${exploded.web-inf.dir}"/>
+        <copy todir="${exploded.web-inf.dir}" includeEmptyDirs="no">
+            <fileset dir="${jescort.web.webapp.web-inf.dir}">
+                <exclude name="**/.svn"/>
+                <exclude name="**/*.iml"/>
+            </fileset>
+        </copy>
+        <copy todir="${exploded.lib.dir}" includeEmptyDirs="no">
+            <fileset dir="${basedir}/lib">
+                <include name="*.jar"/>
+                <exclude name="servlet-api-*.jar"/>
+            </fileset>
+        </copy>
+        <copy todir="${exploded.dir}" includeEmptyDirs="no">
+            <fileset dir="${jescort.web.webapp.dir}">
+                <include name="net/gelif/**/*.xml"/>
+                <include name="net/gelif/**/*.properties"/>
+                <include name="net/jescort/**/*.xml"/>
+                <include name="net/jescort/**/*.properties"/>
+                <exclude name="**/.svn"/>
+                <exclude name="**/*.iml"/>
+            </fileset>
+        </copy>
+        <delete quiet="true" dir="${basedir}/lib"/>
+    </target>
+
+    <target name="jescort.delete-temp">
+        <delete quiet="true" dir="${exploded.temp.dir}"/>
+    </target>
+</project>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="escort" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <mapping-file>net/jescort/domain/IdGenerator.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/Location.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/forum/Attachment.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/forum/AttachmentData.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/forum/Banned.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/forum/Category.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/forum/Dirtyword.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/forum/Draft.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/forum/Emoticon.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/forum/Forum.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/forum/Message.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/forum/Post.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/forum/PostEdit.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/forum/Ranking.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/forum/Topic.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/user/Address.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/user/Email.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/user/EmailPk.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/user/Group.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/user/Name.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/user/Permission.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/user/Profile.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/user/Role.orm.xml</mapping-file>
+        <mapping-file>net/jescort/domain/user/User.orm.xml</mapping-file>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        
+        
+        <!--
+        <jta-data-source>jdbc/__default</jta-data-source>
+        <non-jta-data-source>jdbc/__default</non-jta-data-source>
+        -->
+        
+        <properties>
+            <!--<property name="jpa.session.customizer"                  value=""/>
+            <property name="jpa.session-event-listener"              value=""/>-->
+
+            <property name="eclipselink.logging.level"                       value="OFF"/>
+            <property name="eclipselink.jpa.uppercase-column-names"          value="false"/>
+            <!--
+            <property name="jpa.logging.logger"                      value="JavaLogger"/>
+            <property name="jpa.logging.topic"                       value="false"/>
+            <property name="jpa.logging.session"                     value="false"/>
+            <property name="jpa.logging.timestamp"                   value="true"/>
+            <property name="jpa.logging.exceptions"                  value="true"/>
+            <property name="jpa.logging.file"                        value="jpa.log"/>-->
+ 
+            <!-- The following properties should be customized to run the example 
+            <property name="jpa.jdbc.read-connections.shared"        value="true"/>
+            <property name="jpa.jdbc.read-connections.min"           value="3"/>
+            <property name="jpa.jdbc.read-connections.max"           value="3"/>
+            <property name="jpa.jdbc.write-connections.min"          value="3"/>
+            <property name="jpa.jdbc.write-connections.max"          value="3"/>
+            <property name="jpa.jdbc.batch-writing"                  value="BUFFERED"/>
+            <property name="jpa.jdbc.native-sql"                     value="true"/>
+            <property name="jpa.jdbc.allow-native-sql-queries"       value="true"/>
+            <property name="jpa.create-ddl-jdbc-file-name"           value="create.sql"/>
+            <property name="jpa.drop-ddl-jdbc-file-name"             value="drop.sql"/>
+            <property name="jpa.target-server"                       value="SunAS9"/>-->
+            <property name="eclipselink.target-database"                     value="MySQL"/>
+            
+            <property name="eclipselink.orm.throw.exceptions"                value="true"/>
+            <property name="eclipselink.orm.validate.schema"                 value="true"/>
+            
+            <!--<property name="jpa.ddl-generation"                      value="drop-and-create-tables"/>
+            <property name="jpa.create-ddl-jdbc-file-name"           value="extended-xml-advanced-model-create.jdbc"/>
+            <property name="jpa.drop-ddl-jdbc-file-name"             value="extended-xml-advanced-model-drop.jdbc"/>
+            <property name="jpa.ddl-generation.output-mode"          value="sql-script"/>
+            
+            
+            <property name="jpa.validate-existence"                  value="true"/>-->
+            
+            <!--
+            <property name="jpa.sessions-xml"                        value=""/>
+            <property name="jpa.session-name"                        value=""/>
+            <property name="jpa.session.customizer"                  value=""/>
+			<property name="jpa.session-event-listener"              value=""/>
+            <property name="jpa.session.include.descriptor.queries"  value="true"/>
+            -->
+
+            
+			<property name="eclipselink.temporal.mutable"                    value="true"/>
+			<property name="eclipselink.weaving"                             value="true"/>
+			<property name="eclipselink.weaving.lazy"                        value="true"/>
+            <property name="eclipselink.weaving.changetracking"              value="true"/>
+
+            <property name="eclipselink.exclude-eclipselink-orm"             value="true"/>
+            <!--
+            <property name="jpa.weaving.fetchgroups"                 value="false"/>
+            <property name="jpa.weaving.internal"                    value="false"/>
+            <property name="jpa.weaving.eager"                       value="true"/>
+            -->
+			<!--
+			<property name="jpa.profiler"                            value="PerformanceProfiler"/>
+			<property name="jpa.profiler"                            value="NoProfiler"/>
+			-->
+			<property name="eclipselink.cache.size.default"                  value="5000"/>
+            <property name="eclipselink.cache.type.default"                  value="Full"/>
+            <property name="eclipselink.cache.shared.default"                value="false"/>
+
+        </properties>
+    </persistence-unit>
+</persistence>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+	<entity metadata-complete="true" name="Dirtyword" class="net.jescort.domain.forum.Dirtyword" access="PROPERTY">
+        <table name="dirtywords"/>
+		<attributes>
+			<id name="id">
+                <column name="id" unique="true"/>
+                <generated-value strategy="IDENTITY"/>
+			</id>
+			<basic name="word">
+                <column name="word" insertable="true" updatable="true" unique="false"/>
+			</basic>
+			<basic name="replacement">
+                <column name="replacement" insertable="true" updatable="true" unique="false"/>
+			</basic>
+		</attributes>
+	</entity>
+</entity-mappings>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+    <entity metadata-complete="true" name="User" class="net.jescort.domain.user.User" access="PROPERTY">
+        <table name="users"/>
+        <entity-listeners>
+            <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.UserListener">
+                <pre-persist method-name="prePersist"/>
+                <post-load method-name="postLoad"/>
+            </entity-listener>
+        </entity-listeners>
+        <attributes>
+            <id name="id">
+                <column name="id" unique="true"/>
+                <!--<generated-value strategy="TABLE" generator="userIdGenerator"/>
+                <table-generator name="userIdGenerator" table="pk_gen" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="user_id" allocation-size="1" initial-value="1"/>-->
+            </id>
+            <basic name="username">
+                <column name="username" insertable="true" updatable="true" unique="true"/>
+            </basic>
+            <basic name="password">
+                <column name="password" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="nickname">
+                <column name="nickname" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="timezone">
+                <column name="timezone" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="posts">
+                <column name="posts" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="reputation">
+                <column name="reputation" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="createdate" mutable="true">
+                <column name="createdate" insertable="true" updatable="true" unique="false"/>
+                <temporal>TIMESTAMP</temporal>
+            </basic>
+            <basic name="lastActive" mutable="true">
+                <column name="last_active" insertable="true" updatable="true" unique="false"/>
+                <temporal>TIMESTAMP</temporal>
+            </basic>
+            <basic-map name="properties" fetch="LAZY">
+                <key-column name="key"/>
+                <value-column name="value"/>
+                <collection-table name="user_properties">
+                    <primary-key-join-column name="id" referenced-column-name="id"/>
+                </collection-table>
+            </basic-map>
+            <one-to-many name="emails" target-entity="net.jescort.domain.user.Email" fetch="LAZY">
+                <order-by>priority</order-by>
+                <join-column name="user_id" referenced-column-name="id"/>
+            </one-to-many>
+            <one-to-many name="addresses" target-entity="net.jescort.domain.user.Address" fetch="LAZY">
+                <order-by>priority</order-by>
+                <join-column name="user_id" referenced-column-name="id"/>
+            </one-to-many>
+            <one-to-one name="profile" target-entity="net.jescort.domain.user.Profile" fetch="LAZY">
+                <join-column name="id" referenced-column-name="id" insertable="false" updatable="false"/>
+            </one-to-one>
+            <!---->
+            <many-to-many name="groups" target-entity="net.jescort.domain.user.Group" fetch="LAZY">
+                <order-by>priority</order-by>
+                <join-table name="user_group_map">
+                    <join-column name="user_id" referenced-column-name="id"/>
+                    <inverse-join-column name="group_id" referenced-column-name="id"/>
+                </join-table>
+            </many-to-many>
+            <embedded name="name"/>
+            <transient name="permissions"/>
+            <!--
+            <transient name="mainAddress"/>
+            <transient name="mainEmail"/>
+            <transient name="mainGroup"/>
+
+            <transient name="postsPerday"/>
+            <transient name="roles"/>-->
+        </attributes>
+    </entity>
+</entity-mappings>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="jescort" basedir="." default="jescort.exploded" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <property environment="env"/>
+    <property file="build/build.properties"/>
+    <ivy:settings file="build/ivysettings.xml"/>
+    <import file="build/macro.xml"/>
+    <import file="build/common.xml"/>
+    <import file="build/target.xml"/>
+    <import file="build/deploy.xml"/>
+    <!--setting properties-->
+</project>

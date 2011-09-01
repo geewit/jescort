@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+    <entity metadata-complete="true" name="Role" class="net.jescort.domain.user.Role" access="PROPERTY" cacheable="true">
+        <table name="roles"/>
+        <attributes>
+            <id name="id">
+                <column name="id" unique="true"/>
+                <generated-value strategy="IDENTITY"/>
+                <!--<generated-value strategy="TABLE" generator="roleIdGenerator"/>
+                <table-generator name="roleIdGenerator" table="pk_gen" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="role_id" allocation-size="1" initial-value="1"/>-->
+            </id>
+            <basic name="authority">
+                <column name="authority" insertable="true" updatable="true" unique="true"/>
+            </basic>
+            <basic name="description">
+                <column name="description" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="priority">
+                <column name="priority" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <one-to-many name="permissions" target-entity="net.jescort.domain.user.Permission" fetch="LAZY">
+                <join-column name="role_id" referenced-column-name="id"/>
+            </one-to-many>
+        </attributes>
+    </entity>
+</entity-mappings>

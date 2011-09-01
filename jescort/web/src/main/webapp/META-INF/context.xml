@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context path="/" antiResourceLocking="false" privileged="true">
+    <!--Tomcat-->
+    <Loader delegate="true"/>
+    <Loader loaderClass="org.springframework.instrument.classloading.tomcat.TomcatInstrumentableClassLoader"/>
+    <!--<WatchedResource>WEB-INF/web.xml</WatchedResource>-->
+    <Manager pathname=""/>
+</Context>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <table name="forums">
+        <column>id</column>
+        <column>subject</column>
+        <column>description</column>
+        <column>status</column>
+        <row>
+            <value description="id">1</value>
+            <value description="subject">Zabei</value>
+            <value description="description">Shanghai Zabei</value>
+            <value description="status">1</value>
+        </row>
+        <row>
+            <value description="id">2</value>
+            <value description="subject">Hongkou</value>
+            <value description="description">Shanghai Hongkou</value>
+            <value description="status">2</value>
+        </row>
+    </table>
+    <!--
+    <table name="address">
+        <column>id</column>
+        <column>longitude</column>
+        <column>latitude</column>
+        <column>user_id</column>
+        <column>location_id</column>
+        <column>postal_code</column>
+        <column>street</column>
+        <row>
+            <value description="longitude">12.7</value>
+            <value description="latitude">13.7</value>
+            <value description="user_id">12</value>
+            <value description="location_id">3</value>
+            <value description="postal_code">200070</value>
+            <value description="street">Shanghai Zabei</value>
+        </row>
+        <row>
+            <value description="longitude">22.7</value>
+            <value description="latitude">23.7</value>
+            <value description="user_id">22</value>
+            <value description="location_id">4</value>
+            <value description="postal_code">200071</value>
+            <value description="street">Shanghai Hongkou</value>
+        </row>
+    </table>
+    -->
+</dataset>

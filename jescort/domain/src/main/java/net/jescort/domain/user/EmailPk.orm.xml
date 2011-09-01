@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+    <embeddable class="net.jescort.domain.user.EmailPk" access="PROPERTY"/>
+        <!--<attributes>
+            <basic name="hostname">
+                <column name="hostname" insertable="true" updatable="false" unique="false"/>
+            </basic>
+            <basic name="personal">
+                <column name="hostname" insertable="true" updatable="false" unique="false"/>
+            </basic>
+        </attributes>
+    </embeddable>-->
+</entity-mappings>
