@@ -60,9 +60,7 @@
         </dependency>
 
         <dependency org="com.thimbleware.jmemcached" name="jmemcached-core" rev="${jmemcached.version}" conf="compile->default"/>
-        <!--<dependency org="junit" name="junit" rev="${junit.version}" conf="test->runtime"/>
-        <dependency org="org.apache.lucene" name="lucene-core" rev="${lucene.version}" conf="compile->default"/>
-        <dependency org="org.apache.lucene" name="lucene-highlighter" rev="${lucene.version}" conf="compile->default"/>-->
+        <!--<dependency org="junit" name="junit" rev="${junit.version}" conf="test->runtime"/>-->
         <dependency org="mysql" name="mysql-connector-java" rev="${mysql-connector.version}" conf="compile->default"/>
         <dependency org="org.jboss.netty" name="netty" rev="${netty.version}" conf="compile->default"/>
         <dependency org="org.hibernate" name="hibernate-validator" rev="${hibernate-validator.version}"/>
@@ -70,7 +68,8 @@
         <dependency org="org.slf4j" name="slf4j-log4j12" rev="${slf4j.version}"/>
         <dependency org="org.apache.lucene" name="lucene-core" rev="${lucene.version}" conf="compile->default"/>
         <dependency org="org.apache.lucene" name="lucene-analyzers" rev="${lucene.version}" conf="compile->default"/>
-        <dependency org="org.apache.lucene" name="lucene-highlighter" rev="${lucene.version}" conf="compile->default"/>
+        <dependency org="org.apache.lucene" name="lucene-grouping" rev="${lucene.version}" conf="compile->default"/>
+        <dependency org="org.apache.lucene" name="lucene-smartcn" rev="${lucene.version}" conf="compile->default"/>
         <dependency org="org.apache.shiro" name="shiro-core" rev="${shiro.version}" conf="compile->default"/>
         <dependency org="org.apache.shiro" name="shiro-web" rev="${shiro.version}" conf="compile->default"/>
         <dependency org="org.apache.shiro" name="shiro-spring" rev="${shiro.version}" conf="compile->default"/>
@@ -100,13 +99,11 @@
         <dependency org="org.springframework.data" name="spring-data-jpa" rev="${spring-data-jpa.version}" conf="compile->default"/>
         <dependency org="spy" name="spymemcached" rev="${spymemcached.version}" conf="compile->default"/>
         <dependency org="org.subethamail" name="subethasmtp" rev="${subethasmtp.version}" conf="compile->default"/>
-        <!--<dependency org="org.eclipse.persistence" name="eclipselink" rev="${eclipselink.version}" conf="compile->default"/>-->
         <dependency org="org.eclipse.persistence" name="javax.persistence" rev="${javax.persistence.version}" conf="compile->default"/>
         <dependency org="org.eclipse.persistence" name="org.eclipse.persistence.antlr" rev="${eclipselink.version}" conf="compile->default"/>
         <dependency org="org.eclipse.persistence" name="org.eclipse.persistence.asm" rev="${eclipselink.version}" conf="compile->default"/>
         <dependency org="org.eclipse.persistence" name="org.eclipse.persistence.core" rev="${eclipselink.version}" conf="compile->default"/>
         <dependency org="org.eclipse.persistence" name="org.eclipse.persistence.jpa" rev="${eclipselink.version}" conf="compile->default"/>
-        <!--<dependency org="org.scala-lang" name="scala-library" rev="${scala.version}" conf="compile->default"/>-->
         <dependency org="org.apache.tiles" name="tiles-api" rev="${tiles.version}" conf="compile->default"/>
         <dependency org="org.apache.tiles" name="tiles-core" rev="${tiles.version}" conf="compile->default"/>
         <dependency org="org.apache.tiles" name="tiles-el" rev="${tiles.version}" conf="compile->default"/>

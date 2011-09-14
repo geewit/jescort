@@ -24,11 +24,14 @@ INSERT INTO forums VALUES ('1', 'forum_test_1', 'forum_test_1_description', '1',
 INSERT INTO topics VALUES ('1', '1', 'topic_test_1', '10', '1', '1', '1', '199', '0', '2010-09-03 23:26:51');
 INSERT INTO topics VALUES ('2', '1', 'topic_test_2', '13', '2', '3', '2', '8', '1', '2010-09-03 23:27:09');
 
-INSERT INTO post_edits VALUES ('1', '1', '2011-08-03 23:28:38');
-INSERT INTO post_edits VALUES ('2', '2', '2011-08-03 23:28:38');
+
 
 INSERT INTO posts VALUES ('1', '1', '1', 'topic_test_1_content', '1', '2010-09-03 23:28:38', '2');
 INSERT INTO posts VALUES ('2', '2', '2', 'topic_test_2_content', '1', '2010-09-03 23:28:38', '2');
+INSERT INTO post_edits VALUES ('1', '1', '2011-08-03 23:28:38');
+INSERT INTO post_edits VALUES ('2', '2', '2011-08-03 23:28:38');
+
+
 INSERT INTO posts VALUES ('3', '1', '1', 'post_test_1', '0', '2010-09-03 23:28:38', '2');
 INSERT INTO posts VALUES ('4', '1', '2', 'post_test_2', '0', '2010-09-03 23:46:39', '2');
 INSERT INTO posts VALUES ('5', '2', '1', 'post_test_1', '0', '2010-09-03 23:28:38', '2');

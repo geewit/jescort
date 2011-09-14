@@ -17,8 +17,8 @@
         <module>persistence</module>
     </modules>
     <scm>
-        <connection>scm:svn:http://github.com/isaga/jescort/${project.artifactId}/</connection>
-        <developerConnection>scm:svn:https://github.com/isaga/jescort/${project.artifactId}/</developerConnection>
-        <url>http://github.com/isaga/jescort</url>
+        <connection>scm:svn:http://github.com/isaga/jescort/${project.artifactId}</connection>
+        <developerConnection>scm:svn:https://github.com/isaga/jescort/${project.artifactId}</developerConnection>
+        <url>http://github.com/isaga/jescort/tree/master/${project.artifactId}</url>
     </scm>
 </project>

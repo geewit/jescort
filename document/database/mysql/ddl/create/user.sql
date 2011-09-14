@@ -1,3 +1,4 @@
+
 CREATE TABLE addresses (
     id                   INT                    NOT NULL,
     user_id              INT                    NOT NULL,
@@ -6,19 +7,18 @@ CREATE TABLE addresses (
     street               VARCHAR(255)           NOT NULL,
     priority             INTEGER                NOT NULL,
     `type`               VARCHAR(31)            NOT NULL,
-    PRIMARY KEY  (id),
-    INDEX address_user_id_idx (user_id),
-    INDEX address_location_id_idx (location_id)
+    PRIMARY KEY  (id)
 ) ENGINE=InnoDB CHARSET=utf8;
+
 
 CREATE TABLE emails (
     personal      VARCHAR(31)    NOT NULL,
     hostname      VARCHAR(31)    NOT NULL,
     user_id       INT            NOT NULL,
     priority      INTEGER        NOT NULL,
-    PRIMARY KEY  (personal, hostname),
-    INDEX email_user_id_idx (user_id)
+    PRIMARY KEY  (personal, hostname)
 ) ENGINE=InnoDB CHARSET=utf8;
+
 
 CREATE TABLE groups (
     id            INT            NOT NULL AUTO_INCREMENT,
@@ -27,15 +27,16 @@ CREATE TABLE groups (
     priority      INTEGER        NOT NULL,
     parent_id     INT            NULL,
     PRIMARY KEY (id),
-    UNIQUE (`name`),
-    INDEX group_parent_id_idx (parent_id)
+    UNIQUE (`name`)
 ) ENGINE=InnoDB CHARSET=utf8;
+
 
 CREATE TABLE group_role_map (
     group_id      INT            NOT NULL,
     role_id       INT            NOT NULL,
     PRIMARY KEY (group_id, role_id)
 ) ENGINE=InnoDB CHARSET=utf8;
+
 
 CREATE TABLE locations (
     id                   INT                    NOT NULL,
@@ -44,17 +45,17 @@ CREATE TABLE locations (
     parent_id            INT                    NULL,
     level                TINYINT(1)             NOT NULL,
     available            BOOLEAN                NOT NULL,
-    PRIMARY KEY (id),
-    INDEX location_parent_id_idx (parent_id)
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB CHARSET=utf8;
+
 
 CREATE TABLE permissions (
     id                   INT            NOT NULL AUTO_INCREMENT,
     role_id              INT            NOT NULL,
     permission           VARCHAR(255)   NOT NULL,
-    PRIMARY KEY (id),
-    INDEX permission_role_id_idx (role_id)
+    PRIMARY KEY (id)
 ) ENGINE=InnoDB CHARSET=utf8;
+
 
 CREATE TABLE roles (
     id                  INT            NOT NULL AUTO_INCREMENT,
@@ -64,6 +65,7 @@ CREATE TABLE roles (
     PRIMARY KEY (id),
     UNIQUE (authority)
 ) ENGINE=InnoDB CHARSET=utf8;
+
 
 CREATE TABLE users (
     id                 INT            NOT NULL,
@@ -82,11 +84,13 @@ CREATE TABLE users (
     INDEX user_password_idx (password)
 ) ENGINE=InnoDB CHARSET=utf8;
 
+
 CREATE TABLE user_group_map (
     user_id            INT            NOT NULL,
     group_id           INT            NOT NULL,
     PRIMARY KEY (user_id, group_id)
 ) ENGINE=InnoDB CHARSET=utf8;
+
 
 create table user_profiles (
     id                 INT            NOT NULL,
@@ -96,6 +100,7 @@ create table user_profiles (
     signature          TEXT           NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB CHARSET=utf8;
+
 
 create table user_properties (
     id                   INT                  NOT NULL,

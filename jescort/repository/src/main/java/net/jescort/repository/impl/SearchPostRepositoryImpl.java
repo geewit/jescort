@@ -7,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -36,8 +37,7 @@ public class SearchPostRepositoryImpl implements SearchPostRepository
     protected transient final Log logger = LogFactory.getLog(this.getClass());
 
     private final String INDEXPATH = "k:\\index";
-    //private Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_33);
-    private Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_33);
+    private Analyzer analyzer = new SmartChineseAnalyzer(Version.LUCENE_33);
     private Directory ramDir;
     private Directory fsDir;
 

@@ -7,10 +7,10 @@
     <groupId>net.gelif</groupId>
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
-    <name>escort</name>
+    <name>jescort</name>
     <inceptionYear>2008</inceptionYear>
     <version>0.1</version>
-    <url>http://code.google.com/p/escort</url>
+    <url>http://github.com/isaga/jescort</url>
 
     <modules>
         <module>kernel</module>
@@ -25,7 +25,7 @@
     <scm>
         <connection>scm:git:http://github.com/isaga/jescort.git/</connection>
         <developerConnection>scm:git:https://github.com/isaga/jescort.git/</developerConnection>
-        <url>https://github.com/isaga/jescort/tree/master/</url>
+        <url>http://github.com/isaga/jescort/tree/master/</url>
     </scm>
 
     <organization>
@@ -57,7 +57,7 @@
         <commons.beanutils.version>1.8.3</commons.beanutils.version>
         <commons.codec.version>1.5</commons.codec.version>
         <commons.collections.version>3.2.1</commons.collections.version>
-        <commons.configuration.version>1.6</commons.configuration.version>
+        <commons.configuration.version>1.7</commons.configuration.version>
         <commons.digester.version>2.1</commons.digester.version>
         <commons.dbcp.version>1.4</commons.dbcp.version>
         <commons.fileupload.version>1.2.2</commons.fileupload.version>
@@ -91,16 +91,16 @@
         <log4j.version>1.2.16</log4j.version>
         <lucene.version>3.3.0</lucene.version>
         <mysql.version>5.1.17</mysql.version>
-        <netty.version>3.2.4.Final</netty.version>
+        <netty.version>3.2.5.Final</netty.version>
         <quartz.version>2.0.2</quartz.version>
         <rome.version>1.0</rome.version>
         <shiro.version>1.1.0</shiro.version>
-        <slf4j.version>1.6.1</slf4j.version>
+        <slf4j.version>1.6.2</slf4j.version>
         <spring.version>3.0.6.RELEASE</spring.version>
         <spring.batch.version>2.1.8.RELEASE</spring.batch.version>
         <spring-data-commons.version>1.1.0.RELEASE</spring-data-commons.version>
-        <spring-data-jpa.version>1.0.0.RELEASE</spring-data-jpa.version>
-        <spymemcached.version>2.7</spymemcached.version>
+        <spring-data-jpa.version>1.0.1.RELEASE</spring-data-jpa.version>
+        <spymemcached.version>2.7.1</spymemcached.version>
         <tiles.version>2.2.2</tiles.version>
         <subethasmtp.version>3.1.6</subethasmtp.version>
         <yuicompressor.version>2.4.6</yuicompressor.version>
@@ -506,7 +506,7 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.lucene</groupId>
-                <artifactId>lucene-highlighter</artifactId>
+                <artifactId>lucene-smartcn</artifactId>
                 <version>${lucene.version}</version>
             </dependency>
             <dependency>
@@ -928,11 +928,11 @@
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-grouping</artifactId>
+            <artifactId>lucene-smartcn</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-highlighter</artifactId>
+            <artifactId>lucene-grouping</artifactId>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

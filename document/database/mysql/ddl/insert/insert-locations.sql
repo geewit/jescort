@@ -1,3 +1,4 @@
+
 INSERT INTO `locations` VALUES (310000, '上海市', 'SH', null, 1, true);
 INSERT INTO `locations` VALUES (310101, '黄浦区', 'HP', 310000, 2, true);
 INSERT INTO `locations` VALUES (310104, '徐汇区', 'XH', 310000, 2, true);
