@@ -372,10 +372,10 @@
             <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
             <element id="library" level="project" name="Maven: rome:rome:1.0" />
             <element id="library" level="project" name="Maven: jdom:jdom:1.0" />
-            <element id="library" level="project" name="Maven: org.apache.lucene:lucene-core:3.3.0" />
-            <element id="library" level="project" name="Maven: org.apache.lucene:lucene-analyzers:3.3.0" />
-            <element id="library" level="project" name="Maven: org.apache.lucene:lucene-smartcn:3.3.0" />
-            <element id="library" level="project" name="Maven: org.apache.lucene:lucene-grouping:3.3.0" />
+            <element id="library" level="project" name="Maven: org.apache.lucene:lucene-core:3.4.0" />
+            <element id="library" level="project" name="Maven: org.apache.lucene:lucene-analyzers:3.4.0" />
+            <element id="library" level="project" name="Maven: org.apache.lucene:lucene-smartcn:3.4.0" />
+            <element id="library" level="project" name="Maven: org.apache.lucene:lucene-grouping:3.4.0" />
             <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.17" />
             <element id="library" level="project" name="Maven: spy:spymemcached:2.7.1" />
             <element id="library" level="project" name="Maven: com.thimbleware.jmemcached:jmemcached-core:1.0.0" />
@@ -774,6 +774,7 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/build/build.iml" filepath="$PROJECT_DIR$/build/build.iml" />
       <module fileurl="file://$PROJECT_DIR$/document/document.iml" filepath="$PROJECT_DIR$/document/document.iml" />
       <module fileurl="file://$PROJECT_DIR$/jescort/jescort.iml" filepath="$PROJECT_DIR$/jescort/jescort.iml" />
       <module fileurl="file://$PROJECT_DIR$/jescort/domain/jescort.domain.iml" filepath="$PROJECT_DIR$/jescort/domain/jescort.domain.iml" />
@@ -1339,48 +1340,48 @@
         <root url="jar://$PROJECT_DIR$/../m2/repository/net/gelif/modules.memcached/0.1/modules.memcached-0.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.lucene:lucene-analyzers:3.3.0">
+    <library name="Maven: org.apache.lucene:lucene-analyzers:3.4.0">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-analyzers/3.3.0/lucene-analyzers-3.3.0.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-analyzers/3.4.0/lucene-analyzers-3.4.0.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-analyzers/3.3.0/lucene-analyzers-3.3.0-javadoc.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-analyzers/3.4.0/lucene-analyzers-3.4.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-analyzers/3.3.0/lucene-analyzers-3.3.0-sources.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-analyzers/3.4.0/lucene-analyzers-3.4.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.lucene:lucene-core:3.3.0">
+    <library name="Maven: org.apache.lucene:lucene-core:3.4.0">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-core/3.3.0/lucene-core-3.3.0.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-core/3.4.0/lucene-core-3.4.0.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-core/3.3.0/lucene-core-3.3.0-javadoc.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-core/3.4.0/lucene-core-3.4.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-core/3.3.0/lucene-core-3.3.0-sources.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-core/3.4.0/lucene-core-3.4.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.lucene:lucene-grouping:3.3.0">
+    <library name="Maven: org.apache.lucene:lucene-grouping:3.4.0">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-grouping/3.3.0/lucene-grouping-3.3.0.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-grouping/3.4.0/lucene-grouping-3.4.0.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-grouping/3.3.0/lucene-grouping-3.3.0-javadoc.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-grouping/3.4.0/lucene-grouping-3.4.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-grouping/3.3.0/lucene-grouping-3.3.0-sources.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-grouping/3.4.0/lucene-grouping-3.4.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.lucene:lucene-smartcn:3.3.0">
+    <library name="Maven: org.apache.lucene:lucene-smartcn:3.4.0">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-smartcn/3.3.0/lucene-smartcn-3.3.0.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-smartcn/3.4.0/lucene-smartcn-3.4.0.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-smartcn/3.3.0/lucene-smartcn-3.3.0-javadoc.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-smartcn/3.4.0/lucene-smartcn-3.4.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-smartcn/3.3.0/lucene-smartcn-3.3.0-sources.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/org/apache/lucene/lucene-smartcn/3.4.0/lucene-smartcn-3.4.0-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.apache.shiro:shiro-core:1.1.0">

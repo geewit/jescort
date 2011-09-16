@@ -7,7 +7,7 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 
 public class Properties extends AbstractLogger
 {
-    private static final String properties_name = "escort.properties";
+    private static final String properties_name = "jescort.properties";
     
     private static volatile Properties properties;
     

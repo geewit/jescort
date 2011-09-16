@@ -6,7 +6,7 @@
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <!--property configurer reader-->
-    <context:property-placeholder location="classpath:escort.properties"/>
+    <context:property-placeholder location="classpath:jescort.properties"/>
 
     <!--Enable @AspectJ support
     <aop:aspectj-autoproxy/>-->

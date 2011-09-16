@@ -47,7 +47,7 @@ public class GenericJpaDao<T extends Persistable<PK>, PK extends Serializable> i
     
     protected EntityManager entityManager;
     
-    @PersistenceContext(unitName = "escort")
+    @PersistenceContext(unitName = "jescort")
     public void setEntityManager(EntityManager entityManager)
     {
         this.entityManager = entityManager;
