@@ -3,5 +3,5 @@
 
 <head><title><c:out value="${exception.message}" default="dataAccessFailure"/></title></head>
 <div class="errors">
-    <div class="error"><c:out value="${exception}"/></div>
+    <div class="error"><c:out value="${exception.message}"/></div>
 </div>

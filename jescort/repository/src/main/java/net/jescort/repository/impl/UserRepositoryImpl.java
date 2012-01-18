@@ -10,6 +10,7 @@ import net.jescort.domain.forum.Message;
 import net.jescort.domain.user.Email;
 import net.jescort.domain.user.User;
 import net.jescort.persistence.dao.MessageDao;
+import net.jescort.persistence.dao.RoleDao;
 import net.jescort.persistence.dao.UserDao;
 import net.jescort.repository.UserRepository;
 import org.apache.commons.logging.Log;
@@ -27,8 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Blob;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA. User: admin@gelif.net Date: 11-7-14 Time: 下午12:01
@@ -42,6 +42,9 @@ public class UserRepositoryImpl implements UserRepository
     @Resource(name = "userDao")
     private UserDao userDao;
 
+    @Resource(name = "roleDao")
+    private RoleDao roleDao;
+
     @Resource(name = "messageDao")
     private MessageDao messageDao;
 
@@ -52,7 +55,7 @@ public class UserRepositoryImpl implements UserRepository
     public User getCurrentUser()
     {
         final Integer currentUserId = (Integer) SecurityUtils.getSubject().getPrincipal();
-        if( currentUserId != null )
+        if (currentUserId != null)
         {
             return getUser(currentUserId);
         } else
@@ -122,6 +125,12 @@ public class UserRepositoryImpl implements UserRepository
     public User findUserByUsername(String username)
     {
         return userDao.findByUsername(username);
+    }
+
+    @Override
+    public Set<String> findRolesByUsername(String username)
+    {
+        return new HashSet(roleDao.findByUsername(username));
     }
 
     @Override

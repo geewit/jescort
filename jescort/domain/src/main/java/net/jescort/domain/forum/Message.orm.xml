@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
     <entity metadata-complete="true" name="Message" class="net.jescort.domain.forum.Message" access="PROPERTY">
         <table name="messages"/>
-        <converter name="messageStatus" class="net.jescort.persistence.eclipselink.mappings.converters.MessageStatusConverter"/>
+        <converter name="messageStatus"
+                   class="net.jescort.persistence.eclipselink.mappings.converters.MessageStatusConverter"/>
         <entity-listeners>
             <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.MessageListener">
                 <pre-persist method-name="prePersist"/>
@@ -13,10 +16,10 @@
                 <column name="id" unique="true"/>
             </id>
             <basic name="subject">
-                <column name="subject" insertable="true" updatable="true" unique="false" />
+                <column name="subject" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="content">
-                <column name="content" insertable="true" updatable="true" unique="false" />
+                <column name="content" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="isRead">
                 <column name="is_read" insertable="true" updatable="true" unique="false"/>
@@ -37,7 +40,8 @@
                 </collection-table>
             </basic-map>
             <many-to-one name="sender" target-entity="net.jescort.domain.user.User" fetch="LAZY">
-                <join-column name="sender_id" referenced-column-name="id" insertable="true" updatable="false" nullable="false"/>
+                <join-column name="sender_id" referenced-column-name="id" insertable="true" updatable="false"
+                             nullable="false"/>
             </many-to-one>
             <many-to-many name="attachments" target-entity="net.jescort.domain.forum.Attachment" fetch="LAZY">
                 <order-by>id ASC</order-by>

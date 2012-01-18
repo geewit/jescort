@@ -35,7 +35,7 @@
                     <include name="net/gelif/**/*.properties"/>
                     <include name="net/jescort/**/*.xml"/>
                     <include name="net/jescort/**/*.properties"/>
-                    <exclude name="**/.svn"/>
+                    <exclude name="**/.git"/>
                     <exclude name="**/*.iml"/>
                 </fileset>
             </copy>
@@ -43,7 +43,7 @@
                 <fileset dir="@{fromdir}/resources" erroronmissingdir="false">
                     <include name="**/*.xml"/>
                     <include name="**/*.properties"/>
-                    <exclude name="**/.svn"/>
+                    <exclude name="**/.git"/>
                 </fileset>
             </copy>
         </sequential>

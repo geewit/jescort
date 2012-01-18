@@ -45,8 +45,7 @@ public class PostEditController
         if (result.hasErrors())
         {
             return "posts/edit";
-        }
-        else
+        } else
         {
             User currentUser = (User) SecurityUtils.getSubject().getPrincipal();
             escortRepository.updatePost(post, currentUser);

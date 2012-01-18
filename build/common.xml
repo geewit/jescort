@@ -23,7 +23,8 @@
 
     <target name="jar.kernel.persistence" depends="retrieve">
         <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${kernel.persistence.main.java.dir}"/>
-        <jar jarfile="${exploded.lib.dir}/kernel.persistence.jar" basedir="${exploded.temp.classes.dir}" excludes="**/.svn"/>
+        <jar jarfile="${exploded.lib.dir}/kernel.persistence.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
         <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
         <mkdir dir="${exploded.temp.classes.dir}"/>
     </target>
@@ -32,33 +33,37 @@
         <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${modules.bbcode.main.java.dir}"/>
         <copy todir="${exploded.temp.classes.dir}" includeEmptyDirs="no">
             <fileset dir="${modules.bbcode.main.resources.dir}" erroronmissingdir="false">
-                <include name="**/*.xml" />
-                <include name="**/*.xsd" />
-                <exclude name="**/.svn" />
+                <include name="**/*.xml"/>
+                <include name="**/*.xsd"/>
+                <exclude name="**/.svn"/>
             </fileset>
         </copy>
-        <jar jarfile="${exploded.lib.dir}/modules.bbcode.jar" basedir="${exploded.temp.classes.dir}" excludes="**/.svn"/>
+        <jar jarfile="${exploded.lib.dir}/modules.bbcode.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
         <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
         <mkdir dir="${exploded.temp.classes.dir}"/>
     </target>
 
     <target name="jar.modules.memcached" depends="retrieve">
         <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${modules.memcached.main.java.dir}"/>
-        <jar jarfile="${exploded.lib.dir}/modules.memcached.jar" basedir="${exploded.temp.classes.dir}" excludes="**/.svn"/>
+        <jar jarfile="${exploded.lib.dir}/modules.memcached.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
         <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
         <mkdir dir="${exploded.temp.classes.dir}"/>
     </target>
 
     <target name="jar.modules.sendmail" depends="retrieve">
         <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${modules.sendmail.main.java.dir}"/>
-        <jar jarfile="${exploded.lib.dir}/modules.sendmail.jar" basedir="${exploded.temp.classes.dir}" excludes="**/.svn"/>
+        <jar jarfile="${exploded.lib.dir}/modules.sendmail.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
         <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
         <mkdir dir="${exploded.temp.classes.dir}"/>
     </target>
 
     <target name="jar.jescort.domain" depends="retrieve">
         <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${jescort.domain.main.java.dir}"/>
-        <jar jarfile="${exploded.lib.dir}/jescort.domain.jar" basedir="${exploded.temp.classes.dir}" excludes="**/.svn"/>
+        <jar jarfile="${exploded.lib.dir}/jescort.domain.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
         <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
         <mkdir dir="${exploded.temp.classes.dir}"/>
     </target>
@@ -106,21 +111,24 @@
     <!---->
     <target name="jar.jescort.repository" depends="retrieve">
         <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${jescort.repository.main.java.dir}"/>
-        <jar jarfile="${exploded.lib.dir}/jescort.repository.jar" basedir="${exploded.temp.classes.dir}" excludes="**/.svn"/>
+        <jar jarfile="${exploded.lib.dir}/jescort.repository.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
         <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
         <mkdir dir="${exploded.temp.classes.dir}"/>
     </target>
 
     <target name="jar.jescort.persistence" depends="retrieve">
         <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${jescort.persistence.main.java.dir}"/>
-        <jar jarfile="${exploded.lib.dir}/jescort.persistence.jar" basedir="${exploded.temp.classes.dir}" excludes="**/.svn"/>
+        <jar jarfile="${exploded.lib.dir}/jescort.persistence.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
         <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
         <mkdir dir="${exploded.temp.classes.dir}"/>
     </target>
 
     <target name="jar.jescort.security" depends="retrieve">
         <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${jescort.security.main.java.dir}"/>
-        <jar jarfile="${exploded.lib.dir}/jescort.security.jar" basedir="${exploded.temp.classes.dir}" excludes="**/.svn"/>
+        <jar jarfile="${exploded.lib.dir}/jescort.security.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
         <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
         <mkdir dir="${exploded.temp.classes.dir}"/>
     </target>

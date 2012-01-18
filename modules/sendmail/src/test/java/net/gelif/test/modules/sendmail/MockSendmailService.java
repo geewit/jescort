@@ -1,6 +1,7 @@
 package net.gelif.test.modules.sendmail;
 
 import java.util.Map;
+
 import net.gelif.modules.sendmail.AbstractSendmailService;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -18,7 +19,7 @@ public class MockSendmailService extends AbstractSendmailService
         mail.append(mailMessage.getText());
         logger.info(mail.toString());
     }
-    
+
     @Override
     public void send(SimpleMailMessage mailMessage, String templateName, Map<String, Object> model) throws MailException
     {
@@ -27,11 +28,11 @@ public class MockSendmailService extends AbstractSendmailService
         mail.append(this.generateEmailContent(templateName, model));
         logger.info(mail.toString());
     }
-    
+
     protected String getMailHeader(SimpleMailMessage mailMessage)
     {
         StringBuffer header = new StringBuffer();
-        
+
         header.append("To: ");
         for(String to : mailMessage.getTo())
         {

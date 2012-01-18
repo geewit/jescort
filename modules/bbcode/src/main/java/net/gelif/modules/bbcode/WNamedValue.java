@@ -9,25 +9,22 @@ public class WNamedValue extends WNamedElement implements WTemplateElement
     {
         super(name);
     }
-    
+
     /**
      * Добавляет элемент в новую строку
-     * 
-     * @param context
-     *            контекст
+     *
+     * @param context контекст
      */
     public CharSequence generate(Context context)
     {
         Object attribute = context.getAttribute(getName());
-        if(attribute == null)
+        if (attribute == null)
         {
             return "null";
-        }
-        else if(attribute instanceof CharSequence)
+        } else if (attribute instanceof CharSequence)
         {
-            return (CharSequence)attribute;
-        }
-        else
+            return (CharSequence) attribute;
+        } else
         {
             return attribute.toString();
         }

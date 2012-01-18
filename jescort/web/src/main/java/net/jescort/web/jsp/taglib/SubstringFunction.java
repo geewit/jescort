@@ -22,7 +22,7 @@ public class SubstringFunction
             return StringUtils.EMPTY;
         }
 
-        if(str.length() <= width)
+        if (str.length() <= width)
         {
             return str;
         }

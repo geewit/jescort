@@ -11,20 +11,21 @@
         <li><b>${topic.subject}</b></li>
     </ul>
     <ul id="breadcrumb-links" class="fright">
-        <li style="padding-right:0"><a class="button small" href="<spring:url value="/"/>"><spring:message code="message.forum_rules"/></a></li>
+        <li style="padding-right:0">
+            <a class="button small" href="<spring:url value="/"/>"><spring:message code="message.forum_rules"/></a></li>
     </ul>
     <div class="clear"></div>
 </div>
 <div id="content">
     <div class="KonaBody">
         <br/>
-        <p class="message error">One or all of your search keywords were below 3
-         characters or you searched for words which are not allowed, such as
-        'html', 'img', etc, please increase the length of these search keywords
-        or choose different keywords.</p>
+
+        <p class="message error">One or all of your search keywords were below 3 characters or you searched for words which are not allowed, such as 'html', 'img', etc, please increase the length of these search keywords or choose different keywords.</p>
         <br/>
+
         <form id="search-box" method="post" action="/search">
             <h2 class="maintitle">Search</h2>
+
             <div class="border rounded-bot">
                 <div class="clear row2 altrow" id="main_search_form">
                     <fieldset id="main_search">
@@ -32,6 +33,7 @@
                             <li>
                                 <label for="query">Find <strong>words</strong></label>
                                 <input type="text" value="windows 7 lite" id="query" name="search_term" class="input_text"><br>
+
                                 <span class="desc">Tip: Search for a specific phrase by "enclosing it in quotes"</span>
                             </li>
                         </ul>
@@ -87,7 +89,8 @@
                                     </li>
                                     <li>
                                         <label>Topics with <strong>at least</strong></label>
-                                        <input type="text" size="5" style="vertical-align: middle; width: 40px;" class="input_text" name="search_app_filters[forums][pCount]" id="f_p_count"> posts and <input type="text" size="5" style="vertical-align: middle; width: 40px;" class="input_text" name="search_app_filters[forums][pViews]" id="f_p_views"> views
+                                        <input type="text" size="5" style="vertical-align: middle; width: 40px;" class="input_text" name="search_app_filters[forums][pCount]" id="f_p_count"> posts and
+                                        <input type="text" size="5" style="vertical-align: middle; width: 40px;" class="input_text" name="search_app_filters[forums][pViews]" id="f_p_views"> views
                                     </li>
                                 </ul>
                             </fieldset>

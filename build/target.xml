@@ -55,7 +55,8 @@
         <copy todir="${exploded.lib.dir}" includeEmptyDirs="no">
             <fileset dir="${basedir}/lib">
                 <include name="*.jar"/>
-                <exclude name="servlet-api-*.jar"/>
+                <exclude name="javax.servlet.jsp-api-*.jar"/>
+                <exclude name="javax.servlet-api-*.jar"/>
             </fileset>
         </copy>
         <copy todir="${exploded.dir}" includeEmptyDirs="no">

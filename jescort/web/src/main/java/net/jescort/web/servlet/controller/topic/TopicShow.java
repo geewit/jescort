@@ -28,7 +28,6 @@ public class TopicShow
     }
 
 
-
     @RequestMapping(value = {"/topics/{id}/page/{pageNo}/pageSize/{pageSize}"}, method = RequestMethod.GET)
     public ModelAndView topicHandler(@PathVariable("id") Integer id, @PathVariable("pageNo") Integer pageNo, @PathVariable("pageSize") Integer pageSize)
     {

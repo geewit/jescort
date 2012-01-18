@@ -28,7 +28,7 @@ public class UserDaoTest// extends AbstractJpaDaoTestCase
         }
         */
     }
-    
+
     @Test
     public void testGetUser() throws Exception
     {
@@ -37,7 +37,7 @@ public class UserDaoTest// extends AbstractJpaDaoTestCase
         assertNotNull(auth);
         */
     }
-    
+
     @Test
     public void testGetUserPassword() throws Exception
     {
@@ -48,7 +48,7 @@ public class UserDaoTest// extends AbstractJpaDaoTestCase
         logger.debug("password: " + password);
         */
     }
-    
+
     @Test
     public void testUpdateUser() throws Exception
     {
@@ -74,7 +74,7 @@ public class UserDaoTest// extends AbstractJpaDaoTestCase
         }
         */
     }
-    
+
     @Test
     public void addAndRemoveUser() throws Exception
     {
@@ -100,7 +100,7 @@ public class UserDaoTest// extends AbstractJpaDaoTestCase
         }
         */
     }
-    
+
     @Test
     public void userExists() throws Exception
     {
@@ -109,7 +109,7 @@ public class UserDaoTest// extends AbstractJpaDaoTestCase
         super.assertTrue(b);
         */
     }
-    
+
     @Test
     public void testUserNotExists() throws Exception
     {

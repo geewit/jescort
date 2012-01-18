@@ -5,8 +5,8 @@
 
     <!-- Spring Mail Sender -->
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-        <property name="host"     value="${mail.smtp.host}"/>
-        <property name="port"     value="${mail.smtp.port}"/>
+        <property name="host" value="${mail.smtp.host}"/>
+        <property name="port" value="${mail.smtp.port}"/>
         <property name="username" value="${mail.smtp.username}"/>
         <property name="password" value="${mail.smtp.password}"/>
         <property name="javaMailProperties">
@@ -27,14 +27,14 @@
             </props>
         </property>
     </bean>
-    
+
     <bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage" scope="prototype">
         <property name="from" value="${mail.default.from}"/>
     </bean>
-    
+
     <!--Mock Mail Service, print mail on screen-->
     <bean id="mailService" class="net.gelif.test.modules.sendmail.MockSendmailService">
-        <property name="mailSender"         ref="mailSender"/>
+        <property name="mailSender" ref="mailSender"/>
         <property name="mailTemplateEngine" ref="mailTemplateEngine"/>
     </bean>
 

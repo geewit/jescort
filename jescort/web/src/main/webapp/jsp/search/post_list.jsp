@@ -11,7 +11,8 @@
         <li><b>${topic.subject}</b></li>
     </ul>
     <ul id="breadcrumb-links" class="fright">
-        <li style="padding-right:0"><a class="button small" href="<spring:url value="/"/>"><spring:message code="message.forum_rules"/></a></li>
+        <li style="padding-right:0">
+            <a class="button small" href="<spring:url value="/"/>"><spring:message code="message.forum_rules"/></a></li>
     </ul>
     <div class="clear"></div>
 </div>
@@ -24,19 +25,28 @@
             <!-- Content Wrapper -->
             <div id="content">
                 <p class="message" style="margin-left:0;margin-right:0">
-                    <a class="fright" href="http://www.neowin.net/forum/index.php?app=core&amp;module=search" title="Advanced Search" accesskey="4" rel="search"><strong>Advanced Search</strong></a>
-                    Your search for the term <em><strong>nlite</strong></em> returned <strong>1000</strong> results
-                </p>
+                    <a class="fright" href="http://www.neowin.net/forum/index.php?app=core&amp;module=search" title="Advanced Search" accesskey="4" rel="search"><strong>Advanced Search</strong></a> Your search for the term
+                    <em><strong>nlite</strong></em> returned <strong>1000</strong> results </p>
+
                 <div class="topic_controls">
                     <ul class="pagination left">
                         <li id="anonymous_element_1" class="pagejump clickable pj0400895001">
-                            40 Pages <img src="http://www.neowin.net/forum/public/style_images/atlas31/dropdown.png" alt="+">
+                            40 Pages
+                            <img src="http://www.neowin.net/forum/public/style_images/atlas31/dropdown.png" alt="+">
                         </li>
                         <li class="active">1</li>
-                        <li><a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=25" title="2">2</a></li>
-                        <li><a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=50" title="3">3</a></li>
-                        <li class="next"><a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=25" title="Next page" rel="next">→</a></li>
-                        <li class="last"><a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=975" title="Go to last page" rel="last">Last »</a></li>
+                        <li>
+                            <a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=25" title="2">2</a>
+                        </li>
+                        <li>
+                            <a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=50" title="3">3</a>
+                        </li>
+                        <li class="next">
+                            <a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=25" title="Next page" rel="next">→</a>
+                        </li>
+                        <li class="last">
+                            <a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=975" title="Go to last page" rel="last">Last »</a>
+                        </li>
                     </ul>
                     <div class="tab_filters">
                         <ul class="right">
@@ -51,8 +61,7 @@
                                 <select name="search_app_filters[forums][sortDir]" id="search_sort_order" class="input_select" style="width:auto">
                                     <option value="0" selected="selected">Descending (z-a)</option>
                                     <option value="1">Ascending (a-z)</option>
-                                </select>
-                                <input type="submit" class="input_submit alt" value="Update">
+                                </select> <input type="submit" class="input_submit alt" value="Update">
                             </form>
                         </ul>
                     </div>
@@ -67,16 +76,18 @@
                 </div>
                 <div class="post_block hentry clear" id="post_id_594167632">
                     <a id="entry594167632"></a>
+
                     <div class="post_wrap">
                         <h3>
                             <span class="post_id"><a href="http://www.neowin.net/forum/index.php?showtopic=1012160&amp;view=findpost&amp;p=594167632" rel="bookmark" title="Link to post #594167632">#594167632</a></span>
-                            <img src="http://www.neowin.net/forum/public/style_images/atlas31/user_off.png" alt="User is offline" title="User is offline">
-                         &nbsp;
+                            <img src="http://www.neowin.net/forum/public/style_images/atlas31/user_off.png" alt="User is offline" title="User is offline"> &nbsp;
                             <span class="author vcard"><a class="url fn" href="http://www.neowin.net/forum/user/12942-docthor4/">DocThor4</a>&nbsp;<a href="http://www.neowin.net/forum/user/12942-docthor4/" class="__user __id12942" title="View Profile"><img src="http://www.neowin.net/forum/public/style_images/atlas31/user_popup.png" alt=""></a></span>
                         </h3>
                         <div class="author_info">
                             <ul class="user_details" style="margin-bottom:0">
-                                <li class="avatar"><a href="http://www.neowin.net/forum/user/12942-docthor4/" title="View Profile"><img height="66" width="80" src="http://www.neowin.net/forum/uploads/av-12942.jpg" alt=""></a></li>
+                                <li class="avatar">
+                                    <a href="http://www.neowin.net/forum/user/12942-docthor4/" title="View Profile"><img height="66" width="80" src="http://www.neowin.net/forum/uploads/av-12942.jpg" alt=""></a>
+                                </li>
                                 <li class="title">Neowinian</li>
                                 <li class="group_icon">
                                     <img src="http://www.neowin.net/forum/public/style_extra/team_icons/1.png" alt="">
@@ -96,40 +107,53 @@
                         </div>
                         <div class="post_body">
                             <p class="posted_info">
-                                Posted <abbr class="published" title="2011-07-17T23:12:52+00:00">18 July 2011 - 07:12</abbr>
+                                Posted
+                                <abbr class="published" title="2011-07-17T23:12:52+00:00">18 July 2011 - 07:12</abbr>
                             </p>
+
                             <div class="post entry-content search">
                                 <p class="citation">
                                     <a class="snapback" rel="citation" href="http://www.neowin.net/forum/index.php?app=forums&amp;module=forums&amp;section=findpost&amp;pid=594167612"><img src="http://www.neowin.net/forum/public/style_images/atlas31/snapback.png" alt="View Post"></a>roadwarrior, on 18 July 2011 - 07:07, said:
                                 </p>
+
                                 <div class="blockquote">
                                     <div class="quote">
                                         No offence intended, but your English is so terrible that I don't think that ANYONE here knows what the hell you are talking about, even those of us who know quite a bit about video transcoding. If you are using some type of translation service, I'd suggest finding a different one, because most of what you have typed here makes no sense whatsoever.<br>
                                         <br><br>
-                                        <span class="searchlite">nLite</span> has absolutely nothing to do with Linux.  <img src="http://www.neowin.net/forum/public/style_emoticons/default/rolleyes.gif" class="bbc_emoticon" alt=":rolleyes:"><br>
+
+                                        <span class="searchlite">nLite</span>
+                                        has absolutely nothing to do with Linux.
+                                        <img src="http://www.neowin.net/forum/public/style_emoticons/default/rolleyes.gif" class="bbc_emoticon" alt=":rolleyes:"><br>
                                     </div>
                                 </div>
                                 <br><br>Sorry my bad english, I have to find out.<br>
                             </div>
                             <div class="signature">
-                                <img src="http://i242.photobucket.com/albums/ff95/dicksoriano/Framechar.jpg" alt="Posted Image" class="bbc_img"><br>
-                                Standalone
+                                <img src="http://i242.photobucket.com/albums/ff95/dicksoriano/Framechar.jpg" alt="Posted Image" class="bbc_img"><br> Standalone
                             </div>
                         </div>
-                        <ul class="post_controls">
-                        </ul>
+                        <ul class="post_controls"></ul>
                     </div>
                 </div>
                 <div class="topic_controls">
                     <ul class="pagination left">
                         <li id="anonymous_element_2" class="pagejump clickable pj0400895001">
-                            40 Pages <img src="http://www.neowin.net/forum/public/style_images/atlas31/dropdown.png" alt="+">
+                            40 Pages
+                            <img src="http://www.neowin.net/forum/public/style_images/atlas31/dropdown.png" alt="+">
                         </li>
                         <li class="active">1</li>
-                        <li><a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=25" title="2">2</a></li>
-                        <li><a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=50" title="3">3</a></li>
-                        <li class="next"><a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=25" title="Next page" rel="next">→</a></li>
-                        <li class="last"><a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=975" title="Go to last page" rel="last">Last »</a></li>
+                        <li>
+                            <a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=25" title="2">2</a>
+                        </li>
+                        <li>
+                            <a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=50" title="3">3</a>
+                        </li>
+                        <li class="next">
+                            <a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=25" title="Next page" rel="next">→</a>
+                        </li>
+                        <li class="last">
+                            <a href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=32637485ce86d2402b951916b4112d7e&amp;search_term=nlite&amp;search_app=forums&amp;st=975" title="Go to last page" rel="last">Last »</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- // Content Wrapper -->

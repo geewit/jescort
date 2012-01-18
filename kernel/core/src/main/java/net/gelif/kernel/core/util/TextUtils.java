@@ -8,21 +8,19 @@ public class TextUtils
         {
             byte[] src = s.getBytes("ISO-8859-1");
             String t = new String(src, encoding);
-            
-            if(t.length() <= len)
+
+            if (t.length() <= len)
             {
                 return s;
-            }
-            else
+            } else
             {
                 t = t.substring(0, len);
             }
-            
+
             byte[] dest = t.getBytes(encoding);
             String ds = new String(dest, "ISO-8859-1");
             return ds;
-        }
-        catch(Exception e)
+        } catch (Exception e)
         {
             return s;
         }

@@ -21,16 +21,16 @@ import com.google.common.collect.Sets;
 public class User extends AbstractPersistable<Integer>
 {
     private static final long serialVersionUID = 1L;
-    
+
     public User()
     {
     }
-    
+
     public User(Integer id)
     {
         this.id = id;
     }
-    
+
     private Integer id;
     private String username;
     private String password;
@@ -47,52 +47,52 @@ public class User extends AbstractPersistable<Integer>
     private Set<Group> groups;
     private Set<org.apache.shiro.authz.Permission> permissions = Sets.newHashSetWithExpectedSize(20);
     private Map<String, String> properties;
-    
+
     public Integer getId()
     {
         return id;
     }
-    
+
     public void setId(Integer id)
     {
         this.id = id;
     }
-    
+
     public String getUsername()
     {
         return username;
     }
-    
+
     public void setUsername(String username)
     {
         this.username = username;
     }
-    
+
     public String getPassword()
     {
         return password;
     }
-    
+
     public void setPassword(String password)
     {
         this.password = password;
     }
-    
+
     public Name getName()
     {
         return name;
     }
-    
+
     public void setName(Name name)
     {
         this.name = name;
     }
-    
+
     public String getNickname()
     {
         return StringUtils.isNotBlank(nickname) ? nickname : username;
     }
-    
+
     public void setNickname(String nickname)
     {
         this.nickname = nickname;
@@ -122,17 +122,17 @@ public class User extends AbstractPersistable<Integer>
     {
         return timezone;
     }
-    
+
     public void setTimezone(String timezone)
     {
         this.timezone = timezone;
     }
-    
+
     public Calendar getCreatedate()
     {
         return createdate;
     }
-    
+
     public void setCreatedate(Calendar createdate)
     {
         this.createdate = createdate;
@@ -162,17 +162,17 @@ public class User extends AbstractPersistable<Integer>
     {
         return emails;
     }
-    
+
     public void setEmails(List<Email> emails)
     {
         this.emails = emails;
     }
-    
+
     public List<Address> getAddresses()
     {
         return addresses;
     }
-    
+
     public void setAddresses(List<Address> addresses)
     {
         this.addresses = addresses;
@@ -197,7 +197,7 @@ public class User extends AbstractPersistable<Integer>
         }
         return roles;
     }
-    
+
     public Set<Permission> getPermissions()
     {
         return permissions;
@@ -212,6 +212,7 @@ public class User extends AbstractPersistable<Integer>
     {
         return properties;
     }
+
     public void setProperties(Map<String, String> properties)
     {
         this.properties = properties;
@@ -221,7 +222,7 @@ public class User extends AbstractPersistable<Integer>
     {
         List<Address> addresses = this.getAddresses();
         Address address = null;
-        if(null != addresses)
+        if (null != addresses)
         {
             address = addresses.get(0);
         }
@@ -232,7 +233,7 @@ public class User extends AbstractPersistable<Integer>
     {
         List<Email> emails = this.getEmails();
         Email email = null;
-        if(null != emails)
+        if (null != emails)
         {
             email = emails.get(0);
         }
@@ -243,7 +244,7 @@ public class User extends AbstractPersistable<Integer>
     {
         Group group = null;
         Set<Group> groupSet = this.getGroups();
-        if(null != groupSet)
+        if (null != groupSet)
         {
             List<Group> groups = new LinkedList<Group>(groupSet);
             Collections.sort(groups);
@@ -261,34 +262,34 @@ public class User extends AbstractPersistable<Integer>
         float postsPerday = this.getPosts() / days;
         return postsPerday;
     }
-    
+
     @Override
     public boolean equals(Object object)
     {
-        if(this == object)
+        if (this == object)
         {
             return true;
         }
-        if(!(object instanceof User))
+        if (!(object instanceof User))
         {
             return false;
         }
-        final User user = (User)object;
+        final User user = (User) object;
         return new EqualsBuilder().append(username, user.getUsername()).isEquals();
     }
-    
+
     @Override
     public int hashCode()
     {
         return new HashCodeBuilder().append(id).toHashCode();
     }
-    
+
     @Override
     public String toString()
     {
         ToStringBuilder sb = new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", this.id).append("name", null != this.name ? this.name.toString() : null).append("username", this.username).append("password", this.password).append("nickname", this.nickname).append("posts", this.posts).append("reputation", this.reputation).append("timezone", this.timezone).append("createdate", null != this.createdate ? String.format("%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS", this.createdate) : null);
         Set<Group> groups = getGroups();
-        if(groups != null)
+        if (groups != null)
         {
             sb.append("groups: ");
             for(Group group : groups)
@@ -296,8 +297,7 @@ public class User extends AbstractPersistable<Integer>
                 sb.append(group.getName());
                 sb.append(", ");
             }
-        }
-        else
+        } else
         {
             sb.append("No Groups");
         }

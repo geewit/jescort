@@ -9,11 +9,11 @@ public class MessageListener implements EventListener
 {
     public void prePersist(Message message)
     {
-        if(null == message)
+        if (null == message)
         {
             return;
         }
-        if(null == message.getCreatedate())
+        if (null == message.getCreatedate())
         {
             message.setCreatedate(Calendar.getInstance());
         }

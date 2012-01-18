@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.gelif.kernel.core.data.domain.AbstractPersistable;
-import net.jescort.domain.enumerator.PostStatus;
+import net.jescort.domain.enums.PostStatus;
 import net.jescort.domain.user.User;
 import org.apache.commons.lang.builder.CompareToBuilder;
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -23,11 +23,11 @@ import org.apache.commons.lang.builder.ToStringStyle;
 public class Post extends AbstractPersistable<Integer> implements Comparable<Post>
 {
     private static final long serialVersionUID = 1L;
-    
+
     public Post()
     {
     }
-    
+
     private Integer id;
     private User poster;
     private Integer topicId;
@@ -39,38 +39,42 @@ public class Post extends AbstractPersistable<Integer> implements Comparable<Pos
     private Map<String, String> properties;
     private List<Attachment> attachments;
     private PostEdit edit;
-    
+
     public Integer getId()
     {
         return id;
     }
+
     public void setId(Integer id)
     {
         this.id = id;
     }
-    
+
     public User getPoster()
     {
         return poster;
     }
+
     public void setPoster(User poster)
     {
         this.poster = poster;
     }
-    
+
     public Integer getTopicId()
     {
         return topicId;
     }
+
     public void setTopicId(Integer topicId)
     {
         this.topicId = topicId;
     }
-    
+
     public String getContent()
     {
         return content;
     }
+
     public void setContent(String content)
     {
         this.content = content;
@@ -80,15 +84,17 @@ public class Post extends AbstractPersistable<Integer> implements Comparable<Pos
     {
         return edits;
     }
+
     public void setEdits(int edits)
     {
         this.edits = edits;
     }
-    
+
     public Calendar getCreatedate()
     {
         return createdate;
     }
+
     public void setCreatedate(Calendar createdate)
     {
         this.createdate = createdate;
@@ -98,15 +104,17 @@ public class Post extends AbstractPersistable<Integer> implements Comparable<Pos
     {
         return status;
     }
+
     public void setStatus(Map<PostStatus, Boolean> status)
     {
         this.status = status;
     }
-    
+
     public Map<String, String> getProperties()
     {
         return properties;
     }
+
     public void setProperties(Map<String, String> properties)
     {
         this.properties = properties;
@@ -116,6 +124,7 @@ public class Post extends AbstractPersistable<Integer> implements Comparable<Pos
     {
         return attachments;
     }
+
     public void setAttachments(List<Attachment> attachments)
     {
         this.attachments = attachments;
@@ -125,6 +134,7 @@ public class Post extends AbstractPersistable<Integer> implements Comparable<Pos
     {
         return edit;
     }
+
     public void setEdit(PostEdit edit)
     {
         this.edit = edit;
@@ -133,30 +143,30 @@ public class Post extends AbstractPersistable<Integer> implements Comparable<Pos
     @Override
     public boolean equals(Object object)
     {
-        if(this == object)
+        if (this == object)
         {
             return true;
         }
-        if(!(object instanceof Post))
+        if (!(object instanceof Post))
         {
             return false;
         }
-        final Post post = (Post)object;
+        final Post post = (Post) object;
         return new EqualsBuilder().append(id, post.getId()).isEquals();
     }
-    
+
     @Override
     public int hashCode()
     {
         return new HashCodeBuilder().append(id).toHashCode();
     }
-    
+
     @Override
     public String toString()
     {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", this.id).append("poster", null != this.poster ? (null != this.poster.getUsername() ? this.poster.getUsername() : this.poster.getId()) : null).append("topicId", this.topicId).append("content", this.content).append("edits", this.edits).append("createdate", null != this.createdate ? String.format("%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS", this.createdate) : null).toString();
     }
-    
+
     @Override
     public int compareTo(Post post)
     {

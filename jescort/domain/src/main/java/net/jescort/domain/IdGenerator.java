@@ -16,64 +16,68 @@ import org.apache.commons.lang.builder.ToStringStyle;
 public class IdGenerator extends AbstractPersistable<Integer>
 {
     private static final long serialVersionUID = 1L;
-    
+
     public IdGenerator()
     {
     }
-    
+
     private Integer id;
-    
+
     private String name;
-    
+
     private Integer value;
-    
+
     public Integer getId()
     {
         return id;
     }
+
     public void setId(Integer id)
     {
         this.id = id;
     }
+
     public String getName()
     {
         return name;
     }
+
     public void setName(String name)
     {
         this.name = name;
     }
-    
+
     public Integer getValue()
     {
         return value;
     }
+
     public void setValue(Integer value)
     {
         this.value = value;
     }
-    
+
     @Override
     public boolean equals(Object object)
     {
-        if(this == object)
+        if (this == object)
         {
             return true;
         }
-        if(!(object instanceof IdGenerator))
+        if (!(object instanceof IdGenerator))
         {
             return false;
         }
-        final IdGenerator idGenerator = (IdGenerator)object;
+        final IdGenerator idGenerator = (IdGenerator) object;
         return new EqualsBuilder().append(name, idGenerator.getName()).append(value, idGenerator.getValue()).isEquals();
     }
-    
+
     @Override
     public int hashCode()
     {
         return new HashCodeBuilder().append(name).append(value).toHashCode();
     }
-    
+
     @Override
     public String toString()
     {

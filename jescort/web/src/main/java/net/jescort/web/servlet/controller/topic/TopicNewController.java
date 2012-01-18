@@ -38,8 +38,7 @@ public class TopicNewController
         if (result.hasErrors())
         {
             return "topics/new";
-        }
-        else
+        } else
         {
             Topic topic = new Topic();
             topic.setSubject(command.getSubject());

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
-    <entity metadata-complete="true" name="Group" class="net.jescort.domain.user.Group" access="PROPERTY" cacheable="true">
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+    <entity metadata-complete="true" name="Group" class="net.jescort.domain.user.Group" access="PROPERTY"
+            cacheable="true">
         <table name="groups"/>
         <attributes>
             <id name="id">
@@ -20,7 +23,8 @@
             </basic>
             <!---->
             <many-to-one name="parent" target-entity="net.jescort.domain.user.Group" fetch="LAZY">
-                <join-column name="parent_id" referenced-column-name="id" insertable="true" updatable="true" nullable="true"/>
+                <join-column name="parent_id" referenced-column-name="id" insertable="true" updatable="true"
+                             nullable="true"/>
             </many-to-one>
             <one-to-many name="children" mapped-by="parent" target-entity="net.jescort.domain.user.Group" fetch="LAZY">
                 <cascade>

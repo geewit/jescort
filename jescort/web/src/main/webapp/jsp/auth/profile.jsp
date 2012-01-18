@@ -5,6 +5,7 @@
 <div id="content">
     <form id="userCPForm" action="<spring:url value="/"/>" method="post">
         <h2 class="maintitle">Your Options</h2>
+
         <div class="border row1 rounded-bot clearfix">
             <ul class="tab_bar no_title">
                 <li><a title="Settings for Settings" href="<spring:url value="/"/>">Settings</a></li>
@@ -20,6 +21,7 @@
                 <div id="usercp_content">
                     <fieldset class="row1">
                         <h3>Other Information</h3>
+
                         <ul>
                             <li class="field">
                                 <label for="gender">Gender</label>
@@ -48,10 +50,9 @@
                                 </select>
                                 <select id="city" name="city" onChange="updateLocations('district', $(this).val());">
                                     <option value="0">--请选择城市--</option>
-                                </select>
-                                <select id="district" name="district">
-                                    <option value="0">--请选择区县--</option>
-                                </select>
+                                </select> <select id="district" name="district">
+                                <option value="0">--请选择区县--</option>
+                            </select>
                             </li>
                         </ul>
                     </fieldset>

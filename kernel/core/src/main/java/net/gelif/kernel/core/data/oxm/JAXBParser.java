@@ -14,10 +14,10 @@ import java.io.StringWriter;
 
 public final class JAXBParser
 {
-    public static <T>String marshal(T object, Class<T>[] clazzes) throws IOException, XmlMappingException
+    public static <T> String marshal(T object, Class<T>[] clazzes) throws IOException, XmlMappingException
     {
         String result = null;
-        
+
         try
         {
             JAXBContext jc = JAXBContext.newInstance(clazzes);
@@ -26,24 +26,23 @@ public final class JAXBParser
             StringWriter writer = new StringWriter();
             marshaller.marshal(object, writer);
             result = writer.toString();
-        }
-        catch(JAXBException e)
+        } catch (JAXBException e)
         {
             throw new RuntimeException("Can't marshal the XML file, error message: " + e.getMessage(), e.getCause());
         }
-        
+
         return result;
     }
-    
-    public static <T extends Object>T unmarshal(String str, Class<T>[] clazzes) throws IOException, XmlMappingException
+
+    public static <T extends Object> T unmarshal(String str, Class<T>[] clazzes) throws IOException, XmlMappingException
     {
         StringBuffer xmlBuffer = new StringBuffer(str);
         StreamSource source = new StreamSource(new StringReader(xmlBuffer.toString()));
         return unmarshal(source, clazzes);
     }
-    
+
     @SuppressWarnings("unchecked")
-    public static <T extends Object>T unmarshal(StreamSource source, Class<T>[] clazzes) throws IOException, XmlMappingException
+    public static <T extends Object> T unmarshal(StreamSource source, Class<T>[] clazzes) throws IOException, XmlMappingException
     {
         JAXBContext jaxbContext;
         T object;
@@ -51,17 +50,16 @@ public final class JAXBParser
         {
             jaxbContext = JAXBContext.newInstance(clazzes);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            object = (T)unmarshaller.unmarshal(source);
-        }
-        catch(JAXBException e)
+            object = (T) unmarshaller.unmarshal(source);
+        } catch (JAXBException e)
         {
             throw new RuntimeException("Can't unmarshal the XML file, error message: " + e.getMessage(), e.getCause());
         }
-        
+
         return object;
     }
-    
-    public static <T extends Object>T unmarshal(InputStream inputStream, Class<T>[] clazzes) throws IOException, XmlMappingException
+
+    public static <T extends Object> T unmarshal(InputStream inputStream, Class<T>[] clazzes) throws IOException, XmlMappingException
     {
         StreamSource source = new StreamSource(inputStream);
         return unmarshal(source, clazzes);

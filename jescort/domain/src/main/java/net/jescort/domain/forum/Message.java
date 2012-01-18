@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.gelif.kernel.core.data.domain.AbstractPersistable;
-import net.jescort.domain.enumerator.MessageStatus;
+import net.jescort.domain.enums.MessageStatus;
 import net.jescort.domain.user.User;
 import org.apache.commons.lang.builder.CompareToBuilder;
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -24,11 +24,11 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Message extends AbstractPersistable<Integer> implements Comparable<Message>
 {
     private static final long serialVersionUID = 1L;
-    
+
     public Message()
     {
     }
-    
+
     private Integer id;
     @NotBlank
     private String subject;
@@ -41,11 +41,12 @@ public class Message extends AbstractPersistable<Integer> implements Comparable<
     private Map<String, String> properties;
     private Calendar createdate;
     private List<Attachment> attachments;
-    
+
     public Integer getId()
     {
         return id;
     }
+
     public void setId(Integer id)
     {
         this.id = id;
@@ -55,6 +56,7 @@ public class Message extends AbstractPersistable<Integer> implements Comparable<
     {
         return subject;
     }
+
     public void setSubject(String subject)
     {
         this.subject = subject;
@@ -64,24 +66,27 @@ public class Message extends AbstractPersistable<Integer> implements Comparable<
     {
         return content;
     }
+
     public void setContent(String content)
     {
         this.content = content;
     }
-    
+
     public User getSender()
     {
         return sender;
     }
+
     public void setSender(User sender)
     {
         this.sender = sender;
     }
-    
+
     public List<User> getRecipients()
     {
         return recipients;
     }
+
     public void setRecipients(List<User> recipients)
     {
         this.recipients = recipients;
@@ -91,6 +96,7 @@ public class Message extends AbstractPersistable<Integer> implements Comparable<
     {
         return isRead;
     }
+
     public void setIsRead(Boolean isRead)
     {
         this.isRead = isRead;
@@ -100,24 +106,27 @@ public class Message extends AbstractPersistable<Integer> implements Comparable<
     {
         return status;
     }
+
     public void setStatus(Map<MessageStatus, Boolean> status)
     {
         this.status = status;
     }
-    
+
     public Map<String, String> getProperties()
     {
         return properties;
     }
+
     public void setProperties(Map<String, String> topicProperties)
     {
         this.properties = topicProperties;
     }
-    
+
     public Calendar getCreatedate()
     {
         return createdate;
     }
+
     public void setCreatedate(Calendar createdate)
     {
         this.createdate = createdate;
@@ -132,34 +141,34 @@ public class Message extends AbstractPersistable<Integer> implements Comparable<
     {
         this.attachments = attachments;
     }
-    
+
     @Override
     public boolean equals(Object object)
     {
-        if(this == object)
+        if (this == object)
         {
             return true;
         }
-        if(!(object instanceof Message))
+        if (!(object instanceof Message))
         {
             return false;
         }
-        final Message message = (Message)object;
+        final Message message = (Message) object;
         return new EqualsBuilder().append(id, message.getId()).isEquals();
     }
-    
+
     @Override
     public int hashCode()
     {
         return new HashCodeBuilder().append(id).toHashCode();
     }
-    
+
     @Override
     public String toString()
     {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", this.id).append("subject", this.subject).append("sender", null != this.sender ? this.sender.getUsername() : null).append("content", this.content).append("isRead", this.isRead).append("createdate", null != this.createdate ? String.format("%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS", this.createdate) : null).toString();
     }
-    
+
     @Override
     public int compareTo(Message message)
     {

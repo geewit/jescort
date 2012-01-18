@@ -32,8 +32,7 @@ public class PostQuoteController
         if (result.hasErrors())
         {
             return "posts/new";
-        }
-        else
+        } else
         {
             User currentUser = (User) SecurityUtils.getSubject().getPrincipal();
             escortRepository.updatePost(post, currentUser);

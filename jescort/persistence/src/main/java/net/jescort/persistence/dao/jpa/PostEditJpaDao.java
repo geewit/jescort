@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 
-
 @Repository("postEditDao")
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class PostEditJpaDao extends GenericJpaDao<PostEdit, Integer> implements PostEditDao

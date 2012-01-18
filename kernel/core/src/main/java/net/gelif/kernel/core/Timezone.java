@@ -22,7 +22,6 @@ public class Timezone implements Serializable
     private String offset;
 
 
-
     public String getLocale()
     {
         return locale;

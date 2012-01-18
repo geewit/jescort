@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+
 import net.jescort.domain.forum.Attachment;
 import net.jescort.repository.EscortRepository;
 import org.springframework.stereotype.Controller;
@@ -27,21 +28,21 @@ import org.springframework.web.servlet.ModelAndView;
 public class AttachmentsUploadController
 {
     private static final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-    
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView setupForm()
     {
         ModelAndView mav = new ModelAndView("fileupload");
         return mav;
     }
-    
+
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
     public String handleFormUpload(HttpServletRequest request)
     {
         escortRepository.uploadAttachments(request);
         return "redirect:/";
     }
-    
+
     /**
      * When Spring is shutdown (app undeploys) then shutdown thread pool too.
      */
@@ -51,22 +52,21 @@ public class AttachmentsUploadController
         executor.shutdown();
         try
         {
-            if(!executor.awaitTermination(60, TimeUnit.SECONDS))
+            if (!executor.awaitTermination(60, TimeUnit.SECONDS))
             {
                 executor.shutdownNow();
-                if(!executor.awaitTermination(60, TimeUnit.SECONDS))
+                if (!executor.awaitTermination(60, TimeUnit.SECONDS))
                 {
                     System.err.println("Pool did not terminate");
                 }
             }
-        }
-        catch(InterruptedException e)
+        } catch (InterruptedException e)
         {
             executor.shutdownNow();
             Thread.currentThread().interrupt();
         }
     }
-    
+
     @Resource(name = "escortRepository")
     private EscortRepository escortRepository;
 }

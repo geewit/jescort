@@ -50,26 +50,24 @@ public class DomConfigurationFactory
     private static final String TAG_CONSTANT = "constant";
     private static final String TAG_CONSTANT_ATTR_VALUE = "value";
     private static final String TAG_CONSTANT_ATTR_IGNORE_CASE = "ignoreCase";
-    
+
     private static final DomConfigurationFactory instance = new DomConfigurationFactory();
-    
+
     private DomConfigurationFactory()
     {
     }
-    
+
     public static DomConfigurationFactory getInstance()
     {
         return instance;
     }
-    
+
     /**
      * Create the bb-code processor from DOM Document
-     * 
-     * @param dc
-     *            document
+     *
+     * @param dc document
      * @return bb-code processor
-     * @throws TextProcessorFactoryException
-     *             If invalid Document
+     * @throws TextProcessorFactoryException If invalid Document
      */
     public Configuration create(Document dc)
     {
@@ -92,13 +90,12 @@ public class DomConfigurationFactory
 
             boolean fillRoot = false;
             Scope root;
-            if(!scopes.containsKey(Scope.ROOT))
+            if (!scopes.containsKey(Scope.ROOT))
             {
                 root = new Scope(Scope.ROOT);
                 scopes.put(Scope.ROOT, root);
                 fillRoot = true;
-            }
-            else
+            } else
             {
                 root = scopes.get(Scope.ROOT);
             }
@@ -110,15 +107,14 @@ public class DomConfigurationFactory
             fillScopeCodes(scopeNodeList, scopes, codes);
 
             // If root scope not defined in configuration file, then root scope fills all codes
-            if(fillRoot)
+            if (fillRoot)
             {
                 root.setCodes(new HashSet<Code>(codes.values()));
             }
 
             // set root scope
             configuration.setScopes(scopes.values());
-        }
-        finally
+        } finally
         {
             configuration.unlock();
         }
@@ -130,16 +126,16 @@ public class DomConfigurationFactory
     {
         Map<String, String> params = new HashMap<String, String>();
         NodeList paramsElements = dc.getElementsByTagName(TAG_PARAMS);
-        if(paramsElements.getLength() > 0)
+        if (paramsElements.getLength() > 0)
         {
-            Element paramsElement = (Element)paramsElements.item(0);
+            Element paramsElement = (Element) paramsElements.item(0);
             NodeList paramElements = paramsElement.getElementsByTagName(TAG_PARAM);
             for(int i = 0; i < paramElements.getLength(); i++)
             {
                 Node paramElement = paramElements.item(i);
                 String name = nodeAttribute(paramElement, TAG_PARAM_ATTR_NAME, "");
                 String value = nodeAttribute(paramElement, TAG_PARAM_ATTR_VALUE, "");
-                if(name != null && name.length() > 0)
+                if (name != null && name.length() > 0)
                 {
                     params.put(name, value);
                 }
@@ -152,11 +148,10 @@ public class DomConfigurationFactory
     {
         Template fix;
         NodeList prefixElementList = dc.getElementsByTagName(tagname);
-        if(prefixElementList.getLength() > 0)
+        if (prefixElementList.getLength() > 0)
         {
             fix = parseTemplate(prefixElementList.item(0));
-        }
-        else
+        } else
         {
             fix = Template.EMPTY;
         }
@@ -166,18 +161,15 @@ public class DomConfigurationFactory
     /**
      * Fill codes of scopes.
      *
-     * @param scopeNodeList
-     *            node list with scopes definitions
-     * @param scopes
-     *            scopes
-     * @param codes
-     *            codes
+     * @param scopeNodeList node list with scopes definitions
+     * @param scopes        scopes
+     * @param codes         codes
      */
     private void fillScopeCodes(NodeList scopeNodeList, Map<String, Scope> scopes, Map<String, Code> codes)
     {
         for(int i = 0; i < scopeNodeList.getLength(); i++)
         {
-            Element scopeElement = (Element)scopeNodeList.item(i);
+            Element scopeElement = (Element) scopeNodeList.item(i);
             Scope scope = scopes.get(scopeElement.getAttribute(TAG_SCOPE_ATTR_NAME));
 
             // Add codes to scope
@@ -187,10 +179,10 @@ public class DomConfigurationFactory
             NodeList coderefs = scopeElement.getElementsByTagNameNS(SCHEMA_LOCATION, TAG_CODEREF);
             for(int j = 0; j < coderefs.getLength(); j++)
             {
-                Element ref = (Element)coderefs.item(j);
+                Element ref = (Element) coderefs.item(j);
                 String codeName = ref.getAttribute(TAG_CODEREF_ATTR_NAME);
                 Code code = codes.get(codeName);
-                if(code == null)
+                if (code == null)
                 {
                     throw new TextProcessorFactoryException("Can't find code \"" + codeName + "\".");
                 }
@@ -202,7 +194,7 @@ public class DomConfigurationFactory
             for(int j = 0; j < inlineCodes.getLength(); j++)
             {
                 // Inline element code
-                Element ice = (Element)inlineCodes.item(j);
+                Element ice = (Element) inlineCodes.item(j);
                 scopeCodes.add(parseCode(ice));
             }
 
@@ -214,8 +206,7 @@ public class DomConfigurationFactory
     /**
      * Parse scopes from XML
      *
-     * @param scopeNodeList
-     *            list with scopes definitions
+     * @param scopeNodeList list with scopes definitions
      * @return scopes
      */
     private Map<String, Scope> parseScopes(NodeList scopeNodeList)
@@ -223,9 +214,9 @@ public class DomConfigurationFactory
         Map<String, Scope> scopes = new HashMap<String, Scope>();
         for(int i = 0; i < scopeNodeList.getLength(); i++)
         {
-            Element scopeElement = (Element)scopeNodeList.item(i);
+            Element scopeElement = (Element) scopeNodeList.item(i);
             String name = scopeElement.getAttribute(TAG_SCOPE_ATTR_NAME);
-            if(name.length() == 0)
+            if (name.length() == 0)
             {
                 throw new TextProcessorFactoryException("Illegal scope name.");
             }
@@ -238,8 +229,7 @@ public class DomConfigurationFactory
     /**
      * Parse codes from XML
      *
-     * @param dc
-     *            DOM document with configuration
+     * @param dc DOM document with configuration
      * @return codes
      */
     private Map<String, Code> parseCodes(Document dc)
@@ -248,7 +238,7 @@ public class DomConfigurationFactory
         NodeList codeNodeList = dc.getDocumentElement().getElementsByTagNameNS(SCHEMA_LOCATION, TAG_CODE);
         for(int i = 0; i < codeNodeList.getLength(); i++)
         {
-            Code code = parseCode((Element)codeNodeList.item(i));
+            Code code = parseCode((Element) codeNodeList.item(i));
             codes.put(code.getName(), code);
         }
         return codes;
@@ -257,11 +247,9 @@ public class DomConfigurationFactory
     /**
      * Parse bb-code from DOM Node
      *
-     * @param codeElement
-     *            node, represent code wich
+     * @param codeElement node, represent code wich
      * @return bb-code
-     * @throws TextProcessorFactoryException
-     *             if error format
+     * @throws TextProcessorFactoryException if error format
      */
     private Code parseCode(Element codeElement)
     {
@@ -273,22 +261,20 @@ public class DomConfigurationFactory
 
         // Template to building
         NodeList templateElements = codeElement.getElementsByTagNameNS(SCHEMA_LOCATION, TAG_TEMPLATE);
-        if(templateElements.getLength() > 0)
+        if (templateElements.getLength() > 0)
         {
             code.setTemplate(parseTemplate(templateElements.item(0)));
-        }
-        else
+        } else
         {
             throw new TextProcessorFactoryException("Illegal configuration. Can't find template of code.");
         }
 
         // Pattern to parsing
         NodeList patternElements = codeElement.getElementsByTagNameNS(SCHEMA_LOCATION, TAG_PATTERN);
-        if(patternElements.getLength() > 0)
+        if (patternElements.getLength() > 0)
         {
             code.setPattern(parsePattern(patternElements.item(0)));
-        }
-        else
+        } else
         {
             throw new TextProcessorFactoryException("Illegal configuration. Can't find pattern of code.");
         }
@@ -300,57 +286,50 @@ public class DomConfigurationFactory
     /**
      * Parse code pattern for parse text.
      *
-     * @param node
-     *            pattern node with pattern description
+     * @param node pattern node with pattern description
      * @return list of pattern elements
-     * @throws TextProcessorFactoryException
-     *             If invalid pattern format
+     * @throws TextProcessorFactoryException If invalid pattern format
      */
     private Pattern parsePattern(Node node)
     {
         List<PatternElement> elements = new LinkedList<PatternElement>();
         NodeList patternList = node.getChildNodes();
         int patternLength = patternList.getLength();
-        if(patternLength <= 0)
+        if (patternLength <= 0)
         {
             throw new TextProcessorFactoryException("Invalid pattern");
         }
-        
+
         // Ignore case for all constants
         boolean ignoreCase = nodeAttribute(node, "ignoreCase", false);
-        
+
         for(int k = 0; k < patternLength; k++)
         {
             Node el = patternList.item(k);
-            if(el.getNodeType() == Node.TEXT_NODE)
+            if (el.getNodeType() == Node.TEXT_NODE)
             {
                 Constant constant = new Constant(el.getNodeValue());
                 constant.setIgnoreCase(ignoreCase);
                 elements.add(constant);
-            }
-            else if(el.getNodeType() == Node.ELEMENT_NODE && el.getLocalName().equals(TAG_CONSTANT))
+            } else if (el.getNodeType() == Node.ELEMENT_NODE && el.getLocalName().equals(TAG_CONSTANT))
             {
                 elements.add(parseConstant(el, ignoreCase));
-            }
-            else if(el.getNodeType() == Node.ELEMENT_NODE && el.getLocalName().equals(TAG_VAR) && (k != 0 || nodeHasAttribute(el, TAG_VAR_ATTR_REGEX)))
+            } else if (el.getNodeType() == Node.ELEMENT_NODE && el.getLocalName().equals(TAG_VAR) && (k != 0 || nodeHasAttribute(el, TAG_VAR_ATTR_REGEX)))
             {
                 elements.add(parseNamedElement(el));
-            }
-            else
+            } else
             {
                 throw new TextProcessorFactoryException("Invalid pattern");
             }
         }
         return new Pattern(elements);
     }
-    
+
     /**
      * Parse constant pattern element
-     * 
-     * @param el
-     *            DOM element
-     * @param ignoreCase
-     *            if true the constant must ignore case
+     *
+     * @param el         DOM element
+     * @param ignoreCase if true the constant must ignore case
      * @return constant definition
      */
     private Constant parseConstant(Node el, boolean ignoreCase)
@@ -359,55 +338,51 @@ public class DomConfigurationFactory
         constant.setIgnoreCase(nodeAttribute(el, TAG_CONSTANT_ATTR_IGNORE_CASE, ignoreCase));
         return constant;
     }
-    
+
     private PatternElement parseNamedElement(Node el)
     {
         String name = nodeAttribute(el, TAG_VAR_ATTR_NAME, DEFAULT_VARIABLE_NAME);
         PatternElement namedElement;
-        if(nodeAttribute(el, TAG_VAR_ATTR_PARSE, DEFAULT_PARSE_VALUE) && !nodeHasAttribute(el, TAG_VAR_ATTR_REGEX))
+        if (nodeAttribute(el, TAG_VAR_ATTR_PARSE, DEFAULT_PARSE_VALUE) && !nodeHasAttribute(el, TAG_VAR_ATTR_REGEX))
         {
             namedElement = parseText(el, name);
-        }
-        else
+        } else
         {
             namedElement = parseVariable(el, name);
         }
         return namedElement;
     }
-    
+
     private Text parseText(Node el, String name)
     {
         Text text;
-        if(nodeAttribute(el, TAG_VAR_ATTR_INHERIT, DEFAULT_INHERIT_VALUE))
+        if (nodeAttribute(el, TAG_VAR_ATTR_INHERIT, DEFAULT_INHERIT_VALUE))
         {
             text = new Text(name, null, nodeAttribute(el, TAG_VAR_ATTR_TRANSPARENT, false));
-        }
-        else
+        } else
         {
             text = new Text(name, nodeAttribute(el, TAG_SCOPE, Scope.ROOT), nodeAttribute(el, TAG_VAR_ATTR_TRANSPARENT, false));
         }
         return text;
     }
-    
+
     private Variable parseVariable(Node el, String name)
     {
         Variable variable;
-        if(nodeHasAttribute(el, TAG_VAR_ATTR_REGEX))
+        if (nodeHasAttribute(el, TAG_VAR_ATTR_REGEX))
         {
             variable = new Variable(name, java.util.regex.Pattern.compile(nodeAttribute(el, TAG_VAR_ATTR_REGEX)));
-        }
-        else
+        } else
         {
             variable = new Variable(name);
         }
         return variable;
     }
-    
+
     /**
      * Parse template fo generate text.
-     * 
-     * @param node
-     *            template node
+     *
+     * @param node template node
      * @return list of template elements
      */
     private Template parseTemplate(Node node)
@@ -417,123 +392,109 @@ public class DomConfigurationFactory
         for(int k = 0; k < templateList.getLength(); k++)
         {
             Node el = templateList.item(k);
-            if(el.getNodeType() == Node.ELEMENT_NODE && el.getLocalName().equals(TAG_VAR))
+            if (el.getNodeType() == Node.ELEMENT_NODE && el.getLocalName().equals(TAG_VAR))
             {
                 elements.add(new NamedValue(nodeAttribute(el, TAG_VAR_ATTR_NAME, DEFAULT_VARIABLE_NAME)));
-            }
-            else
+            } else
             {
                 elements.add(new Constant(el.getNodeValue()));
             }
         }
         return new Template(elements);
     }
-    
+
     /**
      * Return node attribute value, if exists or default attibute value
-     * 
-     * @param node
-     *            XML-node
-     * @param attributeName
-     *            attributeName
-     * @param defaultValue
-     *            attribute default value
+     *
+     * @param node          XML-node
+     * @param attributeName attributeName
+     * @param defaultValue  attribute default value
      * @return attribute value or default value
      */
     private boolean nodeAttribute(Node node, String attributeName, boolean defaultValue)
     {
         boolean value = defaultValue;
-        if(node.hasAttributes())
+        if (node.hasAttributes())
         {
             Node attribute = node.getAttributes().getNamedItem(attributeName);
-            if(attribute != null)
+            if (attribute != null)
             {
                 value = Boolean.valueOf(attribute.getNodeValue());
             }
         }
         return value;
     }
-    
+
     /**
      * Return node attribute value, if exists or default attibute value
-     * 
-     * @param node
-     *            XML-node
-     * @param attributeName
-     *            attributeName
-     * @param defaultValue
-     *            attribute default value
+     *
+     * @param node          XML-node
+     * @param attributeName attributeName
+     * @param defaultValue  attribute default value
      * @return attribute value or default value
      */
     private String nodeAttribute(Node node, String attributeName, String defaultValue)
     {
         String value = defaultValue;
-        if(node.hasAttributes())
+        if (node.hasAttributes())
         {
             Node attribute = node.getAttributes().getNamedItem(attributeName);
-            if(attribute != null)
+            if (attribute != null)
             {
                 value = attribute.getNodeValue();
             }
         }
         return value;
     }
-    
+
     /**
      * Return node attribute value, if exists or null value
-     * 
-     * @param node
-     *            XML-node
-     * @param attributeName
-     *            attributeName
+     *
+     * @param node          XML-node
+     * @param attributeName attributeName
      * @return attribute value or default value
      */
     private String nodeAttribute(Node node, String attributeName)
     {
         String value = null;
-        if(node.hasAttributes())
+        if (node.hasAttributes())
         {
             Node attribute = node.getAttributes().getNamedItem(attributeName);
-            if(attribute != null)
+            if (attribute != null)
             {
                 value = attribute.getNodeValue();
             }
         }
         return value;
     }
-    
+
     /**
      * Return node attribute value, if exists or default attibute value
-     * 
-     * @param node
-     *            XML-node
-     * @param attributeName
-     *            attributeName
-     * @param defaultValue
-     *            attribute default value
+     *
+     * @param node          XML-node
+     * @param attributeName attributeName
+     * @param defaultValue  attribute default value
      * @return attribute value or default value
      */
     private int nodeAttribute(Node node, String attributeName, int defaultValue)
     {
         int value = defaultValue;
-        if(node.hasAttributes())
+        if (node.hasAttributes())
         {
             Node attribute = node.getAttributes().getNamedItem(attributeName);
-            if(attribute != null)
+            if (attribute != null)
             {
                 value = Integer.decode(attribute.getNodeValue());
             }
         }
         return value;
     }
-    
+
     /**
      * Check node attribute.
-     * 
-     * @param node
-     *            XML-node
-     * @param attributeName
-     *            name of attribute
+     *
+     * @param node          XML-node
+     * @param attributeName name of attribute
      * @return true if node has attribute with specified name false if has not
      */
     private boolean nodeHasAttribute(Node node, String attributeName)

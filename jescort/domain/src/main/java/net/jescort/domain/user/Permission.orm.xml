@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
     <entity metadata-complete="true" name="Permission" class="net.jescort.domain.user.Permission" access="PROPERTY">
         <table name="permissions"/>
         <attributes>
@@ -12,9 +14,6 @@
             <basic name="stringPermission">
                 <column name="permission" insertable="true" updatable="true" unique="true"/>
             </basic>
-            <many-to-one name="role" target-entity="net.jescort.domain.user.Role" fetch="LAZY">
-                <join-column name="role_id" referenced-column-name="id"/>
-            </many-to-one>
         </attributes>
     </entity>
 </entity-mappings>

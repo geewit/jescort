@@ -2,6 +2,7 @@ package net.jescort.domain.forum;
 
 import java.util.Calendar;
 import java.util.Map;
+
 import net.gelif.kernel.core.data.domain.AbstractPersistable;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
@@ -18,21 +19,22 @@ import org.apache.commons.lang.builder.ToStringStyle;
 public class Draft extends AbstractPersistable<Integer>
 {
     private static final long serialVersionUID = 1L;
-    
+
     public Draft()
     {
     }
-    
+
     private Integer id;
     private String subject;
     private String content;
     private Map<String, String> properties;
     private Calendar modification;
-    
+
     public Integer getId()
     {
         return id;
     }
+
     public void setId(Integer id)
     {
         this.id = id;
@@ -42,6 +44,7 @@ public class Draft extends AbstractPersistable<Integer>
     {
         return subject;
     }
+
     public void setSubject(String subject)
     {
         this.subject = subject;
@@ -51,50 +54,53 @@ public class Draft extends AbstractPersistable<Integer>
     {
         return content;
     }
+
     public void setContent(String content)
     {
         this.content = content;
     }
-    
+
     public Map<String, String> getProperties()
     {
         return properties;
     }
+
     public void setProperties(Map<String, String> properties)
     {
         this.properties = properties;
     }
-    
+
     public Calendar getModification()
     {
         return modification;
     }
+
     public void setModification(Calendar modification)
     {
         this.modification = modification;
     }
-    
+
     @Override
     public boolean equals(Object object)
     {
-        if(this == object)
+        if (this == object)
         {
             return true;
         }
-        if(!(object instanceof Draft))
+        if (!(object instanceof Draft))
         {
             return false;
         }
-        final Draft draft = (Draft)object;
+        final Draft draft = (Draft) object;
         return new EqualsBuilder().append(id, draft.getId()).isEquals();
     }
-    
+
     @Override
     public int hashCode()
     {
         return new HashCodeBuilder().append(id).toHashCode();
     }
-    
+
     @Override
     public String toString()
     {

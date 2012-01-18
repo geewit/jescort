@@ -1,7 +1,7 @@
 package net.jescort.domain.user;
 
 import net.gelif.kernel.core.util.DateUtils;
-import net.jescort.domain.enumerator.Gender;
+import net.jescort.domain.enums.Gender;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;

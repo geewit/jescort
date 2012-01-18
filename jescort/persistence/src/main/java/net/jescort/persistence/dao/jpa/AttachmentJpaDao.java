@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 
-
 @Repository("attachmentDao")
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class AttachmentJpaDao extends GenericJpaDao<Attachment, Integer> implements AttachmentDao

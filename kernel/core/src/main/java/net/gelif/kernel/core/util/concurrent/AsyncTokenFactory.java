@@ -6,7 +6,7 @@ package net.gelif.kernel.core.util.concurrent;
  */
 public interface AsyncTokenFactory<T>
 {
-    
+
     public AsyncToken<T> newToken();
-    
+
 }

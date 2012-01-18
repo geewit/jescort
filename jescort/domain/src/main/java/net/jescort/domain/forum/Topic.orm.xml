@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
     <entity metadata-complete="true" name="Topic" class="net.jescort.domain.forum.Topic" access="PROPERTY">
         <table name="topics"/>
-        <converter name="topicStatus" class="net.jescort.persistence.eclipselink.mappings.converters.TopicStatusConverter"/>
+        <converter name="topicStatus"
+                   class="net.jescort.persistence.eclipselink.mappings.converters.TopicStatusConverter"/>
         <entity-listeners>
             <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.TopicListener">
                 <pre-persist method-name="prePersist"/>
@@ -13,23 +16,23 @@
                 <column name="id" unique="true"/>
             </id>
             <basic name="subject">
-                <column name="subject" insertable="true" updatable="true" unique="false" />
+                <column name="subject" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="forumId">
-                <column name="forum_id" insertable="true" updatable="true" unique="false" />
+                <column name="forum_id" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="views">
-                <column name="views" insertable="true" updatable="true" unique="false" />
+                <column name="views" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="replies">
-                <column name="replies" insertable="true" updatable="true" unique="false" />
+                <column name="replies" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="status">
                 <column name="status" insertable="true" updatable="true" unique="false"/>
                 <convert>topicStatus</convert>
             </basic>
             <basic name="isLocked">
-                <column name="is_locked" insertable="true" updatable="true" unique="false" />
+                <column name="is_locked" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="createdate" mutable="true">
                 <column name="createdate" insertable="true" updatable="true" unique="false"/>

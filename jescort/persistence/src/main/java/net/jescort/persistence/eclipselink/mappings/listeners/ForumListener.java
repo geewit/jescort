@@ -10,11 +10,11 @@ public class ForumListener implements EventListener
     //@PrePersist
     public void prePersist(Forum forum)
     {
-        if(null == forum)
+        if (null == forum)
         {
             return;
         }
-        if(null == forum.getCreatedate())
+        if (null == forum.getCreatedate())
         {
             forum.setCreatedate(Calendar.getInstance());
         }

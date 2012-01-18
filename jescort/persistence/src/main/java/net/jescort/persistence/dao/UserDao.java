@@ -9,10 +9,14 @@ import java.sql.Blob;
 public interface UserDao extends JpaRepository<User, Integer>
 {
     public User findByUsername(String username);
+
     public String findPasswordByUsername(String username);
+
     public void increasePosts(Integer userId);
+
     public void increasePosts(String username);
 
     public Blob findPhoto(Integer id);
+
     public Blob findPhotoByUsername(String username);
 }

@@ -2,44 +2,44 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:util="http://www.springframework.org/schema/util"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <description>Shiro安全配置</description>
+    <description>Shiro</description>
 
 
-	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-		<property name="realm" ref="shiroDbRealm" />
-	</bean>
-
-	<bean id="shiroDbRealm" class="net.jescort.seurity.shiro.ShiroDbRealm">
-        <property name="userRepository"  ref="userRepository"/>
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="shiroDbRealm"/>
     </bean>
 
-	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/auth/login" />
-		<property name="successUrl" value="/" />
-		<property name="unauthorizedUrl" value="/" />
-		<property name="filters">
-			<util:map>
-				<entry key="authc">
-					<bean class="net.jescort.seurity.shiro.FormAuthenticationWithLockFilter">
-						<property name="maxLoginAttempts" value="3"/>
-					</bean>
-				</entry>
-			</util:map>
-		</property>
-		<property name="filterChainDefinitions">
-			<value>
-				/auth/* = authc
-				/api/* = authcBasic
-			</value>
-		</property>
-	</bean>
+    <bean id="shiroDbRealm" class="net.jescort.seurity.shiro.realm.EscortRealm">
+        <property name="userRepository" ref="userRepository"/>
+    </bean>
 
-	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/auth/login"/>
+        <property name="successUrl" value="/"/>
+        <property name="unauthorizedUrl" value="/"/>
+        <property name="filters">
+            <util:map>
+                <entry key="authc">
+                    <bean class="net.jescort.seurity.shiro.FormAuthenticationWithLockFilter">
+                        <property name="maxLoginAttempts" value="3"/>
+                    </bean>
+                </entry>
+            </util:map>
+        </property>
+        <property name="filterChainDefinitions">
+            <value>
+                /auth/* = authc
+                /api/* = authcBasic
+            </value>
+        </property>
+    </bean>
 
-	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>
+
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 </beans>

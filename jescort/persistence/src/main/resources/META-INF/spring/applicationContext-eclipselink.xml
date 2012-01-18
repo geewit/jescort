@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <!--<context:load-time-weaver aspectj-weaving="on"/>
@@ -18,7 +18,7 @@
     <!--<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler"/>-->
     <!--
     <beans>
-        <jee:jndi-lookup id="entityManagerFactory" jndi-name="persistence/escort"/>
+        <jee:jndi-lookup id="entityManagerFactory" jndi-name="persistence/jescort"/>
     </beans>
     -->
     <bean id="persistenceUnitManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
@@ -31,9 +31,8 @@
     </bean>
 
 
-
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="persistenceUnitName"    value="escort"/>
+        <property name="persistenceUnitName"    value="jescort"/>
         <property name="persistenceUnitManager" ref="persistenceUnitManager"/>
         <property name="jpaVendorAdapter"       ref="jpaAdapter"/>
         <property name="jpaDialect">
@@ -50,11 +49,11 @@
             <bean class="org.springframework.instrument.classloading.SimpleLoadTimeWeaver"/>
         </property>-->
     </bean>
-    
+
     <bean id="jpaAdapter" class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
-        <property name="databasePlatform"       value="org.eclipse.persistence.platform.database.MySQLPlatform"/>
-        <property name="generateDdl"            value="false"/>
-        <property name="showSql"                value="true"/>
+        <property name="databasePlatform" value="org.eclipse.persistence.platform.database.MySQLPlatform"/>
+        <property name="generateDdl" value="false"/>
+        <property name="showSql" value="true"/>
     </bean>
 
     <!-- Needed so the @PersistenceUnit annotation is recognized-->

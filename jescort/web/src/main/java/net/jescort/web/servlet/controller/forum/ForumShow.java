@@ -24,13 +24,13 @@ public class ForumShow
     {
         return forumModelAndView(id, null, null);
     }
-    
+
     @RequestMapping(value = {"/forums/{id}/page/{pageNo}/pageSize/{pageSize}"}, method = RequestMethod.GET)
     public ModelAndView forumHandler(@PathVariable("id") Integer id, @PathVariable("pageNo") Integer pageNo, @PathVariable("pageSize") Integer pageSize)
     {
         return forumModelAndView(id, pageNo, pageSize);
     }
-    
+
     private ModelAndView forumModelAndView(Integer id, Integer pageNo, Integer pageSize)
     {
         ModelAndView mav = new ModelAndView("forums/show");
@@ -41,7 +41,7 @@ public class ForumShow
         mav.addObject("topics", topics);
         return mav;
     }
-    
+
     @Resource(name = "escortRepository")
     private EscortRepository escortRepository;
 }

@@ -1,6 +1,7 @@
 package net.jescort.persistence.dao.jpa;
 
 import java.util.List;
+
 import net.gelif.kernel.persistence.dao.jpa.GenericJpaDao;
 import net.jescort.domain.Location;
 import net.jescort.persistence.dao.LocationDao;
@@ -19,7 +20,7 @@ public class LocationJpaDao extends GenericJpaDao<Location, Integer> implements 
     {
         return entityManager.createQuery("select l from Location l where l.level = :level").setParameter("level", NumberUtils.INTEGER_ONE).getResultList();
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public List<Location> getChildern(Integer id)

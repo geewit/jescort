@@ -16,7 +16,8 @@
 
     <scm>
         <connection>scm:svn:http://github.com/isaga/jescort/modules/${project.artifactId}/</connection>
-        <developerConnection>scm:svn:https://github.com/isaga/jescort/modules/${project.artifactId}/</developerConnection>
+        <developerConnection>scm:svn:https://github.com/isaga/jescort/modules/${project.artifactId}/
+        </developerConnection>
         <url>http://github.com/isaga/jescort</url>
     </scm>
 </project>

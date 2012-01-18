@@ -33,19 +33,19 @@ public class MessageShow
         ModelAndView mav = new ModelAndView("messages/show");
         Integer currentUserId = (Integer) SecurityUtils.getSubject().getPrincipal();
         Message message = userRepository.getMessage(id);
-        if(!message.getSender().getId().equals(currentUserId))
+        if (!message.getSender().getId().equals(currentUserId))
         {
             List<User> recipients = message.getRecipients();
             boolean isRecipient = false;
             for(User recipient : recipients)
             {
-                if(recipient.getId().equals(currentUserId))
+                if (recipient.getId().equals(currentUserId))
                 {
                     isRecipient = true;
                     break;
                 }
             }
-            if(!isRecipient)
+            if (!isRecipient)
             {
                 throw new AuthenticationException();
             }

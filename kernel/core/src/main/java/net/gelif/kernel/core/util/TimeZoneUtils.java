@@ -29,10 +29,10 @@ public class TimeZoneUtils
         TimeZone timeZone;
         for(String timeZoneId : allTimeZones)
         {
-            if(pattern.matcher(timeZoneId).matches())
+            if (pattern.matcher(timeZoneId).matches())
             {
                 timeZone = TimeZone.getTimeZone(timeZoneId);
-                timeZones.add(new Timezone(timeZoneId, String.valueOf(timeZone.getRawOffset()/3600000)));
+                timeZones.add(new Timezone(timeZoneId, String.valueOf(timeZone.getRawOffset() / 3600000)));
             }
         }
         return timeZones;

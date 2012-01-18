@@ -56,13 +56,13 @@ public class AttachmentsTemplateTag extends TagSupport implements TryCatchFinall
 
     public void doCatch(Throwable throwable) throws Throwable
     {
-		throw throwable;
-	}
+        throw throwable;
+    }
 
-	public void doFinally()
+    public void doFinally()
     {
-		this.requestContext = null;
-	}
+        this.requestContext = null;
+    }
 
     private String writeHtml() throws JspException
     {
@@ -76,7 +76,7 @@ public class AttachmentsTemplateTag extends TagSupport implements TryCatchFinall
             sb.append("<li class=\"clear\">\n");
             sb.append("<a title=\"Download attachment\" href=\"");
             sb.append(contextPath).append("/attachments/").append(attachment.getId());
-             sb.append("\"><img alt=\"Attached File\" src=\"");
+            sb.append("\"><img alt=\"Attached File\" src=\"");
             sb.append(contextPath).append("/static/images/zip.gif\"></a>\n");
             sb.append("&nbsp;<a title=\"Download attachment\" href=\"");
             sb.append(contextPath).append("/attachments/").append(attachment.getId());
@@ -93,74 +93,68 @@ public class AttachmentsTemplateTag extends TagSupport implements TryCatchFinall
 
     private String resolveMessage(String messageCode, String arguments) throws JspException, NoSuchMessageException
     {
-		MessageSource messageSource = getMessageSource();
-		if (messageSource == null)
+        MessageSource messageSource = getMessageSource();
+        if (messageSource == null)
         {
-			throw new JspTagException("No corresponding MessageSource found");
-		}
+            throw new JspTagException("No corresponding MessageSource found");
+        }
 
-		String resolvedCode = ExpressionEvaluationUtils.evaluateString("code", messageCode, pageContext);
+        String resolvedCode = ExpressionEvaluationUtils.evaluateString("code", messageCode, pageContext);
 
-		// We have a code or default text that we need to resolve.
-		Object[] argumentsArray = resolveArguments(arguments);
+        // We have a code or default text that we need to resolve.
+        Object[] argumentsArray = resolveArguments(arguments);
 
-		// We have no fallback text to consider.
-		return messageSource.getMessage(resolvedCode, argumentsArray, getRequestContext().getLocale());
-	}
+        // We have no fallback text to consider.
+        return messageSource.getMessage(resolvedCode, argumentsArray, getRequestContext().getLocale());
+    }
 
     private Object[] resolveArguments(Object arguments) throws JspException
     {
-		if (arguments instanceof String)
+        if (arguments instanceof String)
         {
-			String[] stringArray = StringUtils.delimitedListToStringArray((String) arguments, ",");
-			if (stringArray.length == 1)
+            String[] stringArray = StringUtils.delimitedListToStringArray((String) arguments, ",");
+            if (stringArray.length == 1)
             {
-				Object argument = ExpressionEvaluationUtils.evaluate("argument", stringArray[0], pageContext);
-				if (argument != null && argument.getClass().isArray())
+                Object argument = ExpressionEvaluationUtils.evaluate("argument", stringArray[0], pageContext);
+                if (argument != null && argument.getClass().isArray())
                 {
-					return ObjectUtils.toObjectArray(argument);
-				}
-				else
+                    return ObjectUtils.toObjectArray(argument);
+                } else
                 {
-					return new Object[] {argument};
-				}
-			}
-			else
+                    return new Object[]{argument};
+                }
+            } else
             {
-				Object[] argumentsArray = new Object[stringArray.length];
-				for (int i = 0; i < stringArray.length; i++)
+                Object[] argumentsArray = new Object[stringArray.length];
+                for(int i = 0; i < stringArray.length; i++)
                 {
-					argumentsArray[i] = ExpressionEvaluationUtils.evaluate("argument[" + i + "]", stringArray[i], pageContext);
-				}
-				return argumentsArray;
-			}
-		}
-		else if (arguments instanceof Object[])
+                    argumentsArray[i] = ExpressionEvaluationUtils.evaluate("argument[" + i + "]", stringArray[i], pageContext);
+                }
+                return argumentsArray;
+            }
+        } else if (arguments instanceof Object[])
         {
-			return (Object[]) arguments;
-		}
-		else if (arguments instanceof Collection)
+            return (Object[]) arguments;
+        } else if (arguments instanceof Collection)
         {
-			return ((Collection) arguments).toArray();
-		}
-		else if (arguments != null)
+            return ((Collection) arguments).toArray();
+        } else if (arguments != null)
         {
-			// Assume a single argument object.
-			return new Object[] {arguments};
-		}
-		else
+            // Assume a single argument object.
+            return new Object[]{arguments};
+        } else
         {
-			return null;
-		}
-	}
+            return null;
+        }
+    }
 
     private MessageSource getMessageSource()
     {
-		return getRequestContext().getMessageSource();
-	}
+        return getRequestContext().getMessageSource();
+    }
 
     private final RequestContext getRequestContext()
     {
-		return this.requestContext;
-	}
+        return this.requestContext;
+    }
 }

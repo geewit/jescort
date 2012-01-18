@@ -28,7 +28,7 @@ public class AddressDaoTest// extends AbstractJpaDaoTestCase
         }
         */
     }
-    
+
     @Test
     public void testGetAddress() throws Exception
     {
@@ -38,7 +38,7 @@ public class AddressDaoTest// extends AbstractJpaDaoTestCase
         assertNotNull(address);
         */
     }
-    
+
     @Test
     public void testUpdateAddress() throws Exception
     {
@@ -63,7 +63,7 @@ public class AddressDaoTest// extends AbstractJpaDaoTestCase
         }
         */
     }
-    
+
     @Test
     public void addAndRemoveAddress() throws Exception
     {
@@ -90,7 +90,7 @@ public class AddressDaoTest// extends AbstractJpaDaoTestCase
         }
         */
     }
-    
+
     @Test
     public void addressExists() throws Exception
     {
@@ -99,7 +99,7 @@ public class AddressDaoTest// extends AbstractJpaDaoTestCase
         super.assertTrue(b);
         */
     }
-    
+
     @Test
     public void testAddressNotExists() throws Exception
     {
@@ -108,5 +108,5 @@ public class AddressDaoTest// extends AbstractJpaDaoTestCase
         super.assertFalse(b);
         */
     }
-    
+
 }

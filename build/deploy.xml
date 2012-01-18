@@ -23,7 +23,8 @@
             <entry key="log4j.appender.FILE.MaxFileSize" value="10MB"/>
             <entry key="log4j.appender.FILE.MaxBackupIndex" value="60"/>
             <entry key="log4j.appender.FILE.layout" value="org.apache.log4j.PatternLayout"/>
-            <entry key="log4j.appender.FILE.layout.ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%-5p] %-30.30c{1} %M-%L  %m%n"/>
+            <entry key="log4j.appender.FILE.layout.ConversionPattern"
+                   value="%d{yyyy-MM-dd HH:mm:ss} [%-5p] %-30.30c{1} %M-%L  %m%n"/>
             <entry key="log4j.appender.FILE.Append" value="true"/>
 
             <entry key="log4j.appender.MAIL" value="org.apache.log4j.net.SMTPAppender"/>
@@ -36,7 +37,8 @@
             <entry key="log4j.appender.MAIL.BufferSize" value="16"/>
             <entry key="log4j.appender.MAIL.Subject" value="error"/>
             <entry key="log4j.appender.MAIL.layout" value="org.apache.log4j.PatternLayout"/>
-            <entry key="log4j.appender.MAIL.layout.ConversionPattern" value="%p[%d{yyyy-MM-dd HH:mm:ss}] [%-5p] %-30.30c{1} %M-%L %m%n"/>
+            <entry key="log4j.appender.MAIL.layout.ConversionPattern"
+                   value="%p[%d{yyyy-MM-dd HH:mm:ss}] [%-5p] %-30.30c{1} %M-%L %m%n"/>
         </propertyfile>
 
         <propertyfile file="${exploded.classes.dir}/freemarker.properties">
@@ -124,14 +126,15 @@
             <targetfile/>
         </apply>
     </target>
-    
+
     <target name="jescort.native2ascii" description="native2ascii">
         <delete includeemptydirs="true">
             <fileset dir="${exploded.classes.dir}">
                 <include name="**/messages_*.properties"/>
             </fileset>
         </delete>
-        <native2ascii encoding="UTF-8" src="${jescort.web.main.resources.dir}" dest="${exploded.classes.dir}" includes="**/messages_*.properties" ext=".properties"/>
+        <native2ascii encoding="UTF-8" src="${jescort.web.main.resources.dir}" dest="${exploded.classes.dir}"
+                      includes="**/messages_*.properties" ext=".properties"/>
     </target>
 
     <!--build web exploded &build-web-exploded;-->

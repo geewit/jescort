@@ -3,6 +3,7 @@ package net.gelif.kernel.core.util;
 import java.io.Serializable;
 import javax.persistence.EntityManager;
 import javax.persistence.metamodel.Metamodel;
+
 import org.springframework.data.domain.Persistable;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.JpaMetamodelEntityInformation;
@@ -13,21 +14,19 @@ import org.springframework.data.jpa.repository.support.JpaPersistableEntityInfor
  */
 public class JpaEntityUtils
 {
-    public static <T extends Persistable<PK>, PK extends Serializable>JpaEntityInformation<T, PK> getMetadata(Class<T> domainClass, EntityManager entityManager)
+    public static <T extends Persistable<PK>, PK extends Serializable> JpaEntityInformation<T, PK> getMetadata(Class<T> domainClass, EntityManager entityManager)
     {
         Metamodel metamodel = entityManager.getMetamodel();
-        
-        if(Persistable.class.isAssignableFrom(domainClass))
+
+        if (Persistable.class.isAssignableFrom(domainClass))
         {
             return new JpaPersistableEntityInformation<T, PK>(domainClass, metamodel);
-        }
-        else
+        } else
         {
             try
             {
                 return new JpaMetamodelEntityInformation<T, PK>(domainClass, metamodel);
-            }
-            catch(IllegalArgumentException e)
+            } catch (IllegalArgumentException e)
             {
                 return null;
             }

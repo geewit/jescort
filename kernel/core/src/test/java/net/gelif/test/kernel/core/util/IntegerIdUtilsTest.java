@@ -1,6 +1,7 @@
 package net.gelif.test.kernel.core.util;
 
 import static org.junit.Assert.assertEquals;
+
 import net.gelif.kernel.core.util.IntegerIdUtils;
 import org.junit.Test;
 
@@ -14,7 +15,7 @@ public class IntegerIdUtilsTest
         String test2 = "1F";
         assertEquals(77, IntegerIdUtils.string2integer(test2));
     }
-    
+
     @Test
     public void integer2string()
     {

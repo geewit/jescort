@@ -3,6 +3,7 @@ package net.gelif.modules.sendmail;
 import java.util.Map;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+
 import net.gelif.kernel.core.AbstractLogger;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.VelocityException;
@@ -16,24 +17,23 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
 public abstract class AbstractSendmailService extends AbstractLogger
 {
     public abstract void send(SimpleMailMessage mailMessage) throws MailException;
-    
+
     public abstract void send(SimpleMailMessage mailMessage, String templateName, Map<String, Object> model) throws MailException;
-    
+
     public String generateEmailContent(String templateName, Map<String, Object> model)
     {
         String content = null;
-        
+
         try
         {
             content = VelocityEngineUtils.mergeTemplateIntoString(mailTemplateEngine, templateName, model);
-        }
-        catch(VelocityException e)
+        } catch (VelocityException e)
         {
             logger.error(e.getMessage(), e);
         }
         return content;
     }
-    
+
     public void sendMessage(String[] emails, ClassPathResource resource, String body, String subject, String attachment) throws MessagingException
     {
         MimeMessage message = mailSender.createMimeMessage();
@@ -44,7 +44,7 @@ public abstract class AbstractSendmailService extends AbstractLogger
         helper.addAttachment(attachment, resource);
         mailSender.send(message);
     }
-    
+
     /*
     @Required
     public void setMailTemplateEngine(FreeMarkerConfigurer freemarkerConfigurer)
@@ -58,11 +58,13 @@ public abstract class AbstractSendmailService extends AbstractLogger
     {
         mailTemplateEngine = velocityEngine;
     }
+
     private VelocityEngine mailTemplateEngine;
-    
+
     public void setMailSender(final JavaMailSender mailSender)
     {
         this.mailSender = mailSender;
     }
+
     protected JavaMailSender mailSender;
 }

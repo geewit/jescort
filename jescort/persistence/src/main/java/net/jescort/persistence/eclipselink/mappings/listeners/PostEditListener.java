@@ -20,11 +20,11 @@ public class PostEditListener implements EventListener
 
     private void updateDate(PostEdit postEdit)
     {
-        if(null == postEdit)
+        if (null == postEdit)
         {
             return;
         }
-        if(null == postEdit.getEditdate())
+        if (null == postEdit.getEditdate())
         {
             postEdit.setEditdate(Calendar.getInstance());
         }

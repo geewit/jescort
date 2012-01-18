@@ -145,7 +145,7 @@ public class Utilities
     {
         StringBuffer ret = new StringBuffer(str.length());
         char[] testChars = str.toCharArray();
-        for (int i = 0; i < testChars.length; i++)
+        for(int i = 0; i < testChars.length; i++)
         {
             if (Character.isLetterOrDigit(testChars[i]))
             {
@@ -162,7 +162,7 @@ public class Utilities
     {
         StringBuffer ret = new StringBuffer(str.length());
         char[] testChars = str.toCharArray();
-        for (int i = 0; i < testChars.length; i++)
+        for(int i = 0; i < testChars.length; i++)
         {
             // MR: Allow periods in page links
             if (Character.isLetterOrDigit(testChars[i]) || testChars[i] == '.')
@@ -176,7 +176,7 @@ public class Utilities
     public static String stringArrayToString(String[] stringArray, String delim)
     {
         String ret = "";
-        for (int i = 0; i < stringArray.length; i++)
+        for(int i = 0; i < stringArray.length; i++)
         {
             if (ret.length() > 0)
             {
@@ -220,7 +220,7 @@ public class Utilities
     public static String intArrayToString(int[] intArray)
     {
         String ret = "";
-        for (int i = 0; i < intArray.length; i++)
+        for(int i = 0; i < intArray.length; i++)
         {
             if (ret.length() > 0)
             {
@@ -274,7 +274,7 @@ public class Utilities
         byte[] buffer;
         buffer = new byte[8192];
 
-        for (length = byteCount; length > 0;)
+        for(length = byteCount; length > 0; )
         {
             bytes = (int) (length > 8192 ? 8192 : length);
 
@@ -332,7 +332,7 @@ public class Utilities
         BufferedInputStream in = new BufferedInputStream(input);
         BufferedOutputStream out = new BufferedOutputStream(output);
         byte buffer[] = new byte[8192];
-        for (int count = 0; count != -1;)
+        for(int count = 0; count != -1; )
         {
             count = in.read(buffer, 0, 8192);
             if (count != -1)

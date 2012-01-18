@@ -29,7 +29,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
         criteriaQuery.select(criteriaBuilder.count(message)).where(criteriaBuilder.equal(sender.get("id"), senderId));
         return entityManager.createQuery(criteriaQuery).getSingleResult();
     }
-    
+
     @SuppressWarnings("unchecked")
     public List<Message> findBySenderId(int senderId)
     {
@@ -40,7 +40,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
         Query query = entityManager.createQuery(criteriaQuery);
         return query.getResultList();
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public List<Message> findBySenderId(int senderId, Pageable pageable)
@@ -55,7 +55,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
         query.setMaxResults(pageable.getPageSize());
         return query.getResultList();
     }
-    
+
     @SuppressWarnings("unchecked")
     public List<Message> findBySenderId(int senderId, int offset, int limit)
     {
@@ -69,7 +69,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
         query.setMaxResults(limit);
         return query.getResultList();
     }
-    
+
     @Override
     public long countByRecipientId(int recipientId)
     {
@@ -80,7 +80,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
         criteriaQuery.select(criteriaBuilder.count(message)).where(criteriaBuilder.equal(recipient.get("id"), recipientId));
         return entityManager.createQuery(criteriaQuery).getSingleResult();
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public List<Message> findByRecipientId(int recipientId)
@@ -93,7 +93,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
         TypedQuery<Message> query = entityManager.createQuery(criteriaQuery);
         return query.getResultList();
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public List<Message> findByRecipientId(int recipientId, Pageable pageable)
@@ -108,7 +108,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
         query.setMaxResults(pageable.getPageSize());
         return query.getResultList();
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public List<Message> findByRecipientId(int recipientId, int offset, int limit)

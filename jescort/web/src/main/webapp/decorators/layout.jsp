@@ -6,14 +6,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
-
-    <title>
-        <c:set var="titleKey"><tiles:getAsString name="title" ignore="true"/></c:set><spring:message code="${titleKey}"/></title>
+    <title><c:set var="titleKey"><tiles:getAsString name="title" ignore="true"/></c:set><spring:message code="${titleKey}"/></title>
     <link href="<spring:url value="/static/css/escort_common.css"/>" type="text/css" rel="stylesheet"/>
     <link href="<spring:url value="/static/css/escort_style.css"/>" type="text/css" rel="stylesheet"/>
     <link href="<spring:url value="/static/css/escort_color.css"/>" type="text/css" rel="stylesheet"/>
     <link rel="icon" type="image/x-icon" href="<spring:url value="/static/images/logo.gif"/>">
-    <script type="text/javascript" src="<spring:url value="/static/js/jquery/1.4.2/jquery.min.js"/>"></script>
+    <script type="text/javascript" src="<spring:url value="/static/js/jquery/1.6.4/jquery.min.js"/>"></script>
 </head>
 
 <body>

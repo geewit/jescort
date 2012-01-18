@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Map;
 
 import net.gelif.kernel.core.data.domain.AbstractPersistable;
-import net.jescort.domain.enumerator.TopicStatus;
+import net.jescort.domain.enums.TopicStatus;
 import org.apache.commons.lang.builder.CompareToBuilder;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
@@ -21,18 +21,18 @@ import org.apache.commons.lang.builder.ToStringStyle;
 public class Topic extends AbstractPersistable<Integer> implements Comparable<Topic>
 {
     private static final long serialVersionUID = 1L;
-    
+
     public Topic()
     {
         this.rootPost = new Post();
     }
-    
+
     public Topic(Integer id)
     {
         this.id = id;
         this.rootPost = new Post();
     }
-    
+
     private Integer id;
     private String subject;
     private Integer forumId;
@@ -44,11 +44,12 @@ public class Topic extends AbstractPersistable<Integer> implements Comparable<To
     private Calendar createdate;
     private Map<TopicStatus, Boolean> status;
     private Map<String, String> properties;
-    
+
     public Integer getId()
     {
         return id;
     }
+
     public void setId(Integer id)
     {
         this.id = id;
@@ -58,6 +59,7 @@ public class Topic extends AbstractPersistable<Integer> implements Comparable<To
     {
         return subject;
     }
+
     public void setSubject(String subject)
     {
         this.subject = subject;
@@ -67,6 +69,7 @@ public class Topic extends AbstractPersistable<Integer> implements Comparable<To
     {
         return rootPost;
     }
+
     public void setRootPost(Post rootPost)
     {
         this.rootPost = rootPost;
@@ -86,15 +89,17 @@ public class Topic extends AbstractPersistable<Integer> implements Comparable<To
     {
         return forumId;
     }
+
     public void setForumId(Integer forumId)
     {
         this.forumId = forumId;
     }
-    
+
     public int getViews()
     {
         return views;
     }
+
     public void setViews(int views)
     {
         this.views = views;
@@ -104,6 +109,7 @@ public class Topic extends AbstractPersistable<Integer> implements Comparable<To
     {
         return replies;
     }
+
     public void setReplies(int replies)
     {
         this.replies = replies;
@@ -113,6 +119,7 @@ public class Topic extends AbstractPersistable<Integer> implements Comparable<To
     {
         return isLocked;
     }
+
     public void setIsLocked(Boolean isLocked)
     {
         this.isLocked = isLocked;
@@ -122,15 +129,17 @@ public class Topic extends AbstractPersistable<Integer> implements Comparable<To
     {
         return status;
     }
+
     public void setStatus(Map<TopicStatus, Boolean> status)
     {
         this.status = status;
     }
-    
+
     public Map<String, String> getProperties()
     {
         return properties;
     }
+
     public void setProperties(Map<String, String> properties)
     {
         this.properties = properties;
@@ -140,6 +149,7 @@ public class Topic extends AbstractPersistable<Integer> implements Comparable<To
     {
         return createdate;
     }
+
     public void setCreatedate(Calendar createdate)
     {
         this.createdate = createdate;
@@ -148,30 +158,30 @@ public class Topic extends AbstractPersistable<Integer> implements Comparable<To
     @Override
     public boolean equals(Object object)
     {
-        if(this == object)
+        if (this == object)
         {
             return true;
         }
-        if(!(object instanceof Topic))
+        if (!(object instanceof Topic))
         {
             return false;
         }
-        final Topic topic = (Topic)object;
+        final Topic topic = (Topic) object;
         return new EqualsBuilder().append(id, topic.getId()).isEquals();
     }
-    
+
     @Override
     public int hashCode()
     {
         return new HashCodeBuilder().append(id).toHashCode();
     }
-    
+
     @Override
     public String toString()
     {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", this.id).append("subject", this.subject).append("views", this.views).append("replies", this.replies).toString();
     }
-    
+
     public int compareTo(Topic topic)
     {
         return new CompareToBuilder().append(getViews(), topic.getViews()).toComparison();

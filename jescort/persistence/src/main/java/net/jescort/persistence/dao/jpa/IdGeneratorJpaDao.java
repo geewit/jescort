@@ -2,7 +2,7 @@ package net.jescort.persistence.dao.jpa;
 
 import net.gelif.kernel.persistence.dao.jpa.GenericJpaDao;
 import net.jescort.domain.IdGenerator;
-import net.jescort.domain.enumerator.IdName;
+import net.jescort.domain.enums.IdName;
 import net.jescort.persistence.dao.IdGeneratorDao;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;

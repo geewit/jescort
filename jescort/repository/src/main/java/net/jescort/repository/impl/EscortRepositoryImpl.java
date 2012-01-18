@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import net.gelif.kernel.core.data.domain.PageableFactory;
 import net.gelif.modules.bbcode.BBProcessorFactory;
 import net.gelif.modules.bbcode.TextProcessor;
-import net.jescort.domain.enumerator.IdName;
+import net.jescort.domain.enums.IdName;
 import net.jescort.domain.forum.*;
 import net.jescort.domain.user.User;
 import net.jescort.persistence.dao.*;
@@ -37,18 +37,18 @@ import org.springframework.web.servlet.ModelAndView;
 public class EscortRepositoryImpl implements EscortRepository
 {
     protected transient final Log logger = LogFactory.getLog(this.getClass());
-    
+
     public static TextProcessor processor = BBProcessorFactory.getInstance().create();
-    
+
     @Resource(name = "attachmentDao")
     private AttachmentDao attachmentDao;
-    
+
     @Resource(name = "forumDao")
     private ForumDao forumDao;
-    
+
     @Resource(name = "topicDao")
     private TopicDao topicDao;
-    
+
     @Resource(name = "postDao")
     private PostDao postDao;
 
@@ -90,20 +90,20 @@ public class EscortRepositoryImpl implements EscortRepository
     {
         return forumDao.findOne(forumId);
     }
-    
+
     @Override
     public boolean forumExists(final Integer forumId)
     {
         return forumDao.exists(forumId);
     }
-    
+
     @Override
     public Topic getTopic(final Integer topicId)
     {
         Topic topic = topicDao.findOne(topicId);
         return topic;
     }
-    
+
     @Override
     public Topic getTopicWithBBCodeToHtml(final Integer topicId)
     {
@@ -111,7 +111,7 @@ public class EscortRepositoryImpl implements EscortRepository
         topic.getRootPost().setContent(processor.process(topic.getRootPost().getContent()));
         return topic;
     }
-    
+
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void createTopic(final Topic topic)
     {
@@ -139,13 +139,13 @@ public class EscortRepositoryImpl implements EscortRepository
         topic.setRootPost(rootPost);
         topicDao.save(topic);
     }
-    
+
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void updateTopic(final Topic topic)
     {
         topicDao.save(topic);
     }
-    
+
     @Override
     public Page<Topic> findTopicsByForum(final Integer forumId, final Pageable pageable)
     {
@@ -153,7 +153,7 @@ public class EscortRepositoryImpl implements EscortRepository
         Page<Topic> page = new PageImpl<Topic>(topics);
         return page;
     }
-    
+
     @Override
     public Page<Topic> findTopicsByForumWithBBCodeToHtml(final Integer forumId, final Pageable pageable)
     {
@@ -165,7 +165,7 @@ public class EscortRepositoryImpl implements EscortRepository
         Page<Topic> page = new PageImpl<Topic>(topics);
         return page;
     }
-    
+
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ModelAndView topicView(final Integer topicId, final Integer pageNo, final Integer pageSize, final ModelAndView mav)
     {
@@ -185,7 +185,7 @@ public class EscortRepositoryImpl implements EscortRepository
         mav.addObject("posts", page);
         return mav;
     }
-    
+
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void replyTopic(final Post post, final HttpServletRequest request)
@@ -203,7 +203,7 @@ public class EscortRepositoryImpl implements EscortRepository
         post.setAttachments(attachments);
         postDao.save(post);
     }
-    
+
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void createPost(final Post post)
@@ -213,13 +213,13 @@ public class EscortRepositoryImpl implements EscortRepository
         //post.setCreatedate(Calendar.getInstance());
         postDao.save(post);
     }
-    
+
     @Override
     public Post getPost(final Integer postId)
     {
         return postDao.findOne(postId);
     }
-    
+
     @Override
     public Post getPostWithBBCodeToHtml(final Integer postId)
     {
@@ -227,13 +227,13 @@ public class EscortRepositoryImpl implements EscortRepository
         post.setContent(processor.process(post.getContent()));
         return post;
     }
-    
+
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void updatePost(final Post post, final User editor)
     {
         post.setEdits(post.getEdits() + 1);
         postDao.save(post);
-        if(!postEditDao.exists(post.getId()))
+        if (!postEditDao.exists(post.getId()))
         {
             PostEdit edit = new PostEdit();
             edit.setId(post.getId());
@@ -242,7 +242,7 @@ public class EscortRepositoryImpl implements EscortRepository
             postEditDao.save(edit);
         }
     }
-    
+
     @Override
     public Post quotePost(final Integer postId)
     {
@@ -293,7 +293,7 @@ public class EscortRepositoryImpl implements EscortRepository
     {
         return attachmentDao.findOne(attachmentId);
     }
-    
+
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void saveAttachment(final Attachment attachment)
     {
@@ -304,12 +304,13 @@ public class EscortRepositoryImpl implements EscortRepository
     public List<Attachment> uploadAttachments(final HttpServletRequest request)
     {
         final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request;
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         final Map<String, MultipartFile> multipartFiles = multipartRequest.getFileMap();
         final List<Attachment> attachments = new ArrayList<Attachment>();
         for(final MultipartFile multipartFile : multipartFiles.values())
         {
-            executor.execute(new Runnable(){
+            executor.execute(new Runnable()
+            {
                 @Override
                 public void run()
                 {
@@ -324,23 +325,21 @@ public class EscortRepositoryImpl implements EscortRepository
                         attachmentData.setContent(multipartFile.getBytes());
                         attachment.setAttachmentData(attachmentData);
                         attachments.add(attachment);
-                    }
-                    catch(IOException e)
+                    } catch (IOException e)
                     {
                         logger.debug(e.toString());
                         executor.shutdown();
                         try
                         {
-                            if(!executor.awaitTermination(60, TimeUnit.SECONDS))
+                            if (!executor.awaitTermination(60, TimeUnit.SECONDS))
                             {
                                 executor.shutdownNow();
-                                if(!executor.awaitTermination(60, TimeUnit.SECONDS))
+                                if (!executor.awaitTermination(60, TimeUnit.SECONDS))
                                 {
                                     logger.error("Pool did not terminate");
                                 }
                             }
-                        }
-                        catch(InterruptedException ex)
+                        } catch (InterruptedException ex)
                         {
                             executor.shutdownNow();
                             Thread.currentThread().interrupt();

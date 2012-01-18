@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
     <entity metadata-complete="true" name="PostEdit" class="net.jescort.domain.forum.PostEdit" access="PROPERTY">
         <table name="post_edits"/>
         <entity-listeners>
             <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.PostEditListener">
                 <pre-persist method-name="prePersist"/>
-                <pre-update  method-name="preUpdate"/>
+                <pre-update method-name="preUpdate"/>
             </entity-listener>
         </entity-listeners>
         <attributes>

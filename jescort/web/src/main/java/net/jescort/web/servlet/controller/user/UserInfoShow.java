@@ -45,7 +45,7 @@ public class UserInfoShow
     }
 
     @RequestMapping(value = "/users/photo/{id}", method = RequestMethod.GET)
-    public void download(@PathVariable("id")Integer id, HttpServletResponse response)
+    public void download(@PathVariable("id") Integer id, HttpServletResponse response)
     {
         try
         {

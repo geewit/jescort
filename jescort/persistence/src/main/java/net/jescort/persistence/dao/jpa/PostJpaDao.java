@@ -2,6 +2,7 @@ package net.jescort.persistence.dao.jpa;
 
 import java.util.List;
 import javax.persistence.Query;
+
 import net.gelif.kernel.persistence.dao.jpa.GenericJpaDao;
 import net.jescort.domain.forum.Post;
 import net.jescort.persistence.dao.PostDao;
@@ -17,13 +18,13 @@ public class PostJpaDao extends GenericJpaDao<Post, Integer> implements PostDao
 {
     public long countByTopicId(int topicId)
     {
-        return (Long)entityManager.createQuery("select count(t.id) from Post t where t.topicId = :topicId").setParameter("topicId", topicId).getSingleResult();
+        return (Long) entityManager.createQuery("select count(t.id) from Post t where t.topicId = :topicId").setParameter("topicId", topicId).getSingleResult();
     }
 
     @Override
     public long rownumberPostsByTopicIdAndPostId(int topicId, int postId)
     {
-        return (Long)entityManager.createNativeQuery("SELECT COUNT(p.id) from posts p WHERE p.topic_id = ? AND p.id < ?").setParameter(1, topicId).setParameter(2, postId).getSingleResult();
+        return (Long) entityManager.createNativeQuery("SELECT COUNT(p.id) from posts p WHERE p.topic_id = ? AND p.id < ?").setParameter(1, topicId).setParameter(2, postId).getSingleResult();
     }
 
     @SuppressWarnings("unchecked")
@@ -42,13 +43,13 @@ public class PostJpaDao extends GenericJpaDao<Post, Integer> implements PostDao
         query.setMaxResults(pageable.getPageSize());
         return query.getResultList();
     }
-    
+
     @SuppressWarnings("unchecked")
     public List<Post> findByUserId(int userId)
     {
         return entityManager.createQuery("select t from Post t where t.poster.id = :userId").setParameter("userId", userId).getResultList();
     }
-    
+
     @SuppressWarnings("unchecked")
     public List<Post> findByUserId(int userId, int offset, int limit)
     {

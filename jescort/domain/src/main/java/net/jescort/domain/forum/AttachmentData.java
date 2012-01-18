@@ -40,6 +40,7 @@ public class AttachmentData implements Serializable
     {
         return content;
     }
+
     public void setContent(byte[] content)
     {
         this.content = content;

@@ -4,7 +4,7 @@
             xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
 
     <info organisation="net.gelif" module="jescort" revision="0.1" status="release">
-        <license name="Mozilla Public License" url="http://www.mozilla.org/MPL/"/>
+        <license name="Apache License Version 2.0" url="http://www.apache.org/licenses"/>
         <ivyauthor name="gelif" url="http://www.gelif.net"/>
         <description homepage="http://github.com/isaga/jescort"/>
     </info>
@@ -100,10 +100,7 @@
         <dependency org="spy" name="spymemcached" rev="${spymemcached.version}" conf="compile->default"/>
         <dependency org="org.subethamail" name="subethasmtp" rev="${subethasmtp.version}" conf="compile->default"/>
         <dependency org="org.eclipse.persistence" name="javax.persistence" rev="${javax.persistence.version}" conf="compile->default"/>
-        <dependency org="org.eclipse.persistence" name="org.eclipse.persistence.antlr" rev="${eclipselink.version}" conf="compile->default"/>
-        <dependency org="org.eclipse.persistence" name="org.eclipse.persistence.asm" rev="${eclipselink.version}" conf="compile->default"/>
-        <dependency org="org.eclipse.persistence" name="org.eclipse.persistence.core" rev="${eclipselink.version}" conf="compile->default"/>
-        <dependency org="org.eclipse.persistence" name="org.eclipse.persistence.jpa" rev="${eclipselink.version}" conf="compile->default"/>
+        <dependency org="org.eclipse.persistence" name="eclipselink" rev="${eclipselink.version}" conf="compile->default"/>
         <dependency org="org.apache.tiles" name="tiles-api" rev="${tiles.version}" conf="compile->default"/>
         <dependency org="org.apache.tiles" name="tiles-core" rev="${tiles.version}" conf="compile->default"/>
         <dependency org="org.apache.tiles" name="tiles-el" rev="${tiles.version}" conf="compile->default"/>

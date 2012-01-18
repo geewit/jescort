@@ -5,15 +5,18 @@
 
     <property name="ivy.ibiblio.root" value="http://repo1.maven.org/maven2/" override="false"/>
     <property name="ivy.java.net.root" value="http://download.java.net/maven/2/" override="false"/>
-    <property name="ivy.sonatype.org.root" value="http://repository.sonatype.org/content/repositories/central" override="false"/>
-    <property name="ivy.eclipse.ialto.org.root" value="http://eclipse.ialto.org/rt/eclipselink/maven.repo/" override="false"/>
-    <property name="ivy.m2proxy.atlassian.root" value="http://m2proxy.atlassian.com/repository/public/" override="false"/>
+    <property name="ivy.sonatype.org.root" value="http://repository.sonatype.org/content/repositories/central"
+              override="false"/>
+    <property name="ivy.eclipse.ialto.org.root" value="http://eclipse.ialto.org/rt/eclipselink/maven.repo/"
+              override="false"/>
+    <property name="ivy.m2proxy.atlassian.root" value="http://m2proxy.atlassian.com/repository/public/"
+              override="false"/>
     <property name="ivy.scala.root" value="http://scala-tools.org/repo-releases/" override="false"/>
 
     <property name="maven2.pattern" value="[organisation]/[module]/[revision]/[module]-[revision].[ext]"/>
     <property name="artifact.pattern" value="${workspace.dir}/m2/repository/${maven2.pattern}"/>
 
-    <settings defaultResolver="default-resolver" validate="false" defaultConflictManager="latest-revision" />
+    <settings defaultResolver="default-resolver" validate="false" defaultConflictManager="latest-revision"/>
     <!--
     <caches defaultCacheDir="${workspace.dir}/ivy/repository/" resolutionCacheDir="${workspace.dir}/ivy/repository/" repositoryCacheDir="${workspace.dir}/ivy/repository/"
             ivyPattern="${maven2.pattern}"

@@ -7,9 +7,8 @@ public interface WTemplateElement
 {
     /**
      * Append template element to source of context
-     * 
-     * @param context
-     *            контекст
+     *
+     * @param context контекст
      * @return builded text
      */
     public CharSequence generate(Context context);

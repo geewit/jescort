@@ -1,6 +1,6 @@
 <xsd:schema xmlns="http://www.gelif.net/schema/bbcode" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://www.gelif.net/schema/bbcode" elementFormDefault="qualified"
-        attributeFormDefault="unqualified">
+            targetNamespace="http://www.gelif.net/schema/bbcode" elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
     <!-- Template type description -->
     <xsd:complexType name="templateType" mixed="true">
         <xsd:choice minOccurs="0" maxOccurs="unbounded">

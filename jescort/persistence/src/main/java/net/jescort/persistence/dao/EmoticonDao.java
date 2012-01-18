@@ -6,5 +6,5 @@ import org.springframework.data.repository.query.Param;
 
 public interface EmoticonDao extends JpaRepository<Emoticon, Integer>
 {
-    public Emoticon findByEmoticon(@Param("emoticon")String emoticon);
+    public Emoticon findByEmoticon(@Param("emoticon") String emoticon);
 }

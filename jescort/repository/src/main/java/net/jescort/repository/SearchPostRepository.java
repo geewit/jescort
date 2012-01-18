@@ -13,5 +13,6 @@ import java.util.List;
 public interface SearchPostRepository
 {
     public List<Post> searchPosts(String keywords);
-	public boolean createIndex();
+
+    public boolean createIndex();
 }

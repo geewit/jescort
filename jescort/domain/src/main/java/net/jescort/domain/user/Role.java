@@ -15,45 +15,48 @@ import java.util.List;
 public class Role extends AbstractPersistable<Integer> implements Comparable<Role>
 {
     private static final long serialVersionUID = 1L;
-    
+
     public Role()
     {
     }
-    
+
     public Role(Integer id, String authority)
     {
         this.id = id;
         this.authority = authority;
     }
-    
+
     private Integer id;
     private String authority;
     private String description;
     private Integer priority;
     private List<Permission> permissions;
-    
+
     public Integer getId()
     {
         return id;
     }
+
     public void setId(Integer id)
     {
         this.id = id;
     }
-    
+
     public String getAuthority()
     {
         return authority;
     }
+
     public void setAuthority(String authority)
     {
         this.authority = authority;
     }
-    
+
     public String getDescription()
     {
         return description;
     }
+
     public void setDescription(String description)
     {
         this.description = description;
@@ -63,6 +66,7 @@ public class Role extends AbstractPersistable<Integer> implements Comparable<Rol
     {
         return permissions;
     }
+
     public void setPermissions(List<Permission> permissions)
     {
         this.permissions = permissions;
@@ -72,32 +76,33 @@ public class Role extends AbstractPersistable<Integer> implements Comparable<Rol
     {
         return priority;
     }
+
     public void setPriority(Integer priority)
     {
         this.priority = priority;
     }
-    
+
     @Override
     public boolean equals(Object object)
     {
-        if(this == object)
+        if (this == object)
         {
             return true;
         }
-        if(!(object instanceof Role))
+        if (!(object instanceof Role))
         {
             return false;
         }
-        final Role role = (Role)object;
+        final Role role = (Role) object;
         return new EqualsBuilder().append(authority, role.getAuthority()).isEquals();
     }
-    
+
     @Override
     public int hashCode()
     {
         return new HashCodeBuilder().append(id).toHashCode();
     }
-    
+
     @Override
     public String toString()
     {

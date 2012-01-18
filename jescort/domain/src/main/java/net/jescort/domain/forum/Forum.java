@@ -3,8 +3,9 @@ package net.jescort.domain.forum;
 import java.util.Calendar;
 import java.util.Map;
 import java.util.Set;
+
 import net.gelif.kernel.core.data.domain.AbstractPersistable;
-import net.jescort.domain.enumerator.ForumStatus;
+import net.jescort.domain.enums.ForumStatus;
 import net.jescort.domain.user.User;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
@@ -21,16 +22,16 @@ import org.apache.commons.lang.builder.ToStringStyle;
 public class Forum extends AbstractPersistable<Integer>
 {
     private static final long serialVersionUID = 1L;
-    
+
     public Forum()
     {
     }
-    
+
     public Forum(Integer id)
     {
         this.id = id;
     }
-    
+
     private Integer id;
     private String subject;
     private String description;
@@ -43,11 +44,12 @@ public class Forum extends AbstractPersistable<Integer>
     private Category category;
     private Post lastPost;
     private Set<User> moderators;
-    
+
     public Integer getId()
     {
         return id;
     }
+
     public void setId(Integer id)
     {
         this.id = id;
@@ -57,24 +59,27 @@ public class Forum extends AbstractPersistable<Integer>
     {
         return subject;
     }
+
     public void setSubject(String subject)
     {
         this.subject = subject;
     }
-    
+
     public String getDescription()
     {
         return description;
     }
+
     public void setDescription(String description)
     {
         this.description = description;
     }
-    
+
     public int getPriority()
     {
         return priority;
     }
+
     public void setPriority(int priority)
     {
         this.priority = priority;
@@ -104,24 +109,27 @@ public class Forum extends AbstractPersistable<Integer>
     {
         return status;
     }
+
     public void setStatus(Map<ForumStatus, Boolean> status)
     {
         this.status = status;
     }
-    
+
     public Map<String, String> getProperties()
     {
         return properties;
     }
+
     public void setProperties(Map<String, String> properties)
     {
         this.properties = properties;
     }
-    
+
     public Calendar getCreatedate()
     {
         return createdate;
     }
+
     public void setCreatedate(Calendar createdate)
     {
         this.createdate = createdate;
@@ -151,32 +159,33 @@ public class Forum extends AbstractPersistable<Integer>
     {
         return moderators;
     }
+
     public void setModerators(Set<User> moderators)
     {
         this.moderators = moderators;
     }
-    
+
     @Override
     public boolean equals(Object object)
     {
-        if(this == object)
+        if (this == object)
         {
             return true;
         }
-        if(!(object instanceof Forum))
+        if (!(object instanceof Forum))
         {
             return false;
         }
-        final Forum forum = (Forum)object;
+        final Forum forum = (Forum) object;
         return new EqualsBuilder().append(id, forum.getId()).isEquals();
     }
-    
+
     @Override
     public int hashCode()
     {
         return new HashCodeBuilder().append(id).toHashCode();
     }
-    
+
     @Override
     public String toString()
     {

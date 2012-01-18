@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
     <entity metadata-complete="true" name="Post" class="net.jescort.domain.forum.Post" access="PROPERTY">
         <table name="posts"/>
-        <converter name="postStatus" class="net.jescort.persistence.eclipselink.mappings.converters.PostStatusConverter"/>
+        <converter name="postStatus"
+                   class="net.jescort.persistence.eclipselink.mappings.converters.PostStatusConverter"/>
         <entity-listeners>
             <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.PostListener">
                 <pre-persist method-name="prePersist"/>
@@ -16,10 +19,10 @@
                 <column name="topic_id" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="content">
-                <column name="content" insertable="true" updatable="true" unique="false" />
+                <column name="content" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="edits">
-                <column name="edits" insertable="true" updatable="true" unique="false" />
+                <column name="edits" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="createdate" mutable="true">
                 <column name="createdate" insertable="true" updatable="true" unique="false"/>

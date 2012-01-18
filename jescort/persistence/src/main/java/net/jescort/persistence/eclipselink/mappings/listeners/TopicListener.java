@@ -9,11 +9,11 @@ public class TopicListener implements EventListener
 {
     public void prePersist(Topic topic)
     {
-        if(null == topic)
+        if (null == topic)
         {
             return;
         }
-        if(null == topic.getCreatedate())
+        if (null == topic.getCreatedate())
         {
             topic.setCreatedate(Calendar.getInstance());
         }

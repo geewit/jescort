@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
+<entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
     <entity metadata-complete="true" name="Category" class="net.jescort.domain.forum.Category" access="PROPERTY">
         <table name="categories"/>
-        <converter name="categoryStatus" class="net.jescort.persistence.eclipselink.mappings.converters.CategoryStatusConverter"/>
+        <converter name="categoryStatus"
+                   class="net.jescort.persistence.eclipselink.mappings.converters.CategoryStatusConverter"/>
         <attributes>
             <id name="id">
                 <column name="id" unique="true"/>
                 <generated-value strategy="IDENTITY"/>
             </id>
             <basic name="subject">
-                <column name="subject" insertable="true" updatable="true" unique="false" />
+                <column name="subject" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="description">
-                <column name="description" insertable="true" updatable="true" unique="false" />
+                <column name="description" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="priority">
                 <column name="priority" insertable="true" updatable="true" unique="false"/>

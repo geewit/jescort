@@ -1,12 +1,10 @@
 package net.jescort.domain.forum;
 
-import java.io.File;
 import java.util.Calendar;
 import java.util.Map;
 
-import net.gelif.kernel.core.config.Properties;
+import net.gelif.kernel.core.config.JescortConfig;
 import net.gelif.kernel.core.data.domain.AbstractPersistable;
-import net.gelif.kernel.core.util.FileUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -42,6 +40,7 @@ public class Attachment extends AbstractPersistable<Integer>
     {
         return id;
     }
+
     public void setId(Integer id)
     {
         this.id = id;
@@ -51,6 +50,7 @@ public class Attachment extends AbstractPersistable<Integer>
     {
         return originalName;
     }
+
     public void setOriginalName(String originalName)
     {
         this.originalName = originalName;
@@ -60,6 +60,7 @@ public class Attachment extends AbstractPersistable<Integer>
     {
         return contentType;
     }
+
     public void setContentType(String contentType)
     {
         this.contentType = contentType;
@@ -69,6 +70,7 @@ public class Attachment extends AbstractPersistable<Integer>
     {
         return this.size;
     }
+
     public void setSize(long size)
     {
         this.size = size;
@@ -88,6 +90,7 @@ public class Attachment extends AbstractPersistable<Integer>
     {
         return properties;
     }
+
     public void setProperties(Map<String, String> properties)
     {
         this.properties = properties;
@@ -115,7 +118,7 @@ public class Attachment extends AbstractPersistable<Integer>
 
     public boolean isAllowed()
     {
-        return ArrayUtils.contains(StringUtils.split(Properties.getInstance().getConfig().getString("content.extension"), ","), contentType);
+        return ArrayUtils.contains(StringUtils.split(JescortConfig.getProperty("content.extension"), ","), contentType);
     }
 
     public float getKiloBytes()

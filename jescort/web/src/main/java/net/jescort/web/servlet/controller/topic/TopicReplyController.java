@@ -31,24 +31,23 @@ public class TopicReplyController
         model.addAttribute(post);
         return "posts/new";
     }
-    
+
     @RequestMapping(value = {"/topics/{topicId}/reply", "/posts/new"}, method = {RequestMethod.POST, RequestMethod.PUT})
     public String processSubmit(@ModelAttribute("post") @Valid Post post, BindingResult result, HttpServletRequest request, SessionStatus status)
     {
-        if(result.hasErrors())
+        if (result.hasErrors())
         {
             return "posts/new";
-        }
-        else
+        } else
         {
-            User currentUser = (User)SecurityUtils.getSubject().getPrincipal();
+            User currentUser = (User) SecurityUtils.getSubject().getPrincipal();
             post.setPoster(currentUser);
             escortRepository.replyTopic(post, request);
             status.setComplete();
             return "redirect:/posts/" + post.getId();
         }
     }
-    
+
     @Resource(name = "escortRepository")
     private EscortRepository escortRepository;
 }

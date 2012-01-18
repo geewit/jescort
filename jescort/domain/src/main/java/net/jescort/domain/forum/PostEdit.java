@@ -26,6 +26,7 @@ public class PostEdit extends AbstractPersistable<Integer>
     {
         return id;
     }
+
     public void setId(Integer id)
     {
         this.id = id;
@@ -35,6 +36,7 @@ public class PostEdit extends AbstractPersistable<Integer>
     {
         return editor;
     }
+
     public void setEditor(User editor)
     {
         this.editor = editor;
@@ -44,6 +46,7 @@ public class PostEdit extends AbstractPersistable<Integer>
     {
         return editdate;
     }
+
     public void setEditdate(Calendar editdate)
     {
         this.editdate = editdate;

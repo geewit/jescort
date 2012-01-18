@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
-    version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+             version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
     <persistence-unit name="escort">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <!--
@@ -9,53 +9,53 @@
         <non-jta-data-source>jdbc/__default</non-jta-data-source>
         -->
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
-        
+
         <properties>
-            <property name="eclipselink.logging.logger"                      value="JavaLogger"/>
-            <property name="eclipselink.logging.level"                       value="FINE"/>
-            <property name="eclipselink.logging.thread"                      value="false"/>
-            <property name="eclipselink.logging.session"                     value="false"/>
-            <property name="eclipselink.logging.timestamp"                   value="false"/>
-            <property name="eclipselink.logging.exceptions"                  value="false"/>
-            <property name="eclipselink.logging.file"                        value="jpa.log"/>
- 
+            <property name="eclipselink.logging.logger" value="JavaLogger"/>
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.logging.thread" value="false"/>
+            <property name="eclipselink.logging.session" value="false"/>
+            <property name="eclipselink.logging.timestamp" value="false"/>
+            <property name="eclipselink.logging.exceptions" value="false"/>
+            <property name="eclipselink.logging.file" value="jpa.log"/>
+
             <!-- The following properties should be customized to run the example -->
-            <property name="eclipselink.jdbc.read-connections.shared"        value="true"/>
-            <property name="eclipselink.jdbc.read-connections.min"           value="3"/>
-            <property name="eclipselink.jdbc.read-connections.max"           value="3"/>
-            <property name="eclipselink.jdbc.write-connections.min"          value="3"/>
-            <property name="eclipselink.jdbc.write-connections.max"          value="8"/>
-            <property name="eclipselink.jdbc.batch-writing"                  value="BUFFERED"/>
-            <property name="eclipselink.jdbc.native-sql"                     value="true"/>
-            
-            <property name="eclipselink.weaving"                             value="false"/>
-            
-            
-            <property name="eclipselink.target-server"                       value="SunAS9"/>
-            <property name="eclipselink.target-database"                     value="MySQL"/>
-            
-            <property name="eclipselink.orm.throw.exceptions"                value="false"/>
-            <property name="eclipselink.ddl-generation"                      value="drop-and-create-tables"/>
-            <property name="eclipselink.create-ddl-jdbc-file-name"           value="extended-xml-advanced-model-create.jdbc"/>
-            <property name="eclipselink.drop-ddl-jdbc-file-name"             value="extended-xml-advanced-model-drop.jdbc"/>
-            <property name="eclipselink.ddl-generation.output-mode"          value="sql-script"/>
-            
-            <property name="eclipselink.validate-existence"                  value="true"/>
-            
+            <property name="eclipselink.jdbc.read-connections.shared" value="true"/>
+            <property name="eclipselink.jdbc.read-connections.min" value="3"/>
+            <property name="eclipselink.jdbc.read-connections.max" value="3"/>
+            <property name="eclipselink.jdbc.write-connections.min" value="3"/>
+            <property name="eclipselink.jdbc.write-connections.max" value="8"/>
+            <property name="eclipselink.jdbc.batch-writing" value="BUFFERED"/>
+            <property name="eclipselink.jdbc.native-sql" value="true"/>
+
+            <property name="eclipselink.weaving" value="false"/>
+
+
+            <property name="eclipselink.target-server" value="SunAS9"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+
+            <property name="eclipselink.orm.throw.exceptions" value="false"/>
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="eclipselink.create-ddl-jdbc-file-name" value="extended-xml-advanced-model-create.jdbc"/>
+            <property name="eclipselink.drop-ddl-jdbc-file-name" value="extended-xml-advanced-model-drop.jdbc"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="sql-script"/>
+
+            <property name="eclipselink.validate-existence" value="true"/>
+
             <!--
-            <property name="jpa.sessions-xml"                        value="org/eclipse/persistence/testing/models/performance/pojo/sessions.xml"/>
-            <property name="jpa.session-name"                        value="org.eclipse.persistence.testing.models.performance.pojo"/>
-            <property name="jpa.session.customizer"                  value="org.eclipse.persistence.testing.models.jpa.advanced.Customizer"/>
-			<property name="jpa.session-event-listener"              value="org.eclipse.persistence.testing.tests.jpa.jpaadvancedproperties.CustomizedSessionEventListener"/>
-            <property name="jpa.session.include.descriptor.queries"  value="true"/>-->
-            
-			<property name="eclipselink.temporal.mutable"                    value="true"/>
-			
-			<property name="eclipselink.profiler"                            value="NoProfiler"/>
-			
-			<property name="eclipselink.cache.size.default"                  value="500"/>
-            <property name="eclipselink.cache.type.default"                  value="Full"/>
-            
+         <property name="jpa.sessions-xml"                        value="org/eclipse/persistence/testing/models/performance/pojo/sessions.xml"/>
+         <property name="jpa.session-name"                        value="org.eclipse.persistence.testing.models.performance.pojo"/>
+         <property name="jpa.session.customizer"                  value="org.eclipse.persistence.testing.models.jpa.advanced.Customizer"/>
+         <property name="jpa.session-event-listener"              value="org.eclipse.persistence.testing.tests.jpa.jpaadvancedproperties.CustomizedSessionEventListener"/>
+         <property name="jpa.session.include.descriptor.queries"  value="true"/>-->
+
+            <property name="eclipselink.temporal.mutable" value="true"/>
+
+            <property name="eclipselink.profiler" value="NoProfiler"/>
+
+            <property name="eclipselink.cache.size.default" value="500"/>
+            <property name="eclipselink.cache.type.default" value="Full"/>
+
         </properties>
     </persistence-unit>
 </persistence>

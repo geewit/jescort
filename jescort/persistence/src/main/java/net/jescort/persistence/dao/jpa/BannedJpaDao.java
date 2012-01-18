@@ -2,8 +2,9 @@ package net.jescort.persistence.dao.jpa;
 
 import java.util.List;
 import javax.persistence.Query;
+
 import net.gelif.kernel.persistence.dao.jpa.GenericJpaDao;
-import net.jescort.domain.enumerator.BanType;
+import net.jescort.domain.enums.BanType;
 import net.jescort.domain.forum.Banned;
 import net.jescort.persistence.dao.BannedDao;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -20,7 +21,7 @@ public class BannedJpaDao extends GenericJpaDao<Banned, Integer> implements Bann
     {
         return entityManager.createQuery("SELECT t FROM Banned t WHERE key = :key").setParameter("key", key).getResultList();
     }
-    
+
     @SuppressWarnings("unchecked")
     public List<Banned> findByKey(BanType key, int offset, int limit)
     {

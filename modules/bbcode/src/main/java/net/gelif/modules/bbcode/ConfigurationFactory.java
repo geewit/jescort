@@ -11,7 +11,7 @@ import java.io.*;
 
 /**
  * Create the text processor configuration
- * 
+ *
  * @author Vitaliy Samolovskih aka Kefir
  */
 public final class ConfigurationFactory
@@ -19,44 +19,43 @@ public final class ConfigurationFactory
     // Helper constants
     private static final String DEFAULT_USER_CONFIGURATION = "bbcode";
     private static final String CONFIGURATION_EXTENSION = ".xml";
-    
+
     // Configuration paths
     public static final String DEFAULT_USER_CONFIGURATION_FILE = DEFAULT_USER_CONFIGURATION + CONFIGURATION_EXTENSION;
     public static final String DEFAULT_CONFIGURATION_FILE = DEFAULT_USER_CONFIGURATION + CONFIGURATION_EXTENSION;
-    
+
     //public static final String DEFAULT_PROPERTIES_FILE = "bbcode.properties";
     //public static final String DEFAULT_PROPERTIES_XML_FILE = "bbcode.properties.xml";
-    
+
     private final DomConfigurationFactory domConfigurationFactory = DomConfigurationFactory.getInstance();
-    
+
     /**
      * Singletone class instance
      */
     private static final ConfigurationFactory instance = new ConfigurationFactory();
-    
+
     /**
      * private constructor
      */
     private ConfigurationFactory()
     {
     }
-    
+
     /**
      * Return instance of class ConfigurationFactory
-     * 
+     *
      * @return configuration factory
      */
     public static ConfigurationFactory getInstance()
     {
         return instance;
     }
-    
+
     /**
      * Create the default bb-code processor.
-     * 
+     *
      * @return Default bb-code processor
-     * @throws TextProcessorFactoryException
-     *             when can't read the default code set resource
+     * @throws TextProcessorFactoryException when can't read the default code set resource
      */
     public Configuration create()
     {
@@ -70,29 +69,26 @@ public final class ConfigurationFactory
                 stream = Util.openResourceStream(DEFAULT_USER_CONFIGURATION_FILE);
 
                 // If auth configuration not found then use default
-                if(stream == null)
+                if (stream == null)
                 {
                     stream = Util.openResourceStream(DEFAULT_CONFIGURATION_FILE);
                 }
 
-                if(stream != null)
+                if (stream != null)
                 {
                     configuration = create(stream);
-                }
-                else
+                } else
                 {
                     throw new TextProcessorFactoryException("Can't find or open resource.");
                 }
-            }
-            finally
+            } finally
             {
-                if(stream != null)
+                if (stream != null)
                 {
                     stream.close();
                 }
             }
-        }
-        catch(IOException e)
+        } catch (IOException e)
         {
             throw new TextProcessorFactoryException(e);
         }
@@ -102,15 +98,13 @@ public final class ConfigurationFactory
     /**
      * Create the bb-processor using xml-configuration resource
      *
-     * @param resourceName
-     *            name of resource file
+     * @param resourceName name of resource file
      * @return bb-code processor
-     * @throws TextProcessorFactoryException
-     *             when can't find or read the resource or illegal config file
+     * @throws TextProcessorFactoryException when can't find or read the resource or illegal config file
      */
     public Configuration createFromResource(String resourceName)
     {
-        if(resourceName == null)
+        if (resourceName == null)
         {
             throw new IllegalArgumentException("The resource name is not setted.");
         }
@@ -123,24 +117,21 @@ public final class ConfigurationFactory
             {
                 stream = Util.openResourceStream(resourceName);
 
-                if(stream != null)
+                if (stream != null)
                 {
                     configuration = create(stream);
-                }
-                else
+                } else
                 {
                     throw new TextProcessorFactoryException("Can't find or open resource \"" + resourceName + "\".");
                 }
-            }
-            finally
+            } finally
             {
-                if(stream != null)
+                if (stream != null)
                 {
                     stream.close();
                 }
             }
-        }
-        catch(IOException e)
+        } catch (IOException e)
         {
             throw new TextProcessorFactoryException(e);
         }
@@ -151,8 +142,7 @@ public final class ConfigurationFactory
     /**
      * Create the bb-code processor from file with XML-configuration.
      *
-     * @param fileName
-     *            name of file with configuration
+     * @param fileName name of file with configuration
      * @return bb-code processor
      */
     public Configuration create(String fileName)
@@ -163,8 +153,7 @@ public final class ConfigurationFactory
     /**
      * Create the bb-code processor from file with XML-configuration.
      *
-     * @param file
-     *            file with configuration
+     * @param file file with configuration
      * @return bb-code processor
      */
     public Configuration create(File file)
@@ -176,14 +165,12 @@ public final class ConfigurationFactory
             try
             {
                 configuration = create(stream);
-            }
-            finally
+            } finally
             {
                 stream.close();
             }
             return configuration;
-        }
-        catch(IOException e)
+        } catch (IOException e)
         {
             throw new TextProcessorFactoryException(e);
         }
@@ -192,11 +179,9 @@ public final class ConfigurationFactory
     /**
      * Create the bb-processor from XML InputStream
      *
-     * @param stream
-     *            the input stream with XML
+     * @param stream the input stream with XML
      * @return bb-code processor
-     * @throws TextProcessorFactoryException
-     *             when can't build Document
+     * @throws TextProcessorFactoryException when can't build Document
      */
     public Configuration create(InputStream stream)
     {
@@ -209,19 +194,16 @@ public final class ConfigurationFactory
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
             Document document = documentBuilder.parse(stream);
             return domConfigurationFactory.create(document);
-        }
-        catch(ParserConfigurationException e)
+        } catch (ParserConfigurationException e)
         {
             throw new TextProcessorFactoryException(e);
-        }
-        catch(IOException e)
+        } catch (IOException e)
         {
             throw new TextProcessorFactoryException(e);
-        }
-        catch(SAXException e)
+        } catch (SAXException e)
         {
             throw new TextProcessorFactoryException(e);
         }
     }
-    
+
 }

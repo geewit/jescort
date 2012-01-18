@@ -14,6 +14,6 @@ public class EmoticonJpaDao extends GenericJpaDao<Emoticon, Integer> implements 
 {
     public Emoticon findByEmoticon(String emoticon)
     {
-        return (Emoticon)entityManager.createQuery("SELECT t FROM  Emoticon t WHERE t.emoticon = :emoticon").setParameter("emoticon", emoticon).getSingleResult();
+        return (Emoticon) entityManager.createQuery("SELECT t FROM  Emoticon t WHERE t.emoticon = :emoticon").setParameter("emoticon", emoticon).getSingleResult();
     }
 }

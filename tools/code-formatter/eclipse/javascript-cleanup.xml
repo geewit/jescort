@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <profiles version="2">
-<profile kind="CleanUpProfile" name="escort" version="2">
+<profile kind="CleanUpProfile" name="jescort" version="2">
 <setting id="cleanup.add_missing_nls_tags" value="false"/>
 <setting id="cleanup.format_source_code" value="true"/>
 <setting id="cleanup.qualify_static_method_accesses_with_declaring_class" value="false"/>

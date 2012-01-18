@@ -11,7 +11,7 @@ public class DraftListener implements EventListener
     //@PreUpdate
     public void prePersist(Draft draft)
     {
-        if(null == draft)
+        if (null == draft)
         {
             return;
         }

@@ -22,12 +22,12 @@ import javax.validation.constraints.Size;
 public class RegisterCommand
 {
     @NotBlank
-    @Size(min=5, max=12)
+    @Size(min = 5, max = 12)
     @Pattern(regexp = "^[a-z][a-z0-9_-.]{4,30}[a-z0-9]$")
     private String username;
 
     @NotBlank
-    @Size(min=5, max=16)
+    @Size(min = 5, max = 16)
     private String password;
 
     @NotBlank

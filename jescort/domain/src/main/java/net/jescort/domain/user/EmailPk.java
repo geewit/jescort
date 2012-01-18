@@ -1,6 +1,7 @@
 package net.jescort.domain.user;
 
 import java.io.Serializable;
+
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
@@ -14,7 +15,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 public class EmailPk implements Serializable
 {
     private static final long serialVersionUID = 1L;
-    
+
     public EmailPk()
     {
     }
@@ -25,55 +26,57 @@ public class EmailPk implements Serializable
         this.personal = array[0];
         this.hostname = array[1];
     }
-    
+
     public EmailPk(String personal, String hostname)
     {
         this.personal = personal;
         this.hostname = hostname;
     }
-    
+
     private String personal;
     private String hostname;
-    
+
     public String getPersonal()
     {
         return personal;
     }
+
     public void setPersonal(String personal)
     {
         this.personal = personal;
     }
-    
+
     public String getHostname()
     {
         return hostname;
     }
+
     public void setHostname(String hostname)
     {
         this.hostname = hostname;
     }
-    
+
     @Override
     public boolean equals(Object object)
     {
-        if(this == object)
+        if (this == object)
         {
             return true;
         }
-        if(!(object instanceof EmailPk))
+        if (!(object instanceof EmailPk))
         {
             return false;
         }
-        final EmailPk pk = (EmailPk)object;
+        final EmailPk pk = (EmailPk) object;
         return new EqualsBuilder().append(personal, pk.getPersonal()).append(hostname, pk.getHostname()).isEquals();
     }
-    
+
     @Override
     public int hashCode()
     {
         return new HashCodeBuilder().append(personal).append(hostname).toHashCode();
     }
-    
+
     @Override
     public String toString()
     {

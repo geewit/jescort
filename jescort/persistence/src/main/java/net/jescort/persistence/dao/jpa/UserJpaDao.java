@@ -18,13 +18,13 @@ public class UserJpaDao extends GenericJpaDao<User, Integer> implements UserDao
     @Override
     public User findByUsername(String username)
     {
-        return (User)entityManager.createQuery("SELECT user FROM User user WHERE user.username = :username").setParameter("username", username).getSingleResult();
+        return (User) entityManager.createQuery("SELECT user FROM User user WHERE user.username = :username").setParameter("username", username).getSingleResult();
     }
 
     @Override
     public String findPasswordByUsername(String username)
     {
-        return (String)entityManager.createQuery("SELECT user.password FROM User user WHERE user.username = :username").setParameter("username", username).getSingleResult();
+        return (String) entityManager.createQuery("SELECT user.password FROM User user WHERE user.username = :username").setParameter("username", username).getSingleResult();
     }
 
     @Override
@@ -52,7 +52,6 @@ public class UserJpaDao extends GenericJpaDao<User, Integer> implements UserDao
     @Override
     public Blob findPhotoByUsername(String username)
     {
-        Blob blob = (Blob) entityManager.createNativeQuery("SELECT user_profiles.photo FROM user_profiles INNER JOIN users ON user_profiles.id = users.id WHERE users.username = ?").setParameter(1, username).getSingleResult();
-        return blob;
+        return (Blob) entityManager.createNativeQuery("SELECT user_profiles.photo FROM user_profiles INNER JOIN users ON user_profiles.id = users.id WHERE users.username = ?").setParameter(1, username).getSingleResult();
     }
 }

@@ -4,9 +4,7 @@
 <head><title><c:out value="${requestScope.exception.message}" default="pageNotFound"/></title></head>
 <div class="errors">
     <div class="error">${exception.class.name}</div>
-    <c:if test="${not empty exception.stackTrace}">
-    <c:forEach var="stackTrace" items="${exception.stackTrace}">
-    <pre style="overflow:hidden;"><c:out value="${stackTrace}"/></pre>
-    </c:forEach>
-    </c:if>
+    <c:if test="${not empty exception.stackTrace}"> <c:forEach var="stackTrace" items="${exception.stackTrace}">
+        <pre style="overflow:hidden;"><c:out value="${stackTrace}"/></pre>
+    </c:forEach> </c:if>
 </div>

@@ -1,14 +1,12 @@
 package net.jescort.web.binding;
 
-import net.gelif.kernel.core.config.Properties;
+import net.gelif.kernel.core.config.JescortConfig;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
 import org.springframework.web.bind.support.WebBindingInitializer;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
@@ -27,13 +25,13 @@ public class EscortBindingInitializer implements WebBindingInitializer
 
     public final void setValidator(Validator validator)
     {
-		this.validator = validator;
-	}
+        this.validator = validator;
+    }
 
-	public final Validator getValidator()
+    public final Validator getValidator()
     {
-		return this.validator;
-	}
+        return this.validator;
+    }
 
     public void initBinder(WebDataBinder binder, WebRequest request)
     {
@@ -46,11 +44,11 @@ public class EscortBindingInitializer implements WebBindingInitializer
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
         binder.setDisallowedFields(StringUtils.split(disallowedFields, ","));
-		if (this.validator != null && binder.getTarget() != null && this.validator.supports(binder.getTarget().getClass()))
+        if (this.validator != null && binder.getTarget() != null && this.validator.supports(binder.getTarget().getClass()))
         {
-			binder.setValidator(this.validator);
-		}
+            binder.setValidator(this.validator);
+        }
     }
 
-    private final static String disallowedFields = Properties.getInstance().getConfig().getString("webbinding.disallowed.fields");
+    private final static String disallowedFields = JescortConfig.getProperty("webbinding.disallowed.fields");
 }

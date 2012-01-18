@@ -7,7 +7,7 @@
         <version>0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    
+
     <groupId>net.gelif</groupId>
     <artifactId>jescort.search</artifactId>
     <packaging>jar</packaging>
@@ -15,10 +15,11 @@
 
     <scm>
         <connection>scm:svn:http://github.com/isaga/jescort/jescort/${project.artifactId}/</connection>
-        <developerConnection>scm:svn:https://github.com/isaga/jescort/jescort/${project.artifactId}/</developerConnection>
+        <developerConnection>scm:svn:https://github.com/isaga/jescort/jescort/${project.artifactId}/
+        </developerConnection>
         <url>http://github.com/isaga/jescort</url>
     </scm>
-    
+
     <dependencies>
         <dependency>
             <groupId>net.gelif</groupId>

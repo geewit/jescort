@@ -9,6 +9,7 @@ import org.apache.commons.logging.LogFactory;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
 /**
  * Created by IntelliJ IDEA.
  * User: admin@gelif.net
@@ -37,8 +38,7 @@ public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Obje
             final Object secondObj = BeanUtils.getProperty(value, secondFieldName);
 
             return firstObj == null && secondObj == null || firstObj != null && firstObj.equals(secondObj);
-        }
-        catch (final Exception ignore)
+        } catch (final Exception ignore)
         {
             logger.warn(logger.toString());
         }

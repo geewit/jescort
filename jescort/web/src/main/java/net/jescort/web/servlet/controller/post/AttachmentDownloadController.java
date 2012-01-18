@@ -28,7 +28,7 @@ public class AttachmentDownloadController
     private transient final Log logger = LogFactory.getLog(AttachmentDownloadController.class);
 
     @RequestMapping(value = "/attachments/{id}", method = RequestMethod.GET)
-    public void download(@PathVariable("id")Integer id, HttpServletResponse response)
+    public void download(@PathVariable("id") Integer id, HttpServletResponse response)
     {
         try
         {

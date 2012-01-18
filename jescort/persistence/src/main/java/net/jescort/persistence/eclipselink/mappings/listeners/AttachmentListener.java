@@ -10,11 +10,11 @@ public class AttachmentListener implements EventListener
     //@PrePersist
     public void prePersist(Attachment attachment)
     {
-        if(null == attachment)
+        if (null == attachment)
         {
             return;
         }
-        if(null == attachment.getCreatedate())
+        if (null == attachment.getCreatedate())
         {
             attachment.setCreatedate(Calendar.getInstance());
         }

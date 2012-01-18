@@ -1,7 +1,7 @@
 package net.jescort.persistence.dao;
 
 
-import net.jescort.domain.enumerator.IdName;
+import net.jescort.domain.enums.IdName;
 
 public interface IdGeneratorDao
 {

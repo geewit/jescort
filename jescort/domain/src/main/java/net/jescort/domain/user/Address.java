@@ -2,7 +2,7 @@ package net.jescort.domain.user;
 
 import net.gelif.kernel.core.data.domain.AbstractPersistable;
 import net.jescort.domain.Location;
-import net.jescort.domain.enumerator.AddressType;
+import net.jescort.domain.enums.AddressType;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -18,58 +18,63 @@ import org.apache.commons.lang.builder.ToStringStyle;
 public class Address extends AbstractPersistable<Integer>
 {
     private static final long serialVersionUID = 1L;
-    
+
     public Address()
     {
     }
-    
+
     private Integer id;
     private String postalcode;
     private String street;
     private Location location;
     private Integer priority;
     private AddressType type;
-    
+
     public Integer getId()
     {
         return id;
     }
+
     public void setId(Integer id)
     {
         this.id = id;
     }
-    
+
     public String getPostalcode()
     {
         return postalcode;
     }
+
     public void setPostalcode(String postalcode)
     {
         this.postalcode = postalcode;
     }
-    
+
     public String getStreet()
     {
         return street;
     }
+
     public void setStreet(String address)
     {
         this.street = address;
     }
-    
+
     public Location getLocation()
     {
         return location;
     }
+
     public void setLocation(Location location)
     {
         this.location = location;
     }
-    
+
     public Integer getPriority()
     {
         return priority;
     }
+
     public void setPriority(Integer priority)
     {
         this.priority = priority;
@@ -88,24 +93,24 @@ public class Address extends AbstractPersistable<Integer>
     @Override
     public boolean equals(Object object)
     {
-        if(this == object)
+        if (this == object)
         {
             return true;
         }
-        if(!(object instanceof Address))
+        if (!(object instanceof Address))
         {
             return false;
         }
-        final Address address = (Address)object;
+        final Address address = (Address) object;
         return new EqualsBuilder().append(id, address.getId()).isEquals();
     }
-    
+
     @Override
     public int hashCode()
     {
         return new HashCodeBuilder().append(id).toHashCode();
     }
-    
+
     @Override
     public String toString()
     {
