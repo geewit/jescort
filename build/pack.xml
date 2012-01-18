@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="jescort.common" xmlns:ivy="antlib:org.apache.ivy.ant">
+    <target name="resolve">
+        <ivy:resolve file="ivy.xml" conf="*"/>
+    </target>
+
+    <target name="retrieve">
+        <ivy:retrieve type="jar" conf="compile" log="download-only" sync="true"/>
+        <ivy:cachepath pathid="compile.classpath" type="jar" log="download-only"/>
+    </target>
+
+    <target name="report" depends="retrieve">
+        <ivy:report todir="${basedir}"/>
+    </target>
+
+    <target name="jar.kernel.core" depends="retrieve">
+        <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${kernel.core.main.java.dir}"/>
+        <jar jarfile="${exploded.lib.dir}/kernel.core.jar" basedir="${exploded.temp.classes.dir}" excludes="**/.svn"/>
+        <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
+        <mkdir dir="${exploded.temp.classes.dir}"/>
+    </target>
+
+    <target name="jar.kernel.persistence" depends="retrieve">
+        <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${kernel.persistence.main.java.dir}"/>
+        <jar jarfile="${exploded.lib.dir}/kernel.persistence.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
+        <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
+        <mkdir dir="${exploded.temp.classes.dir}"/>
+    </target>
+
+    <target name="jar.modules.bbcode" depends="retrieve">
+        <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${modules.bbcode.main.java.dir}"/>
+        <copy todir="${exploded.temp.classes.dir}" includeEmptyDirs="no">
+            <fileset dir="${modules.bbcode.main.resources.dir}" erroronmissingdir="false">
+                <include name="**/*.xml"/>
+                <include name="**/*.xsd"/>
+                <exclude name="**/.svn"/>
+            </fileset>
+        </copy>
+        <jar jarfile="${exploded.lib.dir}/modules.bbcode.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
+        <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
+        <mkdir dir="${exploded.temp.classes.dir}"/>
+    </target>
+
+    <target name="jar.modules.memcached" depends="retrieve">
+        <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${modules.memcached.main.java.dir}"/>
+        <jar jarfile="${exploded.lib.dir}/modules.memcached.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
+        <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
+        <mkdir dir="${exploded.temp.classes.dir}"/>
+    </target>
+
+    <target name="jar.modules.sendmail" depends="retrieve">
+        <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${modules.sendmail.main.java.dir}"/>
+        <jar jarfile="${exploded.lib.dir}/modules.sendmail.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
+        <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
+        <mkdir dir="${exploded.temp.classes.dir}"/>
+    </target>
+
+    <target name="jar.jescort.domain" depends="retrieve">
+        <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${jescort.domain.main.java.dir}"/>
+        <jar jarfile="${exploded.lib.dir}/jescort.domain.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
+        <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
+        <mkdir dir="${exploded.temp.classes.dir}"/>
+    </target>
+
+    <!--
+    <target name="jar.jescort.domain">
+        <ivy:cachepath pathid="compile.classpath" type="jar" log="download-only"/>
+        <compile src.dir="${jescort.domain.main.java.dir}" dest.dir="${exploded.temp.classes.dir}"/>
+        <copyfiles fromdir="${jescort.domain.main.dir}" todir="${exploded.temp.classes.dir}" />
+        <copy todir="${exploded.temp.classes.dir}" includeEmptyDirs="no">
+            <fileset dir="${jescort.persistence.main.resources.dir}" erroronmissingdir="false">
+                <include name="**/*.xml" />
+                <include name="**/*.properties" />
+                <exclude name="**/.svn" />
+            </fileset>
+        </copy>
+        <ivy:cachepath resolveId="eclipselink.weave.classpath" pathid="eclipselink.weave.classpath" organisation="org.eclipse.persistence"
+            module="eclipselink" revision="${eclipselink.version}"
+            type="jar" inline="true" log="download-only"/>
+        <ivy:cachepath resolveId="javax.persistence.classpath" pathid="javax.persistence.classpath" organisation="org.eclipse.persistence"
+                    module="javax.persistence" revision="${javax.persistence.version}"
+                    type="jar" inline="true" log="download-only"/>
+        <taskdef name="weave" classname="org.eclipse.persistence.tools.weaving.jpa.StaticWeaveAntTask">
+            <classpath>
+                <path refid="eclipselink.weave.classpath"/>
+                <path refid="javax.persistence.classpath"/>
+            </classpath>
+        </taskdef>
+        <sequential>
+            <weave source="${exploded.temp.classes.dir}" target="${exploded.temp.classes.dir}" loglevel="FINEST">
+                <classpath>
+                    <path refid="compile.classpath"/>
+                    <fileset dir="${exploded.lib.dir}">
+                        <include name="*.jar" />
+                    </fileset>
+                </classpath>
+            </weave>
+        </sequential>
+        <jar jarfile="${exploded.lib.dir}/jescort.domain.jar" basedir="${exploded.temp.classes.dir}" excludes="**/.svn,**/*.xml" />
+        <delete quiet="true" dir="${exploded.temp.classes.dir}" />
+        <mkdir dir="${exploded.temp.classes.dir}" />
+    </target>
+    -->
+
+    <!---->
+    <target name="jar.jescort.repository" depends="retrieve">
+        <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${jescort.repository.main.java.dir}"/>
+        <jar jarfile="${exploded.lib.dir}/jescort.repository.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
+        <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
+        <mkdir dir="${exploded.temp.classes.dir}"/>
+    </target>
+
+    <target name="jar.jescort.persistence" depends="retrieve">
+        <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${jescort.persistence.main.java.dir}"/>
+        <jar jarfile="${exploded.lib.dir}/jescort.persistence.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
+        <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
+        <mkdir dir="${exploded.temp.classes.dir}"/>
+    </target>
+
+    <target name="jar.jescort.security" depends="retrieve">
+        <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${jescort.security.main.java.dir}"/>
+        <jar jarfile="${exploded.lib.dir}/jescort.security.jar" basedir="${exploded.temp.classes.dir}"
+             excludes="**/.svn"/>
+        <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
+        <mkdir dir="${exploded.temp.classes.dir}"/>
+    </target>
+
+    <target name="jar.jescort.web" depends="retrieve">
+        <compile dest.dir="${exploded.temp.classes.dir}" src.dir="${jescort.web.main.java.dir}"/>
+        <jar jarfile="${exploded.lib.dir}/jescort.web.jar" basedir="${exploded.temp.classes.dir}" excludes="**/.svn"/>
+        <delete quiet="true" dir="${exploded.temp.classes.dir}"/>
+        <mkdir dir="${exploded.temp.classes.dir}"/>
+    </target>
+
+    <target name="create.schema" description="excute create sql" depends="retrieve">
+        <sql driver="${jdbc.mysql.driverClassName}" url="${jdbc.mysql.url}" userid="${jdbc.mysql.username}"
+             password="${jdbc.mysql.password}" encoding="UTF-8" print="no" onerror="continue">
+            <fileset dir="${database.create.dir}">
+                <include name="*.sql"/>
+            </fileset>
+            <classpath>
+                <path refid="compile.classpath"/>
+            </classpath>
+        </sql>
+    </target>
+
+    <target name="alter.schema" description="excute alter sql" depends="retrieve">
+        <sql driver="${jdbc.mysql.driverClassName}" url="${jdbc.mysql.url}" userid="${jdbc.mysql.username}"
+             password="${jdbc.mysql.password}" encoding="UTF-8" print="no" onerror="continue">
+            <fileset dir="${database.alter.dir}">
+                <include name="*.sql"/>
+            </fileset>
+            <classpath>
+                <path refid="compile.classpath"/>
+            </classpath>
+        </sql>
+    </target>
+
+    <target name="insert.schema" description="excute insert sql" depends="retrieve">
+        <sql driver="${jdbc.mysql.driverClassName}" url="${jdbc.mysql.url}" userid="${jdbc.mysql.username}"
+             password="${jdbc.mysql.password}" encoding="UTF-8" print="no" onerror="continue">
+            <fileset dir="${database.insert.dir}">
+                <include name="*.sql"/>
+            </fileset>
+            <classpath>
+                <path refid="compile.classpath"/>
+            </classpath>
+        </sql>
+    </target>
+
+    <target name="update.schema" description="excute update sql" depends="retrieve">
+        <sql driver="${jdbc.mysql.driverClassName}" url="${jdbc.mysql.url}" userid="${jdbc.mysql.username}"
+             password="${jdbc.mysql.password}" encoding="UTF-8" print="no" onerror="continue">
+            <fileset dir="${database.update.dir}">
+                <include name="*update.sql"/>
+            </fileset>
+            <classpath>
+                <path refid="compile.classpath"/>
+            </classpath>
+        </sql>
+    </target>
+
+    <target name="initdb">
+        <sequential>
+            <antcall target="create.schema"/>
+            <!--<antcall target="alter.schema" />-->
+            <antcall target="insert.schema"/>
+            <!--<antcall target="update.schema" />-->
+        </sequential>
+    </target>
+</project>
