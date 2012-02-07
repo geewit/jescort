@@ -1,4 +1,4 @@
-package net.jescort.seurity.shiro;
+package net.jescort.seurity.shiro.web.filter;
 
 /**
  * Created by IntelliJ IDEA.

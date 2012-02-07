@@ -25,7 +25,7 @@ import java.util.List;
 @Controller
 @SessionAttributes(types = Message.class)
 @RequestMapping(value = {"/messages/new"})
-public class SendMessageController
+public class MessageSendController
 {
     @Resource(name = "userRepository")
     private UserRepository userRepository;
