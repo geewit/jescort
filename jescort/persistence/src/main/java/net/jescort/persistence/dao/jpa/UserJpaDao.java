@@ -15,6 +15,8 @@ import java.sql.Blob;
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class UserJpaDao extends GenericJpaDao<User, Integer> implements UserDao
 {
+    //private transient final static Log logger = LogFactory.getLog(UserJpaDao.class);
+
     @Override
     public User findByUsername(String username)
     {

@@ -4,6 +4,8 @@
                  xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
     <entity metadata-complete="true" name="User" class="net.jescort.domain.user.User" access="PROPERTY">
         <table name="users"/>
+        <converter name="locale"
+                   class="net.jescort.persistence.eclipselink.mappings.converters.LocaleConverter"/>
         <entity-listeners>
             <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.UserListener">
                 <pre-persist method-name="prePersist"/>
@@ -14,7 +16,7 @@
             <id name="id">
                 <column name="id" unique="true"/>
                 <!--<generated-value strategy="TABLE" generator="userIdGenerator"/>
-                <table-generator name="userIdGenerator" table="pk_gen" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="user_id" allocation-size="1" initial-value="1"/>-->
+                <table-generator name="userIdGenerator" table="id_generator" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="user_id" allocation-size="1" initial-value="1"/>-->
             </id>
             <basic name="username">
                 <column name="username" insertable="true" updatable="true" unique="true"/>
@@ -27,6 +29,10 @@
             </basic>
             <basic name="timezone">
                 <column name="timezone" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="locale">
+                <column name="locale" insertable="true" updatable="true" unique="false"/>
+                <convert>locale</convert>
             </basic>
             <basic name="posts">
                 <column name="posts" insertable="true" updatable="true" unique="false"/>
@@ -52,6 +58,9 @@
             <one-to-many name="emails" target-entity="net.jescort.domain.user.Email" fetch="LAZY">
                 <order-by>priority</order-by>
                 <join-column name="user_id" referenced-column-name="id"/>
+                <cascade>
+                    <cascade-all />
+                </cascade>
             </one-to-many>
             <one-to-many name="addresses" target-entity="net.jescort.domain.user.Address" fetch="LAZY">
                 <order-by>priority</order-by>
@@ -59,6 +68,11 @@
             </one-to-many>
             <one-to-one name="profile" target-entity="net.jescort.domain.user.Profile" fetch="LAZY">
                 <join-column name="id" referenced-column-name="id" insertable="false" updatable="false"/>
+                <cascade>
+                    <cascade-persist/>
+                    <cascade-merge/>
+                    <cascade-remove/>
+                </cascade>
             </one-to-one>
             <!---->
             <many-to-many name="groups" target-entity="net.jescort.domain.user.Group" fetch="LAZY">
@@ -68,8 +82,6 @@
                     <inverse-join-column name="group_id" referenced-column-name="id"/>
                 </join-table>
             </many-to-many>
-            <embedded name="name"/>
-            <transient name="permissions"/>
             <!--
             <transient name="mainAddress"/>
             <transient name="mainEmail"/>

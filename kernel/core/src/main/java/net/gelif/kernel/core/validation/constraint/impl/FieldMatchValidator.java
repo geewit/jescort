@@ -18,7 +18,7 @@ import javax.validation.ConstraintValidatorContext;
  */
 public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Object>
 {
-    private transient final Log logger = LogFactory.getLog(FieldMatchValidator.class);
+    private transient final static Log logger = LogFactory.getLog(FieldMatchValidator.class);
     private String firstFieldName;
     private String secondFieldName;
 
@@ -40,7 +40,7 @@ public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Obje
             return firstObj == null && secondObj == null || firstObj != null && firstObj.equals(secondObj);
         } catch (final Exception ignore)
         {
-            logger.warn(logger.toString());
+            logger.warn(ignore.toString());
         }
         return true;
     }

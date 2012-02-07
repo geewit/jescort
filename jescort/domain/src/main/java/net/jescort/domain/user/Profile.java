@@ -28,9 +28,11 @@ public class Profile implements Serializable
 
     private Gender gender;
 
+    private Name name;
+
     private Calendar birthday;
 
-    private byte[] photo;
+    private byte[] avatar;
 
     private String signature;
 
@@ -54,6 +56,16 @@ public class Profile implements Serializable
         this.gender = gender;
     }
 
+    public Name getName()
+    {
+        return name;
+    }
+
+    public void setName(Name name)
+    {
+        this.name = name;
+    }
+
     public Calendar getBirthday()
     {
         return birthday;
@@ -64,14 +76,14 @@ public class Profile implements Serializable
         this.birthday = birthday;
     }
 
-    public byte[] getPhoto()
+    public byte[] getAvatar()
     {
-        return photo;
+        return avatar;
     }
 
-    public void setPhoto(byte[] photo)
+    public void setAvatar(byte[] avatar)
     {
-        this.photo = photo;
+        this.avatar = avatar;
     }
 
     public String getSignature()
@@ -113,7 +125,7 @@ public class Profile implements Serializable
     @Override
     public String toString()
     {
-        ToStringBuilder sb = new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", this.id);
+        ToStringBuilder sb = new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", this.id).append("name", null != this.name ? this.name.toString() : null);
         return sb.toString();
     }
 }

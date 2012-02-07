@@ -23,8 +23,7 @@
             </basic>
             <!---->
             <many-to-one name="parent" target-entity="net.jescort.domain.user.Group" fetch="LAZY">
-                <join-column name="parent_id" referenced-column-name="id" insertable="true" updatable="true"
-                             nullable="true"/>
+                <join-column name="parent_id" referenced-column-name="id" insertable="false" updatable="false" nullable="true"/>
             </many-to-one>
             <one-to-many name="children" mapped-by="parent" target-entity="net.jescort.domain.user.Group" fetch="LAZY">
                 <cascade>

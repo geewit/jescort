@@ -30,7 +30,7 @@
                                     <h3>Your Personal Photo</h3>
 
                                     <p class="message unspecific">
-                                        This section will allow you to specify a photo to be used in your profile which is viewable by other board members.
+                                        This section will allow you to specify a avatar to be used in your profile which is viewable by other board members.
                                         <br>All photos must be no larger than 100 kB.<br>Photos must be no bigger than 150 pixels by 150 pixels.
                                     </p>
                                 </fieldset>

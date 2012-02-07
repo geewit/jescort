@@ -36,7 +36,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class EscortRepositoryImpl implements EscortRepository
 {
-    protected transient final Log logger = LogFactory.getLog(this.getClass());
+    protected transient final static Log logger = LogFactory.getLog(EscortRepositoryImpl.class);
 
     public static TextProcessor processor = BBProcessorFactory.getInstance().create();
 
@@ -160,7 +160,9 @@ public class EscortRepositoryImpl implements EscortRepository
         List<Topic> topics = topicDao.findByForum(forumId, pageable);
         for(Topic topic : topics)
         {
-            topic.getRootPost().setContent(processor.process(topic.getRootPost().getContent()));
+            Post rootPost = topic.getRootPost();
+            String content = rootPost.getContent();
+            topic.getRootPost().setContent(processor.process(content));
         }
         Page<Topic> page = new PageImpl<Topic>(topics);
         return page;
@@ -169,7 +171,6 @@ public class EscortRepositoryImpl implements EscortRepository
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ModelAndView topicView(final Integer topicId, final Integer pageNo, final Integer pageSize, final ModelAndView mav)
     {
-        logger.debug("pageNo == " + pageNo + "\n" + "pageSize == " + pageSize);
         Topic topic = topicDao.findOne(topicId);
         topic.getRootPost().setContent(processor.process(topic.getRootPost().getContent()));
         Pageable pageable = PageableFactory.create(pageNo, pageSize);

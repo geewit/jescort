@@ -20,10 +20,14 @@
     <div style="margin-top:10px;" class="topic_controls">
         <jescort:pager page="${topics}" requestUrl="/forums/${forum.id}"/>
         <ul class="topic_buttons">
+            <shiro:hasPermission name="topic:new">
             <li>
-                <a accesskey="s" title="Start New Topic" href="<spring:url value="/"/>"><img alt="Start New Topic" src="<spring:url value="/static/images/page_white_add.png"/>"><spring:message code="message.start_new_topic"/></a>
+                <a accesskey="s" title="<spring:message code="message.start_new_topic"/>" href="<spring:url value="/"/>"><img alt="<spring:message code="message.start_new_topic"/>" src="<spring:url value="/static/images/page_white_add.png"/>"><spring:message code="message.start_new_topic"/></a>
             </li>
+            </shiro:hasPermission>
+            <shiro:lacksPermission name="topic:new">
             <li class="disabled"><spring:message code="message.cannot_start_new_topic"/></li>
+            </shiro:lacksPermission>
         </ul>
     </div>
     <div style="padding-top: 0;" class="category_block block_wrap clear">
@@ -36,8 +40,7 @@
                     <th class="col_f_icon" scope="col">&nbsp;</th>
                     <th class="col_f_topic" scope="col"><spring:message code="message.topic"/></th>
                     <th class="col_f_starter short" scope="col"><spring:message code="message.author"/></th>
-                    <th class="col_f_views stats" scope="col">
-                        <spring:message code="message.topic_replies_and_views"/></th>
+                    <th class="col_f_views stats" scope="col"><spring:message code="message.topic_replies_and_views"/></th>
                     <th class="col_f_post" scope="col"><spring:message code="message.last_post_info"/></th>
                     <th style="width: 1%;"></th>
                 </tr>
@@ -59,7 +62,7 @@
                             <td class="desc stats">
                                 <ul>
                                     <li>
-                                            ${topic.replies} / ${topic.views}
+                                        ${topic.replies} / ${topic.views}
                                     </li>
                                 </ul>
                             </td>
@@ -67,11 +70,17 @@
                                 <ul class="last_post">
                                     <li>
                                         <a title="<spring:message code="message.last_post"/>" href="<spring:url value="/topic/${forum.lastPost.id}"/>">
-                                            <c:choose> <c:when test="${topic.lastPost.edits == 0}">
-                                                <fmt:formatDate value="${forum.lastPost.createdate.time}" type="both" pattern="yyyy-MM-dd HH:mm:ss"/>
-                                            </c:when> <c:otherwise> <c:when test="${not empty forum.lastPost.edit}">
-                                                <fmt:formatDate value="${forum.lastPost.edit.editdate.time}" type="both" pattern="yyyy-MM-dd HH:mm:ss"/>
-                                            </c:when> </c:otherwise> </c:choose> </a>
+                                            <c:choose>
+                                                <c:when test="${forum.lastPost.edits == 0}">
+                                                    <fmt:formatDate value="${forum.lastPost.createdate.time}" type="both" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <c:when test="${not empty forum.lastPost.edit}">
+                                                        <fmt:formatDate value="${forum.lastPost.edit.editdate.time}" type="both" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                                    </c:when>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </a>
                                     </li>
                                     <li>
                                         <spring:url value="/posts/${forum.lastPost.topicId}" var="lastPostUrl"/>
@@ -93,11 +102,14 @@
         <div class="topic_controls">
             <jescort:pager page="${topics}" requestUrl="/forums/${forum.id}"/>
             <ul class="topic_buttons">
+                <shiro:hasPermission name="topic:new">
                 <li>
-                    <a title="<spring:message code="message.start_new_topic"/>" href="<spring:url value="/forums/${forum.id}/topics/new"/>">
-                        <img alt="<spring:message code="message.start_new_topic"/>" src="<spring:url value="/static/images/page_white_add.png"/>">
-                        <spring:message code="message.start_new_topic"/> </a>
+                    <a accesskey="s" title="<spring:message code="message.start_new_topic"/>" href="<spring:url value="/"/>"><img alt="<spring:message code="message.start_new_topic"/>" src="<spring:url value="/static/images/page_white_add.png"/>"><spring:message code="message.start_new_topic"/></a>
                 </li>
+                </shiro:hasPermission>
+                <shiro:lacksPermission name="topic:new">
+                <li class="disabled"><spring:message code="message.cannot_start_new_topic"/></li>
+                </shiro:lacksPermission>
             </ul>
         </div>
         <div class="clear"></div>

@@ -4,6 +4,7 @@ import net.gelif.kernel.core.data.domain.AbstractPersistable;
 import org.apache.commons.lang.builder.*;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by IntelliJ IDEA.
@@ -30,7 +31,7 @@ public class Role extends AbstractPersistable<Integer> implements Comparable<Rol
     private String authority;
     private String description;
     private Integer priority;
-    private List<Permission> permissions;
+    private Set<String> permissions;
 
     public Integer getId()
     {
@@ -62,12 +63,12 @@ public class Role extends AbstractPersistable<Integer> implements Comparable<Rol
         this.description = description;
     }
 
-    public List<Permission> getPermissions()
+    public Set<String> getPermissions()
     {
         return permissions;
     }
 
-    public void setPermissions(List<Permission> permissions)
+    public void setPermissions(Set<String> permissions)
     {
         this.permissions = permissions;
     }

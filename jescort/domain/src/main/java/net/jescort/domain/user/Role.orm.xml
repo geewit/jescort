@@ -21,9 +21,12 @@
             <basic name="priority">
                 <column name="priority" insertable="true" updatable="true" unique="false"/>
             </basic>
-            <one-to-many name="permissions" target-entity="net.jescort.domain.user.Permission" fetch="LAZY">
-                <join-column name="role_id" referenced-column-name="id"/>
-            </one-to-many>
+            <element-collection name="permissions" attribute-type="java.util.Set" target-class="String">
+                <column name="permission" />
+                <collection-table name="permissions">
+                    <join-column column-definition="role_id" referenced-column-name="id"/>
+                </collection-table>
+            </element-collection>
         </attributes>
     </entity>
 </entity-mappings>

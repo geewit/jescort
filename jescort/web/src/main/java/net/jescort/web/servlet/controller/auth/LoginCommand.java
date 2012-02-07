@@ -1,5 +1,10 @@
 package net.jescort.web.servlet.controller.auth;
 
+
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.Size;
+
 /**
  * Created by IntelliJ IDEA.
  * User: admin@gelif.net
@@ -8,8 +13,13 @@ package net.jescort.web.servlet.controller.auth;
  */
 public class LoginCommand
 {
+    @NotBlank
+    @Size(min = 5, max = 12)
     private String username;
+
+    @NotBlank
     private String password;
+
     private Boolean rememberMe;
 
     public String getUsername()

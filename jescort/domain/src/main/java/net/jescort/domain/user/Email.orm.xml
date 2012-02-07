@@ -13,6 +13,9 @@
                     <column name="hostname" insertable="true" updatable="true" unique="false"/>
                 </attribute-override>
             </embedded-id>
+            <basic name="userId">
+                <column name="user_id" insertable="true" updatable="true" unique="false"/>
+            </basic>
             <basic name="priority">
                 <column name="priority" insertable="true" updatable="true" unique="false"/>
             </basic>

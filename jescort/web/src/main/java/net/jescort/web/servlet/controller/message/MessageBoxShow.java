@@ -49,7 +49,7 @@ public class MessageBoxShow
 
     private ModelAndView messageBoxModelAndView(Integer pageNo, Integer pageSize)
     {
-        final Integer currentUserId = (Integer) SecurityUtils.getSubject().getPrincipal();
+        final Integer currentUserId = ((User) SecurityUtils.getSubject().getPrincipal()).getId();
         ModelAndView mav = new ModelAndView("messages/messageBox");
         return userRepository.messageBoxView(currentUserId, pageNo, pageSize, mav);
     }

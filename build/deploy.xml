@@ -95,8 +95,10 @@
             <arg line="-jar"/>
             <arg path="${yuicompressor.jar}"/>
             <arg line="--type js"/>
+            <arg line="--charset" />
+            <arg line="utf-8" />
             <srcfile/>
-            <arg line="-o"/>
+            <arg value="-o"/>
             <globmapper from="*.js" to="${exploded.dir}/*.js"/>
             <targetfile/>
         </apply>
@@ -120,8 +122,10 @@
             <arg line="-jar"/>
             <arg path="${yuicompressor.jar}"/>
             <arg line="--type css"/>
+            <arg line="--charset" />
+            <arg line="utf-8" />
             <srcfile/>
-            <arg line="-o"/>
+            <arg value="-o"/>
             <globmapper from="*.css" to="${exploded.dir}/*.css"/>
             <targetfile/>
         </apply>

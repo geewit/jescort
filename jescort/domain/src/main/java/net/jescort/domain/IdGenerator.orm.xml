@@ -5,12 +5,9 @@
     <entity metadata-complete="true" name="IdGenerator" class="net.jescort.domain.IdGenerator" access="PROPERTY">
         <table name="id_generator"/>
         <attributes>
-            <id name="id">
-                <column name="id" unique="true"/>
-            </id>
-            <basic name="name">
+            <id name="name">
                 <column name="gen_name" unique="true"/>
-            </basic>
+            </id>
             <basic name="value">
                 <column name="gen_value" insertable="true" updatable="true" unique="false"/>
             </basic>

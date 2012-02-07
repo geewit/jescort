@@ -12,10 +12,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository("idGeneratorDao")
 @Scope(BeanDefinition.SCOPE_SINGLETON)
-public class IdGeneratorJpaDao extends GenericJpaDao<IdGenerator, Integer> implements IdGeneratorDao
+public class IdGeneratorJpaDao extends GenericJpaDao<IdGenerator, String> implements IdGeneratorDao
 {
+    //private transient final static Log logger = LogFactory.getLog(IdGeneratorJpaDao.class);
+
     public Integer newId(IdName idName) throws DataAccessException
-    {
+    {;
         IdGenerator idGenerator = entityManager.find(IdGenerator.class, idName.getIdName());
         Integer id = idGenerator.getValue();
         idGenerator.setValue(id + 1);

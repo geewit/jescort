@@ -59,6 +59,11 @@
         <put-attribute name="content" value="/jsp/auth/register.jsp"/>
     </definition>
 
+    <definition name="auth/profile" extends="auth.layout">
+        <put-attribute name="title" value="messages.auth.profile.title"/>
+        <put-attribute name="content" value="/jsp/auth/profile.jsp"/>
+    </definition>
+
     <definition name="categories/show" extends=".layout">
         <put-attribute name="title" value="messages.categories.show.title"/>
         <put-attribute name="content" value="/jsp/categories/show.jsp"/>

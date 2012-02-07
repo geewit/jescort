@@ -40,7 +40,7 @@
                 </collection-table>
             </basic-map>
             <many-to-one name="poster" target-entity="net.jescort.domain.user.User" fetch="LAZY">
-                <join-column name="poster_id" referenced-column-name="id"/>
+                <join-column name="poster_id" referenced-column-name="id" insertable="false" updatable="false"/>
             </many-to-one>
             <one-to-one name="edit" target-entity="net.jescort.domain.forum.PostEdit" fetch="LAZY">
                 <join-column name="id" referenced-column-name="id" insertable="false" updatable="false"/>

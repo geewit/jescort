@@ -24,13 +24,11 @@ public class Topic extends AbstractPersistable<Integer> implements Comparable<To
 
     public Topic()
     {
-        this.rootPost = new Post();
     }
 
     public Topic(Integer id)
     {
         this.id = id;
-        this.rootPost = new Post();
     }
 
     private Integer id;

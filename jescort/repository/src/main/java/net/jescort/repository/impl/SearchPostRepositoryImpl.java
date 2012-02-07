@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class SearchPostRepositoryImpl implements SearchPostRepository
 {
-    protected transient final Log logger = LogFactory.getLog(this.getClass());
+    protected transient final static Log logger = LogFactory.getLog(SearchPostRepositoryImpl.class);
 
     private final String INDEXPATH = "k:\\index";
     private Analyzer analyzer = new SmartChineseAnalyzer(Version.LUCENE_33);
@@ -62,7 +62,7 @@ public class SearchPostRepositoryImpl implements SearchPostRepository
 
             //QueryParser parser = new QueryParser(fieldName, analyzer); //单 key 搜索
             //Query queryOBJ = parser.parse(query);
-            System.out.println(">>> 2.开始读取索引... ... 通过关键字：【 " + keywords + " 】");
+            logger.info(">>> 2.开始读取索引... ... 通过关键字：【 " + keywords + " 】");
 
             //下面的是进行title,content 两个范围内进行收索.
             BooleanClause.Occur[] clauses = {BooleanClause.Occur.SHOULD, BooleanClause.Occur.SHOULD};
@@ -72,7 +72,7 @@ public class SearchPostRepositoryImpl implements SearchPostRepository
             //################# 搜索相似度最高的记录 ###################
             TopDocs topDocs = indexSearcher.search(queryOBJ, filter, 1000);
             //TopDocs topDocs = indexSearcher.search(queryOBJ , 10000);
-            System.out.println("*** 共匹配：" + topDocs.totalHits + "个 ***");
+            logger.info("*** 共匹配：" + topDocs.totalHits + "个 ***");
 
             Post post = null;
 

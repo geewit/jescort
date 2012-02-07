@@ -1,7 +1,5 @@
 package net.jescort.web.jsp.taglib;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.NoSuchMessageException;
 import org.springframework.data.domain.Page;
@@ -11,14 +9,12 @@ import org.springframework.web.servlet.support.JspAwareRequestContext;
 import org.springframework.web.servlet.support.RequestContext;
 import org.springframework.web.util.ExpressionEvaluationUtils;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.tagext.TagSupport;
 import javax.servlet.jsp.tagext.TryCatchFinally;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -63,9 +59,9 @@ public class PagerTemplateTag extends TagSupport implements TryCatchFinally
         {
             pageContext.getOut().write(getPagerHtml());
             return EVAL_BODY_INCLUDE;
-        } catch (IOException io)
+        } catch (IOException ioe)
         {
-            throw new JspException(io);
+            throw new JspException(ioe);
         }
     }
 
@@ -126,17 +122,16 @@ public class PagerTemplateTag extends TagSupport implements TryCatchFinally
         }
         sb.append("<img src=\"" + contextPath + "/static/images/dropdown.png\" alt=\"+\"/>");
         sb.append("</li>\n");
-
         boolean isFirstPage = page.isFirstPage();
         if (!isFirstPage)
         {
             if (page.hasPreviousPage())
             {
                 int previousPage = number - 1;
-                sb.append("<li><a href=\"" + requstUri + "/page/1\" title=\"Next page\" rel=\"first\">");
+                sb.append("<li><a href=\"" + requstUri + "/page/1\" title=\"" + resolveMessage("message.first_page", null) + "\" rel=\"first\">");
                 sb.append(resolveMessage("message.first_page", null));
                 sb.append("</a></li>\n");
-                sb.append("<li><a href=\"" + requstUri + "/page/" + previousPage + "\" title=\"Next page\" rel=\"previous\">");
+                sb.append("<li><a href=\"" + requstUri + "/page/" + previousPage + "\" title=\"" + resolveMessage("message.previous_page", null) + "\" rel=\"previous\">");
                 sb.append(resolveMessage("message.previous_page", null));
                 sb.append("</a></li>\n");
             }
@@ -152,7 +147,7 @@ public class PagerTemplateTag extends TagSupport implements TryCatchFinally
             }
         }
         sb.append("<li class=\"active\">" + number + "</li>\n");
-        if (!page.isLastPage())
+        if (!page.isLastPage() && page.getNumber() > 0)
         {
             int i = number;
             int restPages = totalPages - number;
@@ -167,10 +162,10 @@ public class PagerTemplateTag extends TagSupport implements TryCatchFinally
             if (page.hasNextPage())
             {
                 int nextPage = number + 1;
-                sb.append("<li><a href=\"" + requstUri + "/page/" + nextPage + "\" title=\"Next page\" rel=\"next\">");
+                sb.append("<li><a href=\"" + requstUri + "/page/" + nextPage + "\" title=\"" + resolveMessage("message.next_page", null) + "\" rel=\"next\">");
                 sb.append(resolveMessage("message.next_page", null));
                 sb.append("</a></li>\n");
-                sb.append("<li><a href=\"" + requstUri + "/page/" + totalPages + "\" title=\"Last page\" rel=\"last\">");
+                sb.append("<li><a href=\"" + requstUri + "/page/" + totalPages + "\" title=\"" + resolveMessage("message.last_page", null) + "\" rel=\"last\">");
                 sb.append(resolveMessage("message.last_page", null));
                 sb.append("</a></li>\n");
             }

@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Blob;
 import java.util.Collection;
+import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -22,8 +23,10 @@ public interface UserRepository
 
     public void createUser(final User user);
 
-    public void createUser(final String username, final String password, final String email);
+    public void createUser(final String username, final String password, final String email, final String timezone, final Locale locale);
 
+    public void updateUser(final User user);
+    
     public User getUser(final Integer id);
 
     public User findUserByUsername(final String username);

@@ -25,6 +25,8 @@ public class Name implements Serializable
         this.famaliyName = famaliyName;
         this.givenName = givenName;
     }
+    
+    public final static Name EMPTY_NAME = new Name("", "");
 
     private String famaliyName;
     private String givenName;

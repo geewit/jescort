@@ -22,6 +22,7 @@ public class EscortRealm extends AuthorizingRealm
 {
     public EscortRealm()
     {
+        setName("EscortRealm");
         setCredentialsMatcher(new HashedCredentialsMatcher("SHA-1"));
     }
 
@@ -42,7 +43,7 @@ public class EscortRealm extends AuthorizingRealm
         User user = userRepository.findUserByUsername(token.getUsername());
         if (null != user)
         {
-            return new SimpleAuthenticationInfo(user.getId(), user.getPassword(), getName());
+            return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
         } else
         {
             return null;
@@ -63,8 +64,8 @@ public class EscortRealm extends AuthorizingRealm
             for(Role role : user.getRoles())
             {
                 info.addRole(role.getAuthority());
+                info.addStringPermissions(role.getPermissions());
             }
-            info.addObjectPermissions(user.getPermissions());
 
             return info;
         } else

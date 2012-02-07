@@ -23,6 +23,7 @@ public class Email extends AbstractPersistable<EmailPk>
     }
 
     private EmailPk emailPk;
+    private Integer userId;
     private Integer priority;
 
     public EmailPk getEmailPk()
@@ -33,6 +34,16 @@ public class Email extends AbstractPersistable<EmailPk>
     public void setEmailPk(EmailPk emailPk)
     {
         this.emailPk = emailPk;
+    }
+
+    public Integer getUserId()
+    {
+        return userId;
+    }
+
+    public void setUserId(Integer userId)
+    {
+        this.userId = userId;
     }
 
     public Integer getPriority()

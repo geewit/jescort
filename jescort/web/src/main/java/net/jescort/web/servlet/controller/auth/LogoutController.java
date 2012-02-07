@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Time: 下午12:37
  */
 @Controller
-@RequestMapping(value = {"/auth/logout"}, method = RequestMethod.GET)
+@RequestMapping(value = {"/auth/logout"})
 public class LogoutController
 {
+    @RequestMapping(method = RequestMethod.GET)
     public String logout()
     {
         SecurityUtils.getSubject().logout();
-        return "/";
+        return "redirect:/";
     }
 }

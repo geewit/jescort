@@ -8,8 +8,6 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-import org.apache.shiro.authz.Permission;
-import com.google.common.collect.Sets;
 
 /**
  * Created by IntelliJ IDEA.
@@ -34,18 +32,17 @@ public class User extends AbstractPersistable<Integer>
     private Integer id;
     private String username;
     private String password;
-    private Name name;
     private String nickname;
     private Integer posts;
     private Integer reputation;
     private String timezone;
+    private Locale locale;
     private Calendar createdate;
     private Calendar lastActive;
     private Profile profile;
-    private List<Email> emails;
-    private List<Address> addresses;
-    private Set<Group> groups;
-    private Set<org.apache.shiro.authz.Permission> permissions = Sets.newHashSetWithExpectedSize(20);
+    private List<Email> emails = new ArrayList<Email>();
+    private List<Address> addresses = new ArrayList<Address>();
+    private Set<Group> groups = new HashSet<Group>();
     private Map<String, String> properties;
 
     public Integer getId()
@@ -76,16 +73,6 @@ public class User extends AbstractPersistable<Integer>
     public void setPassword(String password)
     {
         this.password = password;
-    }
-
-    public Name getName()
-    {
-        return name;
-    }
-
-    public void setName(Name name)
-    {
-        this.name = name;
     }
 
     public String getNickname()
@@ -126,6 +113,16 @@ public class User extends AbstractPersistable<Integer>
     public void setTimezone(String timezone)
     {
         this.timezone = timezone;
+    }
+
+    public Locale getLocale()
+    {
+        return locale;
+    }
+
+    public void setLocale(Locale locale)
+    {
+        this.locale = locale;
     }
 
     public Calendar getCreatedate()
@@ -196,16 +193,6 @@ public class User extends AbstractPersistable<Integer>
             roles.addAll(group.getRoles());
         }
         return roles;
-    }
-
-    public Set<Permission> getPermissions()
-    {
-        return permissions;
-    }
-
-    public void setPermissions(Set<Permission> permissions)
-    {
-        this.permissions = permissions;
     }
 
     public Map<String, String> getProperties()
@@ -287,7 +274,7 @@ public class User extends AbstractPersistable<Integer>
     @Override
     public String toString()
     {
-        ToStringBuilder sb = new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", this.id).append("name", null != this.name ? this.name.toString() : null).append("username", this.username).append("password", this.password).append("nickname", this.nickname).append("posts", this.posts).append("reputation", this.reputation).append("timezone", this.timezone).append("createdate", null != this.createdate ? String.format("%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS", this.createdate) : null);
+        ToStringBuilder sb = new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", this.id).append("username", this.username).append("password", this.password).append("nickname", this.nickname).append("posts", this.posts).append("reputation", this.reputation).append("timezone", this.timezone).append("createdate", null != this.createdate ? String.format("%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS", this.createdate) : null);
         Set<Group> groups = getGroups();
         if (groups != null)
         {

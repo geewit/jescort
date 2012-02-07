@@ -16,7 +16,7 @@
                     <li class="active">Change Profile Information</li>
                     <li><a href="<spring:url value="/auth/aboutme"/>">Change About Me Page</a></li>
                     <li><a href="<spring:url value="/auth/signature"/>">Change Signature</a></li>
-                    <li><a href="<spring:url value="/auth/photo"/>">Change Photo</a></li>
+                    <li><a href="<spring:url value="/auth/avatar"/>">Change Photo</a></li>
                 </ul>
                 <div id="usercp_content">
                     <fieldset class="row1">

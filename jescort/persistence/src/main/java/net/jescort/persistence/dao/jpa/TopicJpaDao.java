@@ -17,6 +17,8 @@ import org.springframework.stereotype.Repository;
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class TopicJpaDao extends GenericJpaDao<Topic, Integer> implements TopicDao
 {
+    //private transient final static Log logger = LogFactory.getLog(TopicJpaDao.class);
+
     @SuppressWarnings("unchecked")
     public List<Topic> findByCreater(int creater)
     {
@@ -47,7 +49,8 @@ public class TopicJpaDao extends GenericJpaDao<Topic, Integer> implements TopicD
         query.setParameter("forumId", forumId);
         query.setFirstResult(pageable.getOffset());
         query.setMaxResults(pageable.getPageSize());
-        return query.getResultList();
+        List<Topic> topics = query.getResultList();
+        return topics;
     }
 
     @Override

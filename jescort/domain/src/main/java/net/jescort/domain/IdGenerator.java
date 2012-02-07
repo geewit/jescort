@@ -13,7 +13,7 @@ import org.apache.commons.lang.builder.ToStringStyle;
  * Time: 上午11:46
  */
 
-public class IdGenerator extends AbstractPersistable<Integer>
+public class IdGenerator extends AbstractPersistable<String>
 {
     private static final long serialVersionUID = 1L;
 
@@ -21,21 +21,9 @@ public class IdGenerator extends AbstractPersistable<Integer>
     {
     }
 
-    private Integer id;
-
     private String name;
 
     private Integer value;
-
-    public Integer getId()
-    {
-        return id;
-    }
-
-    public void setId(Integer id)
-    {
-        this.id = id;
-    }
 
     public String getName()
     {

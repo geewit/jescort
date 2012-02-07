@@ -21,12 +21,13 @@
                 <column name="birthday" insertable="true" updatable="true" unique="false"/>
                 <temporal>TIMESTAMP</temporal>
             </basic>
-            <basic name="photo">
-                <column name="photo" insertable="true" updatable="true" unique="true"/>
+            <basic name="avatar">
+                <column name="avatar" insertable="true" updatable="true" unique="true"/>
             </basic>
             <basic name="signature">
                 <column name="signature" insertable="true" updatable="true" unique="false"/>
             </basic>
+            <embedded name="name"/>
             <transient name="age"/>
         </attributes>
     </entity>

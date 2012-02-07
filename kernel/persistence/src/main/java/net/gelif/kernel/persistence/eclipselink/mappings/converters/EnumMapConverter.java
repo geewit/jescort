@@ -20,16 +20,16 @@ public abstract class EnumMapConverter<E extends Enum<E>> implements Converter
         clazz = (Class<E>) GenericsUtils.getSuperClassGenricType(getClass());
     }
 
-    public Object convertDataValueToObjectValue(Object fieldValue, Session session)
+    public Object convertDataValueToObjectValue(Object objectValue, Session session)
     {
-        Integer intVal = (Integer) fieldValue;
+        Integer intVal = (Integer) objectValue;
         return EnumMapUtils.toEnumMap(intVal, clazz);
     }
 
     @SuppressWarnings("unchecked")
-    public Object convertObjectValueToDataValue(Object attributeValue, Session session)
+    public Object convertObjectValueToDataValue(Object dataValue, Session session)
     {
-        int value = EnumMapUtils.toBinary((Map<E, Boolean>) attributeValue);
+        int value = EnumMapUtils.toBinary((Map<E, Boolean>) dataValue);
         return value;
     }
 

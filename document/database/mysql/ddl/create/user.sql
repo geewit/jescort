@@ -71,12 +71,11 @@ CREATE TABLE users (
     id                 INT            NOT NULL,
     username           VARCHAR(31)    NOT NULL,
     password           VARCHAR(127)   NOT NULL,
-    famaliy_name       VARCHAR(127)   NOT NULL,
-    given_name         VARCHAR(127)   NOT NULL,
     nickname           VARCHAR(63)    NOT NULL,
     posts              INT            NOT NULL,
     reputation         INT            NOT NULL,
     timezone           CHAR(3)        NOT NULL,
+    locale             CHAR(5)        NOT NULL,
     createdate         DATETIME       NOT NULL,
     last_active        DATETIME       NOT NULL,
     PRIMARY KEY  (id),
@@ -95,8 +94,10 @@ CREATE TABLE user_group_map (
 create table user_profiles (
     id                 INT            NOT NULL,
     gender             TINYINT(1)     NOT NULL,
+    famaliy_name       VARCHAR(127)   NOT NULL,
+    given_name         VARCHAR(127)   NOT NULL,
     birthday           DATETIME       NOT NULL,
-    photo              BLOB           NULL,
+    avatar             BLOB           NULL,
     signature          TEXT           NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB CHARSET=utf8;

@@ -4,12 +4,11 @@
 
 <!-- Content Wrapper -->
 <div id="content">
-    <div class="clear" id="login_form">
+    <div class="clear">
         <div class="left" id="member_login">
             <h2 class="maintitle">Login</h2>
-
             <div class="general_box rounded-bot">
-                <form id="login" method="post" action="<spring:url value="/auth/login"/>">
+                <form id="login_form" method="post" action="<spring:url value="/auth/login"/>">
                     <div id="regular_signin">
                         <a id="_regularsignin"></a>
 
@@ -18,7 +17,7 @@
                         <ul>
                             <li class="field">
                                 <label for="username">Username:</label>
-                                <input type="text" size="25" name="username" class="input_text" id="username" value="sinosaga">
+                                <input type="text" size="25" name="username" class="input_text" id="username" value="">
                             </li>
                             <li class="field">
                                 <label for="password">Password:</label>
@@ -31,8 +30,8 @@
                         <legend>Sign in options</legend>
                         <ul>
                             <li class="field checkbox">
-                                <input type="checkbox" class="input_check" value="1" name="rememberMe" checked="checked" id="remember">
-                                <label for="remember"> Remember me<br>
+                                <input type="checkbox" class="input_check" value="true" name="rememberMe" checked="checked" id="rememberMe">
+                                <label for="rememberMe">Remember me<br>
 
                                     <span class="desc">This is not recommended for shared computers</span>
                                 </label>

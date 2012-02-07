@@ -1,5 +1,6 @@
 package net.jescort.persistence.eclipselink.mappings.converters;
 
+import org.apache.commons.lang.LocaleUtils;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.persistence.mappings.DatabaseMapping;
 import org.eclipse.persistence.mappings.converters.Converter;
@@ -21,15 +22,14 @@ public class LocaleConverter implements Converter
     public Object convertObjectValueToDataValue(Object objectValue, Session session)
     {
         Locale locale = (Locale) objectValue;
-        return locale.getLanguage() + "_" + locale.getCountry();
+        return locale.toString();
     }
 
     @Override
     public Object convertDataValueToObjectValue(Object dataValue, Session session)
     {
         String strVal = (String) dataValue;
-        String[] strVals = StringUtils.split(strVal, "_");
-        Locale locale = new Locale(strVals[0], strVals[1]);
+        Locale locale = LocaleUtils.toLocale(strVal);
         return locale;
     }
 

@@ -25,21 +25,21 @@
                     <p class="extra">
                         It's free and simple to register for our board! We just need a few pieces of information from you, and you'll be ready to make your first post in no time!
                         <br> If you already have an account, you can go directly to the
-                        <a title="Go to sign in" href="/forum/index.php">sign in page</a> <br>
+                        <a title="Go to sign in" href="/auth/login">sign in page</a> <br>
                     </p>
                     <fieldset class="row1">
                         <h3 class="bar">Account Information</h3>
 
                         <ul>
                             <li class="field required ">
-                                <label for="login_name">Choose a username</label>
-                                <input type="text" name="UserName" maxlength="26" size="25" id="login_name" class="input_text"><br>
+                                <label for="username">Choose a username</label>
+                                <input type="text" name="username" maxlength="26" size="25" id="username" class="input_text"><br>
 
                                 <span class="desc">The name you'll sign in with. You can't use: <em>[ ] | ; , $ \ &lt; &gt; "</em></span>
                             </li>
                             <li class="field required ">
-                                <label for="nickname">Choose a display name</label>
-                                <input type="text" name="members_display_name" maxlength="26" size="25" id="nickname" class="input_text"><br>
+                                <label for="displayName">Choose a display name</label>
+                                <input type="text" name="displayName" maxlength="26" size="25" id="displayName" class="input_text"><br>
 
                                 <span class="desc">The name that will be shown next to your topics, posts, etc. This should be between 3 and 26 characters long.</span>
                             </li>
@@ -54,7 +54,7 @@
                             </li>
                             <li class="field nodesc required">
                                 <label for="email_2">Re-enter your e-mail address</label>
-                                <input type="text" value="sinosaga" name="emailConfirm" maxlength="150" size="25" class="input_text email" id="email_2">
+                                <input type="text" name="emailConfirm" maxlength="150" size="25" class="input_text email" id="email_2">
                             </li>
                         </ul>
                         <hr>
@@ -87,9 +87,9 @@
                                 <label for="timezone">Time Zone</label>
                                 <select name="timezone" class="input_select" id="timezone">
                                     <c:forEach var="timeZone" items="${timeZones}" varStatus="status">
-                                        <option value="${timeZone.offset}"
-                                            <c:if test="${not empty formBean.timezone && formBean.timezone == timeZone.locale}"> selected="selected"</c:if>>(GMT ${timeZone.offset} hours) ${timeZone.locale}</option>
-                                    </c:forEach> </select>
+                                        <option value="<c:if test="${timeZone.offset > 0}">+</c:if>${timeZone.offset}"<c:if test="${not empty formBean.timezone && formBean.timezone == timeZone.offset}"> selected="selected"</c:if>>(GMT <c:if test="${timeZone.offset > 0}">+</c:if>${timeZone.offset} hours) ${timeZone.locale}</option>
+                                    </c:forEach>
+                                </select>
                             </li>
                             <li class="field checkbox">
                                 <input type="checkbox" class="input_check" value="1" name="dst" id="dst">

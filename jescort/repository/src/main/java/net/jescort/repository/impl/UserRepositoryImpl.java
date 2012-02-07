@@ -6,9 +6,11 @@ import com.google.gson.GsonBuilder;
 import net.gelif.kernel.core.data.domain.PageableFactory;
 import net.gelif.modules.memcached.MemcachedObjectType;
 import net.gelif.modules.memcached.SpyMemcachedClient;
+import net.jescort.domain.enums.IdName;
 import net.jescort.domain.forum.Message;
 import net.jescort.domain.user.Email;
 import net.jescort.domain.user.User;
+import net.jescort.persistence.dao.IdGeneratorDao;
 import net.jescort.persistence.dao.MessageDao;
 import net.jescort.persistence.dao.RoleDao;
 import net.jescort.persistence.dao.UserDao;
@@ -37,7 +39,10 @@ import java.util.*;
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class UserRepositoryImpl implements UserRepository
 {
-    private transient final Log logger = LogFactory.getLog(UserRepositoryImpl.class);
+    private transient final static Log logger = LogFactory.getLog(UserRepositoryImpl.class);
+
+    @Resource(name = "idGeneratorDao")
+    private IdGeneratorDao idGeneratorDao;
 
     @Resource(name = "userDao")
     private UserDao userDao;
@@ -54,10 +59,10 @@ public class UserRepositoryImpl implements UserRepository
     @Override
     public User getCurrentUser()
     {
-        final Integer currentUserId = (Integer) SecurityUtils.getSubject().getPrincipal();
-        if (currentUserId != null)
+        final User currentUser = (User) SecurityUtils.getSubject().getPrincipal();
+        if (currentUser != null)
         {
-            return getUser(currentUserId);
+            return getUser(currentUser.getId());
         } else
         {
             return null;
@@ -67,19 +72,32 @@ public class UserRepositoryImpl implements UserRepository
     @Transactional
     public void createUser(User user)
     {
+        int id = idGeneratorDao.newId(IdName.USER);
+        user.setId(id);
         String password = new Sha1Hash(user.getPassword()).toHex();
         user.setPassword(password);
         userDao.save(user);
     }
+    
+    public void updateUser(User user)
+    {
+        userDao.save(user);
+    }
 
     @Transactional
-    public void createUser(String username, String password, String emailAddress)
+    public void createUser(String username, String password, String emailAddress, String timezone, Locale locale)
     {
         User user = new User();
+        int id = idGeneratorDao.newId(IdName.USER);
+        user.setId(id);
         user.setUsername(username);
         user.setPassword(new Sha1Hash(password).toHex());
         Email email = new Email(emailAddress);
+        email.setUserId(id);
+        email.setPriority(0);
         user.getEmails().add(email);
+        user.setTimezone(timezone);
+        user.setLocale(locale);
         userDao.save(user);
     }
 

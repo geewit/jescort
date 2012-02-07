@@ -1,14 +1,14 @@
-INSERT INTO users VALUES ('1', 'sinosaga', '', 'huang', 'fang', 'saga', '4', '5', '+8', '2009-06-14 22:36:01', '2009-07-14 22:36:01');
+INSERT INTO users VALUES ('1', 'sinosaga', '51c05cbdcc1dc3e78fa981c2f4790e6902fd1c4f', 'saga', '4', '5', '+8', 'zh_CN', '2009-06-14 22:36:01', '2009-07-14 22:36:01');
 INSERT INTO user_group_map VALUES ('1', '1');
-INSERT INTO user_profiles VALUES ('1', true, '1981-11-19 00:00:00', null, '');
+INSERT INTO user_profiles VALUES ('1', true, 'huang', 'fang', '1981-11-19 00:00:00', null, '');
 INSERT INTO addresses VALUES ('1', '1', '310108', '200072', '洛川东路', '1', 'HOME');
-INSERT INTO emails VALUES ('gmail', 'sinosaga', '1', '1');
+INSERT INTO emails VALUES ('sinosaga', 'gmail', '1', '1');
 
-INSERT INTO users VALUES ('2', 'isaga', '', 'huang', 'yiyi', 'iSaga', '4', '5', '+8', '2009-07-14 22:36:01', '2009-08-13 22:36:01');
+INSERT INTO users VALUES ('2', 'isaga', '51c05cbdcc1dc3e78fa981c2f4790e6902fd1c4f', 'iSaga', '4', '5', '+8', 'en_US', '2009-07-14 22:36:01', '2009-08-13 22:36:01');
 INSERT INTO user_group_map VALUES ('2', '2');
-INSERT INTO user_profiles VALUES ('2', true, '1981-11-19 00:00:00', null, '');
+INSERT INTO user_profiles VALUES ('2', true, 'huang', 'yiyi', '1981-11-19 00:00:00', null, '');
 INSERT INTO addresses VALUES ('2', '2', '310113', '200236', '上大路', '1','SCHOOL');
-INSERT INTO emails VALUES ('live', 'isaga', '2', '1');
+INSERT INTO emails VALUES ('isaga', 'live', '2', '1');
 
 INSERT INTO messages VALUES ('1', '1', 'Hi, budy!', 'Hi, Budy! You\'re awesome!', false, '4', '2009-07-14 22:36:01');
 INSERT INTO message_recipient_map VALUES ('1', '2');

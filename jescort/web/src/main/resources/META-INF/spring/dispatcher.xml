@@ -32,13 +32,12 @@
 
     <mvc:annotation-driven/>
 
-    <!--
+    <!---->
     <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/" />
-            <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
-        </mvc:interceptor>
-    </mvc:interceptors>-->
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="lang"/>
+        </bean>
+    </mvc:interceptors>
 
     <bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
         <property name="order" value="1"/>
@@ -62,12 +61,16 @@
 
     <!--i18n messages-->
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="messages"/>
+        <property name="basename"                value="messages"/>
         <property name="useCodeAsDefaultMessage" value="true"/>
     </bean>
 
     <!---->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="2097152"/>
+    </bean>
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="zh_CN"/>
     </bean>
 </beans>

@@ -1,12 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <!--head begin-->
-<div id="header-top">
-    <!-- Header Logo -->
-    <h1><a href="<spring:url value="/"/>" rel="home" accesskey="1">Gelif.net</a></h1>
-    <!-- // Header Logo -->
-    <div class="clear"></div>
-</div>
 <div id="header-bar">
     <jsp:include page="include-search_box.jsp"/>
     <!-- Header User Bits -->

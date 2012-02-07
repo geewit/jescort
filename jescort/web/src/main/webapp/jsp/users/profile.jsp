@@ -31,7 +31,7 @@
                         <h3 class="rounded-top">Member Photo</h3>
 
                         <div class="personal_info clear">
-                            <img class="photo" src="<spring:url value="/static/images/default_large.png"/>" alt="Sinosaga&#39;s Photo">
+                            <img class="avatar" src="<spring:url value="/static/images/default_large.png"/>" alt="Sinosaga&#39;s Photo">
 
                             <ul>
                                 <li>

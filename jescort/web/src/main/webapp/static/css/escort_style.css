@@ -140,7 +140,6 @@ ul.header-nav > li > a{
     background-color:transparent;
     background-image:none;
     background-repeat:repeat-x;
-    display:block;
     font-weight:bold;
     line-height:32px;
     padding:0 15px;
@@ -2564,7 +2563,7 @@ li.field.checkbox span.desc, li.field.cbox span.desc{
 }
 
 .popupClose.light_close_button{
-    background:url("/static/images/close_popup_light.png") no-repeat scroll left top transparent;
+    background:url("/static/images/close_popup.png") no-repeat scroll left top transparent;
     height:13px;
     left:16px;
     opacity:0.8;
