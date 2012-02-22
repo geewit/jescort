@@ -1,0 +1,146 @@
+﻿* {
+    font-family: Georgia,"Times New Roman",serif;
+}
+html #content {
+    font-size: 10pt;
+}
+h1 {
+    margin: 0;
+}
+ol, ul {
+    list-style: none outside none;
+}
+.pagination .back, .pagination .forward {
+    display: none;
+}
+.pagination .pages {
+    padding-left: 0;
+}
+.pagination a {
+    color: gray;
+    text-decoration: none;
+}
+#admin_bar, #header, #footer_utilities, #utility_links, .post_mod, .author_info, .rep_bar, .post_controls, .top, #content_jump, .topic_buttons, .topic_options, .post_id, h3 img, .ip, hr, .moderation_bar, .topic_jump, .topic_share, #fast_reply, #reputation_filter, .statistics, .rating, .message, #debug_wrapper, fieldset, .signature, .ipsUserPhotoLink, .maintitle, .__like, #logo, #header_bar, #community_app_menu, .ipsLikeButton, .ipsLikeBar, #fast_reply_wrapper, .breadcrumb .right, .nexusad, #ipsDebug_footer, li.page, li.next, li.prev, li.last, li.first, .ipsButton, .ipsButton_secondary, #profile_photo, .ipsVerticalTabbed_tabs {
+    display: none;
+}
+.ipsUserPhotoLink {
+    display: inline-block;
+}
+.ipsUserPhoto_large {
+    height: 90px;
+    width: 90px;
+}
+.ipsUserPhoto_medium {
+    height: 50px;
+    width: 50px;
+}
+.ipsUserPhoto_mini {
+    height: 30px;
+    width: 30px;
+}
+.ipsUserPhoto_tiny {
+    height: 20px;
+    width: 20px;
+}
+.breadcrumb {
+    clear: both;
+    display: block !important;
+    padding-left: 0;
+}
+.breadcrumb li {
+    float: left;
+}
+.breadcrumb:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.breadcrumb a, .breadcrumb {
+    color: gray;
+    text-decoration: none;
+}
+.breadcrumb .nav_sep {
+    margin: 0 5px;
+}
+.topic, .hfeed {
+    clear: both;
+}
+.post_block {
+    border-top: 2pt solid gray;
+    line-height: 60%;
+    margin-bottom: 10pt;
+    padding-top: 10px;
+    position: relative;
+}
+.posted_info {
+    color: gray !important;
+    font-size: 8pt !important;
+    padding-bottom: 3px;
+    position: absolute;
+    right: 0;
+    text-decoration: none !important;
+    top: 3px;
+}
+.post_block h3 {
+    display: inline !important;
+    font-size: 11pt;
+    line-height: 11pt;
+    margin: 0 0 10px !important;
+    padding: 0 !important;
+}
+.post_block h3 a {
+    color: black !important;
+    font-style: normal !important;
+    text-decoration: none !important;
+}
+.post_block .post_body a:after {
+    content: " (" attr(href) ") ";
+}
+.post_block a.snapback {
+    display: none;
+}
+p.citation {
+    color: #7B7B7B;
+    font-style: italic;
+    margin: 0;
+}
+p.citation, div.blockquote {
+    border-left: 8px solid #B4B4B4;
+    padding-left: 10px;
+}
+.post_body {
+    border-top: 1pt solid #D3D3D3;
+    clear: both;
+    display: block;
+    line-height: 100%;
+    margin-top: 15px;
+    padding: 10px;
+}
+h1, h2, h3 {
+    font-weight: bold;
+}
+#copyright {
+    color: gray;
+    font-size: 9pt;
+    text-align: center;
+}
+a img {
+    border: 0 none;
+}
+abbr.published {
+    border: 0 none;
+    text-decoration: none !important;
+}
+.post {
+    line-height: 1.5;
+}
+.ipsTag {
+    color: gray;
+    font-style: italic;
+    text-decoration: none;
+}
+.ipsTag:after {
+    content: ",";
+}

@@ -1,0 +1,203 @@
+#ipboard_body .input_rte {
+    height: 250px;
+    width: 100%;
+}
+#ipboard_body .ips_editor.lite_edition .input_rte {
+    height: 60px;
+}
+#ipboard_body .ips_editor .input_rte.unloaded_editor {
+    color: #B4B4B4;
+    font-family: arial,verdana,tahoma,sans-serif;
+    font-size: 11px;
+    font-style: italic;
+    padding: 5px 0;
+    text-indent: 5px;
+}
+#ipboard_body .ips_editor {
+    border: 2px solid #D5DDE5;
+    line-height: 100% !important;
+    margin: 8px 0 8px 8px;
+    position: relative;
+}
+#ipboard_body .ips_editor.with_sidebar .controls, #ipboard_body .ips_editor.with_sidebar .editor {
+    margin-right: 200px;
+}
+#ipboard_body .ips_editor .controls {
+    position: relative;
+}
+#ipboard_body .ips_editor.with_sidebar .sidebar {
+    border-color: #F6F8FA #D5DDE5 #D5DDE5 #F6F8FA;
+    border-style: solid;
+    border-width: 1px;
+    bottom: 1px;
+    margin: 0;
+    position: absolute;
+    right: 1px;
+    top: 0;
+    width: 195px;
+}
+#ipboard_body .ips_editor.with_sidebar .sidebar h4 {
+    background-color: #E4EBF2;
+    color: #1D3652;
+    font-size: 10px;
+    font-weight: bold;
+    height: 25px;
+}
+#ipboard_body .ips_editor.with_sidebar .sidebar h4 span {
+    display: block;
+    padding: 6px 0 0 6px;
+}
+#ipboard_body .ips_editor.with_sidebar .sidebar h4 img {
+    cursor: pointer;
+    float: right;
+    margin: 6px 6px 0 0;
+}
+#ipboard_body .ips_editor.with_sidebar .sidebar .emoticon_holder {
+    bottom: 25px;
+    height: 93%;
+    overflow: auto;
+    position: absolute;
+    top: 25px;
+    width: 100%;
+}
+#ipboard_body .ips_editor.with_sidebar .sidebar .emoticon_holder td {
+    padding: 5px 0;
+}
+#ipboard_body .show_all_emoticons {
+    background: none repeat scroll 0 0 #E4EBF2;
+    bottom: 0;
+    height: 25px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+#ipboard_body .ips_editor.with_sidebar .sidebar .emoticon_holder.no_bar {
+    bottom: 0;
+}
+#ipboard_body .ips_editor .toolbar {
+    background: url("../images/gradient_bg.png") repeat-x scroll left 50% #E4EBF2;
+    border-color: #F6F8FA #D5DDE5 #D5DDE5 #F6F8FA;
+    border-style: solid;
+    border-width: 1px;
+    height: 30px;
+}
+#ipboard_body .ips_editor .toolbar li {
+    float: left;
+    padding: 3px;
+}
+#ipboard_body .ips_editor .toolbar li.sep {
+    border-right: 1px solid #D5DDE5;
+    margin-right: 4px;
+    padding-right: 4px;
+}
+#ipboard_body .ips_editor .toolbar li.left {
+    float: left;
+}
+#ipboard_body .ips_editor .toolbar li.right {
+    float: right;
+}
+#ipboard_body .ips_editor .toolbar li span {
+    display: block;
+    padding: 3px;
+}
+#ipboard_body .ips_editor ul.ipbmenu_content, #ipboard_body .ips_editor ul.ipbmenu_content li {
+    background-color: #FFFFFF;
+    display: block;
+    float: none;
+}
+#ipboard_body .ips_editor .toolbar li .rte_control.rte_menu {
+    background-color: #FFFFFF;
+    background-image: url("../images/rte_arrow.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+    border: 1px solid #AEB9C5;
+    font-size: 11px;
+    height: 14px;
+    margin-top: 1px;
+    padding: 4px 15px 2px 7px;
+}
+#ipboard_body .rte_title {
+    background-color: #D5DDE5;
+    color: #1D3652;
+    font-size: 10px;
+    font-weight: bold;
+    margin: -4px -4px 5px;
+    padding: 4px;
+}
+#ipboard_body .rte_fontsize {
+    min-width: 50px;
+}
+#ipboard_body .rte_font {
+    min-width: 85px;
+}
+#ipboard_body .rte_special {
+    min-width: 90px;
+}
+#ipboard_body .ipb_palette {
+    background-color: #EEF3F8;
+    border-color: #D5DDE5;
+    border-style: solid;
+    border-width: 1px 2px 2px 1px;
+    font-size: 11px;
+    padding: 4px;
+}
+#ipboard_body .ipb_palette label {
+    clear: both;
+    display: block;
+    float: none !important;
+    font-weight: bold;
+    text-align: left !important;
+    width: auto !important;
+}
+#ipboard_body .ipb_palette input {
+    clear: both;
+    font-size: 11px;
+    margin-bottom: 5px;
+    margin-right: 6px;
+    width: 96%;
+}
+#ipboard_body .ipb_palette input[type="submit"], #ipboard_body .input_submit.emoticons {
+    background-color: #D5DDE5;
+    border: 1px solid #D5DDE5;
+    color: #1D3652;
+    display: block;
+    font-size: 11px;
+    margin: 5px auto;
+    padding: 2px;
+    text-align: center;
+    width: auto !important;
+}
+#ipboard_body .ipb_palette.extended {
+    max-width: 320px;
+    min-width: 250px;
+}
+#ipboard_body .ipb_palette pre {
+    padding: 5px 7px 10px;
+}
+#ipboard_body ul.fontsizes li {
+    padding: 0.3em 0 !important;
+}
+#ipboard_body .ipb_palette table.rte_colors {
+    background-color: #FFFFFF;
+    border-collapse: separate;
+    border-spacing: 1px;
+}
+#ipboard_body table.rte_colors td {
+    border: 1px solid #777777;
+    cursor: pointer;
+    font-size: 1px;
+    height: 18px;
+    margin: 1px;
+    padding: 6px;
+}
+#ipboard_body .rte_control {
+    border: 1px solid #E4EBF2;
+    cursor: pointer;
+}
+#ipboard_body .rte_hover {
+    background-color: #D5DDE5;
+}
+#ipboard_body .rte_selected {
+    background-color: #D5DDE5;
+    border: 1px solid #AEB9C5;
+}

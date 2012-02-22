@@ -1,0 +1,53 @@
+#usercp_content {
+    min-height: 420px;
+}
+#fbUserBox p.desc {
+    left: 0;
+}
+.ipsSettings_section .custom .wrap {
+    display: block;
+    padding: 8px 0 8px 15px;
+}
+.ipsSettings_section .custom .wrap span.f {
+    margin-right: 10px;
+}
+.notify_icon {
+    background: url("../images/icon_notify_types.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 12px;
+    margin-right: 3px;
+    vertical-align: middle;
+    width: 12px;
+}
+.notification_table td .notify_icon {
+    visibility: hidden;
+}
+.notification_table tr:hover td .notify_icon {
+    visibility: visible;
+}
+.notify_icon.inline {
+    background-position: left center;
+}
+.notify_icon.mobile {
+    background-position: center center;
+}
+.notify_icon.email {
+    background-position: right center;
+}
+div.avatar_gallery {
+    float: left;
+    margin-top: 15px;
+    text-align: center;
+    width: 20%;
+}
+div.avatar_gallery input, div.avatar_gallery label {
+    display: inline-block;
+    margin-top: 10px;
+}
+#usercp_content .notification_table td.notify_title {
+    font-size: 0.9em;
+    padding-left: 15px;
+}
+#usercp_content .notification_table td {
+    border-color: #EDEDED;
+}

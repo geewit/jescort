@@ -1,0 +1,168 @@
+.as_content {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid black;
+    font-size: 1em;
+    margin: 8px;
+    max-height: 400px;
+    overflow: auto;
+    padding: 6px;
+}
+.as_buttons {
+    padding: 4px 0;
+    text-align: right;
+}
+.as_message {
+    display: inline-block;
+}
+.ipsEditor_textarea {
+    font-size: 14px;
+    height: 200px;
+    width: 99%;
+}
+.cke_browser_webkit {
+    outline: medium none !important;
+}
+.cke_top {
+    background: url("../images/toolbar_bg.png") repeat-x scroll 0 0 #E4EBF2 !important;
+}
+.cke_skin_ips textarea.cke_source {
+}
+.cke_skin_ips .cke_wrapper.minimized {
+    background: none repeat scroll 0 0 transparent !important;
+    border: medium none !important;
+    opacity: 0.6 !important;
+}
+.cke_skin_ips .cke_wrapper.minimized.std {
+    border: 2px solid #D5DDE5 !important;
+}
+.cke_skin_ips {
+    margin-bottom: 0 !important;
+}
+.cke_skin_ips .cke_wrapper {
+    background-color: #E4EBF2 !important;
+    background-image: none !important;
+    border: 2px solid #D5DDE5 !important;
+    padding: 0 5px 0 3px !important;
+}
+.cke_skin_ips .cke_toolgroup {
+    background-color: transparent !important;
+}
+.cke_skin_ips .cke_button a:hover, .cke_skin_ips .cke_button a:focus, .cke_skin_ips .cke_button a:active {
+    background-color: #D5DDE5 !important;
+}
+.cke_skin_ips .cke_button a.cke_on:hover, .cke_skin_ips .cke_button a.cke_on:focus, .cke_skin_ips .cke_button a.cke_on:active {
+    background-color: #86CAFF !important;
+}
+.cke_skin_ips .cke_toolgroup {
+    margin-right: 0 !important;
+}
+.cke_skin_ips .cke_separator {
+    border-left: 1px solid #D5DDE5;
+    display: inline-block !important;
+    float: left;
+    height: 30px;
+    margin: 0 2px;
+}
+.cke_dialog_background_cover {
+    background-color: #3E3E3E !important;
+}
+.cke_skin_ips .cke_dialog_title {
+    background: url("../images/maintitle.png") repeat-x scroll center top #2C5687 !important;
+    color: #FFFFFF !important;
+    font-size: 16px !important;
+    font-weight: 300 !important;
+    padding: 10px 10px 11px !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.cke_skin_ips .cke_dialog_body {
+    z-index: 20000 !important;
+}
+.cke_skin_ips .cke_dialog_tabs {
+    background: none repeat scroll 0 0 #2C5687 !important;
+}
+.cke_skin_ips .cke_dialog_close_button {
+    background: url("../images/close_popup.png") no-repeat scroll left top transparent !important;
+    height: 13px !important;
+    right: 10px !important;
+    top: 11px !important;
+    width: 13px !important;
+}
+.cke_skin_ips span.cke_dialog_ui_button {
+    background: -moz-linear-gradient(center top , #F6F6F6 0%, #E5E5E5 100%) repeat scroll 0 0 transparent !important;
+    border: 1px solid #DBDBDB !important;
+    border-radius: 3px 3px 3px 3px !important;
+    box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 0 rgba(0, 0, 0, 0.3) !important;
+    color: #616161 !important;
+    display: inline-block !important;
+    font-size: 12px !important;
+    height: 22px !important;
+    line-height: 22px !important;
+    padding: 0 10px !important;
+    white-space: nowrap !important;
+}
+.cke_skin_ips .cke_dialog_footer .cke_resizer {
+    display: none;
+}
+.ipsSmileyTray {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #E4EBF2;
+    border-color: -moz-use-text-color #D5DDE5 #D5DDE5;
+    border-radius: 0 0 3px 3px;
+    border-right: 1px solid #D5DDE5;
+    border-style: none solid solid;
+    border-width: 0 1px 1px;
+    box-shadow: 0 1px 0 0 #EFF3F8 inset, 0 2px 3px rgba(0, 0, 0, 0.2);
+    height: 32px;
+    margin: 0 auto;
+    min-width: 600px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 24px;
+    text-align: center;
+    width: 75%;
+}
+.ipsSmileyTray img.bbc_emoticon {
+    cursor: pointer;
+    margin: 6px 3px 0;
+    max-height: 30px;
+    max-width: 30px;
+    opacity: 0.8;
+}
+.ipsSmileyTray img.bbc_emoticon:hover {
+    opacity: 1;
+}
+.ipsSmileyTray .ipsSmileyTray_next {
+    background: url("../images/next.png") no-repeat scroll 0 10px transparent;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    height: 30px;
+    position: relative;
+    right: -20px;
+    width: 13px;
+}
+.ipsSmileyTray .ipsSmileyTray_prev {
+    background: url("../images/prev.png") no-repeat scroll 0 10px transparent;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    height: 30px;
+    left: -20px;
+    position: relative;
+    width: 13px;
+}
+.ipsSmileyTray_all {
+    cursor: pointer;
+    display: block;
+    font-size: 10px !important;
+    margin: 3px auto 0;
+    text-align: center;
+    width: auto;
+}
+table.cke_editor td {
+    padding: 0 !important;
+}
