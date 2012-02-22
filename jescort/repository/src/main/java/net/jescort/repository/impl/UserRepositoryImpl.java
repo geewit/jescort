@@ -6,17 +6,13 @@ import com.google.gson.GsonBuilder;
 import net.gelif.kernel.core.data.domain.PageableFactory;
 import net.gelif.modules.memcached.MemcachedObjectType;
 import net.gelif.modules.memcached.SpyMemcachedClient;
-import net.jescort.domain.enums.IdName;
 import net.jescort.domain.forum.Message;
 import net.jescort.domain.user.Email;
 import net.jescort.domain.user.User;
-import net.jescort.persistence.dao.IdGeneratorDao;
 import net.jescort.persistence.dao.MessageDao;
 import net.jescort.persistence.dao.RoleDao;
 import net.jescort.persistence.dao.UserDao;
 import net.jescort.repository.UserRepository;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Sha1Hash;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -39,10 +35,7 @@ import java.util.*;
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class UserRepositoryImpl implements UserRepository
 {
-    private transient final static Log logger = LogFactory.getLog(UserRepositoryImpl.class);
-
-    @Resource(name = "idGeneratorDao")
-    private IdGeneratorDao idGeneratorDao;
+    //private transient final static Log logger = LogFactory.getLog(UserRepositoryImpl.class);
 
     @Resource(name = "userDao")
     private UserDao userDao;
@@ -72,8 +65,6 @@ public class UserRepositoryImpl implements UserRepository
     @Transactional
     public void createUser(User user)
     {
-        int id = idGeneratorDao.newId(IdName.USER);
-        user.setId(id);
         String password = new Sha1Hash(user.getPassword()).toHex();
         user.setPassword(password);
         userDao.save(user);
@@ -85,16 +76,14 @@ public class UserRepositoryImpl implements UserRepository
     }
 
     @Transactional
-    public void createUser(String username, String password, String emailAddress, String timezone, Locale locale)
+    public void createUser(String username, String password, String nickname, String emailAddress, String timezone, Locale locale)
     {
         User user = new User();
-        int id = idGeneratorDao.newId(IdName.USER);
-        user.setId(id);
         user.setUsername(username);
         user.setPassword(new Sha1Hash(password).toHex());
+        user.setNickname(nickname);
         Email email = new Email(emailAddress);
-        email.setUserId(id);
-        email.setPriority(0);
+        email.setUser(user);
         user.getEmails().add(email);
         user.setTimezone(timezone);
         user.setLocale(locale);
@@ -148,7 +137,7 @@ public class UserRepositoryImpl implements UserRepository
     @Override
     public Set<String> findRolesByUsername(String username)
     {
-        return new HashSet(roleDao.findByUsername(username));
+        return new HashSet<String>(roleDao.findByUsername(username));
     }
 
     @Override

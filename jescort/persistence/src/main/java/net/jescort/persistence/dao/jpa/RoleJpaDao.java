@@ -16,7 +16,7 @@ import java.util.List;
 public class RoleJpaDao extends GenericJpaDao<Role, Integer> implements RoleDao
 {
     @Override
-    public List<Role> findByUsername(String username)
+    public List<String> findByUsername(String username)
     {
         Query query = entityManager.createNativeQuery("SELECT roles.authority FROM group_role_map " +
                 "INNER JOIN groups ON group_role_map.group_id = groups.id " +
@@ -24,6 +24,6 @@ public class RoleJpaDao extends GenericJpaDao<Role, Integer> implements RoleDao
                 "INNER JOIN user_group_map ON user_group_map.group_id = groups.id " +
                 "INNER JOIN users ON user_group_map.user_id = users.id " +
                 "WHERE users.username = ?").setParameter(1, username);
-        return (List<Role>)query.getResultList();
+        return (List<String>)query.getResultList();
     }
 }

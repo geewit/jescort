@@ -5,6 +5,7 @@ import java.util.Map;
 
 import net.gelif.kernel.core.config.JescortConfig;
 import net.gelif.kernel.core.data.domain.AbstractPersistable;
+import net.jescort.domain.user.User;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -28,6 +29,7 @@ public class Attachment extends AbstractPersistable<Integer>
     }
 
     private Integer id;
+    private User owner;
     private String originalName;
     private String contentType;
     private long size;
@@ -44,6 +46,17 @@ public class Attachment extends AbstractPersistable<Integer>
     public void setId(Integer id)
     {
         this.id = id;
+    }
+
+
+    public User getOwner()
+    {
+        return owner;
+    }
+
+    public void setOwner(User owner)
+    {
+        this.owner = owner;
     }
 
     public String getOriginalName()

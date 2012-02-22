@@ -4,8 +4,8 @@
                  xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
     <entity metadata-complete="true" name="Forum" class="net.jescort.domain.forum.Forum" access="PROPERTY">
         <table name="forums"/>
-        <converter name="forumStatus"
-                   class="net.jescort.persistence.eclipselink.mappings.converters.ForumStatusConverter"/>
+        <converter name="forumStatus" class="net.jescort.persistence.eclipselink.mappings.converters.ForumStatusConverter"/>
+        <table-generator name="forumIdGenerator" table="id_generator" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="forum_id" allocation-size="1" initial-value="1"/>
         <entity-listeners>
             <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.ForumListener">
                 <pre-persist method-name="prePersist"/>
@@ -14,7 +14,7 @@
         <attributes>
             <id name="id">
                 <column name="id" unique="true"/>
-                <generated-value strategy="IDENTITY"/>
+                <generated-value strategy="TABLE" generator="forumIdGenerator"/>
             </id>
             <basic name="subject">
                 <column name="subject" insertable="true" updatable="true" unique="false"/>

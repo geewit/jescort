@@ -4,12 +4,12 @@
                  xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
     <entity metadata-complete="true" name="Category" class="net.jescort.domain.forum.Category" access="PROPERTY">
         <table name="categories"/>
-        <converter name="categoryStatus"
-                   class="net.jescort.persistence.eclipselink.mappings.converters.CategoryStatusConverter"/>
+        <converter name="categoryStatus" class="net.jescort.persistence.eclipselink.mappings.converters.CategoryStatusConverter"/>
+        <table-generator name="categoryIdGenerator" table="id_generator" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="category_id" allocation-size="1" initial-value="1"/>
         <attributes>
             <id name="id">
                 <column name="id" unique="true"/>
-                <generated-value strategy="IDENTITY"/>
+                <generated-value strategy="TABLE" generator="categoryIdGenerator"/>
             </id>
             <basic name="subject">
                 <column name="subject" insertable="true" updatable="true" unique="false"/>

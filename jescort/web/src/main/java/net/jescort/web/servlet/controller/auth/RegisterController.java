@@ -52,7 +52,7 @@ public class RegisterController
             return showSignupForm(model, command, request);
         }
         // Create the auth
-        userRepository.createUser(command.getUsername(), command.getPassword(), command.getEmail(), command.getTimezone(), request.getLocale());
+        userRepository.createUser(command.getUsername(), command.getPassword(), command.getNickname(), command.getEmail(), command.getTimezone(), request.getLocale());
 
         // Login the newly created auth
         SecurityUtils.getSubject().login(new UsernamePasswordToken(command.getUsername(), command.getPassword()));

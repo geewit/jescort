@@ -23,7 +23,7 @@ public interface UserRepository
 
     public void createUser(final User user);
 
-    public void createUser(final String username, final String password, final String email, final String timezone, final Locale locale);
+    public void createUser(final String username, final String password, String nickname, final String email, final String timezone, final Locale locale);
 
     public void updateUser(final User user);
     

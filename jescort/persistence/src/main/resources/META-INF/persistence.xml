@@ -4,11 +4,9 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="jescort" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <mapping-file>net/jescort/domain/IdGenerator.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/Location.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/forum/Attachment.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/forum/AttachmentData.orm.xml</mapping-file>
-        <mapping-file>net/jescort/domain/forum/Banned.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/forum/Category.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/forum/Dirtyword.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/forum/Draft.orm.xml</mapping-file>

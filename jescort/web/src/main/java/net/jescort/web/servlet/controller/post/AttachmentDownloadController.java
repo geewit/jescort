@@ -32,7 +32,7 @@ public class AttachmentDownloadController
     {
         try
         {
-            Attachment attachment = escortRepository.getAttachment(id);
+            Attachment attachment = escortRepository.findAttachment(id);
             response.setHeader("Content-Disposition", "inline;filename=\"" + attachment.getOriginalName() + "\"");
             OutputStream out = response.getOutputStream();
             response.setContentType(attachment.getContentType());

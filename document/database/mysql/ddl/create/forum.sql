@@ -1,5 +1,6 @@
 CREATE TABLE attachments (
     id              INT                         NOT NULL,
+    owner_id        INT                         NOT NULL,
     original_name   VARCHAR(127)                NOT NULL,
     content_type    CHAR(15)                    NOT NULL,
     `size`          LONG                        NOT NULL,

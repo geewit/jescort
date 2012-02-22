@@ -4,6 +4,7 @@
                  xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
     <entity metadata-complete="true" name="Attachment" class="net.jescort.domain.forum.Attachment" access="PROPERTY">
         <table name="attachments"/>
+        <table-generator name="attachmentIdGenerator" table="id_generator" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="attachment_id" allocation-size="1" initial-value="1"/>
         <entity-listeners>
             <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.AttachmentListener">
                 <pre-persist method-name="prePersist"/>
@@ -12,8 +13,7 @@
         <attributes>
             <id name="id">
                 <column name="id" unique="true"/>
-                <!--<generated-value strategy="TABLE" generator="attachmentIdGenerator"/>
-                <table-generator name="attachmentIdGenerator" table="pk_gen" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="attachment_id" allocation-size="1" initial-value="1"/>-->
+                <generated-value strategy="TABLE" generator="attachmentIdGenerator"/>
             </id>
             <basic name="originalName">
                 <column name="original_name" insertable="true" updatable="true" unique="false"/>
@@ -38,9 +38,13 @@
                     <primary-key-join-column name="id" referenced-column-name="id"/>
                 </collection-table>
             </basic-map>
-            <one-to-one name="attachmentData" target-entity="net.jescort.domain.forum.AttachmentData" fetch="LAZY">
+            <many-to-one name="owner" target-entity="net.jescort.domain.user.User" fetch="LAZY">
+                <join-column name="owner_id" referenced-column-name="id" insertable="false" updatable="false"/>
+            </many-to-one>
+            <one-to-one name="attachmentData" target-entity="net.jescort.domain.forum.AttachmentData" mapped-by="attachment" fetch="LAZY">
                 <join-column name="id" referenced-column-name="id" insertable="false" updatable="false"/>
             </one-to-one>
+
             <!--
             <transient name="kiloBytes"/>
             <transient name="megaBytes"/>-->

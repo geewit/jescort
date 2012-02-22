@@ -59,9 +59,15 @@ public interface EscortRepository
 
     public PostEdit getPostEdit(Integer id);
 
-    public Attachment getAttachment(final Integer attachmentId);
+    public Attachment findAttachment(final Integer attachmentId);
 
     public void saveAttachment(final Attachment attachment);
 
     public List<Attachment> uploadAttachments(final HttpServletRequest request);
+
+    public List<Attachment> findAttachmentsByUser(final Integer userId);
+
+    public List<Attachment> findAttachmentsByUser(final Integer userId, final Integer pageNo, final Integer pageSize);
+
+    public ModelAndView attachmentView(final Integer userId, final Integer pageNo, final Integer pageSize, final ModelAndView mav);
 }

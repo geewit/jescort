@@ -62,7 +62,7 @@
         <dependency org="com.thimbleware.jmemcached" name="jmemcached-core" rev="${jmemcached.version}" conf="compile->default"/>
         <!--<dependency org="junit" name="junit" rev="${junit.version}" conf="test->runtime"/>-->
         <dependency org="mysql" name="mysql-connector-java" rev="${mysql-connector.version}" conf="compile->default"/>
-        <dependency org="org.jboss.netty" name="netty" rev="${netty.version}" conf="compile->default"/>
+        <dependency org="io.netty" name="netty" rev="${netty.version}" conf="compile->default"/>
         <dependency org="org.hibernate" name="hibernate-validator" rev="${hibernate-validator.version}"/>
         <dependency org="org.slf4j" name="slf4j-api" rev="${slf4j.version}"/>
         <dependency org="org.slf4j" name="slf4j-log4j12" rev="${slf4j.version}"/>

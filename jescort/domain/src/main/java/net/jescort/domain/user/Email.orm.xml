@@ -13,12 +13,12 @@
                     <column name="hostname" insertable="true" updatable="true" unique="false"/>
                 </attribute-override>
             </embedded-id>
-            <basic name="userId">
-                <column name="user_id" insertable="true" updatable="true" unique="false"/>
-            </basic>
             <basic name="priority">
                 <column name="priority" insertable="true" updatable="true" unique="false"/>
             </basic>
+            <many-to-one name="user" target-entity="net.jescort.domain.user.User" fetch="LAZY">
+                <join-column name="user_id"/>
+            </many-to-one>
         </attributes>
     </entity>
 </entity-mappings>

@@ -4,8 +4,8 @@
                  xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
     <entity metadata-complete="true" name="Topic" class="net.jescort.domain.forum.Topic" access="PROPERTY">
         <table name="topics"/>
-        <converter name="topicStatus"
-                   class="net.jescort.persistence.eclipselink.mappings.converters.TopicStatusConverter"/>
+        <converter name="topicStatus" class="net.jescort.persistence.eclipselink.mappings.converters.TopicStatusConverter"/>
+        <table-generator name="topicIdGenerator" table="id_generator" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="topic_id" allocation-size="1" initial-value="1"/>
         <entity-listeners>
             <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.TopicListener">
                 <pre-persist method-name="prePersist"/>
@@ -14,6 +14,7 @@
         <attributes>
             <id name="id">
                 <column name="id" unique="true"/>
+                <generated-value strategy="TABLE" generator="topicIdGenerator"/>
             </id>
             <basic name="subject">
                 <column name="subject" insertable="true" updatable="true" unique="false"/>

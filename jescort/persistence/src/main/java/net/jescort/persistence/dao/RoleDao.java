@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface RoleDao extends JpaRepository<Role, Integer>
 {
-    public List<Role> findByUsername(String username);
+    public List<String> findByUsername(String username);
 }

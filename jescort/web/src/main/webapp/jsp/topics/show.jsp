@@ -72,7 +72,7 @@
                         <div class="author_info">
                             <ul style="margin-bottom:0" class="user_details">
                                 <li class="avatar">
-                                    <a title="View Profile" href="<spring:url value="/users/${poster.id}"/>"><img height="68" width="90" alt="" src="${poster.profile.photo}"></a>
+                                    <a title="View Profile" href="<spring:url value="/users/${poster.id}"/>"><img height="68" width="90" alt="" src="${poster.profile.avatar}"></a>
                                 </li>
                                 <li class="title">${poster.nickname}</li>
                                 <li class="group_icon">

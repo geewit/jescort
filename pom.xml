@@ -68,7 +68,7 @@
         <eclipselink.version>2.3.2</eclipselink.version>
         <google.gson.version>2.1</google.gson.version>
         <google.guava.version>11.0.1</google.guava.version>
-        <groovy.version>1.8.5</groovy.version>
+        <groovy.version>1.8.6</groovy.version>
         <hibernate-validator.version>4.2.0.Final</hibernate-validator.version>
         <icu.version>4.8.1.1</icu.version>
         <javax.activation.version>1.1.1</javax.activation.version>
@@ -89,15 +89,15 @@
         <log4j.version>1.2.16</log4j.version>
         <lucene.version>3.5.0</lucene.version>
         <mysql.version>5.1.18</mysql.version>
-        <netty.version>3.2.7.Final</netty.version>
+        <netty.version>3.3.1.Final</netty.version>
         <quartz.version>2.1.2</quartz.version>
         <rome.version>1.0</rome.version>
         <shiro.version>1.2.0</shiro.version>
         <slf4j.version>1.6.4</slf4j.version>
-        <spring.version>3.1.0.RELEASE</spring.version>
+        <spring.version>3.1.1.RELEASE</spring.version>
         <spring.batch.version>2.1.8.RELEASE</spring.batch.version>
-        <spring-data-commons.version>1.1.0.RELEASE</spring-data-commons.version>
-        <spring-data-jpa.version>1.0.2.RELEASE</spring-data-jpa.version>
+        <spring-data-commons.version>1.2.1.RELEASE</spring-data-commons.version>
+        <spring-data-jpa.version>1.0.3.RELEASE</spring-data-jpa.version>
         <spymemcached.version>2.7.3</spymemcached.version>
         <tiles.version>2.2.2</tiles.version>
         <subethasmtp.version>3.1.6</subethasmtp.version>
@@ -351,7 +351,7 @@
                 <version>${commons.pool.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.jboss.netty</groupId>
+                <groupId>io.netty</groupId>
                 <artifactId>netty</artifactId>
                 <version>${netty.version}</version>
             </dependency>
@@ -837,7 +837,7 @@
             <artifactId>hibernate-validator</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.jboss.netty</groupId>
+            <groupId>io.netty</groupId>
             <artifactId>netty</artifactId>
         </dependency>
         <dependency>

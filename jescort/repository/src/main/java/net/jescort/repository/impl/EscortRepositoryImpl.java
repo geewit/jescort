@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import net.gelif.kernel.core.data.domain.PageableFactory;
 import net.gelif.modules.bbcode.BBProcessorFactory;
 import net.gelif.modules.bbcode.TextProcessor;
-import net.jescort.domain.enums.IdName;
 import net.jescort.domain.forum.*;
 import net.jescort.domain.user.User;
 import net.jescort.persistence.dao.*;
@@ -57,9 +56,6 @@ public class EscortRepositoryImpl implements EscortRepository
 
     @Resource(name = "categoryDao")
     private CategoryDao categoryDao;
-
-    @Resource(name = "idGeneratorDao")
-    private IdGeneratorDao idGeneratorDao;
 
     @Override
     public Category findCategory(final Integer categoryId)
@@ -115,8 +111,6 @@ public class EscortRepositoryImpl implements EscortRepository
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void createTopic(final Topic topic)
     {
-        int topicId = idGeneratorDao.newId(IdName.TOPIC);
-        topic.setId(topicId);
         topicDao.save(topic);
         int forumId = topic.getForumId();
         forumDao.increaseTopics(forumId);
@@ -125,14 +119,9 @@ public class EscortRepositoryImpl implements EscortRepository
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void createTopic(final Topic topic, final HttpServletRequest request)
     {
-        final int topicId = idGeneratorDao.newId(IdName.TOPIC);
-        topic.setId(topicId);
-
         final int forumId = topic.getForumId();
         forumDao.increaseTopics(forumId);
-        final int postId = idGeneratorDao.newId(IdName.POST);
         Post rootPost = topic.getRootPost();
-        rootPost.setId(postId);
         //rootPost.setCreatedate(Calendar.getInstance());
         List<Attachment> attachments = uploadAttachments(request);
         rootPost.setAttachments(attachments);
@@ -191,8 +180,6 @@ public class EscortRepositoryImpl implements EscortRepository
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void replyTopic(final Post post, final HttpServletRequest request)
     {
-        final int postId = idGeneratorDao.newId(IdName.POST);
-        post.setId(postId);
         //post.setCreatedate(Calendar.getInstance());
         List<Attachment> attachments = uploadAttachments(request);
         int topicId = post.getTopicId();
@@ -209,8 +196,6 @@ public class EscortRepositoryImpl implements EscortRepository
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void createPost(final Post post)
     {
-        int postId = idGeneratorDao.newId(IdName.POST);
-        post.setId(postId);
         //post.setCreatedate(Calendar.getInstance());
         postDao.save(post);
     }
@@ -290,7 +275,7 @@ public class EscortRepositoryImpl implements EscortRepository
     }
 
     @Override
-    public Attachment getAttachment(final Integer attachmentId)
+    public Attachment findAttachment(final Integer attachmentId)
     {
         return attachmentDao.findOne(attachmentId);
     }
@@ -351,5 +336,28 @@ public class EscortRepositoryImpl implements EscortRepository
         }
         attachmentDao.save(attachments);
         return attachments;
+    }
+
+    @Override
+    public List<Attachment> findAttachmentsByUser(Integer userId)
+    {
+        return attachmentDao.findByUser(userId);
+    }
+
+    @Override
+    public List<Attachment> findAttachmentsByUser(Integer userId, final Integer pageNo, final Integer pageSize)
+    {
+        return attachmentDao.findByUser(userId, pageNo, pageSize);
+    }
+
+    @Override
+    public ModelAndView attachmentView(final Integer userId, final Integer pageNo, final Integer pageSize, final ModelAndView mav)
+    {
+        Pageable pageable = PageableFactory.create(pageNo, pageSize);
+        List<Attachment> attachments = attachmentDao.findByUser(userId, pageable);
+        final long totalPages = attachmentDao.countByUserId(userId);
+        Page<Attachment> page = new PageImpl<Attachment>(attachments, pageable, totalPages);
+        mav.addObject("attachments", page);
+        return mav;
     }
 }

@@ -4,8 +4,8 @@
                  xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
     <entity metadata-complete="true" name="User" class="net.jescort.domain.user.User" access="PROPERTY">
         <table name="users"/>
-        <converter name="locale"
-                   class="net.jescort.persistence.eclipselink.mappings.converters.LocaleConverter"/>
+        <converter name="locale" class="net.jescort.persistence.eclipselink.mappings.converters.LocaleConverter"/>
+        <table-generator name="userIdGenerator" table="id_generator" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="user_id" allocation-size="1" initial-value="1"/>
         <entity-listeners>
             <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.UserListener">
                 <pre-persist method-name="prePersist"/>
@@ -15,8 +15,7 @@
         <attributes>
             <id name="id">
                 <column name="id" unique="true"/>
-                <!--<generated-value strategy="TABLE" generator="userIdGenerator"/>
-                <table-generator name="userIdGenerator" table="id_generator" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="user_id" allocation-size="1" initial-value="1"/>-->
+                <generated-value strategy="TABLE" generator="userIdGenerator"/>
             </id>
             <basic name="username">
                 <column name="username" insertable="true" updatable="true" unique="true"/>
@@ -55,9 +54,8 @@
                     <primary-key-join-column name="id" referenced-column-name="id"/>
                 </collection-table>
             </basic-map>
-            <one-to-many name="emails" target-entity="net.jescort.domain.user.Email" fetch="LAZY">
+            <one-to-many name="emails" target-entity="net.jescort.domain.user.Email" mapped-by="user" fetch="LAZY">
                 <order-by>priority</order-by>
-                <join-column name="user_id" referenced-column-name="id"/>
                 <cascade>
                     <cascade-all />
                 </cascade>

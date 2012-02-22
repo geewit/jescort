@@ -30,6 +30,8 @@ public class RegisterCommand
     @NotBlank
     @Size(min = 5, max = 16)
     private String password;
+    
+    private String nickname;
 
     @NotBlank
     private String passwordConfirm;
@@ -54,6 +56,16 @@ public class RegisterCommand
     public void setUsername(String username)
     {
         this.username = username;
+    }
+
+    public String getNickname()
+    {
+        return nickname;
+    }
+
+    public void setNickname(String nickname)
+    {
+        this.nickname = nickname;
     }
 
     public String getPassword()

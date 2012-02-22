@@ -38,8 +38,8 @@
                                 <span class="desc">The name you'll sign in with. You can't use: <em>[ ] | ; , $ \ &lt; &gt; "</em></span>
                             </li>
                             <li class="field required ">
-                                <label for="displayName">Choose a display name</label>
-                                <input type="text" name="displayName" maxlength="26" size="25" id="displayName" class="input_text"><br>
+                                <label for="nickname">Choose a nickname</label>
+                                <input type="text" name="nickname" maxlength="26" size="25" id="nickname" class="input_text"><br>
 
                                 <span class="desc">The name that will be shown next to your topics, posts, etc. This should be between 3 and 26 characters long.</span>
                             </li>

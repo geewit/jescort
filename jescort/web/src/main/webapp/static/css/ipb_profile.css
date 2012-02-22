@@ -1,11 +1,87 @@
-#profile_photo{max-width:138px;max-height:138px}#profile_content_main{min-height:75px;line-height:1.3;margin-bottom:20px}#pane_info
-.ipsLayout_right{width:260px !important;margin-right: -290px}#friends_overview
-.ipsUserPhoto_link{margin:0
-2px 5px 2px;display:inline-block}#profile_panes_wrap
-.reputation{float:none;margin:0
-0 5px 0;padding:10px;text-align:center;font-weight:normal;display:block}#profile_panes_wrap .reputation
-.number{font-size:20px;font-weight:bold;display:block}.warn_panel{text-align:center;margin:8px
-0}.photo_holder{position:relative}#change_photo{position:absolute;top:0;left:0;background:rgba(0,0,0,0.2);color:#fff;opacity:0.3;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-webkit-transition:all 0.4s ease-in-out;-moz-transition:all 0.4s ease-in-out}.photo_holder:hover
-#change_photo{opacity:1;background:#000}#user_info_cell{display:table-cell;white-space:nowrap;padding-right:15px}#user_status_cell{display:table-cell;width:100%;vertical-align:top}#user_latest_status{background:url(http://www.neowin.net/forum/public/style_images/pegasus_midnight2/stems/profile_status_stem.png) no-repeat 0px 50%;padding-left:11px}#user_latest_status>div{padding:10px
-15px;background-color:#ebece5;color:#343434;font-size:14px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;min-height:45px;word-wrap:break-word}#user_latest_status>div>span{display:block}#user_utility_links{margin-top:10px;text-align:right}.rating{margin-top:10px}#status_wrapper
-.ipsBox_container{margin-bottom:9px}
+#profile_photo {
+    max-height: 138px;
+    max-width: 138px;
+}
+#profile_content_main {
+    line-height: 1.3;
+    margin-bottom: 20px;
+    min-height: 75px;
+}
+#pane_info .ipsLayout_right {
+    margin-right: -290px;
+    width: 260px !important;
+}
+#friends_overview .ipsUserPhoto_link {
+    display: inline-block;
+    margin: 0 2px 5px;
+}
+#profile_panes_wrap .reputation {
+    display: block;
+    float: none;
+    font-weight: normal;
+    margin: 0 0 5px;
+    padding: 10px;
+    text-align: center;
+}
+#profile_panes_wrap .reputation .number {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+}
+.warn_panel {
+    margin: 8px 0;
+    text-align: center;
+}
+.photo_holder {
+    position: relative;
+}
+#change_photo {
+    -moz-transition: all 0.4s ease-in-out 0s;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.2);
+    border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF;
+    left: 0;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+}
+.photo_holder:hover #change_photo {
+    background: none repeat scroll 0 0 #000000;
+    opacity: 1;
+}
+#user_info_cell {
+    display: table-cell;
+    padding-right: 15px;
+    white-space: nowrap;
+}
+#user_status_cell {
+    display: table-cell;
+    vertical-align: top;
+    width: 100%;
+}
+#user_latest_status {
+    background: url("../images/profile_status_stem.png") no-repeat scroll 0 50% transparent;
+    padding-left: 11px;
+}
+#user_latest_status > div {
+    background-color: #EBECE5;
+    border-radius: 6px 6px 6px 6px;
+    color: #343434;
+    font-size: 14px;
+    min-height: 45px;
+    padding: 10px 15px;
+    word-wrap: break-word;
+}
+#user_latest_status > div > span {
+    display: block;
+}
+#user_utility_links {
+    margin-top: 10px;
+    text-align: right;
+}
+.rating {
+    margin-top: 10px;
+}
+#status_wrapper .ipsBox_container {
+    margin-bottom: 9px;
+}

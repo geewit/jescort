@@ -32,7 +32,7 @@ public class ProfileEditController
     @RequestMapping(method = RequestMethod.GET)
     public String setupForm(Model model)
     {
-        User currentUser = userRepository.getCurrentUser() ;
+        User currentUser = userRepository.getCurrentUser();
         if (null == currentUser)
         {
             //TODO return some error or throw exception
