@@ -1689,7 +1689,7 @@ table.ipb_table tr:hover .mini_pagination {
 .ipsPostForm .ipsLayout_content {
     box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
     float: none;
-    z-index: 9;
+    z-index: 8;
 }
 .ipsPostForm .ipsLayout_right {
     border-left: 0 none;

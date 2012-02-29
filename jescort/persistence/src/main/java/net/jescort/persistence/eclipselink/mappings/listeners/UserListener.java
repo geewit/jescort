@@ -3,7 +3,6 @@ package net.jescort.persistence.eclipselink.mappings.listeners;
 import java.util.*;
 
 import net.jescort.domain.user.Group;
-import net.jescort.domain.user.Name;
 import net.jescort.domain.user.Role;
 import net.jescort.domain.user.User;
 

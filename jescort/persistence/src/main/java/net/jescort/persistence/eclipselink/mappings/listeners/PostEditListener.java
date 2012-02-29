@@ -1,6 +1,5 @@
 package net.jescort.persistence.eclipselink.mappings.listeners;
 
-import net.jescort.domain.forum.Post;
 import net.jescort.domain.forum.PostEdit;
 
 import java.util.Calendar;

@@ -20,7 +20,7 @@ ol, ul {
     color: gray;
     text-decoration: none;
 }
-#admin_bar, #header, #footer_utilities, #utility_links, .post_mod, .author_info, .rep_bar, .post_controls, .top, #content_jump, .topic_buttons, .topic_options, .post_id, h3 img, .ip, hr, .moderation_bar, .topic_jump, .topic_share, #fast_reply, #reputation_filter, .statistics, .rating, .message, #debug_wrapper, fieldset, .signature, .ipsUserPhotoLink, .maintitle, .__like, #logo, #header_bar, #community_app_menu, .ipsLikeButton, .ipsLikeBar, #fast_reply_wrapper, .breadcrumb .right, .nexusad, #ipsDebug_footer, li.page, li.next, li.prev, li.last, li.first, .ipsButton, .ipsButton_secondary, #profile_photo, .ipsVerticalTabbed_tabs {
+#admin_bar, #header, #footer_utilities, #utility_links, .post_mod, .author_info, .rep_bar, .post_controls, .top, #content_jump, .topic_buttons, .topic_options, .post_id, h3 img, .ip, hr, .moderation_bar, .topic_jump, .topic_share, #fast_reply, #reputation_filter, .statistics, .rating, .message, #debug_wrapper, fieldset, .signature, .ipsUserPhotoLink, .maintitle, #logo, #header_bar, #community_app_menu, .ipsLikeButton, .ipsLikeBar, #fast_reply_wrapper, .breadcrumb .right, .nexusad, #ipsDebug_footer, li.page, li.next, li.prev, li.last, li.first, .ipsButton, .ipsButton_secondary, #profile_photo, .ipsVerticalTabbed_tabs {
     display: none;
 }
 .ipsUserPhotoLink {

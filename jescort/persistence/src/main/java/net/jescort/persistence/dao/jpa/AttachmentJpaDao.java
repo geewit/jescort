@@ -16,11 +16,14 @@ import java.util.List;
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class AttachmentJpaDao extends GenericJpaDao<Attachment, Integer> implements AttachmentDao
 {
+    @SuppressWarnings("unchecked")
+    @Override
     public List<Attachment> findByUser(int userId)
     {
         return entityManager.createQuery("select a from Attachment a where a.owner.id = :userId").setParameter("userId", userId).getResultList();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Attachment> findByUser(int userId, int offset, int limit)
     {
@@ -31,6 +34,7 @@ public class AttachmentJpaDao extends GenericJpaDao<Attachment, Integer> impleme
         return query.getResultList();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Attachment> findByUser(int userId, Pageable pageable)
     {

@@ -3,7 +3,6 @@ package net.jescort.domain.user;
 import net.gelif.kernel.core.data.domain.AbstractPersistable;
 import org.apache.commons.lang.builder.*;
 
-import java.util.List;
 import java.util.Set;
 
 /**

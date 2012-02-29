@@ -183,7 +183,7 @@ public class EscortRepositoryImpl implements EscortRepository
         //post.setCreatedate(Calendar.getInstance());
         List<Attachment> attachments = uploadAttachments(request);
         int topicId = post.getTopicId();
-        topicDao.replyTopic(topicId, postId);
+        topicDao.replyTopic(topicId, post.getId());
         Topic topic = topicDao.findOne(topicId);
         int forumId = topic.getForumId();
         forumDao.increaseReplys(forumId);

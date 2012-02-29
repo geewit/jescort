@@ -123,28 +123,28 @@ input, select, textarea {
     margin: 0;
 }
 .s-tile {
-    background-image: url("../images/pegasus/tiles/tile.png");
+    background-image: url("../images/tile.png");
 }
 .s-tile2 {
-    background-image: url("../images/pegasus/tiles/tile2.png");
+    background-image: url("../images/tile2.png");
 }
 .s-tile3 {
-    background-image: url("../images/pegasus/tiles/tile3.png");
+    background-image: url("../images/tile3.png");
 }
 .s-tile4 {
-    background-image: url("../images/pegasus/tiles/tile4.png");
+    background-image: url("../images/tile4.png");
 }
 .s-tile5 {
-    background-image: url("../images/pegasus/tiles/tile5.png");
+    background-image: url("../images/tile5.png");
 }
 .s-tile6 {
-    background-image: url("../images/pegasus/tiles/tile6.png");
+    background-image: url("../images/tile6.png");
 }
 .s-tile7 {
-    background-image: url("../images/pegasus/tiles/tile7.png");
+    background-image: url("../images/tile7.png");
 }
 .s-tile8 {
-    background-image: url("../images/pegasus/tiles/tile8.png");
+    background-image: url("../images/tile8.png");
 }
 body {
     background-attachment: fixed;
@@ -191,12 +191,12 @@ body.fluid div#container {
     display: none;
 }
 #staff-bar > div > ul > li > span > span, #navigation > ul > li > a > span, #navigation > ul > li > span > span, #nav-style > span, #main_search, #widget-latest-activity-refresh, .viewmore > a, .rss-mini, .news-header-rss, .news-item-editlink, .comment-button-edit, .comment-button-report, .comment-button-delete, .modal-close, .post-comment-bubble, #news-view > li > a, #nav-style span, #widget-social-newsletter #email, .widget-social-icon, .news-logo-short > a, .article-tag-editorial, .news-item-editorial figcaption, .news-item-featured figcaption, .news-item-review figcaption {
-    background-image: url("../images/pegasus/sprite.png");
+    background-image: url("../images/sprite.png");
     background-position: 100% 100%;
     background-repeat: no-repeat;
 }
 #navigation, #navigation > ul > li.active > a, #navigation > ul > li#nav-subscribe > a:hover, #navigation > ul > li#nav-subscribe:hover > a, #navigation > ul > li#nav-tip > a:hover, #navigation > ul > li#nav-tip:hover > a, #navigation > ul > li#nav-register > a:hover, #navigation > ul > li#nav-register:hover > a, #navigation > ul > li#nav-login > a:hover, #navigation > ul > li#nav-login:hover > a, .navigation-dropdown header, .navigation-dropdown footer, .comment > div > footer {
-    background-image: url("../images/pegasus/sprite_grad.png");
+    background-image: url("../images/sprite_grad.png");
     background-position: 100% 100%;
     background-repeat: repeat-x;
 }
@@ -364,7 +364,7 @@ body.subscriber #branding > hgroup > h1 {
     padding-top: 8px;
 }
 #branding > hgroup > h1 > a {
-    background: url("../images/pegasus/dark_logo.png") no-repeat scroll 0 0 transparent;
+    background: url("../images/dark_logo.png") no-repeat scroll 0 0 transparent;
     display: block;
     height: 62px;
     text-indent: -9000px;

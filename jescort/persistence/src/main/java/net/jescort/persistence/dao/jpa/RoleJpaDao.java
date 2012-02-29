@@ -15,6 +15,7 @@ import java.util.List;
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class RoleJpaDao extends GenericJpaDao<Role, Integer> implements RoleDao
 {
+    @SuppressWarnings("unchecked")
     @Override
     public List<String> findByUsername(String username)
     {

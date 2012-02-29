@@ -176,7 +176,7 @@
 
                         <div id="editor_fast-reply" class="ips_editor">
                             <div class="editor" id="fast-reply_wrap">
-                                <textarea name="post.content" style="height: 70px; " tabindex="0" cols="60" rows="10" id="fast-reply_textarea" class="input_rte unloaded_editor"></textarea>
+                                <textarea name="post.content" style="height: 70px;" tabindex="0" cols="60" rows="10" id="fast-reply_textarea" class="input_rte unloaded_editor"></textarea>
                             </div>
                         </div>
                     </fieldset>

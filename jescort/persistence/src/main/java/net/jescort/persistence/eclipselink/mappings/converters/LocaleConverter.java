@@ -1,7 +1,6 @@
 package net.jescort.persistence.eclipselink.mappings.converters;
 
 import org.apache.commons.lang.LocaleUtils;
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.persistence.mappings.DatabaseMapping;
 import org.eclipse.persistence.mappings.converters.Converter;
 import org.eclipse.persistence.sessions.Session;
