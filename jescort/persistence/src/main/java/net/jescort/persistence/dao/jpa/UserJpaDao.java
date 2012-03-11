@@ -46,14 +46,14 @@ public class UserJpaDao extends GenericJpaDao<User, Integer> implements UserDao
     }
 
     @Override
-    public Blob findPhoto(Integer id)
+    public Blob findAvatar(Integer id)
     {
-        return (Blob) entityManager.createNativeQuery("SELECT user_profiles.photo FROM user_profiles WHERE users.id = ?").setParameter(1, id).getSingleResult();
+        return (Blob) entityManager.createNativeQuery("SELECT user_profiles.avatar FROM user_profiles WHERE user_profiles.id = ?").setParameter(1, id).getSingleResult();
     }
 
     @Override
-    public Blob findPhotoByUsername(String username)
+    public Blob findAvatarByUsername(String username)
     {
-        return (Blob) entityManager.createNativeQuery("SELECT user_profiles.photo FROM user_profiles INNER JOIN users ON user_profiles.id = users.id WHERE users.username = ?").setParameter(1, username).getSingleResult();
+        return (Blob) entityManager.createNativeQuery("SELECT user_profiles.avatar FROM user_profiles INNER JOIN users ON user_profiles.id = users.id WHERE users.username = ?").setParameter(1, username).getSingleResult();
     }
 }

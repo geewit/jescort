@@ -1,6 +1,7 @@
 package net.jescort.persistence.dao.jpa;
 
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import net.gelif.kernel.persistence.dao.jpa.GenericJpaDao;
@@ -22,28 +23,45 @@ public class TopicJpaDao extends GenericJpaDao<Topic, Integer> implements TopicD
     @SuppressWarnings("unchecked")
     public List<Topic> findByCreater(int creater)
     {
-        return entityManager.createQuery("select t from Topic t where t.rootPost.poster.id = :creater").setParameter("creater", creater).getResultList();
+        return entityManager.createQuery("SELECT t FROM Topic t WHERE t.rootPost.poster.id = :creater").setParameter("creater", creater).getResultList();
     }
 
     @SuppressWarnings("unchecked")
     public List<Topic> findByCreater(int creater, int offset, int limit)
     {
-        Query query = entityManager.createQuery("select t from Topic t where t.rootPost.poster.id = :creater");
+        Query query = entityManager.createQuery("SELECT t FROM Topic t WHERE t.rootPost.poster.id = :creater");
         query.setParameter("creater", creater);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         return query.getResultList();
     }
 
+    public Topic findNextTopicInForum(int forumId, int currentTopicId)
+    {
+        Query query = entityManager.createQuery("SELECT t FROM Topic t WHERE (t.forumId = :forumId) AND (t.id > :currentTopicId)");
+        query.setParameter("forumId", forumId);
+        query.setParameter("currentTopicId", currentTopicId);
+        query.setFirstResult(0);
+        query.setMaxResults(1);
+        try
+        {
+            return (Topic) query.getSingleResult();
+        }
+        catch (NoResultException e)
+        {
+            return null;
+        }
+    }
+
     public long countByForum(int forumId)
     {
-        return (Long) entityManager.createQuery("select count(t.id) from Topic t where t.forumId = :forumId").setParameter("forumId", forumId).getSingleResult();
+        return (Long) entityManager.createQuery("SELECT count(t.id) FROM Topic t WHERE t.forumId = :forumId").setParameter("forumId", forumId).getSingleResult();
     }
 
     @SuppressWarnings("unchecked")
     public List<Topic> findByForum(int forumId, Pageable pageable) throws DataAccessException
     {
-        String jpql = "select t from Topic t where t.forumId = :forumId";
+        String jpql = "SELECT t FROM Topic t WHERE t.forumId = :forumId";
         Query query = entityManager.createQuery(jpql);
 
         query.setParameter("forumId", forumId);
@@ -56,7 +74,7 @@ public class TopicJpaDao extends GenericJpaDao<Topic, Integer> implements TopicD
     @Override
     public void increaseViews(Integer topicId)
     {
-        Query query = entityManager.createNativeQuery("UPDATE topics set views = views + 1 where id = ?");
+        Query query = entityManager.createNativeQuery("UPDATE topics set views = views + 1 WHERE id = ?");
         query.setParameter(1, topicId);
         query.executeUpdate();
     }

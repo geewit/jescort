@@ -33,7 +33,7 @@ public class ForumShow
         return forumModelAndView(id, pageNo, 10);
     }
 
-    @RequestMapping(value = {"/forums/{id}/page/{pageNo}/pageSize/{pageSize}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/forums/{id}/page/{pageNo}/pagesize/{pageSize}"}, method = RequestMethod.GET)
     public ModelAndView forumHandler(@PathVariable("id") Integer id, @PathVariable("pageNo") Integer pageNo, @PathVariable("pageSize") Integer pageSize)
     {
         return forumModelAndView(id, pageNo, pageSize);

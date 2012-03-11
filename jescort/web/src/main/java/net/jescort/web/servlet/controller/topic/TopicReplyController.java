@@ -20,11 +20,10 @@ import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @SessionAttributes(types = Post.class)
-@RequestMapping(value = {"/topics/{topicId}/reply", "/posts/new"})
 public class TopicReplyController
 {
-    @RequestMapping(value = {"/topics/{topicId}/reply"}, method = RequestMethod.GET)
-    public String setupForm(@PathVariable("topicId") Integer topicId, Model model)
+    @RequestMapping(value = {"/topics/{id}/reply"}, method = RequestMethod.GET)
+    public String setupForm(@PathVariable("id") Integer topicId, Model model)
     {
         Post post = new Post();
         post.setTopicId(topicId);
@@ -32,7 +31,7 @@ public class TopicReplyController
         return "posts/new";
     }
 
-    @RequestMapping(value = {"/topics/{topicId}/reply", "/posts/new"}, method = {RequestMethod.POST, RequestMethod.PUT})
+    @RequestMapping(value = {"/posts/new"}, method = {RequestMethod.POST, RequestMethod.PUT})
     public String processSubmit(@ModelAttribute("post") @Valid Post post, BindingResult result, HttpServletRequest request, SessionStatus status)
     {
         if (result.hasErrors())

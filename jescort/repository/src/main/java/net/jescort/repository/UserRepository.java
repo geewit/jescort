@@ -7,8 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Blob;
-import java.util.Collection;
-import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -23,7 +21,7 @@ public interface UserRepository
 
     public void createUser(final User user);
 
-    public void createUser(final String username, final String password, String nickname, final String email, final String timezone, final Locale locale);
+    public void createUser(final String username, final String password, String nickname, final String email);
 
     public void updateUser(final User user);
     
@@ -35,7 +33,7 @@ public interface UserRepository
 
     public Long countUsers();
 
-    public Blob findPhoto(final Integer id);
+    public Blob findAvatar(final Integer id);
 
     public Message getMessage(final Integer messageId);
 

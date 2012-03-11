@@ -105,7 +105,7 @@
             <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.2.2" />
             <element id="library" level="project" name="Maven: commons-io:commons-io:2.1" />
             <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.1" />
-            <element id="library" level="project" name="Maven: com.google.guava:guava:11.0.1" />
+            <element id="library" level="project" name="Maven: com.google.guava:guava:11.0.2" />
             <element id="library" level="project" name="Maven: com.google.code.findbugs:jsr305:1.3.9" />
             <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:4.2.0.Final" />
             <element id="library" level="project" name="Maven: javax.validation:validation-api:1.0.0.GA" />
@@ -480,9 +480,6 @@
         <inspection_tool class="SqlResolveInspection" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="SqlTypeInspection" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="StaticGuardedByInstance" enabled="true" level="WARNING" enabled_by_default="true" />
-        <inspection_tool class="SuspiciousMethodCalls" enabled="false" level="WARNING" enabled_by_default="false">
-          <option name="REPORT_CONVERTIBLE_METHOD_CALLS" value="true" />
-        </inspection_tool>
         <inspection_tool class="UNUSED_SYMBOL" enabled="false" level="WARNING" enabled_by_default="false">
           <option name="LOCAL_VARIABLE" value="true" />
           <option name="FIELD" value="true" />
@@ -510,10 +507,21 @@
   </component>
   <component name="IvyIDEA.ProjectSettings">
     <option name="artifactTypeSettings">
-      <ArtifactTypeSettings />
+      <ArtifactTypeSettings>
+        <option name="classesTypes" value="jar, mar, sar, war, ear, ejb, bundle, test-jar" />
+        <option name="javadocTypes" value="javadoc, doc, docs, apidoc, apidocs, documentation, documents" />
+        <option name="sourcesTypes" value="source, src, sources, srcs" />
+      </ArtifactTypeSettings>
     </option>
+    <option name="ivySettingsFile" value="F:\workspace-java\jescort\build\ivysettings.xml" />
     <option name="propertiesSettings">
-      <PropertiesSettings />
+      <PropertiesSettings>
+        <option name="propertyFiles">
+          <list>
+            <option value="F:\workspace-java\jescort\build\build.properties" />
+          </list>
+        </option>
+      </PropertiesSettings>
     </option>
   </component>
   <component name="IvyProjectSettings">
@@ -689,7 +697,6 @@
         </codeStyleSettings>
       </value>
     </option>
-    <option name="USE_PER_PROJECT_SETTINGS" value="true" />
   </component>
   <component name="ProjectDictionaryState">
     <dictionary name="Administrator" />
@@ -787,6 +794,14 @@
     <mapping directory="" vcs="svn" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/jescort/web/src/main/java/net/jescort/web/servlet/controller/topic" value="file://$PROJECT_DIR$/jescort/web/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/jescort/web/src/main/webapp/jsp/messages/messageBox.jsp" value="file://$PROJECT_DIR$/jescort/web/src/main/webapp/jsp/messages" />
+      </map>
+    </option>
+  </component>
   <component name="libraryTable">
     <library name="Maven: aopalliance:aopalliance:1.0">
       <CLASSES>
@@ -854,15 +869,15 @@
         <root url="jar://$PROJECT_DIR$/../m2/repository/com/google/code/gson/gson/2.1/gson-2.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.guava:guava:11.0.1">
+    <library name="Maven: com.google.guava:guava:11.0.2">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/com/google/guava/guava/11.0.1/guava-11.0.1.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/com/google/guava/guava/11.0.2/guava-11.0.2.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/com/google/guava/guava/11.0.1/guava-11.0.1-javadoc.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/com/google/guava/guava/11.0.2/guava-11.0.2-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../m2/repository/com/google/guava/guava/11.0.1/guava-11.0.1-sources.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../m2/repository/com/google/guava/guava/11.0.2/guava-11.0.2-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.octo.captcha:jcaptcha-api:1.0">
@@ -1463,7 +1478,9 @@
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/../m2/repository/org/slf4j/slf4j-simple/1.6.4/slf4j-simple-1.6.4.jar!/" />
       </CLASSES>
-      <JAVADOC />
+      <JAVADOC>
+        <root url="jar://$PROJECT_DIR$/../m2/repository/org/slf4j/slf4j-simple/1.6.4/slf4j-simple-1.6.4-javadoc.jar!/" />
+      </JAVADOC>
       <SOURCES>
         <root url="jar://$PROJECT_DIR$/../m2/repository/org/slf4j/slf4j-simple/1.6.4/slf4j-simple-1.6.4-sources.jar!/" />
       </SOURCES>

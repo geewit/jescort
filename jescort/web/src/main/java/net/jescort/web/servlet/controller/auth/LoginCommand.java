@@ -3,6 +3,7 @@ package net.jescort.web.servlet.controller.auth;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
@@ -13,11 +14,12 @@ import javax.validation.constraints.Size;
  */
 public class LoginCommand
 {
-    @NotBlank
-    @Size(min = 5, max = 12)
+    @NotBlank(message = "{username.not_null}")
+    @Pattern(regexp = "[A-Za-z][A-Za-z0-9]{4,11}", message = "{username.illegal}")
     private String username;
 
     @NotBlank
+    @Size(min = 5, max = 12)
     private String password;
 
     private Boolean rememberMe;

@@ -45,6 +45,7 @@ public class LoginController
         } catch (AuthenticationException e)
         {
             result.reject("error.invalidLogin", "The username or password was not correct.");
+            return "auth/login";
         }
         return "redirect:/";
     }

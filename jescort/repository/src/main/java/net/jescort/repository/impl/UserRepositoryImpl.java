@@ -76,17 +76,18 @@ public class UserRepositoryImpl implements UserRepository
     }
 
     @Transactional
-    public void createUser(String username, String password, String nickname, String emailAddress, String timezone, Locale locale)
+    public void createUser(String username, String password, String nickname, String emailAddress)
     {
         User user = new User();
         user.setUsername(username);
         user.setPassword(new Sha1Hash(password).toHex());
         user.setNickname(nickname);
         Email email = new Email(emailAddress);
+        email.setPriority(0);
         email.setUser(user);
         user.getEmails().add(email);
-        user.setTimezone(timezone);
-        user.setLocale(locale);
+        user.setTimezone("+8");
+        user.setLocale(Locale.getDefault());
         userDao.save(user);
     }
 
@@ -141,9 +142,9 @@ public class UserRepositoryImpl implements UserRepository
     }
 
     @Override
-    public Blob findPhoto(Integer id)
+    public Blob findAvatar(Integer id)
     {
-        return userDao.findPhoto(id);
+        return userDao.findAvatar(id);
     }
 
     @Override

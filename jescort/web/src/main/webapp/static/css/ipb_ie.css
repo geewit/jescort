@@ -1,0 +1,67 @@
+#header {
+}
+#primary_nav ul li.active {
+}
+#user_navigation {
+}
+.maintitle, #footer_utilities, #gelif_body .ips_editor .toolbar, #admin_bar {
+}
+h2.maintitle {
+}
+.statistics, #footer_utilities, #gelif_body .ips_editor .controls, .member_entry, #search_results li {
+}
+#footer_utilities form, .rep_bar {
+}
+#context_search, #multimod {
+}
+#forum_legend dt, #forum_legend dd {
+}
+#gelif_body .rte_fontsize {
+}
+#gelif_body .rte_font {
+}
+#gelif_body .rte_special {
+}
+#toggle_post_options {
+}
+.author_info, .post_block {
+}
+#fast_reply, #member_alpha {
+}
+#gelif_body .input_rte {
+}
+.ipsList_inline li {
+    display: inline;
+}
+.clearfix {
+    height: 1%;
+}
+table.ipb_table h4 {
+    display: inline;
+}
+#search_wrap {
+    width: 230px;
+}
+#search {
+    display: inline;
+}
+#main_search {
+    float: left;
+    margin-top: 5px;
+}
+#logo {
+    float: left;
+}
+.gallery_row {
+    display: block;
+}
+.gallery_block, .image_wrap, .image_view_wrap {
+    display: inline;
+}
+.gallery_row .gallery_block .wrap .pinned, .gallery_row .gallery_block .wrap .image_mod {
+    width: 20px;
+}
+.note_fill {
+    height: 98.5%;
+    width: 98.5%;
+}

@@ -52,7 +52,6 @@
                                         <li class="field">
                                             <label for="upload_photo">Upload an image from your computer</label>
                                             <input type="file" size="40" value="" id="upload_photo" name="upload_photo">
-
                                             <p>
                                                 <strong>Image Scale On</strong><br>(This will scale the image down for you if it's too big in pixel size)
                                             </p>

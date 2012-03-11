@@ -1,45 +1,44 @@
-function updateLocations(element, parentId, selectedId)
-{
-    $.parseJSON("/webservice/locations/" + parentId + "/children/", function(data)
-    {
-        createLocations(element, data, selectedId);
-    });
-    removeList(element);
-}
+var locations = [];
+var temp = [];
 
-function createLocations(element, data, selectedId)
+function updateLocations(element, selectedId)
 {
-    for (var i = 0; i < data.length; i++)
+    if(!locations || locations.length == 0)
     {
-        var option = new Option(data[i].name, data[i].id)
-        if (selectedId != undefined && selectedId == data[i].id)
+        $.getJSON('/api/locations/all', function(data) {
+            locations = data;
+        });
+    }
+    temp = locations;
+    if(selectedId)
+    {
+        var len = temp.length;
+        for(var i = 0; i < len; i++)
         {
-            option.selected = true;
+            if(temp[i].id == selectedId)
+            {
+                temp = temp[i].children;
+                break;
+            }
         }
-        $('[id=' + element + ']').options.add(option);
     }
+    $.each(temp, function(i, item)
+    {
+        var option = new Option(item.name, item.id);
+        $("#" + element).append(option);
+    });
 }
 
-function removeLocations(element)
-{
-    var len = $('[id=' + element + ']')[0].length;
-    for (var i = 1; i < len; i++)
-    {
-        $('[id=' + element + ']')[0].remove(1);
-    }
-}
 
 function updateLocations(element)
 {
-    $.parseJSON("/webservice/locations/all", function(datas)
+    if (!locations || locations.length == 0)
     {
-        $.each(datas, function(i, items)
-        {
-            $.each(items, function(i, item)
-            {
-                var option = new Option(item.name, item.id);
-                $('[id=' + element + ']')[0].add(option);
-            });
-        });
+        locations = jQuery.parseJSON("/api/locations/all");
+    }
+    $.each(locations, function(i, item)
+    {
+        var option = new Option(item.name, item.id);
+        $("#" + element).append(option);
     });
 }

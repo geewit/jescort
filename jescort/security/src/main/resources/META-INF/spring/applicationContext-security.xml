@@ -32,6 +32,7 @@
         <property name="filterChainDefinitions">
             <value>
                 /api/* = authcBasic
+                /auth/* = authc
             </value>
         </property>
     </bean>

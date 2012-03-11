@@ -2,7 +2,6 @@ package net.jescort.web.servlet.controller.user;
 
 
 import net.jescort.domain.user.User;
-import net.jescort.repository.EscortRepository;
 import net.jescort.repository.UserRepository;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
@@ -44,18 +43,18 @@ public class UserInfoShow
         return mav;
     }
 
-    @RequestMapping(value = "/users/photo/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/{id}/avatar", method = RequestMethod.GET)
     public void download(@PathVariable("id") Integer id, HttpServletResponse response)
     {
         try
         {
-            Blob photoBlob = userRepository.findPhoto(id);
+            Blob avatarBlob = userRepository.findAvatar(id);
             response.setHeader("Pragma", "no-cache");
             response.setHeader("Cache-Control", "no-cache");
             response.setDateHeader("Expires", 0);
             response.setContentType(MediaType.IMAGE_PNG.toString());
             OutputStream out = response.getOutputStream();
-            IOUtils.copy(photoBlob.getBinaryStream(), out);
+            IOUtils.copy(avatarBlob.getBinaryStream(), out);
             out.flush();
             out.close();
 

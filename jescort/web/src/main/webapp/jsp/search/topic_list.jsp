@@ -78,17 +78,17 @@
                     <a class="__tpopup" title="View topic preview" style="display: none; opacity: 0.3;" id="tidPop_1013368" href="#">
                         <img alt="" src="search_topic_results_files/topicpreview.png"> </a>
                 </span>
-                <a title="Go to first unread post" href="http://www.neowin.net/forum/topic/1013368-a-group-of-cats-is-called-a-%e2%80%98clowder%e2%80%99-and-other-cat-factoids/page__view__getnewpost"><img title="Go to first unread post" alt="" src="search_topic_results_files/new_post.png"></a>
+                <a title="Go to first unread post" href="/topics/1013368"><img title="Go to first unread post" alt="" src="search_topic_results_files/new_post.png"></a>
                 <strong>
-                    <a title="1 attachment(s): View" href="http://www.neowin.net/forum/index.php?app=forums&amp;module=forums&amp;section=attach&amp;tid=1013368"><img alt="Attachments" src="search_topic_results_files/attachicon.gif"></a>
-                    <a title="View result" href="http://www.neowin.net/forum/topic/1013368-a-group-of-cats-is-called-a-%e2%80%98clowder%e2%80%99-and-other-cat-factoids/page__view__findpost__p__594173764__hl__nite__fromsearch__1">A Group of Cats is Called a ‘Clowder’ and other Cat factoids</a>
+                    <a title="1 attachment(s): View" href="/forum/1013368"><img alt="Attachments" src="search_topic_results_files/attachicon.gif"></a>
+                    <a title="View result" href="/topics/1013368">A Group of Cats is Called a ‘Clowder’ and other Cat factoids</a>
                 </strong>
             </td>
             <td class="altrow">
-                <a href="http://www.neowin.net/forum/forum/7-general-discussion/">General Discussion</a>
+                <a href="/forums/7">General Discussion</a>
             </td>
             <td class="short">
-                <a href="http://www.neowin.net/forum/user/243659-jnelsoninjax/" class="___hover___member _hoversetup" hovercard-id="243659" hovercard-ref="member" id="anonymous_element_3" title="">jnelsoninjax</a>&nbsp;
+                <a href="/users/243659/" class="___hover___member _hoversetup" hovercard-id="243659" hovercard-ref="member" id="anonymous_element_3" title="">jnelsoninjax</a>&nbsp;
                 <a title="View Profile" class="__user __id243659" href="http://www.neowin.net/forum/user/243659-jnelsoninjax/"><img alt="" src="search_topic_results_files/user_popup.png"></a>
             </td>
             <td class="stats altrow">
@@ -100,11 +100,11 @@
             <td>
                 <ul class="last_post">
                     <li>
-                        <a title="Go to last post" href="http://www.neowin.net/forum/topic/1013368-a-group-of-cats-is-called-a-%e2%80%98clowder%e2%80%99-and-other-cat-factoids/page__view__getlastpost"><img title="" alt="" src="search_topic_results_files/last_post.png"></a>
-                        <a title="Go to last post" href="http://www.neowin.net/forum/topic/1013368-a-group-of-cats-is-called-a-%e2%80%98clowder%e2%80%99-and-other-cat-factoids/page__view__getlastpost">Jul 21 2011 07:53</a>
+                        <a title="Go to last post" href="/topic/1013368"><img title="" alt="" src="search_topic_results_files/last_post.png"></a>
+                        <a title="Go to last post" href="/topic/1013368">Jul 21 2011 07:53</a>
                     </li>
                     <li>By:
-                        <a href="http://www.neowin.net/forum/user/353896-albert-bonici/" class="___hover___member _hoversetup" hovercard-id="353896" hovercard-ref="member" id="anonymous_element_4" title="">Albert Bonici</a>&nbsp;<a title="View Profile" class="__user __id353896" href="http://www.neowin.net/forum/user/353896-albert-bonici/"><img alt="" src="search_topic_results_files/user_popup.png"></a>
+                        <a href="/users/353896" class="___hover___member _hoversetup" hovercard-id="353896" hovercard-ref="member" id="anonymous_element_4" title="">Albert Bonici</a>&nbsp;<a title="View Profile" class="__user __id353896" href="http://www.neowin.net/forum/user/353896-albert-bonici/"><img alt="" src="search_topic_results_files/user_popup.png"></a>
                     </li>
                 </ul>
             </td>
@@ -115,21 +115,21 @@
 
     <div class="topic_controls">
         <ul class="pagination left">
-            <li class="pagejump clickable pj0477967001" id="anonymous_element_2">
+            <li class="pagejump clickable" id="anonymous_element_2">
                 40 Pages <img alt="+" src="search_topic_results_files/dropdown.png">
             </li>
             <li class="active">1</li>
             <li>
-                <a title="2" href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums&amp;st=25">2</a>
+                <a title="2" href="/">2</a>
             </li>
             <li>
-                <a title="3" href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums&amp;st=50">3</a>
+                <a title="3" href="/">3</a>
             </li>
             <li class="next">
-                <a rel="next" title="Next page" href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums&amp;st=25">→</a>
+                <a rel="next" title="Next page" href="/25">-></a>
             </li>
             <li class="last">
-                <a rel="last" title="Go to last page" href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums&amp;st=975">Last »</a>
+                <a rel="last" title="Go to last page" href="/forums/32">Last</a>
             </li>
         </ul>
     </div>

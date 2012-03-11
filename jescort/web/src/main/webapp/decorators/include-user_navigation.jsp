@@ -2,57 +2,39 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
-<shiro:notAuthenticated>
-<ul id="navigation-user">
-    <li id="nav-register">
-        <a href="<spring:url value="/auth/register"/>" title="<spring:message code="message.register"/>" id="register_link">
-            <spring:message code="message.register"/>
-        </a>
-    </li>
-    <li id="nav-login">
-        <a href="<spring:url value="/auth/login"/>" title="<spring:message code="message.login"/>" id="sign_in">
-            <spring:message code="message.login"/>
-        </a>
-    </li>
-</ul>
-</shiro:notAuthenticated>
-<shiro:authenticated>
-<c:set var="user_id"><shiro:principal property="id"/></c:set>
-<ul id="navigation-user">
-    <li id="nav-user">
-        <a id="user_link" title="View My Profile" href="<spring:url value="/user/${user_id}"/>">
-            <strong><shiro:principal property="username"/></strong><span></span>
-        </a>
+<div id="branding-user">
+    <shiro:notAuthenticated>
+    <!-- Guest Links -->
+    <span id="nav-guest">
+        <a id="nav-login" title="Sign In" href="<spring:url value="/auth/login"/>"><spring:message code="message.login"/></a>
+        <a id="nav-register" title="Create Account" href="<spring:url value="/auth/register"/>"><spring:message code="message.register"/></a>
+    </span>
+    <!-- // Guest Links -->
+    </shiro:notAuthenticated>
+
+    <shiro:authenticated>
+    <c:set var="user_id"><shiro:principal property="id"/></c:set>
+    <!-- User Menu -->
+    <span class="nav-user-avatar"><img alt="<shiro:principal property="username"/>'s Photo" src="<spring:url value="/users/${user_id}/avatar"/>"/></span>
+    <span id="nav-user">
+        <a href="<spring:url value="/users/${user_id}"/>" title="View My Profile" class="nav-user-username"><shiro:principal property="username"/><span></span></a>
         <div class="navigation-dropdown">
             <header>
-                <a href="<spring:url value="/user/${user_id}"/>" title="Your Profile" class="ipsUserPhotoLink left">
-                    <img src="<spring:url value="/user/${user_id}/avatar"/>" alt="<shiro:principal property="username"/>'s Photo" class="ipsUserPhoto ipsUserPhoto_medium photo">
-                </a>
             </header>
-            <div class="col col-1">
+            <div>
                 <ul>
-                    <li><a href="/" title="Edit my settings, such as signature, photo and more...">My Settings</a></li>
-                    <li><a href="/" title="View My Content">View My Content</a></li>
-                    <li><a href="/" title="Content I Follow">Content I Follow</a></li>
-                    <li><a href="/">Personal Messenger</a></li>
-                    <li><a href="/" title="Improve your Neowin experience" class="tooltip-e">Upgrade Account</a></li>
-                </ul>
-            </div>
-            <div class="col col-2">
-                <ul>
-                    <li><a href="/" title="Manage Friends" class="manage_friends">Manage Friends</a></li>
-                    <li><a href="/" title="Manage Ignore Prefs" class="manage_enemies">Manage Ignore Prefs</a></li>
-                    <li><a href="/">Manage Blogs</a></li>
-                    <li><a href="/">My Blog</a></li>
-                    <li><a href="/">Mark Community Read</a></li>
+                    <li><a title="Edit my settings, such as signature, photo and more..." href="<spring:url value="/auth/profile"/>"><spring:message code="message.my_profile"/></a></li>
+                    <li><a title="View My Content" href="<spring:url value="/auth/topics"/>">View My Content</a></li>
+                    <li><a href="<spring:url value="/auth/messager"/>"><spring:message code="message.inbox_str"/></a></li>
                 </ul>
             </div>
             <footer>
                 <ul>
-                    <li><a href="/"><b>Sign Out</b></a></li>
+                    <li><a href="<spring:url value="/auth/logout"/>"><b><spring:message code="message.logout"/></b></a></li>
                 </ul>
             </footer>
         </div>
-    </li>
-</ul>
-</shiro:authenticated>
+    </span>
+    <!-- // User Menu -->
+    </shiro:authenticated>
+</div>

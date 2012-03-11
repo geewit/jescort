@@ -29,10 +29,10 @@ public class Location extends AbstractPersistable<Integer>
     @Expose
     private String name;
     @Expose
-    private String abbreviation;
+    private String abbr;        //abbreviation
     @Expose
     private Integer level;
-    @Expose
+
     private Boolean available;
     @Expose
     private Location parent;
@@ -59,14 +59,14 @@ public class Location extends AbstractPersistable<Integer>
         this.name = name;
     }
 
-    public String getAbbreviation()
+    public String getAbbr()
     {
-        return abbreviation;
+        return abbr;
     }
 
-    public void setAbbreviation(String abbreviation)
+    public void setAbbr(String abbr)
     {
-        this.abbreviation = abbreviation;
+        this.abbr = abbr;
     }
 
     public Integer getLevel()

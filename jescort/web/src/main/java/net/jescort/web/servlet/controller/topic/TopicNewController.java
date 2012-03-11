@@ -1,5 +1,6 @@
 package net.jescort.web.servlet.controller.topic;
 
+import net.jescort.domain.forum.Forum;
 import net.jescort.domain.forum.Post;
 import net.jescort.domain.forum.Topic;
 import net.jescort.repository.EscortRepository;
@@ -27,8 +28,10 @@ public class TopicNewController
             //TODO return some error or throw exception
             return "error";
         }
+        Forum forum = escortRepository.getForum(forumId);
         command.setForumId(forumId);
         model.addAttribute(command);
+        model.addAttribute("forum", forum);
         return "topics/new";
     }
 

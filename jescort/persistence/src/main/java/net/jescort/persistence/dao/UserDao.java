@@ -16,7 +16,7 @@ public interface UserDao extends JpaRepository<User, Integer>
 
     public void increasePosts(String username);
 
-    public Blob findPhoto(Integer id);
+    public Blob findAvatar(Integer id);
 
-    public Blob findPhotoByUsername(String username);
+    public Blob findAvatarByUsername(String username);
 }

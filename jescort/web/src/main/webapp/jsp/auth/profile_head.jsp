@@ -2,4 +2,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<link rel="stylesheet" type="text/css" href="<spring:url value="/static/css/ipb_ckeditor.css"/>"/>
+<script type="text/javascript" src="<spring:url value="/static/js/ajax/LocationSelector.js"/>"></script>
+<script type="text/javascript">
+    $(function()
+    {
+        updateLocations("province");
+    });
+</script>

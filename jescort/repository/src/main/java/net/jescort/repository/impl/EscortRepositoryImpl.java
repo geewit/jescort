@@ -171,8 +171,12 @@ public class EscortRepositoryImpl implements EscortRepository
         final long totalPages = postDao.countByTopicId(topicId);
         Page<Post> page = new PageImpl<Post>(posts, pageable, totalPages);
         topicDao.increaseViews(topicId);
+        Topic nextTopic = topicDao.findNextTopicInForum(topic.getForumId(), topicId);
+        Forum forum = forumDao.findOne(topic.getForumId());
+        mav.addObject("forum", forum);
         mav.addObject("topic", topic);
         mav.addObject("posts", page);
+        mav.addObject("nextTopic", nextTopic);
         return mav;
     }
 

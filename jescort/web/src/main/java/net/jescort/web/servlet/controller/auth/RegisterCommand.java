@@ -5,7 +5,7 @@ import net.gelif.kernel.core.validation.constraint.FieldMatch;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Locale;
@@ -17,36 +17,34 @@ import java.util.Locale;
  * Time: 上午11:44
  */
 @FieldMatch.List({
-        @FieldMatch(first = "password", second = "passwordConfirm", message = "The password fields must match"),
-        @FieldMatch(first = "email", second = "emailConfirm", message = "The email fields must match")
+        @FieldMatch(first = "password", second = "passwordConfirm", message = "{validator.password.not_match}"),
+        @FieldMatch(first = "email", second = "emailConfirm", message = "{validator.email.not_match}")
 })
 public class RegisterCommand
 {
-    @NotBlank
-    @Size(min = 5, max = 12)
-    //@Pattern(regexp = "^[a-z][a-z0-9_\\-\\.]{4,30}[a-z0-9]$")
+    @NotBlank(message = "{validator.username.not_blank}")
+    @Pattern(regexp = "[A-Za-z][A-Za-z0-9_\\-\\.]{4,30}[A-Za-z0-9]$", message = "{validator.username.illegal}")
     private String username;
 
-    @NotBlank
-    @Size(min = 5, max = 16)
+    @NotBlank(message = "{validator.password.not_blank}")
+    @Size(min = 5, max = 16, message = "{validator.password.illegal}")
     private String password;
-    
-    private String nickname;
 
-    @NotBlank
+    @NotBlank(message = "{validator.passwordConfirm.not_blank}")
     private String passwordConfirm;
 
-    @NotBlank
-    @Email
+    @NotBlank(message = "{validator.email.not_blank}")
+    @Email(message = "{validator.email.illegal}")
     private String email;
 
-    @NotBlank
-    @Email
+    @NotBlank(message = "{validator.emailConfirm.not_blank}")
+    @Email(message = "{validator.emailConfirm.illegal}")
     private String emailConfirm;
 
-    private String timezone = "8";
-    
-    private Locale locale;
+    private String nickname;
+
+    @AssertTrue(message = "{validator.agreeTerms.must_be_checked}")
+    private Boolean agreeTerms;
 
     public String getUsername()
     {
@@ -56,16 +54,6 @@ public class RegisterCommand
     public void setUsername(String username)
     {
         this.username = username;
-    }
-
-    public String getNickname()
-    {
-        return nickname;
-    }
-
-    public void setNickname(String nickname)
-    {
-        this.nickname = nickname;
     }
 
     public String getPassword()
@@ -108,23 +96,23 @@ public class RegisterCommand
         this.emailConfirm = emailConfirm;
     }
 
-    public String getTimezone()
+    public String getNickname()
     {
-        return timezone;
+        return nickname;
     }
 
-    public void setTimezone(String timezone)
+    public void setNickname(String nickname)
     {
-        this.timezone = timezone;
+        this.nickname = nickname;
     }
 
-    public Locale getLocale()
+    public Boolean getAgreeTerms()
     {
-        return locale;
+        return agreeTerms;
     }
 
-    public void setLocale(Locale locale)
+    public void setAgreeTerms(Boolean agreeTerms)
     {
-        this.locale = locale;
+        this.agreeTerms = agreeTerms;
     }
 }

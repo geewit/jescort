@@ -1,67 +1,51 @@
-.str {
-    color: #008800;
+span .admin {
+    color:purple;
+    font-weight:bold;
 }
-.kwd {
-    color: #000088;
+
+span .dev {
+    color:#2C384D;
 }
-.com {
-    color: #880000;
+
+span .editor {
+    color:#aa0000;
 }
-.typ {
-    color: #660066;
+
+span .gmod {
+    color:green;
 }
-.lit {
-    color: #006666;
+
+span .member {
 }
-.pun {
-    color: #666600;
+
+span .mod {
+    color:#78B44B;
 }
-.pln {
-    color: #000000;
+
+span .mvc {
+    color:#323DD2;
 }
-.tag {
-    color: #000088;
+
+span .sub {
+    color:#FF8C00;
 }
-.atn {
-    color: #660066;
+
+span .sub2 {
+    color:#B67109;
 }
-.atv {
-    color: #008800;
+
+span .super {
+    color:#0E5011;
 }
-.dec {
-    color: #660066;
+
+span .s-editor {
+    color:#660000;
 }
-.str {
-    color: #006600;
+
+span .repoter {
+    color:#ff0000;
 }
-.kwd {
-    color: #000066;
-    font-weight: bold;
-}
-.com {
-    color: #660000;
-    font-style: italic;
-}
-.typ {
-    color: #440044;
-    font-weight: bold;
-}
-.lit {
-    color: #004444;
-}
-.pun {
-    color: #444400;
-}
-.pln {
-    color: #000000;
-}
-.tag {
-    color: #000066;
-    font-weight: bold;
-}
-.atn {
-    color: #440044;
-}
-.atv {
-    color: #006600;
+
+span .vet {
+    font-weight:bold;
 }

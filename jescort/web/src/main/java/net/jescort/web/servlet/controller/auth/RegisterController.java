@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 /**
@@ -52,7 +51,7 @@ public class RegisterController
             return showSignupForm(model, command, request);
         }
         // Create the auth
-        userRepository.createUser(command.getUsername(), command.getPassword(), command.getNickname(), command.getEmail(), command.getTimezone(), request.getLocale());
+        userRepository.createUser(command.getUsername(), command.getPassword(), command.getNickname(), command.getEmail());
 
         // Login the newly created auth
         SecurityUtils.getSubject().login(new UsernamePasswordToken(command.getUsername(), command.getPassword()));

@@ -10,10 +10,10 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 public class TopicCommand
 {
-    @NotBlank
+    @NotBlank(message = "{subject.not_null}")
     private String subject;
 
-    @NotBlank
+    @NotBlank(message = "{content.not_null}")
     private String content;
 
     private Integer forumId;

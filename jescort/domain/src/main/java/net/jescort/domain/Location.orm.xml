@@ -13,8 +13,8 @@
             <basic name="name">
                 <column name="name" insertable="true" updatable="true" unique="false"/>
             </basic>
-            <basic name="abbreviation">
-                <column name="abbreviation" insertable="true" updatable="true" unique="false"/>
+            <basic name="abbr">
+                <column name="abbr" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="level">
                 <column name="level" insertable="true" updatable="true" unique="false"/>

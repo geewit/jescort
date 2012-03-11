@@ -150,6 +150,7 @@ td {
 }
 .ipsBox {
     background: none repeat scroll 0 0 #E4E6E9;
+    border-radius: 0 0 4px 4px;
 }
 .ipsBox_notice, .ipsBox_highlight {
     background: none repeat scroll 0 0 #F4FCFF;
@@ -234,6 +235,7 @@ body .ipb_table .header a, body .topic_options a {
 .ipbmenu_content, .ipb_autocomplete {
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
+    border-radius: 4px 4px 4px 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
     padding: 4px 0;
 }
@@ -256,6 +258,7 @@ body .ipb_table .header a, body .topic_options a {
     background-color: #2D3C4E;
     background-image: -moz-linear-gradient(center top , #3F546D 0%, #2D3C4E 100%);
     border: 1px solid #2D3C4E;
+    border-radius: 3px 3px 3px 3px;
     color: #FFFFFF !important;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
 }
@@ -289,7 +292,7 @@ body .ipb_table .header a, body .topic_options a {
 .input_submit.delete:hover {
     color: #FFFFFF;
 }
-body#ipboard_body fieldset.submit, body#ipboard_body p.submit {
+body#gelif_body fieldset.submit, body#gelif_body p.submit {
     background-color: #F2F3F4;
     border-top: 1px solid #D6D8DD;
 }
@@ -305,7 +308,7 @@ body#ipboard_body fieldset.submit, body#ipboard_body p.submit {
 .moderated, .moderated a {
     color: #6F3642;
 }
-body#ipboard_body.redirector {
+body#gelif_body.redirector {
     background: none repeat scroll 0 0 #FFFFFF !important;
 }
 #user_link.menu_active {
@@ -454,6 +457,7 @@ body#ipboard_body.redirector {
     -moz-appearance: textfield;
     background-position: 8px -48px !important;
     border: 0 none;
+    border-radius: 4px 4px 4px 4px;
     font-size: 12px;
     height: 12px;
     line-height: 12px;
@@ -470,6 +474,7 @@ body#ipboard_body.redirector {
 #search_wrap {
     background-color: #FFFFFF;
     border: 1px solid #222E3E;
+    border-radius: 4px 4px 4px 4px;
     display: block;
     height: 22px;
     min-width: 200px;
@@ -616,22 +621,27 @@ body#ipboard_body.redirector {
     padding: 1px;
 }
 .ipsUserPhoto_large {
+    border-radius: 4px 4px 4px 4px;
     height: 100px;
     width: 100px;
 }
 .ipsUserPhoto_medium {
+    border-radius: 4px 4px 4px 4px;
     height: 50px;
     width: 50px;
 }
 .ipsUserPhoto_mini {
+    border-radius: 4px 4px 4px 4px;
     height: 30px;
     width: 30px;
 }
 .ipsUserPhoto_tiny {
+    border-radius: 4px 4px 4px 4px;
     height: 20px;
     width: 20px;
 }
 .ipsUserPhoto_icon {
+    border-radius: 3px 3px 3px 3px;
     height: 16px;
     width: 16px;
 }
@@ -748,25 +758,28 @@ body#ipboard_body.redirector {
 }
 #ajax_loading {
     position: fixed;
-    right: 40px;
-    top: 40px;
-    z-index: 10000;
+    right: 48px;
+    top: 48px;
+    z-index: 8;
 }
-#ipboard_body.redirector {
+#ajax_loading img {
+    border-radius: 12px 12px 12px 12px;
+}
+#gelif_body.redirector {
     margin: 150px auto 0;
     width: 500px;
 }
-#ipboard_body.minimal {
+#gelif_body.minimal {
     margin-top: 40px;
 }
-#ipboard_body.minimal #content {
+#gelif_body.minimal #content {
     border-radius: 10px 10px 10px 10px;
     padding: 20px 30px;
 }
-#ipboard_body.minimal h1 {
+#gelif_body.minimal h1 {
     font-size: 32px;
 }
-#ipboard_body.minimal .ipsType_pagedesc {
+#gelif_body.minimal .ipsType_pagedesc {
     font-size: 16px;
 }
 .progress_bar {
@@ -862,6 +875,7 @@ span.error {
 .maintitle {
     background-color: #2D3C4E;
     background-image: -moz-linear-gradient(center top , #3F546D 0%, #2D3C4E 100%);
+    border-radius: 4px 4px 0 0;
     color: #FFFFFF;
     font-size: 14px;
     font-weight: bold;
@@ -875,6 +889,7 @@ span.error {
     color: #FFFFFF;
 }
 .collapsed .maintitle {
+    border-radius: 4px 4px 4px 4px;
     opacity: 0.4;
 }
 .collapsed .maintitle:hover {
@@ -1689,7 +1704,7 @@ table.ipb_table tr:hover .mini_pagination {
 .ipsPostForm .ipsLayout_content {
     box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
     float: none;
-    z-index: 8;
+    z-index: 9;
 }
 .ipsPostForm .ipsLayout_right {
     border-left: 0 none;
@@ -1770,7 +1785,7 @@ table.ipb_table tr:hover .mini_pagination {
     right: 8px;
     z-index: 15000;
 }
-body#ipboard_body fieldset.submit, body#ipboard_body p.submit {
+body#gelif_body fieldset.submit, body#gelif_body p.submit {
     padding: 15px 6px;
     text-align: center;
 }
@@ -1850,6 +1865,7 @@ li.field.checkbox span.desc, li.field.cbox span.desc {
 .message {
     background: none repeat scroll 0 0 #EBFCDF;
     border: 1px solid #A4CFA4;
+    border-radius: 4px 4px 4px 4px;
     color: #0E440E;
     font-size: 12px;
     line-height: 1.6;
@@ -2068,6 +2084,7 @@ li.field.checkbox span.desc, li.field.cbox span.desc {
     background-color: #2D3C4E;
     background-image: -moz-linear-gradient(center top , #3F546D 0%, #2D3C4E 100%);
     border: 1px solid #2D3C4E;
+    border-radius: 3px 3px 3px 3px;
     color: #FFFFFF !important;
     cursor: pointer;
     display: inline-block;
@@ -2111,6 +2128,7 @@ li.field.checkbox span.desc, li.field.cbox span.desc {
     background-color: #F0F0F0;
     background-image: -moz-linear-gradient(center top , #FFFFFF 0%, #F0F0F0 100%);
     border: 1px solid #D0D0D0;
+    border-radius: 3px 3px 3px 3px;
     color: #666666 !important;
     cursor: pointer;
     display: inline-block;
@@ -2384,6 +2402,7 @@ ul.mini_pagination li {
 .ipsSideBlock {
     background: none repeat scroll 0 0 #FFFFFF;
     border: 4px solid #E4E6E9;
+    border-radius: 4px 4px 4px 4px;
     margin-bottom: 8px;
     padding: 8px;
     position: relative;
@@ -2391,6 +2410,7 @@ ul.mini_pagination li {
 .ipsSideBlock h3 {
     background-color: #E4E6E9;
     background-image: -moz-linear-gradient(center top , #EFF0F2 0%, #E4E6E9 100%);
+    border-radius: 4px 4px 4px 4px;
     color: #2D3C4E;
     font-size: 120%;
     font-weight: bold;
@@ -2416,6 +2436,7 @@ ul.mini_pagination li {
 }
 ._sbcollapsable {
     background-color: white;
+    border-radius: 4px 4px 4px 4px;
     padding: 8px;
 }
 #statusHook ._sbcollapsable {
@@ -2489,7 +2510,7 @@ ul.mini_pagination li {
 #hook_watched_items ul li {
     padding: 8px;
 }
-body#ipboard_body #hook_watched_items fieldset.submit {
+body#gelif_body #hook_watched_items fieldset.submit {
     padding: 8px;
 }
 #hook_birthdays .list_content {

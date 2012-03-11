@@ -3,34 +3,57 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title><c:set var="titleKey"><tiles:getAsString name="title" ignore="true"/></c:set><spring:message code="${titleKey}"/></title>
-    <link href="<spring:url value="/static/css/escort_common.css"/>" type="text/css" rel="stylesheet"/>
-    <link href="<spring:url value="/static/css/escort_style.css"/>" type="text/css" rel="stylesheet"/>
-    <link href="<spring:url value="/static/css/escort_color.css"/>" type="text/css" rel="stylesheet"/>
-    <link rel="icon" type="image/x-icon" href="<spring:url value="/static/images/logo.gif"/>">
-    <script type="text/javascript" src="<spring:url value="/static/js/jquery/1.6.4/jquery.min.js"/>"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/ico">
+    <style type="text/css">html, body, input, select, textarea { font-family: 'Segoe UI', Segoe, Helvetica, Arial, FreeSans, sans-serif }</style>
+
+    <link rel="stylesheet" href="<spring:url value="/static/css/pegasus.css"/>" type="text/css" media="screen,print"/>
+    <link rel="stylesheet" href="<spring:url value="/static/css/ipb_styles.css"/>" type="text/css" media="screen,print"/>
+    <link rel="stylesheet" href="<spring:url value="/static/css/ipb_common.css"/>" type="text/css" media="screen,print"/>
+    <link rel="stylesheet" href="<spring:url value="/static/css/calendar_select.css"/>" type="text/css" media="screen,print"/>
+    <link rel="stylesheet" href="<spring:url value="/static/css/prettify.css"/>" type="text/css" media="screen,print"/>
+    <link rel="stylesheet" href="<spring:url value="/static/css/ipb_auth.css"/>" type="text/css" media="screen,print"/>
+    <script type="text/javascript" src="<spring:url value="/static/js/jquery/1.7.1/jquery.js"/>"></script>
+    <tiles:insertAttribute name="head"/>
 </head>
 
-<body>
-<a name="top"></a>
 
+<body id="gelif_body" class="f-arial s-default style_noshadow">
+<div id="fb-root"></div>
+
+<!-- Container -->
 <div id="container">
+    <!-- Header -->
+    <header id="branding">
+        <tiles:insertAttribute name="header"/>
+    </header>
+    <!-- // Header -->
+    <!-- Wrapper -->
     <div id="wrapper">
-        <div id="header">
-            <tiles:insertAttribute name="header"/>
-        </div>
-        <div id="page-body">
-            <tiles:insertAttribute name="content"/>
-        </div>
-        <div id="footer">
-            <tiles:insertAttribute name="footer"/>
-            <div class="clear"></div>
-        </div>
+        <!-- Header Navigation -->
+        <tiles:insertAttribute name="navigation"/>
+        <!-- // Header Navigation -->
+
+        <!-- Header Sub Navigation -->
+        <tiles:insertAttribute name="sub_navigation"/>
+        <!-- // Header Sub Navigation -->
+
+        <!-- Page Content -->
+        <tiles:insertAttribute name="content"/>
+        <!-- // Page Content -->
     </div>
+    <!-- // Wrapper -->
+    <!-- Footer -->
+    <footer id="siteinfo" role="contentinfo">
+        <tiles:insertAttribute name="footer"/>
+    </footer>
+    <!-- // Footer -->
 </div>
+<!-- // Container -->
 
 </body>
 </html>

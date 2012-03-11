@@ -4,23 +4,13 @@
     "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
-
     <!-- Default Main Template -->
     <definition name=".layout" template="/decorators/layout.jsp">
+        <put-attribute name="head" value=""/>
         <put-attribute name="header" value="/decorators/header.jsp"/>
-        <put-attribute name="content" value="${content}"/>
-        <put-attribute name="footer" value="/decorators/footer.jsp"/>
-    </definition>
-
-    <definition name="auth.layout" template="/decorators/auth-layout.jsp">
-        <put-attribute name="header" value="/decorators/header.jsp"/>
-        <put-attribute name="content" value="${content}"/>
-        <put-attribute name="footer" value="/decorators/footer.jsp"/>
-    </definition>
-
-    <definition name="messager.layout" template="/decorators/messager-layout.jsp">
-        <put-attribute name="header" value="/decorators/header.jsp"/>
-        <put-attribute name="content" value="${content}"/>
+        <put-attribute name="navigation" value="/decorators/include-navigation.jsp"/>
+        <put-attribute name="sub_navigation" value="/decorators/include-sub_navigation.jsp"/>
+        <put-attribute name="content" value=""/>
         <put-attribute name="footer" value="/decorators/footer.jsp"/>
     </definition>
 
@@ -49,22 +39,22 @@
         <put-attribute name="content" value="/jsp/rules.jsp"/>
     </definition>
 
-    <definition name="auth/login" extends="auth.layout">
+    <definition name="auth/login" extends=".layout">
         <put-attribute name="title" value="messages.auth.login.title"/>
         <put-attribute name="content" value="/jsp/auth/login.jsp"/>
     </definition>
 
-    <definition name="auth/register" extends="auth.layout">
+    <definition name="auth/register" extends=".layout">
         <put-attribute name="title" value="messages.auth.register.title"/>
         <put-attribute name="content" value="/jsp/auth/register.jsp"/>
     </definition>
 
-    <definition name="auth/profile" extends="auth.layout">
+    <definition name="auth/profile" extends=".layout">
         <put-attribute name="title" value="messages.auth.profile.title"/>
         <put-attribute name="content" value="/jsp/auth/profile.jsp"/>
     </definition>
 
-    <definition name="auth/attachments" extends="auth.layout">
+    <definition name="auth/attachments" extends=".layout">
         <put-attribute name="title" value="messages.auth.attachments.title"/>
         <put-attribute name="content" value="/jsp/auth/attachments.jsp"/>
     </definition>
@@ -79,24 +69,26 @@
         <put-attribute name="content" value="/jsp/forums/show.jsp"/>
     </definition>
 
-    <definition name="messages/messageBox" extends="messager.layout">
+    <definition name="messages/messageBox" extends=".layout">
         <put-attribute name="title" value="messages.messageBox.title"/>
         <put-attribute name="content" value="/jsp/messages/messageBox.jsp"/>
     </definition>
 
-    <definition name="messages/show" extends="messager.layout">
+    <definition name="messages/show" extends=".layout">
         <put-attribute name="title" value="messages.message.title"/>
         <put-attribute name="content" value="/jsp/messages/show.jsp"/>
     </definition>
 
     <definition name="posts/new" extends=".layout">
         <put-attribute name="title" value="messages.topics.reply.title"/>
-        <put-attribute name="content" value="/jsp/posts/new.jsp"/>
+        <put-attribute name="head"  value="/jsp/posts/form_head.jsp" type="template"/>
+        <put-attribute name="content" value="/jsp/posts/form_content.jsp"/>
     </definition>
 
     <definition name="posts/edit" extends=".layout">
         <put-attribute name="title" value="messages.posts.edit.title"/>
-        <put-attribute name="content" value="/jsp/posts/edit.jsp"/>
+        <put-attribute name="head" value="/jsp/posts/form_head.jsp" type="template"/>
+        <put-attribute name="content" value="/jsp/posts/form_content.jsp"/>
     </definition>
 
     <definition name="posts/show" extends=".layout">
@@ -106,12 +98,14 @@
 
     <definition name="topics/new" extends=".layout">
         <put-attribute name="title" value="messages.topics.new.title"/>
-        <put-attribute name="content" value="/jsp/topics/new.jsp"/>
+        <put-attribute name="head" value="/jsp/topics/form_head.jsp" type="template"/>
+        <put-attribute name="content" value="/jsp/topics/form_content.jsp" type="template"/>
     </definition>
 
     <definition name="topics/edit" extends=".layout">
         <put-attribute name="title" value="messages.topics.edit.title"/>
-        <put-attribute name="content" value="/jsp/topics/edit.jsp"/>
+        <put-attribute name="head" value="/jsp/topics/form_head.jsp" type="template"/>
+        <put-attribute name="content" value="/jsp/topics/form_content.jsp"/>
     </definition>
 
     <definition name="topics/show" extends=".layout">

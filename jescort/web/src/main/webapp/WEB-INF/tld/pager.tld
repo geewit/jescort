@@ -60,6 +60,31 @@
             <type>java.util.Collection</type>
         </attribute>
     </tag>
+    <tag>
+        <description>
+            <![CDATA[
+                    ]]>
+        </description>
+        <name>user</name>
+        <tag-class>net.jescort.web.jsp.taglib.UserTemplateTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <description>
+                <![CDATA[
+                        ]]>
+            </description>
+            <name>user</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>net.jescort.domain.user.User</type>
+        </attribute>
+        <attribute>
+            <description>The name of the variable to export the URL value to.</description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
     <function>
         <description>
             <![CDATA[

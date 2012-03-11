@@ -41,7 +41,7 @@ CREATE TABLE group_role_map (
 CREATE TABLE locations (
     id                   INT                    NOT NULL,
     `name`               VARCHAR(255)           NOT NULL,
-    abbreviation         CHAR(2)                NOT NULL,
+    abbr                 CHAR(2)                NOT NULL,
     parent_id            INT                    NULL,
     level                TINYINT(1)             NOT NULL,
     available            BOOLEAN                NOT NULL,

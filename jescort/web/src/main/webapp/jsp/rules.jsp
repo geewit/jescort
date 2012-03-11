@@ -1,159 +1,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<div id="breadcrumb">
-    <ul class="fleft">
-        <li class="first" style="font-weight:bold"><a href="<spring:url value="/"/>">Forums</a></li>
-        <li><b><spring:message code="message.forum_rules"/></b></li>
-    </ul>
-    <ul id="breadcrumb-links" class="fright">
-        <li style="padding-right:0">
-            <a class="button small" href="<spring:url value="/rules"/>"><spring:message code="message.forum_rules"/></a>
-        </li>
-    </ul>
-    <div class="clear"></div>
-</div>
-<div id="content">
-    <h2 class="maintitle">Help Topics</h2>
-    <ol id="help_topics">
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">How to Register</a></h3>
 
-            <p> How to register and the added benefits of being a registered member. </p>
-        </li>
-        <li class="row2 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Logging In and Out</a></h3>
+<div id="body">
+    <div class="clearfix" id="secondary_navigation">
+        <ol class="breadcrumb top ipsList_inline">
+            <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
+                <a itemprop="url" href="/">
+                    <span itemprop="title">Jescort Forums</span>
+                </a>
+            </li>
+            <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
+                <span class="nav_sep">-></span>
+                <span itemprop="title">Community Rules </span>
+            </li>
+        </ol>
+    </div>
+    <br>
 
-            <p> How to log in and out from the board, how to remain anonymous and not be shown on the active users list and what to do if you forget your password. </p>
-        </li>
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Your Settings</a></h3>
+    <h1 class="ipsType_pagetitle">Community Rules </h1>
+    <br>
+    <div style="font-size:110%;line-height:150%;" class="rules">
+        We welcome you to participate in the Jescort Community, however as with all social circles there are a few rules you must abide by in order to maintain your active membership within these message boards.<br> <br>These rules apply to the forums, comments system on our news and any blogs created here.<br> <br>We are trying to provide the highest quality community experience for all of our members and following these guidelines is the best way to maintain a quality environment for all age groups. These rules are very basic and we hope that you read them fully. If we find that you break any of these rules, your account may be disabled and your posting privileges removed.<br> <br>Thanks for your cooperation.<br> <br><strong class="bbc"><span style="font-size: 18px;">No Graphic Material of either a macabre or pornographic nature.</span></strong><br>Any posts or links to such content will not be tolerated. We are a forum for all ages and expect posts to be family / work friendly.<br> <br><span style="font-size: 18px;"><strong class="bbc">No Illegal Software/Copyrighted Discussion.</strong></span><br>Discussions involving warez, cracks, security circumvention, using torrents for downloading copyrighted or illegal material is strictly prohibited. This includes music files or other unauthorized software. Asking for help in doing so will cause warns or suspensions of accounts.<br>		  <br>The following punishments may be applied to your account following infractions:<ul class="bbcol decimal"><br><li>Posting a link to pirated software/film/tv/music. = SNIP POST + WARNING LEVEL RAISE<br></li><li>Suggesting (overtly endorsing) that somebody pirate material. = SNIP POST + WARNING LEVEL RAISE<br></li><li>Requesting assistance in pirating material. = SNIP POST + WARNING LEVEL RAISE<br></li><li>Posting screenshots that show obviously pirated material (e.g. someone's uTorrent download screen) = SNIP POST + PM and/or ZERO LEVEL WARN<br></li><li>Openly discussing pirated material (e.g. z0mg - new episode of Lost was amazing!! BitTorrent FTW!) = SNIP POST + PM and/or ZERO LEVEL WARN<br></li></ul><br>Repeat offenders of the above examples will eventually be restricted from posting all together<br> <br> <br><span style="font-size: 18px;"><strong class="bbc">No Cursing or Swear Words </strong></span>  <br>We encourage you to use our communities as a forum to debate topics, but please use proper adjectives to express yourself. We do not tolerate circumvention of our word filter or abuse upon another member. As stated above, we are a forum for all ages and expect posts to be family / work friendly.<br> <br><span style="font-size: 18px;"><strong class="bbc">No Racism, Threatening,  No Victimization or Hateful Posts / Retaliation   </strong></span><br>If you are a long standing member, act like one; lead by example and assist other newer users rather than attacking them. We look upon our veteran users to use this opportunity to teach the newer users the appropriate way to conduct themselves in this community.<br> <br><span style="font-size: 18px;"><strong class="bbc">No Personal Attacks or Retaliation </strong></span>  <br>Personal attacks such as instigating "flame bait", verbal abuse, mocking or sexist remarks of members in posts are not tolerated at Neowin. Such posts will be deleted on sight or moderated accordingly.<br>  <br>As above, if you are a long standing member, act like one. Lead by example and assist other newer members rather than attacking them. Members that reply to posts simply to instigate argument will be warned / suspended from forum areas.<br> <br><strong class="bbc"><span style="font-size: 18px;">Post On Topic. </span></strong>  <br>Please post on topic and within the subject area of the subforum. If your topic does not fit, please use our General Discussions area. If you have questions on the correct content area, please PM a moderator.<br>		  <br>Use a title that describes the content of your post. Don't use all caps or special characters to draw attention to your post. This is an English speaking site, and we expect all posts to be in English. Links must resolve to other English speaking sites.<br> <br><span style="font-size: 18px;"><strong class="bbc">No Unacceptable Forum or News Comments. </strong></span>  <br>While some members feel that post count is important, there are some posts that we feel do not contribute to the community in any way what-so-ever. If you wish to direct a fellow member to something that has already been posted, please do so in a courteous manner.<br>					  <br>Unacceptable posts include (but are not limited to):<ul class="bbc"><br><li>"old news" or anything similar<br></li><li>"first post" or anything similar<br></li><li>"(insert product or brand) sucks" or anything similar<br></li><li>"I posted this in BPN x days ago!!!" or anything similar<br></li></ul><br><span style="font-size: 18px;"><strong class="bbc">Do not post links to exploits, malware, or websites that produce undesired effects to our members.</strong></span><br>This includes browser crashes, multiple pop-up screens, DOS attacks, or similar results. Links will be removed, threads closed, and members will be warned or suspended.<br> <br><strong class="bbc"><span style="font-size: 18px;">No Avatar &amp; Custom Title Abuse.   </span></strong><br>These are a site courtesy and abuse of them will result in them being lost and your account being restricted. We also have Sig Guidelines that outline what image (type, dimensions &amp; file size) we find acceptable <strong class="bbc"><a title="" class="bbc_url" href="http://www.neowin.net/forum/topic/25368-avatar-signature-guidelines/">click here to view</a></strong>.<br> <br><span style="font-size: 18px;"><strong class="bbc">Neowin Is Not A Support Forum For Other Sites. </strong></span>  <br>Comparing, judging the content/value or raising the opinion of other sites, recruiting members or staff, bad mouthing (or victimizing) &amp; negative discussion about non/affiliate site issues on our forums is neither wanted nor tolerated. Promotion of individual member sites or blogs will be deleted on sight.<br> <br><span style="font-size: 18px;"><strong class="bbc">No Spamming</strong></span>.  <br>Spamming is characterized by the initiation of threads or posts that contribute nothing to a forum, be it off topic or on topic. Examples include: empty bodies, bodies with few words that have no relation to the current thread or discussion and those posts that state they are spam, either to annoy, advertise or increase a member's post count. Users may not use news item comments to advertise or promote another product. Resurrecting old forum posts is also not appreciated unless it serves a worthy cause to the forum. This determination is made by the forum Moderator or Administrator and is not up for discussion.		  <br> <br>Forum signatures are to be used respectfully, Neowin already has to display ads to cover the running costs, so don't annoy our members by making your signature into your personal ad revenue opportunity.<br> <br><span style="font-size: 18px;"><strong class="bbc">Advertisement Blocking. </strong></span>  <br>Glorifying the fact in posts here on Neowin is <strong class="bbc">strictly forbidden</strong>. We understand that some members could not care less to display advertisements on any website, and therefore block a stream of revenue that is required to keep this site running. We can not do much about that but please do not glorify the fact.<br> <br>We have a subscription package that professionally removes all advertisements from Neowin for a small annual fee. We never ask members to click advertisements, and for those that do; we greatly appreciate this. Simply allowing the advertisement to load (without clicking on it) also returns revenue for the site. If you feel that you can not whitelist Neowin or afford the subscription but would like to contribute, you are very welcome to donate via PayPal to subscribe@neowin.net and make a post here.<br> <br><span style="font-size: 18px;"><strong class="bbc">Respect Moderator Decisions. </strong></span>  <br>Threads and posts questioning the actions or decisions of forum moderations will be deleted on sight, and the appropriate action taken (up to and including forum bans) against the thread starter and/or participants. However, as a member you reserve the right to PM any moderator, supervisor or administrator regarding action taken at Neowin.<br> <br><strong class="bbc"><span style="font-size: 18px;">Use the Neowin Reporting System Properly.</span></strong>  <br>Do not abuse the report system. While we appreciate members reporting bad behavior, or posts, please do not use this system to post rude comments or retaliate against other members. Reported posts will be handled as soon as possible.<br> <br><span style="font-size: 18px;"><strong class="bbc">No Alternate (Dupe) Accounts</strong></span>.  <br>Should you be disciplined with a restriction or ban, you are not allowed to open a new account to obtain freedom to post. Restrictions and bans are given for a reason, and usurping that ability by re-registering is not tolerated. If another account is opened, that account will be banned immediately, and the original account will be further penalized. Anyone who has warnings on their account is automatically excluded from changing their user name.<br> <br><span style="font-size: 18px;"><strong class="bbc">Neowin reserves the right to change or alter these rules at any time and an Administrator's word is final.</strong></span><br> <br>Note: Any infraction of these guidelines will result in a warning being placed against your Neowin account.
+    </div>
+    <br>
 
-            <p> Editing contact information, personal information, avatars, signatures, board settings, languages and style choices. </p>
-        </li>
-        <li class="row2 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Topics and Forums</a></h3>
-
-            <p> A guide to forums, topics, posts and polls. </p>
-        </li>
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Posting</a></h3>
-
-            <p> A guide to the features available when posting or sending messages. Including the post editor, polls and attachments. </p>
-        </li>
-        <li class="row2 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Personal Messenger</a></h3>
-
-            <p> How to send personal messages, track them, edit your messenger folders and archive stored messages. </p>
-        </li>
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Members</a></h3>
-
-            <p> A guide to the member list and member profiles, including profile comments, adding friends and contacting members. </p>
-        </li>
-        <li class="row2 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Searching Topics and Posts</a></h3>
-
-            <p> How to use the search feature. </p>
-        </li>
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Searching</a></h3>
-
-            <p> How to use the search feature. </p>
-        </li>
-        <li class="row2 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Viewing active topics and new posts</a></h3>
-
-            <p> How to view all the topics which have a new reply today and the new posts made since your last visit. </p>
-        </li>
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Email Notification of new messages</a></h3>
-
-            <p> How to get emailed when a new reply is added to a topic. </p>
-        </li>
-        <li class="row2 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Contacting the staff</a></h3>
-
-            <p> Where to find a list of the board moderators and administrators. </p>
-        </li>
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Your Control Panel (My Controls)</a></h3>
-
-            <p> Editing contact information, personal information, avatars, signatures, board settings, languages and style choices. </p>
-        </li>
-        <li class="row2 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Calendar</a></h3>
-
-            <p> More information on the boards calendar feature. </p>
-        </li>
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Your Personal Messenger</a></h3>
-
-            <p> How to send personal messages, track them, edit your messenger folders and archive stored messages. </p>
-        </li>
-        <li class="row2 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">My Assistant</a></h3>
-
-            <p> A comprehensive guide to use this handy little feature. </p>
-        </li>
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Blogs</a></h3>
-
-            <p> A guide to viewing the community blogs and creating your own blog. </p>
-        </li>
-        <li class="row2 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Member List</a></h3>
-
-            <p> Explaining the different ways to sort and search through the list of members. </p>
-        </li>
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Registration benefits</a></h3>
-
-            <p> How to register and the added benefits of being a registered member. </p>
-        </li>
-        <li class="row2 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Cookies and cookie usage</a></h3>
-
-            <p> The benefits of using cookies and how to remove cookies set by this board. </p>
-        </li>
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Recovering lost or forgotten passwords</a></h3>
-
-            <p> How to reset your password if you've forgotten it. </p>
-        </li>
-        <li class="row2 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Viewing members profile information</a></h3>
-
-            <p> How to view members contact information. </p>
-        </li>
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Topic Options</a></h3>
-
-            <p> A guide to the options avaliable when viewing a topic. </p>
-        </li>
-        <li class="row2 helpRow">
-            <h3>
-                <a href="<spring:url value="/"/>" title="Read document">Contacting the moderating team &amp; reporting posts</a>
-            </h3>
-
-            <p> Where to find a list of the board moderators and administrators. </p>
-        </li>
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Community Blog</a></h3>
-
-            <p> More information about the Community Blog module. </p>
-        </li>
-        <li class="row2 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Download Manager</a></h3>
-
-            <p> This is a quick overview of the features in our Download Manager and how to access them. </p>
-        </li>
-        <li class="row1 helpRow">
-            <h3><a href="<spring:url value="/"/>" title="Read document">Using the Gallery</a></h3>
-
-            <p> This is a quick overview of the features in our Gallery and how to access them. </p>
-        </li>
+    <ol class="breadcrumb bottom ipsList_inline clearfix clear">
+        <li><a href="/">Jescort Forums</a></li>
+        <li><span class="nav_sep">-></span> Community Rules </li>
     </ol>
-    <!-- // Content Wrapper -->
     <div class="clear"></div>
 </div>

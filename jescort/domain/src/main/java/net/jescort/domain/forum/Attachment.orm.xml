@@ -41,7 +41,7 @@
             <many-to-one name="owner" target-entity="net.jescort.domain.user.User" fetch="LAZY">
                 <join-column name="owner_id" referenced-column-name="id" insertable="false" updatable="false"/>
             </many-to-one>
-            <one-to-one name="attachmentData" target-entity="net.jescort.domain.forum.AttachmentData" mapped-by="attachment" fetch="LAZY">
+            <one-to-one name="attachmentData" target-entity="net.jescort.domain.forum.AttachmentData" fetch="LAZY">
                 <join-column name="id" referenced-column-name="id" insertable="false" updatable="false"/>
             </one-to-one>
 

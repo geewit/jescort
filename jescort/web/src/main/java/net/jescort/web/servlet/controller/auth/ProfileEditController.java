@@ -1,5 +1,6 @@
 package net.jescort.web.servlet.controller.auth;
 
+import net.gelif.kernel.core.util.TimeZoneUtils;
 import net.jescort.domain.enums.Gender;
 import net.jescort.domain.forum.Post;
 import net.jescort.domain.user.Name;
@@ -64,6 +65,7 @@ public class ProfileEditController
         }
 
         model.addAttribute("command", command);
+        model.addAttribute("timeZones", TimeZoneUtils.ALL_TIMEZONES);
         return "auth/profile";
     }
 

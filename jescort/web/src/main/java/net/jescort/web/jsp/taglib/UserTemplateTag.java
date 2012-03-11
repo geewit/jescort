@@ -1,19 +1,14 @@
 package net.jescort.web.jsp.taglib;
 
-import net.jescort.domain.forum.Attachment;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.context.MessageSource;
-import org.springframework.context.NoSuchMessageException;
+import net.jescort.domain.user.Group;
+import net.jescort.domain.user.User;
 import org.springframework.web.servlet.support.JspAwareRequestContext;
 import org.springframework.web.servlet.support.RequestContext;
-import org.springframework.web.util.ExpressionEvaluationUtils;
-
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspTagException;
+import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.TagSupport;
 import javax.servlet.jsp.tagext.TryCatchFinally;
 import java.io.IOException;
-import java.util.Collection;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,11 +21,17 @@ public class UserTemplateTag extends TagSupport implements TryCatchFinally
     private static final String REQUEST_CONTEXT_PAGE_ATTRIBUTE = "org.springframework.web.servlet.tags.REQUEST_CONTEXT";
     private RequestContext requestContext;
 
-    private Collection<Attachment> attachments;
+    private User user;
+    private String var = null;
 
-    public void setAttachments(Collection<Attachment> attachments)
+    public void setUser(User user)
     {
-        this.attachments = attachments;
+        this.user = user;
+    }
+
+    public void setVar(String var)
+    {
+        this.var = var;
     }
 
     @Override
@@ -42,15 +43,26 @@ public class UserTemplateTag extends TagSupport implements TryCatchFinally
             this.requestContext = new JspAwareRequestContext(this.pageContext);
             this.pageContext.setAttribute(REQUEST_CONTEXT_PAGE_ATTRIBUTE, this.requestContext);
         }
-
-        try
+        String html = writeHtml();
+        if (null == this.var)
         {
-            pageContext.getOut().write(writeHtml());
-            return EVAL_BODY_INCLUDE;
-        } catch (IOException io)
-        {
-            throw new JspException(io);
+            try
+            {
+                pageContext.getOut().write(html);
+                return EVAL_BODY_INCLUDE;
+            }
+            catch (IOException e)
+            {
+                throw new JspException(e);
+            }
         }
+        else
+        {
+            // store the url as a variable
+            pageContext.setAttribute(var, html, PageContext.PAGE_SCOPE);
+            return EVAL_PAGE;
+        }
+
     }
 
     public void doCatch(Throwable throwable) throws Throwable
@@ -63,54 +75,23 @@ public class UserTemplateTag extends TagSupport implements TryCatchFinally
         this.requestContext = null;
     }
 
-    private String writeHtml() throws JspException
+    private String writeHtml()
     {
         String contextPath = requestContext.getContextPath();
         StringBuffer sb = new StringBuffer();
-        sb.append("<div class=\"rounded clearfix\" id=\"attach_wrap\">");
-        sb.append("<h4><spring:message code=\"message.attachment\"/></h4>\n");
-        sb.append("<ul>\n");
-        for(Attachment attachment : attachments)
+        Group mainGroup = user.getMainGroup();
+        if(Integer.valueOf(4).equals(mainGroup.getId()))
         {
-            sb.append("<li class=\"clear\">\n");
-            sb.append("<a title=\"Download attachment\" href=\"");
-            sb.append(contextPath).append("/attachments/").append(attachment.getId());
-            sb.append("\"><img alt=\"Attached File\" src=\"");
-            sb.append(contextPath).append("/static/images/zip.gif\"></a>\n");
-            sb.append("&nbsp;<a title=\"Download attachment\" href=\"");
-            sb.append(contextPath).append("/attachments/").append(attachment.getId());
-            sb.append("\">").append(attachment.getOriginalName());
-            sb.append("</a><span class=\"desc\"><strong>(").append(attachment.getKiloBytes()).append("KB)</strong></span>\n");
-            sb.append("<br><span class=\"desc info\">").append(resolveMessage("message.number_of_downloads", StringUtils.EMPTY)).append(attachment.getDownloads()).append("</span>\n");
-            sb.append("</li>\n");
+            sb.append("<img alt=\"vet\" style=\"vertical-align:middle;\" src=\"");
+            sb.append(contextPath).append("/static/images/vetstar.gif\"/>");
         }
-        sb.append("</ul>\n");
-        sb.append("</div>");
-
+        sb.append("<span class=\"").append(user.getMainGroup().getName().toLowerCase()).append("\">");
+        if(mainGroup.getId() == 2 || mainGroup.getId() == 3)
+        {
+            sb.append("+");
+        }
+        sb.append(user.getNickname());
+        sb.append("</span>");
         return sb.toString();
-    }
-
-    private String resolveMessage(String messageCode, String... argumentsArray) throws JspException, NoSuchMessageException
-    {
-        MessageSource messageSource = getMessageSource();
-        if (messageSource == null)
-        {
-            throw new JspTagException("No corresponding MessageSource found");
-        }
-
-        String resolvedCode = ExpressionEvaluationUtils.evaluateString("code", messageCode, pageContext);
-
-        // We have no fallback text to consider.
-        return messageSource.getMessage(resolvedCode, argumentsArray, getRequestContext().getLocale());
-    }
-
-    private MessageSource getMessageSource()
-    {
-        return getRequestContext().getMessageSource();
-    }
-
-    private final RequestContext getRequestContext()
-    {
-        return this.requestContext;
     }
 }

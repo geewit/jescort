@@ -1,108 +1,140 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<div id="breadcrumb">
-    <ul class="fleft">
-        <li style="font-weight:bold" class="first"><a href="<spring:url value="/categories/"/>">Neowin Forums</a></li>
-        <li><b>Registration Form</b></li>
-    </ul>
-    <ul class="fright" id="breadcrumb-links">
-        <li style="padding-right:0"><a href="<spring:url value="/rules"/>" class="button small">Forum Rules</a></li>
-    </ul>
-    <div class="clear"></div>
-</div>
-
-<div id="content">
-    <div class="board_index">
-        <form id="register" name="register" method="post" action="<spring:url value="/auth/register"/>">
-            <input type="hidden" value="1" name="termsread"> <input type="hidden" value="1" name="agree_to_terms">
-
-            <div class="block_wrap no_sidebar" id="register_form">
-                <h2 class="maintitle">Ready to register?</h2>
-
-                <div class="block-forum rounded-bot row1">
-                    <p class="extra">
-                        It's free and simple to register for our board! We just need a few pieces of information from you, and you'll be ready to make your first post in no time!
-                        <br> If you already have an account, you can go directly to the
-                        <a title="Go to sign in" href="/auth/login">sign in page</a> <br>
-                    </p>
-                    <fieldset class="row1">
-                        <h3 class="bar">Account Information</h3>
-
-                        <ul>
-                            <li class="field required ">
-                                <label for="username">Choose a username</label>
-                                <input type="text" name="username" maxlength="26" size="25" id="username" class="input_text"><br>
-
-                                <span class="desc">The name you'll sign in with. You can't use: <em>[ ] | ; , $ \ &lt; &gt; "</em></span>
+<div id="body">
+    <div class="clearfix" id="secondary_navigation">
+        <ol class="breadcrumb top ipsList_inline">
+            <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
+                <a itemprop="url" href="<spring:url value="/"/>">
+                    <span itemprop="title">Jescort Forums</span>
+                </a>
+            </li>
+            <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
+                <span class="nav_sep">-></span>
+                <span itemprop="title">Registration Form</span>
+            </li>
+        </ol>
+    </div>
+    <br>
+    <div id="register_form">
+        <div class="ipsSteps clearfix">
+            <ul>
+                <li class="ipsSteps_active">
+                    <strong class="ipsSteps_title">Step 1</strong>
+                    <span class="ipsSteps_desc">Your Account</span>
+                    <span class="ipsSteps_arrow">&nbsp;</span>
+                </li>
+                <li class="">
+                    <strong class="ipsSteps_title">Step 2</strong>
+                    <span class="ipsSteps_desc">Confirmation</span>
+                    <span class="ipsSteps_arrow">&nbsp;</span>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <form id="register" method="post" action="<spring:url value="/auth/register"/>">
+            <input type="hidden" value="0" id="auto_dst" name="dst">
+            <h1 class="maintitle">
+                Join Our Community
+            </h1>
+            <div class="ipsBox">
+                <div class="ipsBox_container ipsPad">
+                    <spring:bind path="command.*">
+                        <c:if test="${not empty status.errorMessages}">
+                            <p class="message error">Errors were found with your registration. Please correct the highlighted fields below.</p>
+                        </c:if>
+                    </spring:bind>
+                    <br>
+                    <fieldset>
+                        <ul class="ipsForm ipsForm_horizontal">
+                            <li class="ipsField">
+                                <p class="ipsField_content">
+                                    <span class="ipsForm_required ipsType_smaller">* Required Information</span>
+                                </p>
                             </li>
-                            <li class="field required ">
-                                <label for="nickname">Choose a nickname</label>
-                                <input type="text" name="nickname" maxlength="26" size="25" id="nickname" class="input_text"><br>
-
-                                <span class="desc">The name that will be shown next to your topics, posts, etc. This should be between 3 and 26 characters long.</span>
+                            <li class="ipsField clear error">
+                                <label class="ipsField_title" for="username">Username <span class="ipsForm_required">*</span></label>
+                                <p class="ipsField_content">
+                                    <input id="username" name="username" value="" type="text" maxlength="26" size="45" class="input_text"><br>
+                                    <span class="desc primary lighter">
+                                        <form:errors path="command.username" element="span" cssClass="error"/>
+                                        Between 3 and 26 characters
+                                    </span>
+                                </p>
                             </li>
-                        </ul>
-                        <hr>
-                        <ul>
-                            <li class="field required ">
-                                <label for="email_1">Enter your e-mail address</label>
-                                <input type="text" name="email" maxlength="150" size="25" class="input_text email" id="email_1"><br>
-
-                                <span class="desc">So that we can verify your identity, and keep you updated</span>
+                            <li class="ipsField clear error">
+                                <label class="ipsField_title" for="nickname">nickname</label>
+                                <p class="ipsField_content">
+                                    <input id="nickname" name="nickname" value="" type="text" maxlength="26" size="45" class="input_text">
+                                </p>
                             </li>
-                            <li class="field nodesc required">
-                                <label for="email_2">Re-enter your e-mail address</label>
-                                <input type="text" name="emailConfirm" maxlength="150" size="25" class="input_text email" id="email_2">
+                            <li class="ipsField clear error">
+                                <label class="ipsField_title" for="email">E-mail Address <span class="ipsForm_required">*</span></label>
+                                <p class="ipsField_content">
+                                    <input type="text" value="" name="email" maxlength="150" size="45" class="input_text email" id="email"><br>
+                                    <span class="desc">
+                                        <form:errors path="command.email" element="span" cssClass="error"/>
+                                    </span>
+                                </p>
                             </li>
-                        </ul>
-                        <hr>
-                        <ul>
-                            <li class="field required ">
-                                <label for="password">Choose your password</label>
-                                <input type="password" name="password" value="" maxlength="32" size="25" class="input_text password" id="password"><br>
-
-                                <span class="desc">You should choose a strong password, between 3 and 32 characters</span>
+                            <li class="ipsField clear error">
+                                <label class="ipsField_title" for="emailConfirm">E-mail Address confirm<span class="ipsForm_required">*</span></label>
+                                <p class="ipsField_content">
+                                    <input type="text" value="" name="emailConfirm" maxlength="150" size="45" class="input_text email" id="emailConfirm"><br>
+                                    <span class="desc">
+                                        <form:errors path="command.emailConfirm" element="span" cssClass="error"/>
+                                    </span>
+                                </p>
                             </li>
-                            <li class="field nodesc required">
-                                <label for="passwordConfrim">Re-enter your password</label>
-                                <input type="password" name="passwordConfirm" value="" maxlength="32" size="25" class="input_text password" id="passwordConfrim"><br>
+                            <li class="ipsField clear">
+                                <label class="ipsField_title" for="password">Password <span class="ipsForm_required">*</span></label>
+                                <p class="ipsField_content">
+                                    <input type="password" name="password" value="" maxlength="32" size="45" class="input_text password" id="password"><br>
+                                    <span class="desc lighter">
+                                        <form:errors path="command.password" element="span" cssClass="error"/>
+                                        Between 3 and 32 characters
+                                    </span>
+                                </p>
+                            </li>
+                            <li class="ipsField clear">
+                                <label class="ipsField_title" for="passwordConfirm">Confirm Password <span class="ipsForm_required">*</span></label>
+                                <p class="ipsField_content">
+                                    <input id="passwordConfirm" name="passwordConfirm" type="password" value="" maxlength="32" size="45" class="input_text password"><br>
+                                    <span class="desc lighter">
+                                        <form:errors path="command.passwordConfirm" element="span" cssClass="error"/>
+                                    </span>
+                                </p>
                             </li>
                         </ul>
                     </fieldset>
-                    <fieldset class="row1">
-                        <h3 class="bar">Board Options</h3>
-
-                        <ul>
-                            <li class="field checkbox">
-                                <input type="checkbox" checked="checked" class="input_check" value="1" id="allow_admin_mail" name="allow_admin_mail">
-                                <label for="allow_admin_mail">Receive email from administrators</label>
-                            </li>
-                            <li class="field checkbox nodesc">
-                                <input type="checkbox" class="input_check" value="1" id="allow_member_mail" name="allow_member_mail">
-                                <label for="allow_member_mail">Receive email from other members</label>
-                            </li>
-                            <li class="field">
-                                <label for="timezone">Time Zone</label>
-                                <select name="timezone" class="input_select" id="timezone">
-                                    <c:forEach var="timeZone" items="${timeZones}" varStatus="status">
-                                        <option value="<c:if test="${timeZone.offset > 0}">+</c:if>${timeZone.offset}"<c:if test="${not empty formBean.timezone && formBean.timezone == timeZone.offset}"> selected="selected"</c:if>>(GMT <c:if test="${timeZone.offset > 0}">+</c:if>${timeZone.offset} hours) ${timeZone.locale}</option>
-                                    </c:forEach>
-                                </select>
-                            </li>
-                            <li class="field checkbox">
-                                <input type="checkbox" class="input_check" value="1" name="dst" id="dst">
-                                <label id="dst_label" for="dst">Enable automatic DST detection?</label>
+                    <fieldset>
+                        <ul class="ipsForm ipsForm_horizontal">
+                            <li class="ipsField clear ipsField_checkbox">
+                                <input id="agreeTerms" name="agreeTerms" type="checkbox" class="input_check" value="1">
+                                <p class="ipsField_content">
+                                    <label error="" for="agreeTerms">
+                                        <strong>I've read and agree to the <a id="tou_link" href="#">Terms of Use</a></strong>
+                                        <br>
+                                        <form:errors path="command.agreeTerms" element="span" cssClass="error"/>
+                                    </label>
+                                    <textarea style="width: 350px; height: 100px; display: block;" class="input_text" id="tou">aaaaa</textarea>
+                                </p>
                             </li>
                         </ul>
                     </fieldset>
-                    <fieldset style="margin-bottom: -5px;" class="submit rounded-bot">
-                        <input type="submit" value="Register" class="input_submit">
+                    <br>
+                    <fieldset>
+                        <input type="submit" value="Create Account" id="register_submit" class="ipsButton">
                     </fieldset>
                 </div>
             </div>
         </form>
     </div>
+    <ol class="breadcrumb bottom ipsList_inline clearfix clear">
+        <li><a href="<spring:url value="/"/>">Jescort Forums</a></li>
+        <li><span class="nav_sep">-></span> Registration Form</li>
+    </ol>
     <div class="clear"></div>
 </div>

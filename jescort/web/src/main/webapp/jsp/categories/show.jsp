@@ -5,96 +5,72 @@
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@ taglib prefix="jescort" uri="http://www.jescort.net/tags" %>
 
-<div id="breadcrumb">
-    <ul class="fleft">
-        <li class="first" style="font-weight:bold"><a href="<spring:url value="/"/>">Forums</a></li>
-        <li><b>${category.subject}</b></li>
-    </ul>
-    <ul id="breadcrumb-links" class="fright">
-        <li style="padding-right:0">
-            <a class="button small" href="<spring:url value="/rules"/>"><spring:message code="message.forum_rules"/></a>
-        </li>
-    </ul>
-    <div class="clear"></div>
-</div>
-<div id="content">
-    <shiro:notAuthenticated>
-        <p style="margin:5px 0 5px 0;" class="message error">
-            <spring:url value="/auth/register" var="registerUrl"/>
-            <spring:message code="message.not_authenticated_warning" arguments="${registerUrl}"/>
-        </p>
-    </shiro:notAuthenticated>
-    <div id="board_index" class="clearfix">
-        <div id="categories" class="no_sidebar clearfix">
-            <!-- CATS AND FORUMS -->
-            <div class="category_block block_wrap">
-                <h3 id="category_${category.id}" class="maintitle category">
-                    <a href="<spring:url value="/categories/${category.id}"/>" title="View category">${category.subject}</a>
 
-                    <span class="toggle" title="<spring:message code="messages.toggle_category"/>"></span>
-                </h3>
-                <div class="block-content block-forum rounded-bot">
-                    <div class="table_wrap">
-                        <table cellspacing="0" class="ipb_table" summary="${category.description}">
-                            <tbody>
-                            <tr class="header">
-                                <th scope="col" class="col_c_forum" colspan="2">
-                                    <spring:message code="messages.forums.show.title"/></th>
-                                <th scope="col" class="col_c_stats stats ooga">&nbsp;</th>
-                                <th scope="col" class="col_c_post"><spring:message code="message.last_post_info"/></th>
-                                <th style="width: 1%;"></th>
-                            </tr>
-                            <!-- / CAT HEADER -->
-                            <c:if test="${not empty category.forums}">
-                                <c:forEach var="forum" items="${category.forums}" varStatus="status">
-                                    <spring:url value="/topics/${forum.lastPost.topicId}" var="topicUrl"/>
-                                    <tr class="row${status.index % 2 + 1} forum-row">
-                                        <td style="width: 1%; padding-right:0;">
-                                            <a class="forum_marker" href="<spring:url value="/forums/${forum.id}"/>">
-                                                <img alt="Unread category" src="<spring:url value="/static/images/f_cat_unread.png"/>">
-                                            </a>
-                                        </td>
-                                        <td class="desc">
-                                            <h4 style="font-size: 12px; font-weight:bold;">
-                                                <a href="<spring:url value="/forums/${forum.id}"/>" title="Go to forum">${forum.subject}</a>
-                                            </h4>
-
-                                            <p style="font-size: 11px;">${forum.description}</p>
-                                        </td>
-                                        <td class="altrow stats desc ooga">
-                                            <ul>
-                                                <li>
-                                                    <fmt:formatNumber value="${forum.topics}" pattern="#,###" var="topics"/><spring:message code="message.topics_of_forum" arguments="${topics}"/></li>
-                                                <li>
-                                                    <fmt:formatNumber value="${forum.replies}" pattern="#,###" var="replies"/><spring:message code="message.replies_of_forum" arguments="${replies}"/></li>
-                                            </ul>
-                                        </td>
-                                        <td class="desc">
-                                            <ul class="last_post">
-                                                <spring:url value="/posts/${forum.lastPost.topicId}" var="lastPostUrl"/>
+<div id="body">
+    <div class="ipsLayout ipsLayout_largeright clearfix " id="board_index">
+        <div class="ipsLayout_content clearfix" id="categories">
+            <c:if test="${not empty categories}"><c:forEach var="category" items="${categories}" varStatus="status">
+                <div id="category_${category.id}" class="category_block block_wrap">
+                    <h3 class="maintitle">
+                        <a title="Toggle this category" href="#" class="toggle right">Toggle this category</a>
+                        <a title="View category" href="<spring:url value="/categories/${category.id}"/>">${category.subject}</a>
+                    </h3>
+                    <div class="ipsBox table_wrap">
+                        <div class="ipsBox_container">
+                            <table summary="Forums within the category '${category.subject}'" class="ipb_table">
+                                <tbody>
+                                <tr class="header hide">
+                                    <th class="col_c_icon" scope="col">&nbsp;</th>
+                                    <th class="col_c_forum" scope="col"><spring:message code="messages.forums.show.title"/></th>
+                                    <th class="col_c_stats stats" scope="col">Stats</th>
+                                    <th class="col_c_post" scope="col"><spring:message code="message.last_post_info"/></th>
+                                </tr>
+                                <c:if test="${not empty category.forums}">
+                                    <c:forEach var="forum" items="${category.forums}" varStatus="forumStatus">
+                                        <spring:url value="/posts/${forum.lastPost.topicId}" var="postUrl"/>
+                                        <spring:url value="/users/${forum.lastPost.poster.id}" var="posterUrl"/>
+                                        <spring:url value="/topics/${forum.lastPost.topicId}" var="topicUrl"/>
+                                        <tr class="unread">
+                                            <td class="col_c_icon">
+                                                <a class="forum_marker" data-tooltip="Mark forum as read?" href="/" id="forum_img_${forum.id}">
+                                                    <img title="Mark as read" alt="Unread forum" src="<spring:url value="/static/images/f_icon_midnight.png"/>">
+                                                </a>
+                                            </td>
+                                            <td class="col_c_forum">
+                                                <h4>
+                                                    <a title="Go to forum" href="<spring:url value="/forums/${forum.id}"/>">${forum.subject}</a>
+                                                </h4>
+                                                <p class="desc __forum_desc ipsType_small">${forum.description}</p>
+                                            </td>
+                                            <td class="col_c_stats ipsType_small">
+                                                <ul>
+                                                    <li><fmt:formatNumber value="${forum.topics}" pattern="#,###" var="topics"/><spring:message code="message.topics_of_forum" arguments="${topics}"/></li>
+                                                    <li><fmt:formatNumber value="${forum.replies}" pattern="#,###" var="replies"/><spring:message code="message.replies_of_forum" arguments="${replies}"/></li>
+                                                </ul>
+                                            </td>
+                                            <td class="col_c_post">
+                                                <spring:url value="/posts/${forum.lastPost.id}" var="lastPostUrl"/>
                                                 <spring:url value="/users/${forum.lastPost.poster.id}" var="lastPosterUrl"/>
-                                                <li>
-                                                    <strong><a href="${lastPostUrl}" title="Go to the first unread post: ${forum.lastPost.content}">${jescort:substring(forum.lastPost.content,20)}</a></strong>
-                                                </li>
-                                                <li>
-                                                    <a href="${lastPostUrl}" title="View last post"><fmt:formatDate value="${forum.lastPost.createdate.time}" type="both" pattern="yyyy-MM-dd HH:mm"/></a>&nbsp;
-                                                    <spring:url value="/static/images/user_popup.png" var="user_popup_png"/>
-                                                    <spring:message code="message.last_post_at" arguments="${lastPosterUrl},${forum.lastPost.poster.username},${user_popup_png}"/>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td>
-                                            <a href="${topicUrl}" title="<spring:message code="message.last_post"/>"><img src="<spring:url value="/static/images/last_post.png"/>" alt="" title="<spring:message code="message.last_post"/>"></a>
-                                        </td>
-                                    </tr>
-                                </c:forEach> </c:if>
-                            </tbody>
-                        </table>
+                                                <a class="ipsUserPhotoLink left" href="${lastPosterUrl}">
+                                                    <img class="ipsUserPhoto ipsUserPhoto_mini" alt="Photo" src="<spring:url value="/users/${forum.lastPost.poster.id}/avatar"/>">
+                                                </a>
+                                                <ul class="last_post ipsType_small">
+                                                    <li>
+                                                        <a title="Go to the first unread post: ${forum.lastPost.content}" href="${lastPostUrl}">${jescort:substring(forum.lastPost.content,20)}</a>
+                                                    </li>
+                                                    <li><spring:message code="message.last_post_at" arguments="${lastPosterUrl},${forum.lastPost.poster.id},${forum.lastPost.poster.nickname}"/></li>
+                                                    <li class="desc lighter blend_links"><a title="View last post" href="${lastPostUrl}"><fmt:formatDate value="${forum.lastPost.createdate.time}" type="both" pattern="yyyy-MM-dd HH:mm"/></a></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </c:forEach></c:if>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach></c:if>
         </div>
     </div>
-    <!-- // Content Wrapper -->
     <div class="clear"></div>
 </div>

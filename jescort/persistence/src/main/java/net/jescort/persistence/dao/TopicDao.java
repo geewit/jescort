@@ -12,6 +12,8 @@ public interface TopicDao extends JpaRepository<Topic, Integer>
 
     public List<Topic> findByCreater(int creater, int offset, int limit);
 
+    public Topic findNextTopicInForum(int forumId, int currentTopicId);
+
     public long countByForum(int forumId);
 
     public List<Topic> findByForum(int forumId, Pageable pageable);
