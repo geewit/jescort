@@ -1,4 +1,4 @@
-package net.jescort.web.servlet.controller.post;
+package net.jescort.web.servlet.controller.attachment;
 
 import net.jescort.domain.forum.Attachment;
 import net.jescort.repository.EscortRepository;
