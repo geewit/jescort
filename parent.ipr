@@ -720,6 +720,7 @@
       <module fileurl="file://$PROJECT_DIR$/modules/memcached/modules.memcached.iml" filepath="$PROJECT_DIR$/modules/memcached/modules.memcached.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/sendmail/modules.sendmail.iml" filepath="$PROJECT_DIR$/modules/sendmail/modules.sendmail.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/session/modules.session.iml" filepath="$PROJECT_DIR$/modules/session/modules.session.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent.iml" filepath="$PROJECT_DIR$/parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/tools/tools.iml" filepath="$PROJECT_DIR$/tools/tools.iml" />
     </modules>
   </component>
@@ -735,20 +736,6 @@
         <entry key="$PROJECT_DIR$">
           <value>
             <SvnBranchConfiguration>
-              <option name="branchMap">
-                <map>
-                  <entry key="https://escort.googlecode.com/svn/branches">
-                    <value>
-                      <list />
-                    </value>
-                  </entry>
-                  <entry key="https://escort.googlecode.com/svn/tags">
-                    <value>
-                      <list />
-                    </value>
-                  </entry>
-                </map>
-              </option>
               <option name="branchUrls">
                 <list>
                   <option value="https://escort.googlecode.com/svn/branches" />
@@ -762,20 +749,6 @@
         <entry key="$PROJECT_DIR$/jescort">
           <value>
             <SvnBranchConfiguration>
-              <option name="branchMap">
-                <map>
-                  <entry key="https://escort.googlecode.com/svn/branches">
-                    <value>
-                      <list />
-                    </value>
-                  </entry>
-                  <entry key="https://escort.googlecode.com/svn/tags">
-                    <value>
-                      <list />
-                    </value>
-                  </entry>
-                </map>
-              </option>
               <option name="branchUrls">
                 <list>
                   <option value="https://escort.googlecode.com/svn/branches" />
