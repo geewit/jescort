@@ -26,7 +26,7 @@ CREATE TABLE attachment_properties (
 
 CREATE TABLE categories (
     id            INT                           NOT NULL AUTO_INCREMENT,
-    subject       VARCHAR(31)                   NOT NULL,
+    subject       VARCHAR(63)                   NOT NULL,
     description   VARCHAR(255)                  NOT NULL,
     priority      INT                           NOT NULL,
     status        INT                           NOT NULL,
@@ -59,8 +59,8 @@ CREATE TABLE drafts (
     id                      INT                 NOT NULL AUTO_INCREMENT,
     user_id                 INT                 NOT NULL,
     subject                 VARCHAR(255)        NOT NULL,
-    content                 VARCHAR(255)        NOT NULL,
-    modification            DATE                NOT NULL,
+    content                 TEXT                NOT NULL,
+    modification            DATETIME            NOT NULL,
     PRIMARY KEY  (id)
 ) ENGINE=InnoDB CHARSET=utf8;
 
@@ -153,8 +153,8 @@ CREATE TABLE posts (
     topic_id             INT                    NOT NULL,
     content              TEXT                   NOT NULL,
     edits                INT                    NOT NULL,
-    createdate           DATETIME               NOT NULL,
     status               INT                    NOT NULL,
+    createdate           DATETIME               NOT NULL,
     PRIMARY KEY  (id),
     INDEX posts.poster_id_idx (poster_id),
     INDEX posts.topic_id_idx (topic_id)
@@ -210,7 +210,7 @@ CREATE TABLE topics (
     status              INT                     NOT NULL,
     root_post_id        INT                     NOT NULL,
     last_post_id        INT                     NOT NULL,
-    is_locked           TINYINT(1)              NOT NULL,
+    is_locked           BOOLEAN                 NOT NULL,
     createdate          DATETIME                NOT NULL,
     PRIMARY KEY  (id),
     INDEX topics.root_post_id_idx (root_post_id),

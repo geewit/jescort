@@ -2,12 +2,13 @@
 CREATE TABLE addresses (
     id                   INT                    NOT NULL,
     user_id              INT                    NOT NULL,
-    location_id          INT                    NOT NULL,
+    location_id          SMALLINT               NOT NULL,
     postal_code          VARCHAR(15)            NOT NULL,
     street               VARCHAR(255)           NOT NULL,
     priority             INTEGER                NOT NULL,
     `type`               VARCHAR(31)            NOT NULL,
-    PRIMARY KEY  (id)
+    PRIMARY KEY  (id),
+    INDEX address_idx (priority)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
@@ -15,8 +16,9 @@ CREATE TABLE emails (
     personal      VARCHAR(31)    NOT NULL,
     hostname      VARCHAR(31)    NOT NULL,
     user_id       INT            NOT NULL,
-    priority      INTEGER        NOT NULL,
-    PRIMARY KEY  (personal, hostname)
+    priority      INT            NOT NULL,
+    PRIMARY KEY  (personal, hostname),
+    INDEX email_idx (priority)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
@@ -24,10 +26,11 @@ CREATE TABLE groups (
     id            INT            NOT NULL AUTO_INCREMENT,
     `name`        VARCHAR(127)   NOT NULL,
     description   VARCHAR(255)   NOT NULL,
-    priority      INTEGER        NOT NULL,
+    priority      INT            NOT NULL,
     parent_id     INT            NULL,
     PRIMARY KEY (id),
-    UNIQUE (`name`)
+    UNIQUE (`name`),
+    INDEX group_idx (priority)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
@@ -39,10 +42,10 @@ CREATE TABLE group_role_map (
 
 
 CREATE TABLE locations (
-    id                   INT                    NOT NULL,
+    id                   SMALLINT               NOT NULL,
     `name`               VARCHAR(255)           NOT NULL,
     abbr                 CHAR(2)                NOT NULL,
-    parent_id            INT                    NULL,
+    parent_id            SMALLINT               NULL,
     level                TINYINT(1)             NOT NULL,
     available            BOOLEAN                NOT NULL,
     PRIMARY KEY (id)
@@ -63,7 +66,8 @@ CREATE TABLE roles (
     description         VARCHAR(255)   NOT NULL,
     priority            INT            NOT NULL,
     PRIMARY KEY (id),
-    UNIQUE (authority)
+    UNIQUE (authority),
+    INDEX role_idx (priority)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
@@ -79,8 +83,7 @@ CREATE TABLE users (
     createdate         DATETIME       NOT NULL,
     last_active        DATETIME       NOT NULL,
     PRIMARY KEY  (id),
-    UNIQUE (username),
-    INDEX user_password_idx (password)
+    UNIQUE (username)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
