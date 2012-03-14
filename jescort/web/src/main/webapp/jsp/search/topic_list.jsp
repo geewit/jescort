@@ -7,7 +7,7 @@
 
 <div id="breadcrumb">
     <ul class="fleft">
-        <li class="first" style="font-weight:bold"><a href="<spring:url value="/"/>">Neowin Forums</a></li>
+        <li class="first" style="font-weight:bold"><a href="<spring:url value="/"/>">Jescort Forums</a></li>
         <li><b>${topic.subject}</b></li>
     </ul>
     <ul id="breadcrumb-links" class="fright">
@@ -19,7 +19,7 @@
 <!-- Content Wrapper -->
 <div id="content">
     <p style="margin-left:0;margin-right:0" class="message">
-        <a rel="search" accesskey="4" title="Advanced Search" href="http://www.neowin.net/forum/index.php?app=core&amp;module=search" class="fright"><strong>Advanced Search</strong></a> Your search for the term
+        <a rel="search" accesskey="4" title="Advanced Search" href="http://www.jescort.net/forum/index.php?app=core&amp;module=search" class="fright"><strong>Advanced Search</strong></a> Your search for the term
         <em><strong>nite</strong></em> returned <strong>1000</strong> results </p>
 
     <div class="topic_controls">
@@ -29,21 +29,21 @@
             </li>
             <li class="active">1</li>
             <li>
-                <a title="2" href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums&amp;st=25">2</a>
+                <a title="2" href="http://www.jescort.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums&amp;st=25">2</a>
             </li>
             <li>
-                <a title="3" href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums&amp;st=50">3</a>
+                <a title="3" href="http://www.jescort.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums&amp;st=50">3</a>
             </li>
             <li class="next">
-                <a rel="next" title="Next page" href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums&amp;st=25">→</a>
+                <a rel="next" title="Next page" href="http://www.jescort.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums&amp;st=25">-></a>
             </li>
             <li class="last">
-                <a rel="last" title="Go to last page" href="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums&amp;st=975">Last »</a>
+                <a rel="last" title="Go to last page" href="http://www.jescort.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums&amp;st=975">Last »</a>
             </li>
         </ul>
         <div class="tab_filters">
             <ul class="right">
-                <form method="post" action="http://www.neowin.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums">
+                <form method="post" action="http://www.jescort.net/forum/index.php?app=core&amp;module=search&amp;do=search&amp;andor_type=&amp;sid=284abdbf22d0d502efdc861d42cd47d8&amp;search_term=nite&amp;search_app=forums">
                     <label for="search_sort_by">Result <strong>sorting</strong></label>
                     <select style="width:auto" class="input_select" id="search_sort_by" name="search_app_filters[forums][sortKey]">
                         <option value="date" selected="selected">Last Update Time</option>
@@ -89,7 +89,7 @@
             </td>
             <td class="short">
                 <a href="/users/243659/" class="___hover___member _hoversetup" hovercard-id="243659" hovercard-ref="member" id="anonymous_element_3" title="">jnelsoninjax</a>&nbsp;
-                <a title="View Profile" class="__user __id243659" href="http://www.neowin.net/forum/user/243659-jnelsoninjax/"><img alt="" src="search_topic_results_files/user_popup.png"></a>
+                <a title="View Profile" class="__user __id243659" href="http://www.jescort.net/forum/user/243659-jnelsoninjax/"><img alt="" src="search_topic_results_files/user_popup.png"></a>
             </td>
             <td class="stats altrow">
                 <ul>
@@ -104,7 +104,7 @@
                         <a title="Go to last post" href="/topic/1013368">Jul 21 2011 07:53</a>
                     </li>
                     <li>By:
-                        <a href="/users/353896" class="___hover___member _hoversetup" hovercard-id="353896" hovercard-ref="member" id="anonymous_element_4" title="">Albert Bonici</a>&nbsp;<a title="View Profile" class="__user __id353896" href="http://www.neowin.net/forum/user/353896-albert-bonici/"><img alt="" src="search_topic_results_files/user_popup.png"></a>
+                        <a href="/users/353896" class="___hover___member _hoversetup" hovercard-id="353896" hovercard-ref="member" id="anonymous_element_4" title="">Albert Bonici</a>&nbsp;<a title="View Profile" class="__user __id353896" href="http://www.jescort.net/forum/user/353896-albert-bonici/"><img alt="" src="search_topic_results_files/user_popup.png"></a>
                     </li>
                 </ul>
             </td>

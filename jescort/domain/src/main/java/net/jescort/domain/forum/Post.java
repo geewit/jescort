@@ -30,7 +30,7 @@ public class Post extends AbstractPersistable<Integer> implements Comparable<Pos
 
     private Integer id;
     private User poster;
-    private Integer topicId;
+    private Topic topic;
     private String content;
     private int edits;
     private Calendar createdate;
@@ -60,14 +60,12 @@ public class Post extends AbstractPersistable<Integer> implements Comparable<Pos
         this.poster = poster;
     }
 
-    public Integer getTopicId()
-    {
-        return topicId;
+    public Topic getTopic() {
+        return topic;
     }
 
-    public void setTopicId(Integer topicId)
-    {
-        this.topicId = topicId;
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 
     public String getContent()
@@ -164,7 +162,7 @@ public class Post extends AbstractPersistable<Integer> implements Comparable<Pos
     @Override
     public String toString()
     {
-        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", this.id).append("poster", null != this.poster ? (null != this.poster.getUsername() ? this.poster.getUsername() : this.poster.getId()) : null).append("topicId", this.topicId).append("content", this.content).append("edits", this.edits).append("createdate", null != this.createdate ? String.format("%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS", this.createdate) : null).toString();
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", this.id).append("poster", null != this.poster ? (null != this.poster.getUsername() ? this.poster.getUsername() : this.poster.getId()) : null).append("topic", null != this.topic ? (null != this.topic.getSubject() ? this.topic.getSubject() : this.topic.getId()) : null).append("content", this.content).append("edits", this.edits).append("createdate", null != this.createdate ? String.format("%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS", this.createdate) : null).toString();
     }
 
     @Override

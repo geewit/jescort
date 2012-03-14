@@ -13,6 +13,10 @@ public class TopicListener implements EventListener
         {
             return;
         }
+        if (null == topic.getIsLocked())
+        {
+            topic.setIsLocked(Boolean.FALSE);
+        }
         if (null == topic.getCreatedate())
         {
             topic.setCreatedate(Calendar.getInstance());

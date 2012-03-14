@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import net.gelif.kernel.core.data.domain.PageableFactory;
 import net.gelif.modules.bbcode.BBProcessorFactory;
 import net.gelif.modules.bbcode.TextProcessor;
+import net.jescort.domain.enums.IdName;
 import net.jescort.domain.forum.*;
 import net.jescort.domain.user.User;
 import net.jescort.persistence.dao.*;
@@ -38,6 +39,9 @@ public class EscortRepositoryImpl implements EscortRepository
     protected transient final static Log logger = LogFactory.getLog(EscortRepositoryImpl.class);
 
     public static TextProcessor processor = BBProcessorFactory.getInstance().create();
+
+    @Resource(name = "idGeneratorDao")
+    private IdGeneratorDao idGeneratorDao;
 
     @Resource(name = "attachmentDao")
     private AttachmentDao attachmentDao;
@@ -109,29 +113,19 @@ public class EscortRepositoryImpl implements EscortRepository
     }
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public void createTopic(final Topic topic)
-    {
-        topicDao.save(topic);
-        int forumId = topic.getForumId();
-        forumDao.increaseTopics(forumId);
-    }
-
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void createTopic(final Topic topic, final HttpServletRequest request)
     {
-        final int forumId = topic.getForumId();
-        forumDao.increaseTopics(forumId);
-        Post rootPost = topic.getRootPost();
-        //rootPost.setCreatedate(Calendar.getInstance());
         List<Attachment> attachments = uploadAttachments(request);
-        rootPost.setAttachments(attachments);
-        topic.setRootPost(rootPost);
-        topicDao.save(topic);
-    }
-
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public void updateTopic(final Topic topic)
-    {
+        attachmentDao.save(attachments);
+        final int forumId = topic.getForumId();
+        final int topicId = idGeneratorDao.newId(IdName.TOPIC);
+        final int rootPostId = idGeneratorDao.newId(IdName.POST);
+        topic.setId(topicId);
+        topic.setRootPostId(rootPostId);
+        topic.setLastPostId(rootPostId);
+        topic.getRootPost().setId(rootPostId);
+        forumDao.increaseTopics(forumId);
+        //postDao.save(topic.getRootPost());
         topicDao.save(topic);
     }
 
@@ -184,14 +178,14 @@ public class EscortRepositoryImpl implements EscortRepository
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void replyTopic(final Post post, final HttpServletRequest request)
     {
-        //post.setCreatedate(Calendar.getInstance());
         List<Attachment> attachments = uploadAttachments(request);
-        int topicId = post.getTopicId();
+        final int topicId = post.getTopic().getId();
         topicDao.replyTopic(topicId, post.getId());
         Topic topic = topicDao.findOne(topicId);
-        int forumId = topic.getForumId();
+        final int forumId = topic.getForumId();
         forumDao.increaseReplys(forumId);
-
+        final int postId = idGeneratorDao.newId(IdName.POST);
+        post.setId(postId);
         post.setAttachments(attachments);
         postDao.save(post);
     }
@@ -200,7 +194,8 @@ public class EscortRepositoryImpl implements EscortRepository
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void createPost(final Post post)
     {
-        //post.setCreatedate(Calendar.getInstance());
+        final int postId = idGeneratorDao.newId(IdName.POST);
+        post.setId(postId);
         postDao.save(post);
     }
 
@@ -219,8 +214,13 @@ public class EscortRepositoryImpl implements EscortRepository
     }
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public void updatePost(final Post post, final User editor)
+    public void savePost(final Post post, final User editor)
     {
+        if(null == post.getId())
+        {
+            final int postId = idGeneratorDao.newId(IdName.POST);
+            post.setId(postId);
+        }
         post.setEdits(post.getEdits() + 1);
         postDao.save(post);
         if (!postEditDao.exists(post.getId()))
@@ -228,7 +228,6 @@ public class EscortRepositoryImpl implements EscortRepository
             PostEdit edit = new PostEdit();
             edit.setId(post.getId());
             edit.setEditor(editor);
-            //edit.setEditdate(Calendar.getInstance());
             postEditDao.save(edit);
         }
     }
@@ -338,7 +337,7 @@ public class EscortRepositoryImpl implements EscortRepository
                 }
             });
         }
-        attachmentDao.save(attachments);
+        //attachmentDao.save(attachments);
         return attachments;
     }
 

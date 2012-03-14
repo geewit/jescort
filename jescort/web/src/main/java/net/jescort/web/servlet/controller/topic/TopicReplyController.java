@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import net.jescort.domain.forum.Post;
+import net.jescort.domain.forum.Topic;
 import net.jescort.domain.user.User;
 import net.jescort.repository.EscortRepository;
 import org.apache.shiro.SecurityUtils;
@@ -25,8 +26,9 @@ public class TopicReplyController
     @RequestMapping(value = {"/topics/{id}/reply"}, method = RequestMethod.GET)
     public String setupForm(@PathVariable("id") Integer topicId, Model model)
     {
+        Topic topic = new Topic(topicId);
         Post post = new Post();
-        post.setTopicId(topicId);
+        post.setTopic(topic);
         model.addAttribute(post);
         return "posts/new";
     }

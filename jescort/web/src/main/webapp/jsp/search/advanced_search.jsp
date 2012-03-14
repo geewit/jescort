@@ -5,17 +5,7 @@
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@ taglib prefix="jescort" uri="http://www.jescort.net/tags" %>
 
-<div id="breadcrumb">
-    <ul class="fleft">
-        <li class="first" style="font-weight:bold"><a href="<spring:url value="/"/>">Neowin Forums</a></li>
-        <li><b>${topic.subject}</b></li>
-    </ul>
-    <ul id="breadcrumb-links" class="fright">
-        <li style="padding-right:0">
-            <a class="button small" href="<spring:url value="/"/>"><spring:message code="message.forum_rules"/></a></li>
-    </ul>
-    <div class="clear"></div>
-</div>
+
 <div id="content">
     <div class="KonaBody">
         <br/>
@@ -65,7 +55,7 @@
                                     <li>
                                         <label for="forums_filter">Find in <strong>forum</strong></label>
                                         <select id="forums_filter" multiple="multiple" size="6" class="input input_select" name="search_app_filters[forums][forums][]">
-                                            <option value="213">Neowin Services &amp; Support</option>
+                                            <option value="213">Jescort Services &amp; Support</option>
                                             <option value="214">&nbsp;&nbsp;|-- Site Announcements</option>
                                             <option value="219">&nbsp;&nbsp;|-- Introduce Yourself</option>
                                             <option value="19">&nbsp;&nbsp;|-- Site &amp; Forum Issues</option>

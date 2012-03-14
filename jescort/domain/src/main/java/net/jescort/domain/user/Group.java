@@ -1,5 +1,6 @@
 package net.jescort.domain.user;
 
+import java.util.List;
 import java.util.Set;
 
 import net.gelif.kernel.core.data.domain.AbstractPersistable;

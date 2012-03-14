@@ -35,9 +35,9 @@ public class PostQuoteController
         } else
         {
             User currentUser = (User) SecurityUtils.getSubject().getPrincipal();
-            escortRepository.updatePost(post, currentUser);
+            escortRepository.savePost(post, currentUser);
             status.setComplete();
-            return "redirect:/topics/" + post.getTopicId();
+            return "redirect:/topics/" + post.getTopic().getId();
         }
     }
 

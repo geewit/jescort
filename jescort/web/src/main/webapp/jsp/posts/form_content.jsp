@@ -21,8 +21,6 @@
                 <span style="font-weight: normal;">Allowed html: a,b,br,blockquote,i,li,pre,u,ul</span>
                 <div id="attachments">
                     <p>File1: <input type="file" name="attachments[]" size="60"/></p>
-
-                    <p>File2: <input type="file" name="attachments[]" size="60"/></p>
                 </div>
                 <p class="comment-post">
                     <span>

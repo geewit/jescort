@@ -5,7 +5,7 @@
     <entity metadata-complete="true" name="Post" class="net.jescort.domain.forum.Post" access="PROPERTY">
         <table name="posts"/>
         <converter name="postStatus" class="net.jescort.persistence.eclipselink.mappings.converters.PostStatusConverter"/>
-        <table-generator name="postIdGenerator" table="id_generator" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="post_id" allocation-size="1" initial-value="1"/>
+        <!--<table-generator name="postIdGenerator" table="id_generator" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="post_id" allocation-size="1" initial-value="1000"/>-->
         <entity-listeners>
             <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.PostListener">
                 <pre-persist method-name="prePersist"/>
@@ -14,11 +14,8 @@
         <attributes>
             <id name="id">
                 <column name="id" unique="true"/>
-                <generated-value strategy="TABLE" generator="postIdGenerator"/>
+                <!--<generated-value strategy="TABLE" generator="postIdGenerator"/>-->
             </id>
-            <basic name="topicId">
-                <column name="topic_id" insertable="true" updatable="true" unique="false"/>
-            </basic>
             <basic name="content">
                 <column name="content" insertable="true" updatable="true" unique="false"/>
             </basic>
@@ -41,7 +38,10 @@
                 </collection-table>
             </basic-map>
             <many-to-one name="poster" target-entity="net.jescort.domain.user.User" fetch="LAZY">
-                <join-column name="poster_id" referenced-column-name="id" insertable="false" updatable="false"/>
+                <join-column name="poster_id" referenced-column-name="id" insertable="true" updatable="true"/>
+            </many-to-one>
+            <many-to-one name="topic" target-entity="net.jescort.domain.forum.Topic" fetch="LAZY">
+                <join-column name="topic_id" referenced-column-name="id" insertable="true" updatable="true"/>
             </many-to-one>
             <one-to-one name="edit" target-entity="net.jescort.domain.forum.PostEdit" fetch="LAZY">
                 <join-column name="id" referenced-column-name="id" insertable="false" updatable="false"/>

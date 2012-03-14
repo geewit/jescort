@@ -20,7 +20,7 @@ import javax.validation.Valid;
  * Time: 下午2:21
  */
 @Controller
-@RequestMapping(value = {"/auth/login"})
+@RequestMapping(value = {"/login"})
 public class LoginController
 {
     private final static Log logger = LogFactory.getLog(LoginController.class);
@@ -28,7 +28,7 @@ public class LoginController
     @RequestMapping(method = RequestMethod.GET)
     public String showLoginForm(@ModelAttribute("command") LoginCommand command)
     {
-        return "auth/login";
+        return "login";
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -36,7 +36,7 @@ public class LoginController
     {
         if (result.hasErrors())
         {
-            return "auth/login";
+            return "login";
         }
         UsernamePasswordToken token = new UsernamePasswordToken(command.getUsername(), command.getPassword(), command.getRememberMe());
         try
@@ -45,7 +45,7 @@ public class LoginController
         } catch (AuthenticationException e)
         {
             result.reject("error.invalidLogin", "The username or password was not correct.");
-            return "auth/login";
+            return "login";
         }
         return "redirect:/";
     }

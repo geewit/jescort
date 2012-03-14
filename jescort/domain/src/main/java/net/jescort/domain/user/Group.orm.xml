@@ -36,6 +36,10 @@
                     <join-column name="group_id" referenced-column-name="id"/>
                     <inverse-join-column name="role_id" referenced-column-name="id"/>
                 </join-table>
+                <cascade>
+                    <cascade-persist/>
+                    <cascade-merge/>
+                </cascade>
             </many-to-many>
         </attributes>
     </entity>

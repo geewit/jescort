@@ -12,10 +12,10 @@
                     <div class="border row1 rounded-bot clearfix">
                         <ul class="tab_bar no_title">
                             <li>
-                                <a title="Settings for Settings" href="http://www.neowin.net/forum/index.php?app=core&amp;module=usercp&amp;tab=core">Settings</a>
+                                <a title="Settings for Settings" href="/">Settings</a>
                             </li>
                             <li class="active">
-                                <a title="Settings for Profile" href="http://www.neowin.net/forum/index.php?app=core&amp;module=usercp&amp;tab=members">Profile</a>
+                                <a title="Settings for Profile" href="/">Profile</a>
                             </li>
                         </ul>
                         <div class="tab_body usercp_body">

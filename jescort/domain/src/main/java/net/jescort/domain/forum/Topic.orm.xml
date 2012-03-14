@@ -22,6 +22,12 @@
             <basic name="forumId">
                 <column name="forum_id" insertable="true" updatable="true" unique="false"/>
             </basic>
+            <basic name="rootPostId">
+                <column name="root_post_id" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="lastPostId">
+                <column name="last_post_id" insertable="true" updatable="true" unique="false"/>
+            </basic>
             <basic name="views">
                 <column name="views" insertable="true" updatable="true" unique="false"/>
             </basic>
@@ -48,9 +54,6 @@
             </basic-map>
             <one-to-one name="rootPost" target-entity="net.jescort.domain.forum.Post" fetch="LAZY">
                 <join-column name="root_post_id" referenced-column-name="id" insertable="false" updatable="false"/>
-                <cascade>
-                    <cascade-all/>
-                </cascade>
             </one-to-one>
             <one-to-one name="lastPost" target-entity="net.jescort.domain.forum.Post" fetch="LAZY">
                 <join-column name="last_post_id" referenced-column-name="id" insertable="false" updatable="false"/>

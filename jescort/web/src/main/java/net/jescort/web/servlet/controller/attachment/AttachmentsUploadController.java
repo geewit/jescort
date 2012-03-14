@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import net.jescort.domain.forum.Attachment;
 import net.jescort.repository.EscortRepository;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +29,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/upload")
 public class AttachmentsUploadController
 {
+    private transient final Log logger = LogFactory.getLog(AttachmentsUploadController.class);
+
     private static final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
     @RequestMapping(method = RequestMethod.GET)
@@ -57,7 +61,7 @@ public class AttachmentsUploadController
                 executor.shutdownNow();
                 if (!executor.awaitTermination(60, TimeUnit.SECONDS))
                 {
-                    System.err.println("Pool did not terminate");
+                    logger.error("Pool did not terminate");
                 }
             }
         } catch (InterruptedException e)

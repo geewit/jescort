@@ -25,7 +25,7 @@ import javax.validation.Valid;
  * Time: 上午11:44
  */
 @Controller
-@RequestMapping(value = {"/auth/register"})
+@RequestMapping(value = {"/register"})
 public class RegisterController
 {
     private transient final static Log logger = LogFactory.getLog(RegisterController.class);
@@ -39,7 +39,7 @@ public class RegisterController
         model.addAttribute("timeZones", TimeZoneUtils.ALL_TIMEZONES);
         model.addAttribute("locales", LocaleUtils.ALL_AVALIABLE_LOCALES);
         model.addAttribute("currentLocale", request.getLocale().toString());
-        return "auth/register";
+        return "register";
     }
 
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})

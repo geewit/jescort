@@ -48,7 +48,7 @@ public class PostEditController
         } else
         {
             User currentUser = (User) SecurityUtils.getSubject().getPrincipal();
-            escortRepository.updatePost(post, currentUser);
+            escortRepository.savePost(post, currentUser);
             status.setComplete();
             return "redirect:/posts/" + post.getId();
         }

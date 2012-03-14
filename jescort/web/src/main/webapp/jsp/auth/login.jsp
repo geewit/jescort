@@ -27,7 +27,7 @@
         <div class="ipsBox">
             <div id="member_login">
                 <h2 class="maintitle">Sign In</h2>
-                <form id="login" action="<spring:url value="/auth/login"/>" method="post">
+                <form id="login" action="<spring:url value="/login"/>" method="post">
                     <div id="regular_signin">
                         <a id="_regularsignin"></a>
                         <h3 class="bar">Enter your sign in name and password</h3>
@@ -36,14 +36,14 @@
                                 <label for="username" class="ipsField_title">Username or email:</label>
                                 <p class="ipsField_content">
                                     <input type="text" id="username" class="input_text" name="username" size="50" tabindex="1"><br>
-                                    <span class="desc ipsType_smaller">Need an account? <a href="<spring:url value="/auth/register"/>" title="Register now!">Register now!</a></span>
+                                    <span class="desc ipsType_smaller">Need an account? <a href="<spring:url value="/register"/>" title="Register now!">Register now!</a></span>
                                 </p>
                             </li>
                             <li class="ipsField">
                                 <label for="password" class="ipsField_title">Password</label>
                                 <p class="ipsField_content">
                                     <input type="password" id="password" class="input_text" name="password" size="50" tabindex="2"><br>
-                                    <a href="<spring:url value="/auth/password_forgotten"/>" class="ipsType_smaller" title="Retrieve password">I've forgotten my password</a>
+                                    <a href="<spring:url value="/password_forgotten"/>" class="ipsType_smaller" title="Retrieve password">I've forgotten my password</a>
                                 </p>
                             </li>
                         </ul>
@@ -69,7 +69,7 @@
         </div>
     </div>
     <ol class="breadcrumb bottom ipsList_inline clearfix clear">
-        <li><a href="<spring:url value="/"/>">Forums</a></li>
+        <li><a href="<spring:url value="/"/>">Jescort Forums</a></li>
         <li><span class="nav_sep"></span> Sign In</li>
     </ol>
     <div class="clear"></div>

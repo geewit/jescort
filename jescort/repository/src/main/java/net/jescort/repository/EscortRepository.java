@@ -27,11 +27,7 @@ public interface EscortRepository
 
     public Topic getTopicWithBBCodeToHtml(final Integer topicId);
 
-    public void createTopic(final Topic topic);
-
     public void createTopic(final Topic topic, final HttpServletRequest request);
-
-    public void updateTopic(final Topic topic);
 
     public Page<Topic> findTopicsByForum(final Integer forumId, final Pageable pageable);
 
@@ -47,7 +43,7 @@ public interface EscortRepository
 
     public void createPost(final Post post);
 
-    public void updatePost(final Post post, final User editor);
+    public void savePost(final Post post, final User editor);
 
     public Post quotePost(final Integer postId);
 

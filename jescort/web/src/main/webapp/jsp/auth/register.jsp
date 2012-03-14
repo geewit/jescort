@@ -34,7 +34,7 @@
             </ul>
         </div>
         <br>
-        <form id="register" method="post" action="<spring:url value="/auth/register"/>">
+        <form id="register" method="post" action="<spring:url value="/register"/>">
             <input type="hidden" value="0" id="auto_dst" name="dst">
             <h1 class="maintitle">
                 Join Our Community

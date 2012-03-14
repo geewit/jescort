@@ -23,6 +23,9 @@
                 <column name="type" insertable="true" updatable="true" unique="false"/>
                 <enumerated>STRING</enumerated>
             </basic>
+            <many-to-one name="user" target-entity="net.jescort.domain.user.User" fetch="LAZY">
+                <join-column name="user_id"/>
+            </many-to-one>
             <many-to-one name="location" target-entity="net.jescort.domain.Location" fetch="LAZY">
                 <join-column name="location_id" referenced-column-name="id" insertable="true" updatable="false" nullable="false"/>
             </many-to-one>

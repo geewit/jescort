@@ -60,9 +60,11 @@
                     <cascade-all />
                 </cascade>
             </one-to-many>
-            <one-to-many name="addresses" target-entity="net.jescort.domain.user.Address" fetch="LAZY">
+            <one-to-many name="addresses" target-entity="net.jescort.domain.user.Address" mapped-by="user" fetch="LAZY">
                 <order-by>priority</order-by>
-                <join-column name="user_id" referenced-column-name="id"/>
+                <cascade>
+                    <cascade-all />
+                </cascade>
             </one-to-many>
             <one-to-one name="profile" target-entity="net.jescort.domain.user.Profile" fetch="LAZY">
                 <join-column name="id" referenced-column-name="id" insertable="false" updatable="false"/>
@@ -79,6 +81,10 @@
                     <join-column name="user_id" referenced-column-name="id"/>
                     <inverse-join-column name="group_id" referenced-column-name="id"/>
                 </join-table>
+                <cascade>
+                    <cascade-persist/>
+                    <cascade-merge/>
+                </cascade>
             </many-to-many>
             <!--
             <transient name="mainAddress"/>

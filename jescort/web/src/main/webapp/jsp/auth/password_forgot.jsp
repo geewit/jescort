@@ -12,12 +12,12 @@
             </li>
             <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
                 <span class="nav_sep">-></span>
-                <span itemprop="title">Lost Your Password?</span>
+                <span itemprop="title">Lost Your Password</span>
             </li>
         </ol>
     </div>
     <br/>
-    <h1 class="ipsType_pagetitle">Lost Your Password?</h1>
+    <h1 class="ipsType_pagetitle">Lost Your Password</h1>
     <div class="ipsType_pagedesc"> If you've lost your password, you can use this form to reset it.
         Enter your username or email address in the field below. The username or email address is
         case <b>in</b>sensitive. Once you have submitted the form, you will receive an email asking
@@ -31,15 +31,15 @@
                 <fieldset>
                     <ul class="ipsForm ipsForm_horizontal">
                         <li class="ipsField clear">
-                            <label class="ipsField_title" for="member_name">Account username</label>
+                            <label class="ipsField_title" for="username">Account username</label>
                             <p class="ipsField_content">
-                                <input type="text" class="input_text" id="member_name" name="member_name" size="32"/>
+                                <input type="text" class="input_text" id="username" name="username" size="32"/>
                             </p>
                         </li>
                         <li class="ipsField clear">
-                            <label class="ipsField_title" for="email_addy"><em>-OR-</em> Email Address</label>
+                            <label class="ipsField_title" for="email"><em>-OR-</em> Email Address</label>
                             <p class="ipsField_content">
-                                <input type="text" class="input_text" id="email_addy" name="email_addy" size="32"/>
+                                <input type="text" class="input_text" id="email" name="email" size="32"/>
                             </p>
                         </li>
                     </ul>

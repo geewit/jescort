@@ -12,4 +12,9 @@ import org.springframework.stereotype.Repository;
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class GroupJpaDao extends GenericJpaDao<Group, Integer> implements GroupDao
 {
+    @Override
+    public Group findByName(String name)
+    {
+        return (Group) entityManager.createQuery("select g from Group g where g.name = :name").setParameter("name", name).getSingleResult();
+    }
 }

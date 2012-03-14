@@ -39,12 +39,12 @@
         <put-attribute name="content" value="/jsp/rules.jsp"/>
     </definition>
 
-    <definition name="auth/login" extends=".layout">
+    <definition name="login" extends=".layout">
         <put-attribute name="title" value="messages.auth.login.title"/>
         <put-attribute name="content" value="/jsp/auth/login.jsp"/>
     </definition>
 
-    <definition name="auth/register" extends=".layout">
+    <definition name="register" extends=".layout">
         <put-attribute name="title" value="messages.auth.register.title"/>
         <put-attribute name="content" value="/jsp/auth/register.jsp"/>
     </definition>

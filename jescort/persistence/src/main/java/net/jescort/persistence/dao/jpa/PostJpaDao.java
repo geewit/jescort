@@ -18,7 +18,7 @@ public class PostJpaDao extends GenericJpaDao<Post, Integer> implements PostDao
 {
     public long countByTopicId(int topicId)
     {
-        return (Long) entityManager.createQuery("select count(t.id) from Post t where t.topicId = :topicId").setParameter("topicId", topicId).getSingleResult();
+        return (Long) entityManager.createQuery("select count(t.id) from Post t where t.topic.id = :topicId").setParameter("topicId", topicId).getSingleResult();
     }
 
     @Override
@@ -30,13 +30,13 @@ public class PostJpaDao extends GenericJpaDao<Post, Integer> implements PostDao
     @SuppressWarnings("unchecked")
     public List<Post> findByTopicId(int topicId)
     {
-        return entityManager.createQuery("select t from Post t where t.topicId = :topicId").setParameter("topicId", topicId).getResultList();
+        return entityManager.createQuery("select t from Post t where t.topic.id = :topicId").setParameter("topicId", topicId).getResultList();
     }
 
     @SuppressWarnings("unchecked")
     public List<Post> findByTopicId(int topicId, Pageable pageable)
     {
-        String jpql = "select t from Post t where t.topicId = :topicId";
+        String jpql = "select t from Post t where t.topic.id = :topicId";
         Query query = entityManager.createQuery(jpql);
         query.setParameter("topicId", topicId);
         query.setFirstResult(pageable.getOffset());

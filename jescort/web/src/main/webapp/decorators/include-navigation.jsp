@@ -5,5 +5,6 @@
     <ul id="navigation-menu">
     </ul>
     <!-- // Navigation -->
-    <jsp:include page="include-search_navigation.jsp"/>
+    <%@ include file="include-search_navigation.jsp"%>
+
 </nav>

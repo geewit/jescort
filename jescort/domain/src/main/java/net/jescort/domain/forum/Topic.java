@@ -34,6 +34,8 @@ public class Topic extends AbstractPersistable<Integer> implements Comparable<To
     private Integer id;
     private String subject;
     private Integer forumId;
+    private Integer rootPostId;
+    private Integer lastPostId;
     private Post rootPost;
     private Post lastPost;
     private int views;
@@ -66,6 +68,26 @@ public class Topic extends AbstractPersistable<Integer> implements Comparable<To
     public Post getRootPost()
     {
         return rootPost;
+    }
+
+    public Integer getRootPostId()
+    {
+        return rootPostId;
+    }
+
+    public void setRootPostId(Integer rootPostId)
+    {
+        this.rootPostId = rootPostId;
+    }
+
+    public Integer getLastPostId()
+    {
+        return lastPostId;
+    }
+
+    public void setLastPostId(Integer lastPostId)
+    {
+        this.lastPostId = lastPostId;
     }
 
     public void setRootPost(Post rootPost)

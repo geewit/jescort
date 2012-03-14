@@ -220,7 +220,7 @@ public class User extends AbstractPersistable<Integer>
     {
         List<Email> emails = this.getEmails();
         Email email = null;
-        if (null != emails)
+        if (null != emails && !emails.isEmpty())
         {
             email = emails.get(0);
         }
@@ -231,7 +231,7 @@ public class User extends AbstractPersistable<Integer>
     {
         Group group = null;
         Set<Group> groupSet = this.getGroups();
-        if (null != groupSet)
+        if (null != groupSet && !groupSet.isEmpty())
         {
             List<Group> groups = new LinkedList<Group>(groupSet);
             Collections.sort(groups);

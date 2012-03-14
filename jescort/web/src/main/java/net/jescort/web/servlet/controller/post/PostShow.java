@@ -20,7 +20,7 @@ public class PostShow
     public ModelAndView postHandler(@PathVariable("id") Integer id)
     {
         Post post = escortRepository.getPost(id);
-        Integer topicId = post.getTopicId();
+        Integer topicId = post.getTopic().getId();
         long totalTopics = escortRepository.rownumberPostsByTopicIdAndId(topicId, id);
         long totalPages = totalTopics / 10 + 1;
         return new ModelAndView(new RedirectView("/topics/" + topicId + "/page/" + totalPages + "#" + id, true));

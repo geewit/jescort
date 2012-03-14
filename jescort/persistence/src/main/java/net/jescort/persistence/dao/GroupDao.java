@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GroupDao extends JpaRepository<Group, Integer>
 {
+    public Group findByName(String name);
 }

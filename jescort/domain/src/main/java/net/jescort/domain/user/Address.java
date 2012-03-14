@@ -24,6 +24,7 @@ public class Address extends AbstractPersistable<Integer>
     }
 
     private Integer id;
+    private User user;
     private String postalcode;
     private String street;
     private Location location;
@@ -38,6 +39,16 @@ public class Address extends AbstractPersistable<Integer>
     public void setId(Integer id)
     {
         this.id = id;
+    }
+
+    public User getUser()
+    {
+        return user;
+    }
+
+    public void setUser(User user)
+    {
+        this.user = user;
     }
 
     public String getPostalcode()

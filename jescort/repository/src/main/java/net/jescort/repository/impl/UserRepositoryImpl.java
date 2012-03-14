@@ -2,13 +2,17 @@ package net.jescort.repository.impl;
 
 import javax.annotation.Resource;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.google.gson.GsonBuilder;
 import net.gelif.kernel.core.data.domain.PageableFactory;
 import net.gelif.modules.memcached.MemcachedObjectType;
 import net.gelif.modules.memcached.SpyMemcachedClient;
 import net.jescort.domain.forum.Message;
 import net.jescort.domain.user.Email;
+import net.jescort.domain.user.Group;
 import net.jescort.domain.user.User;
+import net.jescort.persistence.dao.GroupDao;
 import net.jescort.persistence.dao.MessageDao;
 import net.jescort.persistence.dao.RoleDao;
 import net.jescort.persistence.dao.UserDao;
@@ -42,6 +46,9 @@ public class UserRepositoryImpl implements UserRepository
 
     @Resource(name = "roleDao")
     private RoleDao roleDao;
+
+    @Resource(name = "groupDao")
+    private GroupDao groupDao;
 
     @Resource(name = "messageDao")
     private MessageDao messageDao;
@@ -88,6 +95,7 @@ public class UserRepositoryImpl implements UserRepository
         user.getEmails().add(email);
         user.setTimezone("+8");
         user.setLocale(Locale.getDefault());
+        user.setGroups(Sets.newHashSet(groupDao.findByName("MEMBER")));
         userDao.save(user);
     }
 

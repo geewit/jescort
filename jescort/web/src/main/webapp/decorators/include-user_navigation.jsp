@@ -6,8 +6,8 @@
     <shiro:notAuthenticated>
     <!-- Guest Links -->
     <span id="nav-guest">
-        <a id="nav-login" title="Sign In" href="<spring:url value="/auth/login"/>"><spring:message code="message.login"/></a>
-        <a id="nav-register" title="Create Account" href="<spring:url value="/auth/register"/>"><spring:message code="message.register"/></a>
+        <a id="nav-login" title="Sign In" href="<spring:url value="/login"/>"><spring:message code="message.login"/></a>
+        <a id="nav-register" title="Create Account" href="<spring:url value="/register"/>"><spring:message code="message.register"/></a>
     </span>
     <!-- // Guest Links -->
     </shiro:notAuthenticated>

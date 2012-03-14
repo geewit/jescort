@@ -21,31 +21,29 @@
     <br/>
     <h1 class="ipsType_pagetitle">Posting a New Topic in ${forum.subject}</h1>
     <br/>
-    <form enctype="multipart/form-data" method="post" action="<spring:url value="/forums/${forum.id}/topics/new"/>" id="postingform">
+    <form enctype="multipart/form-data" method="post" action="<spring:url value="/forums/${forum.id}/new"/>" id="postingform">
         <div class="ipsBox ipsForm_vertical ipsLayout ipsPostForm clearfix">
             <div class="ipsBox_container ipsLayout_content">
                 <ul class="ipsForm ipsForm_vertical ipsPad">
                     <li class="ipsField ipsField_primary">
-                        <label class="ipsField_title" for="topic_subject">Topic subject</label>
+                        <label class="ipsField_title" for="subject">Topic subject</label>
                         <p class="ipsField_content">
-                            <input type="text" tabindex="0" value="${topic.subject}" name="subject" maxlength="80" size="65" class="input_text" id="topic_subject"/>
+                            <input id="subject" name="subject" type="text" tabindex="0" value="${topic.subject}" maxlength="80" size="65" class="input_text"/>
                         </p>
                     </li>
                     <li class="ipsField ipsField_editor">
-                        <textarea class="ipsEditor_textarea input_text" name="rootPost.content" id="content">${topic.rootPost.content}</textarea>
+                        <textarea class="ipsEditor_textarea input_text" name="content" id="content">${topic.rootPost.content}</textarea>
                     </li>
                 </ul>
                 <fieldset class="attachments">
                     <div class="ipsPad">
                         <div style="display:none" class="message error" id="attach_error_box"></div>
-                        <input id="attachs" type="file" tabindex="1" name="attachments[]" class="input_upload"/>
+                        <input id="attachs" name="attachments[]" type="file" tabindex="1" class="input_upload"/>
                         <ul id="attachments">
                             <li style="display: none"/>
                         </ul>
                         <div class="attach_controls">
                             <h2 class="ipsType_subtitle">Attach Files</h2>
-                            <span id="buttonPlaceholder"/>
-                            <input type="button" tabindex="-1" style="display: none; clear: both" value="Attach This File" class="ipsType_small ipsButton_secondary attach_button" id="add_files_attach"/>
                             <span id="space_info_attach_0" class="desc ipsType_small">
                                 Used <strong>0bytes</strong> of your <strong>2MB</strong>
                                 global upload quota (Max. single file size: <strong>2MB</strong>)
