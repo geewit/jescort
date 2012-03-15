@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.annotation.Resource;
 
@@ -15,6 +16,12 @@ import javax.annotation.Resource;
 @SessionAttributes(types = Topic.class)
 public class TopicShow
 {
+    @RequestMapping(value = {"/topics"}, method = RequestMethod.GET)
+    public ModelAndView topicHandler()
+    {
+        return new ModelAndView(new RedirectView("/categories"));
+    }
+
     @RequestMapping(value = {"/topics/{id}"}, method = RequestMethod.GET)
     public ModelAndView topicHandler(@PathVariable("id") Integer id)
     {

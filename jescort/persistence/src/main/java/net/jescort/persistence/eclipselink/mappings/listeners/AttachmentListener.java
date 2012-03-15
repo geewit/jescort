@@ -14,6 +14,10 @@ public class AttachmentListener implements EventListener
         {
             return;
         }
+        if (null == attachment.getDownloads())
+        {
+            attachment.setDownloads(0);
+        }
         if (null == attachment.getCreatedate())
         {
             attachment.setCreatedate(Calendar.getInstance());

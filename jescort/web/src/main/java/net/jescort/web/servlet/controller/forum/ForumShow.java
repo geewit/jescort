@@ -14,12 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @SessionAttributes(types = Forum.class)
 public class ForumShow
 {
     //private transient final static Log logger = LogFactory.getLog(ForumShow.class);
+
+    @RequestMapping(value = {"/forums"}, method = RequestMethod.GET)
+    public ModelAndView forumHandler()
+    {
+        return new ModelAndView(new RedirectView("/categories"));
+    }
 
     @RequestMapping(value = {"/forums/{id}"}, method = RequestMethod.GET)
     public ModelAndView forumHandler(@PathVariable("id") Integer id)

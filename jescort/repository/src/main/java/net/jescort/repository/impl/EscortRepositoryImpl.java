@@ -115,8 +115,7 @@ public class EscortRepositoryImpl implements EscortRepository
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void createTopic(final Topic topic, final HttpServletRequest request)
     {
-        List<Attachment> attachments = uploadAttachments(request);
-        attachmentDao.save(attachments);
+        List<Attachment> attachments = uploadAttachments(topic.getRootPost().getPoster(), request);
         final int forumId = topic.getForumId();
         final int topicId = idGeneratorDao.newId(IdName.TOPIC);
         final int rootPostId = idGeneratorDao.newId(IdName.POST);
@@ -124,8 +123,9 @@ public class EscortRepositoryImpl implements EscortRepository
         topic.setRootPostId(rootPostId);
         topic.setLastPostId(rootPostId);
         topic.getRootPost().setId(rootPostId);
+        topic.getRootPost().setAttachments(attachments);
         forumDao.increaseTopics(forumId);
-        //postDao.save(topic.getRootPost());
+        //attachmentDao.save(attachments);
         topicDao.save(topic);
     }
 
@@ -178,7 +178,7 @@ public class EscortRepositoryImpl implements EscortRepository
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void replyTopic(final Post post, final HttpServletRequest request)
     {
-        List<Attachment> attachments = uploadAttachments(request);
+        List<Attachment> attachments = uploadAttachments(post.getPoster(), request);
         final int topicId = post.getTopic().getId();
         topicDao.replyTopic(topicId, post.getId());
         Topic topic = topicDao.findOne(topicId);
@@ -290,7 +290,7 @@ public class EscortRepositoryImpl implements EscortRepository
     }
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public List<Attachment> uploadAttachments(final HttpServletRequest request)
+    public List<Attachment> uploadAttachments(final User currentUser, final HttpServletRequest request)
     {
         final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
@@ -306,13 +306,13 @@ public class EscortRepositoryImpl implements EscortRepository
                     try
                     {
                         Attachment attachment = new Attachment();
+                        int id = idGeneratorDao.newId(IdName.ATTACHMENT);
+                        attachment.setId(id);
                         attachment.setOriginalName(multipartFile.getOriginalFilename());
                         attachment.setSize(multipartFile.getSize());
-                        //attachment.setCreatedate(Calendar.getInstance());
+                        attachment.setOwnerId(currentUser.getId());
                         attachment.setContentType(multipartFile.getContentType());
-                        AttachmentData attachmentData = new AttachmentData();
-                        attachmentData.setContent(multipartFile.getBytes());
-                        attachment.setAttachmentData(attachmentData);
+                        attachment.setContent(multipartFile.getBytes());
                         attachments.add(attachment);
                     } catch (IOException e)
                     {

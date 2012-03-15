@@ -1,6 +1,4 @@
-﻿<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
-<nav id="navigation">
+﻿<nav id="navigation">
     <!-- Navigation -->
     <ul id="navigation-menu">
     </ul>

@@ -1,8 +1,4 @@
-﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
-<div id="branding-user">
+﻿<div id="branding-user">
     <shiro:notAuthenticated>
     <!-- Guest Links -->
     <span id="nav-guest">

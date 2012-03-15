@@ -7,11 +7,7 @@
     <!-- Default Main Template -->
     <definition name=".layout" template="/decorators/layout.jsp">
         <put-attribute name="head" value=""/>
-        <put-attribute name="header" value="/decorators/header.jsp"/>
-        <put-attribute name="navigation" value="/decorators/include-navigation.jsp"/>
-        <put-attribute name="sub_navigation" value="/decorators/include-sub_navigation.jsp"/>
         <put-attribute name="content" value=""/>
-        <put-attribute name="footer" value="/decorators/footer.jsp"/>
     </definition>
 
     <definition name="pageNotFound" extends=".layout">

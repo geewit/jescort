@@ -1,11 +1,12 @@
 package net.jescort.domain.forum;
 
+import java.io.File;
 import java.util.Calendar;
 import java.util.Map;
 
 import net.gelif.kernel.core.config.JescortConfig;
 import net.gelif.kernel.core.data.domain.AbstractPersistable;
-import net.jescort.domain.user.User;
+import net.gelif.kernel.core.util.FileUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -29,14 +30,14 @@ public class Attachment extends AbstractPersistable<Integer>
     }
 
     private Integer id;
-    private User owner;
+    private Integer ownerId;
     private String originalName;
     private String contentType;
+    private byte[] content;
     private long size;
     private Map<String, String> properties;
     private Integer downloads;
     private Calendar createdate;
-    private AttachmentData attachmentData;
 
     public Integer getId()
     {
@@ -48,15 +49,14 @@ public class Attachment extends AbstractPersistable<Integer>
         this.id = id;
     }
 
-
-    public User getOwner()
+    public Integer getOwnerId()
     {
-        return owner;
+        return ownerId;
     }
 
-    public void setOwner(User owner)
+    public void setOwnerId(Integer ownerId)
     {
-        this.owner = owner;
+        this.ownerId = ownerId;
     }
 
     public String getOriginalName()
@@ -77,6 +77,16 @@ public class Attachment extends AbstractPersistable<Integer>
     public void setContentType(String contentType)
     {
         this.contentType = contentType;
+    }
+
+    public byte[] getContent()
+    {
+        return content;
+    }
+
+    public void setContent(byte[] content)
+    {
+        this.content = content;
     }
 
     public long getSize()
@@ -119,14 +129,9 @@ public class Attachment extends AbstractPersistable<Integer>
         this.createdate = createdate;
     }
 
-    public AttachmentData getAttachmentData()
+    public File getFile(String outputFile)
     {
-        return attachmentData;
-    }
-
-    public void setAttachmentData(AttachmentData attachmentData)
-    {
-        this.attachmentData = attachmentData;
+        return FileUtils.getFile(content, outputFile);
     }
 
     public boolean isAllowed()

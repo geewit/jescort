@@ -59,7 +59,7 @@ public interface EscortRepository
 
     public void saveAttachment(final Attachment attachment);
 
-    public List<Attachment> uploadAttachments(final HttpServletRequest request);
+    public List<Attachment> uploadAttachments(final User currentUser, final HttpServletRequest request);
 
     public List<Attachment> findAttachmentsByUser(final Integer userId);
 

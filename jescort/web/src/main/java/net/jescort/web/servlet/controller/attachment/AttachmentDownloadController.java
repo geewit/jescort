@@ -36,7 +36,7 @@ public class AttachmentDownloadController
             response.setHeader("Content-Disposition", "inline;filename=\"" + attachment.getOriginalName() + "\"");
             OutputStream out = response.getOutputStream();
             response.setContentType(attachment.getContentType());
-            IOUtils.copy(new ByteArrayInputStream(attachment.getAttachmentData().getContent()), out);
+            IOUtils.copy(new ByteArrayInputStream(attachment.getContent()), out);
             out.flush();
             out.close();
 

@@ -2,6 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -29,17 +30,17 @@
 <div id="container">
     <!-- Header -->
     <header id="branding">
-        <tiles:insertAttribute name="header"/>
+        <%@ include file="include-header.jsp"%>
     </header>
     <!-- // Header -->
     <!-- Wrapper -->
     <div id="wrapper">
         <!-- Header Navigation -->
-        <tiles:insertAttribute name="navigation"/>
+        <%@ include file="include-navigation.jsp"%>
         <!-- // Header Navigation -->
 
         <!-- Header Sub Navigation -->
-        <tiles:insertAttribute name="sub_navigation"/>
+        <%@ include file="include-sub_navigation.jsp"%>
         <!-- // Header Sub Navigation -->
 
         <!-- Page Content -->
@@ -49,7 +50,7 @@
     <!-- // Wrapper -->
     <!-- Footer -->
     <footer id="siteinfo" role="contentinfo">
-        <tiles:insertAttribute name="footer"/>
+        <%@ include file="include-footer.jsp"%>
     </footer>
     <!-- // Footer -->
 </div>

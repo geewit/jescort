@@ -2,17 +2,12 @@ CREATE TABLE attachments (
     id              INT                         NOT NULL,
     owner_id        INT                         NOT NULL,
     original_name   VARCHAR(127)                NOT NULL,
-    content_type    CHAR(15)                    NOT NULL,
+    content_type    CHAR(63)                    NOT NULL,
+    content         BLOB                        NOT NULL,
     `size`          LONG                        NOT NULL,
     downloads       INT                         NOT NULL,
     createdate      DATETIME                    NOT NULL,
     PRIMARY KEY  (id)
-) ENGINE=InnoDB CHARSET=utf8;
-
-CREATE TABLE attachment_datas (
-    id              INT                         NOT NULL,
-    content         BLOB                        NOT NULL,
-    PRIMARY KEY (id)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
@@ -25,7 +20,7 @@ CREATE TABLE attachment_properties (
 
 
 CREATE TABLE categories (
-    id            INT                           NOT NULL AUTO_INCREMENT,
+    id            INT                           NOT NULL,
     subject       VARCHAR(63)                   NOT NULL,
     description   VARCHAR(255)                  NOT NULL,
     priority      INT                           NOT NULL,
@@ -113,7 +108,7 @@ create table forum_properties (
 
 
 CREATE TABLE messages (
-    id                   INT                    NOT NULL AUTO_INCREMENT,
+    id                   INT                    NOT NULL,
     sender_id            INT                    NOT NULL,
     subject              VARCHAR(255)           NOT NULL,
     content              TEXT                   NOT NULL,
@@ -209,7 +204,7 @@ CREATE TABLE topics (
     replies             INT                     NOT NULL,
     status              INT                     NOT NULL,
     root_post_id        INT                     NOT NULL,
-    last_post_id        INT                     NULL,
+    last_post_id        INT                     NOT NULL,
     is_locked           BOOLEAN                 NOT NULL default FALSE,
     createdate          DATETIME                NOT NULL,
     PRIMARY KEY  (id),

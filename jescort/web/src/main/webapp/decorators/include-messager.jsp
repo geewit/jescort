@@ -1,6 +1,3 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
-
 <shiro:authenticated>
 <ul id="navigation-user">
     <li id="nav-inbox">

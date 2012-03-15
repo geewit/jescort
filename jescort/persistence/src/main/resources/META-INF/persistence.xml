@@ -7,7 +7,6 @@
         <mapping-file>net/jescort/domain/IdGenerator.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/Location.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/forum/Attachment.orm.xml</mapping-file>
-        <mapping-file>net/jescort/domain/forum/AttachmentData.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/forum/Category.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/forum/Dirtyword.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/forum/Draft.orm.xml</mapping-file>

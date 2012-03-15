@@ -1,5 +1,3 @@
-
-ALTER TABLE attachment_datas ADD CONSTRAINT `attachment_datas.attachment_fk` FOREIGN KEY (`id`) REFERENCES `attachments` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE attachment_properties ADD CONSTRAINT `attachment_properties.attachment_fk` FOREIGN KEY (`id`) REFERENCES `attachments` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE category_moderator_map ADD CONSTRAINT `category_moderator_map.category_fk` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE category_moderator_map ADD CONSTRAINT `category_moderator_map.moderator_fk` FOREIGN KEY (`moderator_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
