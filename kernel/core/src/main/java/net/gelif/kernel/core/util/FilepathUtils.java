@@ -61,4 +61,9 @@ public final class FilepathUtils
         builder.append(id).append(".").append(suffix);
         return builder.toString();
     }
+    
+    public static String convertSeparator(String uri)
+    {
+        return uri.replace("\\", "/");
+    }
 }

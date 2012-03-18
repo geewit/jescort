@@ -14,12 +14,14 @@ public class ShiroUser  implements Serializable
     private String id;
     private String username;
     private String nickname;
+    private String avatar;
 
-    public ShiroUser(String id, String username, String nickname)
+    public ShiroUser(String id, String username, String nickname, String avatar)
     {
         this.id = id;
         this.username = username;
         this.nickname = nickname;
+        this.avatar = avatar;
     }
 
     public String getId()
@@ -35,6 +37,11 @@ public class ShiroUser  implements Serializable
     public String getNickname()
     {
         return nickname;
+    }
+
+    public String getAvatar()
+    {
+        return avatar;
     }
 
     /**

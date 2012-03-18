@@ -44,7 +44,7 @@ public class EscortRealm extends AuthorizingRealm
         User user = userRepository.findUserByUsername(token.getUsername());
         if (null != user)
         {
-            return new SimpleAuthenticationInfo(new ShiroUser(user.getId(), user.getUsername(), user.getNickname()), user.getPassword(), getName());
+            return new SimpleAuthenticationInfo(new ShiroUser(user.getId(), user.getUsername(), user.getNickname(), user.getAvatar()), user.getPassword(), getName());
         } else
         {
             return null;

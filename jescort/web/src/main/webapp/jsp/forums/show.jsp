@@ -77,7 +77,7 @@
                     </td>
                     <td class="col_f_post">
                         <a href="<spring:url value="/users/${topic.lastPost.poster.id}"/>" class="ipsUserPhotoLink left">
-                            <img src="<spring:url value="/users/${topic.lastPost.poster.id}/avatar"/>" class="ipsUserPhoto ipsUserPhoto_mini">
+                            <img src="<jescort:avatar avatar="${topic.lastPost.poster.avatar}"/>" class="ipsUserPhoto ipsUserPhoto_mini">
                         </a>
                         <ul class="last_post ipsType_small">
                             <li><a hovercard-ref="member" hovercard-id="${topic.lastPost.poster.id}" class="_hovertrigger url fn " href="<spring:url value="/user/${topic.lastPost.poster.id}"/>">${topic.lastPost.poster.username}</a></li>

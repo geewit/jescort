@@ -85,6 +85,31 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+    <tag>
+        <description>
+            <![CDATA[
+                    ]]>
+        </description>
+        <name>avatar</name>
+        <tag-class>net.jescort.web.jsp.taglib.AvatarTemplateTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <description>
+                <![CDATA[
+                        ]]>
+            </description>
+            <name>avatar</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>The name of the variable to export the URL value to.</description>
+            <name>var</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
     <function>
         <description>
             <![CDATA[

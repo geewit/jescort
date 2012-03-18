@@ -176,14 +176,15 @@ public class UserRepositoryImpl implements UserRepository
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public String uploadAvatar(final MultipartFile multipartFile)
     {
-        String uuid = UUID.randomUUID().toString();
+        final ShiroUser shiroUser = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
+        if(null == shiroUser)
+        {
+            return null;
+        }
         String suffix = StringUtils.substringAfterLast(multipartFile.getOriginalFilename(), ".");
-        String path = FilepathUtils.idTofullFilepath(absolutePath + avatarPrefixPath, suffix, uuid);
-        logger.debug("suffix == " + suffix);
-        logger.debug("uuid == " + uuid);
-        logger.debug("absolutePath == " + absolutePath);
-        logger.debug("avatarPrefixPath == " + avatarPrefixPath);
-        logger.debug("avatar_path == " + path);
+        String avatarName = shiroUser.getId() + "." + suffix;
+        String path = FilepathUtils.filenameTofullFilepath(absolutePath + avatarPrefixPath, avatarName);
+
         final File avatarPath = new File(path);
         avatarPath.mkdirs();
         try
@@ -194,27 +195,29 @@ public class UserRepositoryImpl implements UserRepository
         {
             logger.warn(e.toString());
         }
-        final ShiroUser shiroUser = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
-        if(null != shiroUser)
-        {
-            userDao.updateAvatar(uuid + "." + suffix, shiroUser.getId());
-        }
+        userDao.updateAvatar(avatarName, shiroUser.getId());
 
-        return path;
+        return avatarName;
     }
 
     @Override
-    public String findAvatar(String userId)
+    public String findAvatarPath(String userId)
     {
         String avatar = userDao.findAvatar(userId);
         if(StringUtils.isNotBlank(avatar))
         {
-            return FilepathUtils.filenameTofullFilepath(avatarPrefixPath, avatar);
+            return convertAvatarPath(avatar);
         }
         else
         {
             return defaultAvatarPath;
         }
+    }
+
+    @Override
+    public String convertAvatarPath(String avatar)
+    {
+        return FilepathUtils.filenameTofullFilepath(absolutePath + avatarPrefixPath, avatar);
     }
 
     @Override

@@ -40,7 +40,7 @@
                                 <spring:url value="/posts/${forum.lastPost.id}" var="lastPostUrl"/>
                                 <spring:url value="/users/${forum.lastPost.poster.id}" var="lastPosterUrl"/>
                                 <a class="ipsUserPhotoLink left" href="${lastPosterUrl}">
-                                    <img class="ipsUserPhoto ipsUserPhoto_mini" alt="Photo" src="<spring:url value="/users/${forum.lastPost.poster.id}/avatar"/>">
+                                    <img class="ipsUserPhoto ipsUserPhoto_mini" alt="Photo" src="<jescort:avatar avatar="${forum.lastPost.poster.avatar}"/>">
                                 </a>
                                 <ul class="last_post ipsType_small">
                                     <li>

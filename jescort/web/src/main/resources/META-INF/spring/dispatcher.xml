@@ -15,14 +15,14 @@
     <!--<mvc:annotation-driven validator="validator"/>-->
 
     <!-- auto config validator conversionService  -->
-    <mvc:annotation-driven validator="validator" conversion-service="conversion-service"/>
+    <mvc:annotation-driven validator="validator" conversion-service="conversionService"/>
 
     <!---->
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>
         <property name="validationMessageSource" ref="messageSource"/>
     </bean>
-    <bean id="conversion-service" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"  />
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"  />
     <!--
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>-->
 

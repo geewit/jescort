@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="jescort" uri="http://www.jescort.net/tags" %>
 
 <div id="body">
     <div class="clearfix" id="secondary_navigation">
@@ -12,20 +13,20 @@
             </li>
             <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
                 <span class="nav_sep">-></span>
-                <span itemprop="title">Photo Editor</span>
+                <span itemprop="title">Avatar Editor</span>
             </li>
         </ol>
     </div>
     <br/>
     <link href="<spring:url value="/static/css/ipb_avatar_editor.css"/>" media="screen" type="text/css" rel="stylesheet"/>
-    <form name="photoEditorForm" id="photoEditorForm" action="<spring:url value="/auth/avatar"/>" enctype="multipart/form-data" method="post">
+    <form id="photoEditorForm" name="photoEditorForm" action="<spring:url value="/auth/avatar"/>" enctype="multipart/form-data" method="post">
         <h3>Avatar Editor</h3>
         <div class="ipsBox">
             <div class="fixed_inner">
-                <fieldset class="fixed_inner ipsBox_container" id="ips_photoWrap">
+                <fieldset id="ips_photoWrap" class="fixed_inner ipsBox_container">
                     <div id="ips_sidePanel">
                         <div id="ips_currentPhoto">
-                            <img class="ipsUserPhoto" src="<c:out value="${avatar}"/>"/>
+                            <img class="ipsUserPhoto" src="<jescort:avatar avatar="${avatar}"/>"/>
                         </div>
                     </div>
                     <div id="ips_photoOptions">
@@ -33,7 +34,7 @@
                             <li class="ips_option row2">
                                 <div class="ips_photoPreview _custom">
                                     <label>
-                                        <img width="100" height="100" src="<c:out value="${avatar}"/>"/>
+                                        <img width="100" height="100" src="<jescort:avatar avatar="${avatar}"/>"/>
                                     </label>
                                 </div>
                                 <div class="ips_photoControls">
@@ -61,7 +62,7 @@
         <li>
             <a href="<spring:url value="/"/>">Jescort Forums</a>
         </li>
-        <li><span class="nav_sep">-></span> Photo Editor</li>
+        <li><span class="nav_sep">-></span> Avatar Editor</li>
     </ol>
     <div class="clear"></div>
 </div>

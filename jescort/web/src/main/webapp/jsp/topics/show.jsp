@@ -23,7 +23,7 @@
     </div>
     <br/>
     <a class="ipsUserPhotoLink" href="<spring:url value="/users/${topic.rootPost.poster.id}"/>">
-        <img class="ipsUserPhoto ipsUserPhoto_medium left" src="<spring:url value="/users/${topic.rootPost.poster.id}/avatar"/>"/>
+        <img class="ipsUserPhoto ipsUserPhoto_medium left" src="<jescort:avatar avatar="${topic.rootPost.poster.avatar}"/>"/>
     </a>
     <div class="ipsBox_withphoto">
         <h1 class="ipsType_pagetitle">
@@ -87,7 +87,7 @@
                                         <p class="desc member_title">${poster.nickname}</p>
                                         <li class="avatar">
                                             <a class="ipsUserPhotoLink" title="View Profile" href="<spring:url value="/users/${poster.id}"/>">
-                                                <img class="ipsUserPhoto ipsUserPhoto_large" src="${poster.profile.avatar}"/>
+                                                <img class="ipsUserPhoto ipsUserPhoto_large" src="<jescort:avatar avatar="${poster.avatar}"/>"/>
                                             </a>
                                         </li>
                                         <li class="group_icon">
@@ -116,8 +116,8 @@
                                     ${post.content}
                                     <c:if test="${not empty post.attachments}"><jescort:attachments attachments="${post.attachments}"/></c:if>
                                 </div>
-                                <c:if test="${not empty poster.profile.signature}">
-                                    <div data-memberid="${poster.id}" class="signature">${poster.profile.signature}</div>
+                                <c:if test="${not empty poster.signature}">
+                                    <div data-memberid="${poster.id}" class="signature">${poster.signature}</div>
                                 </c:if>
                                 <ul class="post_controls clear clearfix">
                                     <li>

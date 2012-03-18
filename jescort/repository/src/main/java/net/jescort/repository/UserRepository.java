@@ -34,7 +34,9 @@ public interface UserRepository
 
     public String uploadAvatar(final MultipartFile multipartFile);
 
-    public String findAvatar(final String userId);
+    public String findAvatarPath(final String userId);
+
+    public String convertAvatarPath(String avatar);
 
     public Message getMessage(final Integer messageId);
 

@@ -20,9 +20,7 @@
             </li>
             <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
                 <span class="nav_sep"/>
-                <a href="<spring:url value="/"/>" title="Return toProfile Settings" itemprop="url">
-                    <span itemprop="title">Profile Settings</span>
-                </a>
+                <span itemprop="title">Profile Settings</span>
             </li>
         </ol>
     </div>

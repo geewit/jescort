@@ -10,18 +10,19 @@
 
     <shiro:authenticated>
     <c:set var="user_id"><shiro:principal property="id"/></c:set>
+    <c:set var="avatar"><shiro:principal property="avatar"/></c:set>
     <!-- User Menu -->
-    <span class="nav-user-avatar"><img alt="<shiro:principal property="username"/>'s Photo" src="<spring:url value="/users/${user_id}/avatar"/>"/></span>
+    <span class="nav-user-avatar"><img alt="<shiro:principal property="username"/>'s Photo" src="<jescort:avatar avatar="${avatar}"/>"/></span>
     <span id="nav-user">
-        <a href="<spring:url value="/users/${user_id}"/>" title="View My Profile" class="nav-user-username"><shiro:principal property="username"/></a>
+        <a href="<spring:url value="/users/${user_id}"/>" title="View My Profile" class="nav-user-username"><shiro:principal property="username"/><span></span></a>
         <div class="navigation-dropdown">
             <header>
             </header>
             <div>
                 <ul>
                     <li><a title="Edit my settings, such as signature, photo and more..." href="<spring:url value="/auth/profile"/>"><spring:message code="message.my_profile"/></a></li>
-                    <li><a title="View My Content" href="<spring:url value="/auth/topics"/>">View My Content</a></li>
-                    <li><a href="<spring:url value="/auth/messager"/>"><spring:message code="message.inbox_str"/></a></li>
+                    <li><a title="View My Content" href="<spring:url value="/auth/topics"/>"><spring:message code="message.my_posts"/></a></li>
+                    <li><a href="<spring:url value="/auth/messages"/>"><spring:message code="message.inbox_str"/></a></li>
                 </ul>
             </div>
             <footer>

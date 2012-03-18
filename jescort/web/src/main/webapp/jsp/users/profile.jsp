@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="jescort" uri="http://www.jescort.net/tags" %>
 
 <div id="body">
     <div class="clearfix" id="secondary_navigation">
@@ -22,17 +24,17 @@
         <div class="ipsVerticalTabbed ipsLayout ipsLayout_withleft ipsLayout_smallleft clearfix">
             <div id="profile_tabs" class="ipsVerticalTabbed_tabs ipsLayout_left">
                 <p class="short photo_holder">
-                    <img alt="${user.nickname}'s Photo" src="<spring:url value="/users/${user.id}/avatar"/>" id="profile_photo" class="ipsUserPhoto"/>
+                    <img alt="${user.nickname}'s Photo" src="<jescort:avatar avatar="${user.avatar}"/>" id="profile_photo" class="ipsUserPhoto"/>
                 </p>
                 <ul class="clear">
                     <li data-tabid="user_info" class="tab_toggle active" id="tab_link_core:info">
                         <a href="<spring:url value="/users/${user.id}/profile"/>">Overview</a>
                     </li>
                     <li data-tabid="topics" class=" tab_toggle" id="tab_link_forums:topics">
-                        <a title="View Topics" href="<spring:url value="/users/${user.id}/profile/topics"/>">Topics</a>
+                        <a title="View Topics" href="<spring:url value="/users/${user.id}/topics"/>">Topics</a>
                     </li>
                     <li data-tabid="posts" class=" tab_toggle" id="tab_link_forums:posts">
-                        <a title="View Posts" href="<spring:url value="/users/${user.id}/profile/posts"/>">Posts</a>
+                        <a title="View Posts" href="<spring:url value="/users/${user.id}/posts"/>">Posts</a>
                     </li>
                 </ul>
             </div>
@@ -65,17 +67,17 @@
                                         </li>
                                         <li>
                                             <span class="row_title">Age</span>
-                                            <span class="row_data">${user.profile.age}</span>
+                                            <span class="row_data">${user.age}</span>
                                         </li>
                                         <li>
                                             <span class="row_title">Birthday</span>
-                                            <span class="row_data"><fmt:formatDate value="${user.profile.birthday.time}" type="both" pattern="yyyy-MM-dd"/></span>
+                                            <span class="row_data"><fmt:formatDate value="${user.birthday.time}" type="both" pattern="yyyy-MM-dd"/></span>
                                         </li>
                                         <li>
                                             <span class="row_title">Gender</span>
                                             <div class="row_data">
-                                                <c:choose><c:when test="${not empty user.profile.gender}">
-                                                    <c:set value="${user.profile.gender}" var="gender"/>
+                                                <c:choose><c:when test="${not empty user.gender}">
+                                                    <c:set value="${user.gender}" var="gender"/>
                                                     <img alt="${gender}" src="<spring:url value="/static/images/${fn:toLowerCase(gender)}.gif"/>"><spring:message code="message.gender_${gender}"/>
                                                 </c:when><c:otherwise>
                                                     <img src="<spring:url value="/static/images/mystery.png"/>" alt="Not Telling">Not Telling
@@ -113,7 +115,7 @@
                                     <h3>Signature</h3>
                                     <div style="padding:0 10px">
                                         <div data-memberid="0" class="signature">
-                                            ${user.profile.signature}
+                                            ${user.signature}
                                         </div>
                                     </div>
                                 </div>

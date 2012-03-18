@@ -38,8 +38,8 @@ public class AvatarController
         final ShiroUser shiroUser = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
         if(null != shiroUser)
         {
-            String avatar = userRepository.findAvatar(shiroUser.getId());
-            model.addAttribute("avatar", avatar);
+            String avatar = shiroUser.getAvatar();
+            model.addAttribute("avatarPath", avatar);
         }
 
         return "auth/avatar";
