@@ -2,23 +2,25 @@ package net.jescort.repository.impl;
 
 import javax.annotation.Resource;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.gson.GsonBuilder;
 import net.gelif.kernel.core.data.domain.PageableFactory;
+import net.gelif.kernel.core.util.FilepathUtils;
+import net.gelif.kernel.core.util.UUIDUtils;
 import net.gelif.modules.memcached.MemcachedObjectType;
 import net.gelif.modules.memcached.SpyMemcachedClient;
 import net.jescort.domain.forum.Message;
 import net.jescort.domain.user.Email;
-import net.jescort.domain.user.Group;
+import net.jescort.domain.user.ShiroUser;
 import net.jescort.domain.user.User;
-import net.jescort.persistence.dao.GroupDao;
-import net.jescort.persistence.dao.MessageDao;
-import net.jescort.persistence.dao.RoleDao;
-import net.jescort.persistence.dao.UserDao;
+import net.jescort.persistence.dao.*;
 import net.jescort.repository.UserRepository;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Sha1Hash;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
@@ -27,9 +29,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.sql.Blob;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -39,7 +43,7 @@ import java.util.*;
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class UserRepositoryImpl implements UserRepository
 {
-    //private transient final static Log logger = LogFactory.getLog(UserRepositoryImpl.class);
+    private transient final static Log logger = LogFactory.getLog(UserRepositoryImpl.class);
 
     @Resource(name = "userDao")
     private UserDao userDao;
@@ -56,36 +60,52 @@ public class UserRepositoryImpl implements UserRepository
     @Resource(name = "memcachedClient")
     private SpyMemcachedClient memcachedClient;
 
+    @Value("${settings.avatar.prefix.path}")
+    private String avatarPrefixPath;
+
+    @Resource(name = "absolutePath", type = String.class)
+    private String absolutePath;
+
+    @Value("${settings.avatar.default.path}")
+    private String defaultAvatarPath;
+
     @Override
     public User getCurrentUser()
     {
-        final User currentUser = (User) SecurityUtils.getSubject().getPrincipal();
-        if (currentUser != null)
+        final ShiroUser shiroUser = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
+        if (shiroUser != null)
         {
-            return getUser(currentUser.getId());
+            return getUser(shiroUser.getId());
         } else
         {
             return null;
         }
     }
 
+    @Override
     @Transactional
     public void createUser(User user)
     {
+        String id = UUIDUtils.randomUUID();
+        user.setId(id);
         String password = new Sha1Hash(user.getPassword()).toHex();
         user.setPassword(password);
         userDao.save(user);
     }
-    
+
+    @Override
+    @Transactional
     public void updateUser(User user)
     {
         userDao.save(user);
     }
 
     @Transactional
-    public void createUser(String username, String password, String nickname, String emailAddress)
+    public User createUser(String username, String password, String nickname, String emailAddress)
     {
         User user = new User();
+        String id = UUIDUtils.randomUUID();
+        user.setId(id);
         user.setUsername(username);
         user.setPassword(new Sha1Hash(password).toHex());
         user.setNickname(nickname);
@@ -97,10 +117,11 @@ public class UserRepositoryImpl implements UserRepository
         user.setLocale(Locale.getDefault());
         user.setGroups(Sets.newHashSet(groupDao.findByName("MEMBER")));
         userDao.save(user);
+        return user;
     }
 
     @Override
-    public User getUser(Integer id)
+    public User getUser(String id)
     {
         if (memcachedClient != null)
         {
@@ -111,7 +132,7 @@ public class UserRepositoryImpl implements UserRepository
         }
     }
 
-    private User getUserFromMemcached(Integer id)
+    private User getUserFromMemcached(String id)
     {
         String key = MemcachedObjectType.USER.getPrefix() + id;
 
@@ -133,11 +154,7 @@ public class UserRepositoryImpl implements UserRepository
         return user;
     }
 
-    public Long countUsers()
-    {
-        return userDao.count();
-    }
-
+    @Override
     public User findUserByUsername(String username)
     {
         return userDao.findByUsername(username);
@@ -150,9 +167,54 @@ public class UserRepositoryImpl implements UserRepository
     }
 
     @Override
-    public Blob findAvatar(Integer id)
+    public Long countUsers()
     {
-        return userDao.findAvatar(id);
+        return userDao.count();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public String uploadAvatar(final MultipartFile multipartFile)
+    {
+        String uuid = UUID.randomUUID().toString();
+        String suffix = StringUtils.substringAfterLast(multipartFile.getOriginalFilename(), ".");
+        String path = FilepathUtils.idTofullFilepath(absolutePath + avatarPrefixPath, suffix, uuid);
+        logger.debug("suffix == " + suffix);
+        logger.debug("uuid == " + uuid);
+        logger.debug("absolutePath == " + absolutePath);
+        logger.debug("avatarPrefixPath == " + avatarPrefixPath);
+        logger.debug("avatar_path == " + path);
+        final File avatarPath = new File(path);
+        avatarPath.mkdirs();
+        try
+        {
+            multipartFile.transferTo(avatarPath);
+            //FileCopyUtils.copy(multipartFile.getBytes(), avatarPath);
+        } catch (IOException e)
+        {
+            logger.warn(e.toString());
+        }
+        final ShiroUser shiroUser = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
+        if(null != shiroUser)
+        {
+            userDao.updateAvatar(uuid + "." + suffix, shiroUser.getId());
+        }
+
+        return path;
+    }
+
+    @Override
+    public String findAvatar(String userId)
+    {
+        String avatar = userDao.findAvatar(userId);
+        if(StringUtils.isNotBlank(avatar))
+        {
+            return FilepathUtils.filenameTofullFilepath(avatarPrefixPath, avatar);
+        }
+        else
+        {
+            return defaultAvatarPath;
+        }
     }
 
     @Override
@@ -162,12 +224,12 @@ public class UserRepositoryImpl implements UserRepository
     }
 
     @Override
-    public void sendMessage(Integer senderId, String subject, String content, Integer... recipientIds)
+    public void sendMessage(String senderId, String subject, String content, String... recipientIds)
     {
         Message message = new Message();
         message.setSender(new User(senderId));
         List<User> users = new ArrayList<User>(recipientIds.length);
-        for(Integer recipientId : recipientIds)
+        for(String recipientId : recipientIds)
         {
             users.add(new User(recipientId));
         }
@@ -182,19 +244,19 @@ public class UserRepositoryImpl implements UserRepository
     }
 
     @Override
-    public Long countMessageBySender(Integer senderId)
+    public Long countMessageBySender(String senderId)
     {
         return messageDao.countBySenderId(senderId);
     }
 
     @Override
-    public Long countMessageByRecipient(Integer recipientId)
+    public Long countMessageByRecipient(String recipientId)
     {
         return messageDao.countByRecipientId(recipientId);
     }
 
     @Override
-    public Page<Message> findMessagesBySender(Integer senderId, Pageable pageable)
+    public Page<Message> findMessagesBySender(String senderId, Pageable pageable)
     {
         List<Message> messages = messageDao.findBySenderId(senderId, pageable);
         Page<Message> page = new PageImpl<Message>(messages);
@@ -202,21 +264,27 @@ public class UserRepositoryImpl implements UserRepository
     }
 
     @Override
-    public Page<Message> findMessagesByRecipient(Integer recipientId, Pageable pageable)
+    public Page<Message> findMessagesByRecipient(String recipientId, Pageable pageable)
     {
         List<Message> messages = messageDao.findByRecipientId(recipientId, pageable);
         Page<Message> page = new PageImpl<Message>(messages);
         return page;
     }
 
+    @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public ModelAndView messageBoxView(Integer recipientId, Integer pageNo, Integer pageSize, ModelAndView mav)
+    public ModelAndView messageBoxView(Integer pageNo, Integer pageSize, ModelAndView mav)
     {
-        Pageable pageable = PageableFactory.create(pageNo, pageSize);
-        List<Message> messages = messageDao.findByRecipientId(recipientId, pageable);
-        final long totalPages = messageDao.countByRecipientId(recipientId);
-        Page<Message> page = new PageImpl<Message>(messages, pageable, totalPages);
-        mav.addObject("messageBox", page);
+        final ShiroUser shiroUser = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
+        if(null != shiroUser)
+        {
+            String recipientId = shiroUser.getId();
+            Pageable pageable = PageableFactory.create(pageNo, pageSize);
+            List<Message> messages = messageDao.findByRecipientId(recipientId, pageable);
+            final long totalPages = messageDao.countByRecipientId(recipientId);
+            Page<Message> page = new PageImpl<Message>(messages, pageable, totalPages);
+            mav.addObject("messageBox", page);
+        }
         return mav;
     }
 }

@@ -1,8 +1,8 @@
 
 CREATE TABLE addresses (
     id                   INT                    NOT NULL,
-    user_id              INT                    NOT NULL,
-    location_id          SMALLINT               NOT NULL,
+    user_id              CHAR(32)               NOT NULL,
+    location_id          INT                    NOT NULL,
     postal_code          VARCHAR(15)            NOT NULL,
     street               VARCHAR(255)           NOT NULL,
     priority             INTEGER                NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE addresses (
 CREATE TABLE emails (
     personal      VARCHAR(31)    NOT NULL,
     hostname      VARCHAR(31)    NOT NULL,
-    user_id       INT            NOT NULL,
+    user_id       CHAR(32)       NOT NULL,
     priority      INT            NOT NULL,
     PRIMARY KEY  (personal, hostname),
     INDEX email_idx (priority)
@@ -23,7 +23,7 @@ CREATE TABLE emails (
 
 
 CREATE TABLE groups (
-    id            INT            NOT NULL AUTO_INCREMENT,
+    id            INT            NOT NULL,
     `name`        VARCHAR(127)   NOT NULL,
     description   VARCHAR(255)   NOT NULL,
     priority      INT            NOT NULL,
@@ -42,10 +42,10 @@ CREATE TABLE group_role_map (
 
 
 CREATE TABLE locations (
-    id                   SMALLINT               NOT NULL,
+    id                   INT                    NOT NULL,
     `name`               VARCHAR(255)           NOT NULL,
     abbr                 CHAR(2)                NOT NULL,
-    parent_id            SMALLINT               NULL,
+    parent_id            INT                    NULL,
     level                TINYINT(1)             NOT NULL,
     available            BOOLEAN                NOT NULL,
     PRIMARY KEY (id)
@@ -53,7 +53,7 @@ CREATE TABLE locations (
 
 
 CREATE TABLE permissions (
-    id                   INT            NOT NULL AUTO_INCREMENT,
+    id                   INT            NOT NULL,
     role_id              INT            NOT NULL,
     permission           VARCHAR(255)   NOT NULL,
     PRIMARY KEY (id)
@@ -61,7 +61,7 @@ CREATE TABLE permissions (
 
 
 CREATE TABLE roles (
-    id                  INT            NOT NULL AUTO_INCREMENT,
+    id                  INT            NOT NULL,
     authority           VARCHAR(127)   NOT NULL,
     description         VARCHAR(255)   NOT NULL,
     priority            INT            NOT NULL,
@@ -72,10 +72,16 @@ CREATE TABLE roles (
 
 
 CREATE TABLE users (
-    id                 INT            NOT NULL,
+    id                 CHAR(32)       NOT NULL,
     username           VARCHAR(31)    NOT NULL,
     password           VARCHAR(127)   NOT NULL,
     nickname           VARCHAR(63)    NOT NULL,
+    gender             TINYINT(1)     NULL,
+    famaliy_name       VARCHAR(127)   NULL,
+    given_name         VARCHAR(127)   NULL,
+    birthday           DATETIME       NULL,
+    avatar             VARCHAR(63)    NULL,
+    signature          TEXT           NULL,
     posts              INT            NOT NULL default 0,
     reputation         INT            NOT NULL default 0,
     timezone           CHAR(3)        NOT NULL,
@@ -88,26 +94,14 @@ CREATE TABLE users (
 
 
 CREATE TABLE user_group_map (
-    user_id            INT            NOT NULL,
+    user_id            CHAR(32)       NOT NULL,
     group_id           INT            NOT NULL,
     PRIMARY KEY (user_id, group_id)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
-create table user_profiles (
-    id                 INT            NOT NULL,
-    gender             TINYINT(1)     NOT NULL,
-    famaliy_name       VARCHAR(127)   NOT NULL,
-    given_name         VARCHAR(127)   NOT NULL,
-    birthday           DATETIME       NOT NULL,
-    avatar             BLOB           NULL,
-    signature          TEXT           NOT NULL,
-    PRIMARY KEY (id)
-) ENGINE=InnoDB CHARSET=utf8;
-
-
 create table user_properties (
-    id                   INT                  NOT NULL,
+    id                   CHAR(32)             NOT NULL,
     `key`                VARCHAR(63)          NOT NULL,
     `value`              VARCHAR(255)         NOT NULL,
     PRIMARY KEY (id, `key`)

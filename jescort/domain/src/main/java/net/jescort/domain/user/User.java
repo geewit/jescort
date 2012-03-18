@@ -3,6 +3,8 @@ package net.jescort.domain.user;
 import java.util.*;
 
 import net.gelif.kernel.core.data.domain.AbstractPersistable;
+import net.gelif.kernel.core.util.DateUtils;
+import net.jescort.domain.enums.Gender;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
@@ -16,7 +18,7 @@ import org.apache.commons.lang.builder.ToStringStyle;
  * Time: 上午11:46
  */
 
-public class User extends AbstractPersistable<Integer>
+public class User extends AbstractPersistable<String>
 {
     private static final long serialVersionUID = 1L;
 
@@ -24,33 +26,37 @@ public class User extends AbstractPersistable<Integer>
     {
     }
 
-    public User(Integer id)
+    public User(String id)
     {
         this.id = id;
     }
 
-    private Integer id;
+    private String id;
     private String username;
     private String password;
     private String nickname;
     private Integer posts;
     private Integer reputation;
+    private Gender gender;
+    private Name name;
+    private Calendar birthday;
+    private String avatar;
+    private String signature;
     private String timezone;
     private Locale locale;
     private Calendar createdate;
     private Calendar lastActive;
-    private Profile profile;
     private List<Email> emails = new ArrayList<Email>();
     private List<Address> addresses = new ArrayList<Address>();
     private Set<Group> groups = new HashSet<Group>();
     private Map<String, String> properties;
 
-    public Integer getId()
+    public String getId()
     {
         return id;
     }
 
-    public void setId(Integer id)
+    public void setId(String id)
     {
         this.id = id;
     }
@@ -105,6 +111,61 @@ public class User extends AbstractPersistable<Integer>
         this.reputation = reputation;
     }
 
+    public Gender getGender()
+    {
+        return gender;
+    }
+
+    public void setGender(Gender gender)
+    {
+        this.gender = gender;
+    }
+
+    public Name getName()
+    {
+        return name;
+    }
+
+    public void setName(Name name)
+    {
+        this.name = name;
+    }
+
+    public Calendar getBirthday()
+    {
+        return birthday;
+    }
+
+    public void setBirthday(Calendar birthday)
+    {
+        this.birthday = birthday;
+    }
+
+    public String getAvatar()
+    {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar)
+    {
+        this.avatar = avatar;
+    }
+
+    public String getSignature()
+    {
+        return signature;
+    }
+
+    public void setSignature(String signature)
+    {
+        this.signature = signature;
+    }
+
+    public int getAge()
+    {
+        return DateUtils.getAge(this.getBirthday());
+    }
+
     public String getTimezone()
     {
         return timezone;
@@ -133,16 +194,6 @@ public class User extends AbstractPersistable<Integer>
     public void setCreatedate(Calendar createdate)
     {
         this.createdate = createdate;
-    }
-
-    public Profile getProfile()
-    {
-        return profile;
-    }
-
-    public void setProfile(Profile profile)
-    {
-        this.profile = profile;
     }
 
     public Calendar getLastActive()
@@ -274,7 +325,7 @@ public class User extends AbstractPersistable<Integer>
     @Override
     public String toString()
     {
-        ToStringBuilder sb = new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", this.id).append("username", this.username).append("password", this.password).append("nickname", this.nickname).append("posts", this.posts).append("reputation", this.reputation).append("timezone", this.timezone).append("createdate", null != this.createdate ? String.format("%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS", this.createdate) : null);
+        ToStringBuilder sb = new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", this.id).append("username", this.username).append("password", this.password).append("nickname", this.nickname).append("name", null != this.name ? this.name.toString() : null).append("avatar", this.avatar).append("posts", this.posts).append("reputation", this.reputation).append("timezone", this.timezone).append("createdate", null != this.createdate ? String.format("%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS", this.createdate) : null);
         Set<Group> groups = getGroups();
         if (groups != null)
         {

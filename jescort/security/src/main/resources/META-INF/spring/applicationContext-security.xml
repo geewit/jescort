@@ -3,8 +3,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
     <description>Shiro</description>
 
@@ -13,7 +13,7 @@
         <property name="realm" ref="shiroDbRealm"/>
     </bean>
 
-    <bean id="shiroDbRealm" class="net.jescort.seurity.shiro.realm.EscortRealm">
+    <bean id="shiroDbRealm" class="net.jescort.security.shiro.realm.EscortRealm">
         <property name="userRepository" ref="userRepository"/>
     </bean>
 
@@ -21,7 +21,7 @@
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="/login"/>
         <property name="successUrl" value="/"/>
-        <property name="unauthorizedUrl" value="/register"/>
+        <property name="unauthorizedUrl" value="/login"/>
         <property name="filters">
             <util:map>
                 <entry key="authc">
@@ -31,8 +31,8 @@
         </property>
         <property name="filterChainDefinitions">
             <value>
-                /api/* = authcBasic
                 /auth/* = authc
+                /api/* = authcBasic
             </value>
         </property>
     </bean>

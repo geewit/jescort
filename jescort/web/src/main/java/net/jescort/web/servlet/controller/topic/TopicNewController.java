@@ -5,9 +5,9 @@ import net.jescort.domain.forum.Post;
 import net.jescort.domain.forum.Topic;
 import net.jescort.domain.user.User;
 import net.jescort.repository.EscortRepository;
+import net.jescort.repository.UserRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +24,12 @@ import javax.validation.Valid;
 public class TopicNewController
 {
     private transient final static Log logger = LogFactory.getLog(TopicNewController.class);
+
+    @Resource(name = "escortRepository")
+    private EscortRepository escortRepository;
+
+    @Resource(name = "userRepository")
+    private UserRepository userRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public String setupForm(@PathVariable("forumId") Integer forumId, Model model)
@@ -50,7 +56,7 @@ public class TopicNewController
             return "topics/new";
         } else
         {
-            final User currentUser = (User) SecurityUtils.getSubject().getPrincipal();
+            final User currentUser = userRepository.getCurrentUser();
             Post rootPost = new Post();
             rootPost.setPoster(currentUser);
             rootPost.setContent(command.getContent());
@@ -64,7 +70,4 @@ public class TopicNewController
             return "redirect:/topics/" + topic.getId();
         }
     }
-
-    @Resource(name = "escortRepository")
-    private EscortRepository escortRepository;
 }

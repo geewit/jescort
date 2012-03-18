@@ -9,19 +9,19 @@ import java.util.List;
 
 public interface MessageDao extends JpaRepository<Message, Integer>
 {
-    public long countBySenderId(int senderId);
+    public long countBySenderId(String senderId);
 
-    public List<Message> findBySenderId(int senderId);
+    public List<Message> findBySenderId(String senderId);
 
-    public List<Message> findBySenderId(int senderId, Pageable pageable);
+    public List<Message> findBySenderId(String senderId, Pageable pageable);
 
-    public List<Message> findBySenderId(int senderId, int offset, int limit);
+    public List<Message> findBySenderId(String senderId, int offset, int limit);
 
-    public long countByRecipientId(int recipientId);
+    public long countByRecipientId(String recipientId);
 
-    public List<Message> findByRecipientId(int recipientId);
+    public List<Message> findByRecipientId(String recipientId);
 
-    public List<Message> findByRecipientId(int recipientId, Pageable pageable);
+    public List<Message> findByRecipientId(String recipientId, Pageable pageable);
 
-    public List<Message> findByRecipientId(int recipientId, int offset, int limit);
+    public List<Message> findByRecipientId(String recipientId, int offset, int limit);
 }

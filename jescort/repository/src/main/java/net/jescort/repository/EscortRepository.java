@@ -61,9 +61,9 @@ public interface EscortRepository
 
     public List<Attachment> uploadAttachments(final User currentUser, final HttpServletRequest request);
 
-    public List<Attachment> findAttachmentsByUser(final Integer userId);
+    public List<Attachment> findAttachmentsByUser(final String userId);
 
-    public List<Attachment> findAttachmentsByUser(final Integer userId, final Integer pageNo, final Integer pageSize);
+    public List<Attachment> findAttachmentsByUser(final String userId, final Integer pageNo, final Integer pageSize);
 
-    public ModelAndView attachmentView(final Integer userId, final Integer pageNo, final Integer pageSize, final ModelAndView mav);
+    public ModelAndView attachmentView(final String userId, final Integer pageNo, final Integer pageSize, final ModelAndView mav);
 }

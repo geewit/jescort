@@ -3,7 +3,6 @@ package net.jescort.web.servlet.controller.message;
 import net.jescort.domain.forum.Message;
 import net.jescort.domain.user.User;
 import net.jescort.repository.UserRepository;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,16 +41,16 @@ public class MessageSendController
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String sendMessageForm(@RequestParam("recipientIds") Integer[] recipientIds, @ModelAttribute("message") @Valid Message message, BindingResult result)
+    public String sendMessageForm(@RequestParam("recipientIds") String[] recipientIds, @ModelAttribute("message") @Valid Message message, BindingResult result)
     {
         if (result.hasErrors())
         {
             return "auth/register";
         }
-        User currentUser = (User) SecurityUtils.getSubject().getPrincipal();
+        User currentUser = userRepository.getCurrentUser();
         message.setSender(currentUser);
         List<User> recipients = new ArrayList<User>(recipientIds.length);
-        for(Integer recipientId : recipientIds)
+        for(String recipientId : recipientIds)
         {
             recipients.add(new User(recipientId));
         }

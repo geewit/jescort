@@ -20,7 +20,7 @@ import org.springframework.stereotype.Repository;
 public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements MessageDao
 {
     @Override
-    public long countBySenderId(int senderId)
+    public long countBySenderId(String senderId)
     {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
@@ -31,7 +31,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
     }
 
     @SuppressWarnings("unchecked")
-    public List<Message> findBySenderId(int senderId)
+    public List<Message> findBySenderId(String senderId)
     {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Message> criteriaQuery = criteriaBuilder.createQuery(Message.class);
@@ -43,7 +43,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Message> findBySenderId(int senderId, Pageable pageable)
+    public List<Message> findBySenderId(String senderId, Pageable pageable)
     {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Message> criteriaQuery = criteriaBuilder.createQuery(Message.class);
@@ -57,7 +57,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
     }
 
     @SuppressWarnings("unchecked")
-    public List<Message> findBySenderId(int senderId, int offset, int limit)
+    public List<Message> findBySenderId(String senderId, int offset, int limit)
     {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Message> criteriaQuery = criteriaBuilder.createQuery(Message.class);
@@ -71,7 +71,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
     }
 
     @Override
-    public long countByRecipientId(int recipientId)
+    public long countByRecipientId(String recipientId)
     {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
@@ -83,7 +83,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Message> findByRecipientId(int recipientId)
+    public List<Message> findByRecipientId(String recipientId)
     {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Message> criteriaQuery = criteriaBuilder.createQuery(Message.class);
@@ -96,7 +96,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Message> findByRecipientId(int recipientId, Pageable pageable)
+    public List<Message> findByRecipientId(String recipientId, Pageable pageable)
     {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Message> criteriaQuery = criteriaBuilder.createQuery(Message.class);
@@ -111,7 +111,7 @@ public class MessageJpaDao extends GenericJpaDao<Message, Integer> implements Me
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Message> findByRecipientId(int recipientId, int offset, int limit)
+    public List<Message> findByRecipientId(String recipientId, int offset, int limit)
     {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Message> criteriaQuery = criteriaBuilder.createQuery(Message.class);

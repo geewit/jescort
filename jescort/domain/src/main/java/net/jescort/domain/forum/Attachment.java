@@ -30,7 +30,7 @@ public class Attachment extends AbstractPersistable<Integer>
     }
 
     private Integer id;
-    private Integer ownerId;
+    private String ownerId;
     private String originalName;
     private String contentType;
     private byte[] content;
@@ -49,12 +49,12 @@ public class Attachment extends AbstractPersistable<Integer>
         this.id = id;
     }
 
-    public Integer getOwnerId()
+    public String getOwnerId()
     {
         return ownerId;
     }
 
-    public void setOwnerId(Integer ownerId)
+    public void setOwnerId(String ownerId)
     {
         this.ownerId = ownerId;
     }

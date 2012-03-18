@@ -2,71 +2,66 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<div id="container">
-    <div id="wrapper">
-        <div id="page-body">
-            <div id="content">
-                <form id="userCPForm" action="<spring:url value="/"/>" enctype="multipart/form-data" method="post">
-                    <h2 class="maintitle">Your Options</h2>
-
-                    <div class="border row1 rounded-bot clearfix">
-                        <ul class="tab_bar no_title">
-                            <li>
-                                <a title="Settings for Settings" href="/">Settings</a>
-                            </li>
-                            <li class="active">
-                                <a title="Settings for Profile" href="/">Profile</a>
-                            </li>
-                        </ul>
-                        <div class="tab_body usercp_body">
-                            <ul id="usercp_menu">
-                                <li><a href="<spring:url value="/"/>">Change Profile Information</a></li>
-                                <li><a href="<spring:url value="/"/>">Change About Me Page</a></li>
-                                <li><a href="<spring:url value="/"/>">Change Signature</a></li>
-                                <li class="active">Change Photo</li>
-                            </ul>
-                            <div id="usercp_content">
-                                <fieldset class="row1">
-                                    <h3>Your Personal Photo</h3>
-
-                                    <p class="message unspecific">
-                                        This section will allow you to specify a avatar to be used in your profile which is viewable by other board members.
-                                        <br>All photos must be no larger than 100 kB.<br>Photos must be no bigger than 150 pixels by 150 pixels.
-                                    </p>
-                                </fieldset>
-                                <fieldset class="row2">
-                                    <h3>Currently Used Photo</h3>
-
-                                    <div align="center">
-                                        <p>
-                                            <img width="150" height="150" alt="Your Personal Photo" src="<spring:url value="/"/>"><br>(150 x 150)
-                                        </p>
-
-                                        <p><a href="<spring:url value="/"/>">Remove My Photo</a></p>
-                                    </div>
-                                </fieldset>
-                                <fieldset class="row1">
-                                    <h3>Change Photo</h3>
-
-                                    <ul>
-                                        <li class="field">
-                                            <label for="upload_photo">Upload an image from your computer</label>
-                                            <input type="file" size="40" value="" id="upload_photo" name="upload_photo">
-                                            <p>
-                                                <strong>Image Scale On</strong><br>(This will scale the image down for you if it's too big in pixel size)
-                                            </p>
-                                        </li>
-                                    </ul>
-                                </fieldset>
-                                <fieldset class="submit rounded-bot">
-                                    <input type="submit" value="Save Changes" name="submit" class="input_submit">
-                                </fieldset>
-                            </div>
+<div id="body">
+    <div class="clearfix" id="secondary_navigation">
+        <ol class="breadcrumb top ipsList_inline">
+            <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
+                <a itemprop="url" href="<spring:url value="/"/>">
+                    <span itemprop="title">Jescort Forums</span>
+                </a>
+            </li>
+            <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
+                <span class="nav_sep">-></span>
+                <span itemprop="title">Photo Editor</span>
+            </li>
+        </ol>
+    </div>
+    <br/>
+    <link href="<spring:url value="/static/css/ipb_avatar_editor.css"/>" media="screen" type="text/css" rel="stylesheet"/>
+    <form name="photoEditorForm" id="photoEditorForm" action="<spring:url value="/auth/avatar"/>" enctype="multipart/form-data" method="post">
+        <h3>Avatar Editor</h3>
+        <div class="ipsBox">
+            <div class="fixed_inner">
+                <fieldset class="fixed_inner ipsBox_container" id="ips_photoWrap">
+                    <div id="ips_sidePanel">
+                        <div id="ips_currentPhoto">
+                            <img class="ipsUserPhoto" src="<c:out value="${avatar}"/>"/>
                         </div>
                     </div>
-                </form>
-                <div class="clear"></div>
+                    <div id="ips_photoOptions">
+                        <ul>
+                            <li class="ips_option row2">
+                                <div class="ips_photoPreview _custom">
+                                    <label>
+                                        <img width="100" height="100" src="<c:out value="${avatar}"/>"/>
+                                    </label>
+                                </div>
+                                <div class="ips_photoControls">
+                                    <div class="ips_photoOptionText">
+                                    <span class="desc">
+                                        Once uploaded, you can
+                                        <a class="cropperStart" href="#">adjust the cropped image</a>.<br/>Recommend an image 200px or larger
+                                    </span>
+                                        <br/>
+                                        <input id="avatar" name="avatar" type="file" title="Formats: JPEG, PNG, GIF" size="20" value="" class="input_text"/>
+                                        <br/>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="ipsPad_half clearfix right">
+                                <input name="saveit" type="submit" class="ipsButton ips_photoSubmit" value="Upload"/>
+                            </li>
+                        </ul>
+                    </div>
+                </fieldset>
             </div>
         </div>
-    </div>
+    </form>
+    <ol class="breadcrumb bottom ipsList_inline clearfix clear">
+        <li>
+            <a href="<spring:url value="/"/>">Jescort Forums</a>
+        </li>
+        <li><span class="nav_sep">-></span> Photo Editor</li>
+    </ol>
+    <div class="clear"></div>
 </div>

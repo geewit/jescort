@@ -56,6 +56,6 @@
         </li>
         <li><span class="nav_sep">-></span> Lost Your Password?</li>
     </ol>
-    <div class="clear"/>
+    <div class="clear"></div>
 </div>
 

@@ -5,7 +5,10 @@
     <entity metadata-complete="true" name="User" class="net.jescort.domain.user.User" access="PROPERTY">
         <table name="users"/>
         <converter name="locale" class="net.jescort.persistence.eclipselink.mappings.converters.LocaleConverter"/>
-        <table-generator name="userIdGenerator" table="id_generator" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="user_id" allocation-size="1" initial-value="1"/>
+        <object-type-converter name="gender" object-type="net.jescort.domain.enums.Gender" data-type="java.lang.Boolean">
+            <conversion-value object-value="MALE" data-value="true"/>
+            <conversion-value object-value="FEMALE" data-value="false"/>
+        </object-type-converter>
         <entity-listeners>
             <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.UserListener">
                 <pre-persist method-name="prePersist"/>
@@ -15,7 +18,6 @@
         <attributes>
             <id name="id">
                 <column name="id" unique="true"/>
-                <generated-value strategy="TABLE" generator="userIdGenerator"/>
             </id>
             <basic name="username">
                 <column name="username" insertable="true" updatable="true" unique="true"/>
@@ -25,6 +27,20 @@
             </basic>
             <basic name="nickname">
                 <column name="nickname" insertable="true" updatable="true" unique="false"/>
+            </basic>
+            <basic name="gender">
+                <column name="gender" insertable="true" updatable="true" unique="false"/>
+                <convert>gender</convert>
+            </basic>
+            <basic name="birthday" mutable="true">
+                <column name="birthday" insertable="true" updatable="true" unique="false"/>
+                <temporal>TIMESTAMP</temporal>
+            </basic>
+            <basic name="avatar">
+                <column name="avatar" insertable="true" updatable="true" unique="true"/>
+            </basic>
+            <basic name="signature">
+                <column name="signature" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="timezone">
                 <column name="timezone" insertable="true" updatable="true" unique="false"/>
@@ -66,14 +82,6 @@
                     <cascade-all />
                 </cascade>
             </one-to-many>
-            <one-to-one name="profile" target-entity="net.jescort.domain.user.Profile" fetch="LAZY">
-                <join-column name="id" referenced-column-name="id" insertable="false" updatable="false"/>
-                <cascade>
-                    <cascade-persist/>
-                    <cascade-merge/>
-                    <cascade-remove/>
-                </cascade>
-            </one-to-one>
             <!---->
             <many-to-many name="groups" target-entity="net.jescort.domain.user.Group" fetch="LAZY">
                 <order-by>priority</order-by>
@@ -86,6 +94,8 @@
                     <cascade-merge/>
                 </cascade>
             </many-to-many>
+            <embedded name="name"/>
+            <transient name="age"/>
             <!--
             <transient name="mainAddress"/>
             <transient name="mainEmail"/>

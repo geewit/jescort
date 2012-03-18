@@ -24,36 +24,36 @@
 
 
 <body id="gelif_body" class="f-arial s-default style_noshadow">
-<div id="fb-root"></div>
+    <div id="fb-root"></div>
 
-<!-- Container -->
-<div id="container">
-    <!-- Header -->
-    <header id="branding">
-        <%@ include file="include-header.jsp"%>
-    </header>
-    <!-- // Header -->
-    <!-- Wrapper -->
-    <div id="wrapper">
-        <!-- Header Navigation -->
-        <%@ include file="include-navigation.jsp"%>
-        <!-- // Header Navigation -->
+    <!-- Container -->
+    <div id="container">
+        <!-- Header -->
+        <header id="branding">
+            <%@ include file="include-header.jsp"%>
+        </header>
+        <!-- // Header -->
+        <!-- Wrapper -->
+        <div id="wrapper">
+            <!-- Header Navigation -->
+            <%@ include file="include-navigation.jsp"%>
+            <!-- // Header Navigation -->
 
-        <!-- Header Sub Navigation -->
-        <%@ include file="include-sub_navigation.jsp"%>
-        <!-- // Header Sub Navigation -->
+            <!-- Header Sub Navigation -->
+            <%@ include file="include-sub_navigation.jsp"%>
+            <!-- // Header Sub Navigation -->
 
-        <!-- Page Content -->
-        <tiles:insertAttribute name="content"/>
-        <!-- // Page Content -->
+            <!-- Page Content -->
+            <tiles:insertAttribute name="content"/>
+            <!-- // Page Content -->
+        </div>
+        <!-- // Wrapper -->
+        <!-- Footer -->
+        <footer id="siteinfo">
+            <%@ include file="include-footer.jsp"%>
+        </footer>
+        <!-- // Footer -->
     </div>
-    <!-- // Wrapper -->
-    <!-- Footer -->
-    <footer id="siteinfo" role="contentinfo">
-        <%@ include file="include-footer.jsp"%>
-    </footer>
-    <!-- // Footer -->
-</div>
 <!-- // Container -->
 
 </body>

@@ -22,6 +22,9 @@ public class ForumShow
 {
     //private transient final static Log logger = LogFactory.getLog(ForumShow.class);
 
+    @Resource(name = "escortRepository")
+    private EscortRepository escortRepository;
+
     @RequestMapping(value = {"/forums"}, method = RequestMethod.GET)
     public ModelAndView forumHandler()
     {
@@ -56,7 +59,4 @@ public class ForumShow
         mav.addObject("topics", topics);
         return mav;
     }
-
-    @Resource(name = "escortRepository")
-    private EscortRepository escortRepository;
 }

@@ -10,5 +10,5 @@
     <ol class="breadcrumb bottom ipsList_inline clearfix clear">
         <li></li>
     </ol>
-    <div class="clear"/>
+    <div class="clear"></div>
 </div>

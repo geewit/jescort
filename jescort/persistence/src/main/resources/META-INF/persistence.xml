@@ -22,7 +22,6 @@
         <mapping-file>net/jescort/domain/user/EmailPk.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/user/Group.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/user/Name.orm.xml</mapping-file>
-        <mapping-file>net/jescort/domain/user/Profile.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/user/Role.orm.xml</mapping-file>
         <mapping-file>net/jescort/domain/user/User.orm.xml</mapping-file>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>

@@ -7,13 +7,13 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
-import java.sql.Blob;
 
 
 @Repository("userDao")
 @Scope(BeanDefinition.SCOPE_SINGLETON)
-public class UserJpaDao extends GenericJpaDao<User, Integer> implements UserDao
+public class UserJpaDao extends GenericJpaDao<User, String> implements UserDao
 {
     //private transient final static Log logger = LogFactory.getLog(UserJpaDao.class);
 
@@ -30,7 +30,7 @@ public class UserJpaDao extends GenericJpaDao<User, Integer> implements UserDao
     }
 
     @Override
-    public void increasePosts(Integer userId)
+    public void increasePostsById(String userId)
     {
         Query query = entityManager.createNativeQuery("UPDATE users set posts = posts + 1 where post_id = ?");
         query.setParameter(1, userId);
@@ -38,7 +38,7 @@ public class UserJpaDao extends GenericJpaDao<User, Integer> implements UserDao
     }
 
     @Override
-    public void increasePosts(String username)
+    public void increasePostsByUsername(String username)
     {
         Query query = entityManager.createNativeQuery("UPDATE users set posts = posts + 1 where username = ?");
         query.setParameter(1, username);
@@ -46,14 +46,42 @@ public class UserJpaDao extends GenericJpaDao<User, Integer> implements UserDao
     }
 
     @Override
-    public Blob findAvatar(Integer id)
+    public String findAvatar(String userId)
     {
-        return (Blob) entityManager.createNativeQuery("SELECT user_profiles.avatar FROM user_profiles WHERE user_profiles.id = ?").setParameter(1, id).getSingleResult();
+        try
+        {
+            return (String) entityManager.createNativeQuery("SELECT users.avatar FROM users WHERE users.id = ?").setParameter(1, userId).getSingleResult();
+        }catch(NoResultException  e)
+        {
+            return null;
+        }
     }
 
     @Override
-    public Blob findAvatarByUsername(String username)
+    public void insertAvatar(String avatar, String userId)
     {
-        return (Blob) entityManager.createNativeQuery("SELECT user_profiles.avatar FROM user_profiles INNER JOIN users ON user_profiles.id = users.id WHERE users.username = ?").setParameter(1, username).getSingleResult();
+        User user = new User(userId);
+        user.setAvatar(avatar);
+        entityManager.persist(user);
+    }
+
+    @Override
+    public void updateAvatar(String avatar, String userId)
+    {
+        Query query = entityManager.createNativeQuery("UPDATE users set avatar = ? where id = ?");
+        query.setParameter(1, avatar).setParameter(2, userId);
+        query.executeUpdate();
+    }
+
+    @Override
+    public String findAvatarByUsername(String username)
+    {
+        try
+        {
+            return (String) entityManager.createNativeQuery("SELECT users.avatar FROM users WHERE users.username = ?").setParameter(1, username).getSingleResult();
+        }catch(NoResultException e)
+        {
+            return null;
+        }
     }
 }

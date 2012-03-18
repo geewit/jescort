@@ -1,6 +1,7 @@
 package net.jescort.security.shiro.realm;
 
 import net.jescort.domain.user.Role;
+import net.jescort.domain.user.ShiroUser;
 import net.jescort.domain.user.User;
 import net.jescort.repository.UserRepository;
 import org.apache.shiro.authc.AuthenticationException;
@@ -22,7 +23,7 @@ public class EscortRealm extends AuthorizingRealm
 {
     public EscortRealm()
     {
-        setName("EscortRealm");
+        //setName("EscortRealm");
         setCredentialsMatcher(new HashedCredentialsMatcher("SHA-1"));
     }
 
@@ -43,7 +44,7 @@ public class EscortRealm extends AuthorizingRealm
         User user = userRepository.findUserByUsername(token.getUsername());
         if (null != user)
         {
-            return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
+            return new SimpleAuthenticationInfo(new ShiroUser(user.getId(), user.getUsername(), user.getNickname()), user.getPassword(), getName());
         } else
         {
             return null;
@@ -56,8 +57,8 @@ public class EscortRealm extends AuthorizingRealm
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals)
     {
-        String username = (String) principals.fromRealm(getName()).iterator().next();
-        User user = userRepository.findUserByUsername(username);
+        ShiroUser shiroUser = (ShiroUser) principals.fromRealm(getName()).iterator().next();
+        User user = userRepository.getUser(shiroUser.getId());
         if (null != user)
         {
             SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();

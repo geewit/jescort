@@ -15,6 +15,9 @@ import javax.annotation.Resource;
 @SessionAttributes(types = Category.class)
 public class CategoryShow
 {
+    @Resource(name = "escortRepository")
+    private EscortRepository escortRepository;
+
     @RequestMapping(value = "/categories/{id}", method = RequestMethod.GET)
     public ModelAndView postHandler(@PathVariable("id") Integer id)
     {
@@ -23,7 +26,4 @@ public class CategoryShow
         mav.addObject(category);
         return mav;
     }
-
-    @Resource(name = "escortRepository")
-    private EscortRepository escortRepository;
 }

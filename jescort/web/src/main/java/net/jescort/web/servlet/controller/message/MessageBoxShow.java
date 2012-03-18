@@ -1,10 +1,7 @@
 package net.jescort.web.servlet.controller.message;
 
 import net.jescort.domain.forum.Message;
-import net.jescort.domain.user.User;
-import net.jescort.persistence.dao.MessageDao;
 import net.jescort.repository.UserRepository;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -49,8 +45,7 @@ public class MessageBoxShow
 
     private ModelAndView messageBoxModelAndView(Integer pageNo, Integer pageSize)
     {
-        final Integer currentUserId = ((User) SecurityUtils.getSubject().getPrincipal()).getId();
         ModelAndView mav = new ModelAndView("messages/messageBox");
-        return userRepository.messageBoxView(currentUserId, pageNo, pageSize, mav);
+        return userRepository.messageBoxView(pageNo, pageSize, mav);
     }
 }

@@ -1,6 +1,6 @@
 CREATE TABLE attachments (
     id              INT                         NOT NULL,
-    owner_id        INT                         NOT NULL,
+    owner_id        CHAR(32)                    NOT NULL,
     original_name   VARCHAR(127)                NOT NULL,
     content_type    CHAR(63)                    NOT NULL,
     content         BLOB                        NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE categories (
 
 CREATE TABLE category_moderator_map (
     category_id          INT                    NOT NULL,
-    moderator_id         INT                    NOT NULL,
+    moderator_id         CHAR(32)               NOT NULL,
     PRIMARY KEY (category_id, moderator_id)
 ) ENGINE=InnoDB CHARSET=utf8;
 
@@ -44,15 +44,15 @@ create table category_properties (
 
 
 CREATE TABLE dirtywords (
-    id                      INT                 NOT NULL AUTO_INCREMENT,
+    id                      INT                 NOT NULL,
     word                    VARCHAR(255)        NOT NULL,
     replacement             VARCHAR(255)        NOT NULL,
     PRIMARY KEY  (id)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE drafts (
-    id                      INT                 NOT NULL AUTO_INCREMENT,
-    user_id                 INT                 NOT NULL,
+    id                      INT                 NOT NULL,
+    user_id                 CHAR(32)            NOT NULL,
     subject                 VARCHAR(255)        NOT NULL,
     content                 TEXT                NOT NULL,
     modification            DATETIME            NOT NULL,
@@ -69,7 +69,7 @@ create table draft_properties (
 
 
 CREATE TABLE emoticons (
-    id                     INT                  NOT NULL AUTO_INCREMENT,
+    id                     INT                  NOT NULL,
     emoticon               VARCHAR(31)          NOT NULL,
     image                  VARCHAR(255)         NOT NULL,
     PRIMARY KEY  (id)
@@ -94,7 +94,7 @@ CREATE TABLE forums (
 
 CREATE TABLE forum_moderator_map (
     forum_id               INT                  NOT NULL,
-    moderator_id           INT                  NOT NULL,
+    moderator_id           CHAR(32)             NOT NULL,
     PRIMARY KEY (forum_id, moderator_id)
 ) ENGINE=InnoDB CHARSET=utf8;
 
@@ -109,7 +109,7 @@ create table forum_properties (
 
 CREATE TABLE messages (
     id                   INT                    NOT NULL,
-    sender_id            INT                    NOT NULL,
+    sender_id            CHAR(32)               NOT NULL,
     subject              VARCHAR(255)           NOT NULL,
     content              TEXT                   NOT NULL,
     is_read              TINYINT(1)             NOT NULL,
@@ -137,14 +137,14 @@ create table message_properties (
 
 CREATE TABLE message_recipient_map (
     message_id           INT                    NOT NULL,
-    recipient_id         INT                    NOT NULL,
+    recipient_id         CHAR(32)               NOT NULL,
     PRIMARY KEY  (message_id, recipient_id)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
 CREATE TABLE posts (
     id                   INT                    NOT NULL,
-    poster_id            INT                    NOT NULL,
+    poster_id            CHAR(32)               NOT NULL,
     topic_id             INT                    NOT NULL,
     content              TEXT                   NOT NULL,
     edits                INT                    NOT NULL,
@@ -165,7 +165,7 @@ CREATE TABLE post_attachment_map (
 
 CREATE TABLE post_edits (
     id                   INT                   NOT NULL,
-    editor_id            INT                   NOT NULL,
+    editor_id            CHAR(32)              NOT NULL,
     editdate             DATETIME              NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB CHARSET=utf8;
@@ -190,7 +190,7 @@ CREATE TABLE rankings (
 ) ENGINE=InnoDB CHARSET=utf8;
 
 create table tags (
-    id                  INT                     NOT NULL AUTO_INCREMENT,
+    id                  INT                     NOT NULL,
     `name`              CHAR(63)                NOT NULL,
     primary key (id),
     UNIQUE (`name`)

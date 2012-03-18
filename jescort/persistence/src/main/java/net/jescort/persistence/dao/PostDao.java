@@ -16,9 +16,9 @@ public interface PostDao extends JpaRepository<Post, Integer>
 
     public List<Post> findByTopicId(int topicId, Pageable pageable);
 
-    public List<Post> findByUserId(int userId);
+    public List<Post> findByUserId(String userId);
 
-    public List<Post> findByUserId(int userId, int offset, int limit);
+    public List<Post> findByUserId(String userId, int offset, int limit);
 
     public void increaseEdits(Integer id);
 }

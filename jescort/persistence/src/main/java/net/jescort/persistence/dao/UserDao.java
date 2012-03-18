@@ -6,17 +6,21 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.sql.Blob;
 
 
-public interface UserDao extends JpaRepository<User, Integer>
+public interface UserDao extends JpaRepository<User, String>
 {
     public User findByUsername(String username);
 
     public String findPasswordByUsername(String username);
 
-    public void increasePosts(Integer userId);
+    public void increasePostsById(String userId);
 
-    public void increasePosts(String username);
+    public void increasePostsByUsername(String username);
 
-    public Blob findAvatar(Integer id);
+    public String findAvatar(String userId);
 
-    public Blob findAvatarByUsername(String username);
+    public void insertAvatar(String avatar, String userId);
+
+    public void updateAvatar(String avatar, String userId);
+
+    public String findAvatarByUsername(String username);
 }

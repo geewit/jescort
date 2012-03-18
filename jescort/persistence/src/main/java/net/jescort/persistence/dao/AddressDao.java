@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AddressDao extends JpaRepository<Address, Integer>
 {
-    public List<Address> findByUserId(int userId);
+    public List<Address> findByUserId(String userId);
 
-    public List<Address> findByUserId(int userId, int offset, int limit);
+    public List<Address> findByUserId(String userId, int offset, int limit);
 }

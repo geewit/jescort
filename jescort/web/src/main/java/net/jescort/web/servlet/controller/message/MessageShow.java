@@ -3,7 +3,6 @@ package net.jescort.web.servlet.controller.message;
 import net.jescort.domain.forum.Message;
 import net.jescort.domain.user.User;
 import net.jescort.repository.UserRepository;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,15 +30,16 @@ public class MessageShow
     public ModelAndView messageHandler(@PathVariable("id") Integer id)
     {
         ModelAndView mav = new ModelAndView("messages/show");
-        Integer currentUserId = (Integer) SecurityUtils.getSubject().getPrincipal();
+        User currentUser = userRepository.getCurrentUser();
+        String userId = currentUser.getId();
         Message message = userRepository.getMessage(id);
-        if (!message.getSender().getId().equals(currentUserId))
+        if (!message.getSender().getId().equals(userId))
         {
             List<User> recipients = message.getRecipients();
             boolean isRecipient = false;
             for(User recipient : recipients)
             {
-                if (recipient.getId().equals(currentUserId))
+                if (recipient.getId().equals(userId))
                 {
                     isRecipient = true;
                     break;
@@ -50,7 +50,7 @@ public class MessageShow
                 throw new AuthenticationException();
             }
         }
-        Long totalElements = userRepository.countMessageByRecipient(currentUserId);
+        Long totalElements = userRepository.countMessageByRecipient(userId);
         mav.addObject("totalElements", totalElements);
         mav.addObject("message", message);
         return mav;

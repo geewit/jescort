@@ -13,7 +13,7 @@
     <!-- User Menu -->
     <span class="nav-user-avatar"><img alt="<shiro:principal property="username"/>'s Photo" src="<spring:url value="/users/${user_id}/avatar"/>"/></span>
     <span id="nav-user">
-        <a href="<spring:url value="/users/${user_id}"/>" title="View My Profile" class="nav-user-username"><shiro:principal property="username"/><span></span></a>
+        <a href="<spring:url value="/users/${user_id}"/>" title="View My Profile" class="nav-user-username"><shiro:principal property="username"/></a>
         <div class="navigation-dropdown">
             <header>
             </header>

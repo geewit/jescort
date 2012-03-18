@@ -36,7 +36,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 public class EscortRepositoryImpl implements EscortRepository
 {
-    protected transient final static Log logger = LogFactory.getLog(EscortRepositoryImpl.class);
+    private transient final static Log logger = LogFactory.getLog(EscortRepositoryImpl.class);
 
     public static TextProcessor processor = BBProcessorFactory.getInstance().create();
 
@@ -342,19 +342,19 @@ public class EscortRepositoryImpl implements EscortRepository
     }
 
     @Override
-    public List<Attachment> findAttachmentsByUser(Integer userId)
+    public List<Attachment> findAttachmentsByUser(String userId)
     {
         return attachmentDao.findByUser(userId);
     }
 
     @Override
-    public List<Attachment> findAttachmentsByUser(Integer userId, final Integer pageNo, final Integer pageSize)
+    public List<Attachment> findAttachmentsByUser(String userId, final Integer pageNo, final Integer pageSize)
     {
         return attachmentDao.findByUser(userId, pageNo, pageSize);
     }
 
     @Override
-    public ModelAndView attachmentView(final Integer userId, final Integer pageNo, final Integer pageSize, final ModelAndView mav)
+    public ModelAndView attachmentView(final String userId, final Integer pageNo, final Integer pageSize, final ModelAndView mav)
     {
         Pageable pageable = PageableFactory.create(pageNo, pageSize);
         List<Attachment> attachments = attachmentDao.findByUser(userId, pageable);

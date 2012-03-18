@@ -14,6 +14,9 @@ import java.util.List;
 @RequestMapping("/")
 public class WelcomeController
 {
+    @Resource(name = "escortRepository")
+    private EscortRepository escortRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView welcomeHandler()
     {
@@ -22,7 +25,4 @@ public class WelcomeController
         mav.addObject("categories", categories);
         return mav;
     }
-
-    @Resource(name = "escortRepository")
-    private EscortRepository escortRepository;
 }

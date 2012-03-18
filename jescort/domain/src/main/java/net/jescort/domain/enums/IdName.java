@@ -8,7 +8,7 @@ package net.jescort.domain.enums;
  */
 public enum IdName
 {
-    USER("user_id"), ATTACHMENT("attachment_id"), ADDRESS("address_id"), POST("post_id"), TOPIC("topic_id");
+    ATTACHMENT("attachment_id"), ADDRESS("address_id"), POST("post_id"), TOPIC("topic_id");
 
     IdName(String idName)
     {

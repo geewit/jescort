@@ -1,0 +1,62 @@
+#ips_photoWrap {
+    border: 1px solid #D5DDE5;
+    margin: 0 auto;
+    padding: 6px;
+    width: 700px;
+}
+#ips_sidePanel {
+    float: left;
+    width: 200px;
+}
+#ips_cropperStart, #ips_cropperControls {
+    margin-top: 8px;
+    text-align: right;
+    width: 200px;
+}
+#ips_currentPhoto {
+    text-align: center;
+}
+#ips_currentPhoto img {
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #D5DDE5;
+}
+#gravatar, #upload_photo {
+    width: 150px;
+}
+#ips_photoOptions {
+    margin-left: 210px;
+}
+li.ips_option {
+    border: 1px solid #D5DDE5;
+    margin-bottom: 5px;
+    min-height: 120px;
+}
+.ips_photoPreview {
+    border: 1px solid #D5DDE5;
+    display: block;
+    float: left;
+    height: 100px;
+    margin: 6px;
+    overflow: hidden;
+    width: 100px;
+}
+.ips_photoPreview label {
+    background: none repeat scroll 0 0 white;
+    text-align: center;
+}
+.ips_photoPreview label img {
+    max-height: 120px;
+    max-width: 120px;
+}
+.ips_photoControls {
+    margin-left: 120px;
+    padding-top: 10px;
+}
+.ips_photoOptionText {
+    line-height: 130%;
+    margin-left: 18px;
+    padding-bottom: 3px;
+}
+.imgCrop_wrap {
+    display: inline-block;
+}

@@ -11,23 +11,20 @@
                 </a>
             </li>
             <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
-                <span class="nav_sep">→</span>
-                <a itemprop="url" title="Return toYour control panel"
-                   href="/">
+                <span class="nav_sep">-></span>
+                <a itemprop="url" title="Return toYour control panel" href="/">
                     <span itemprop="title">Your control panel</span>
                 </a>
             </li>
             <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
-                <span class="nav_sep">→</span>
-                <a itemprop="url" title="Return toSettings"
-                   href="/">
+                <span class="nav_sep">-></span>
+                <a itemprop="url" title="Return toSettings" href="/">
                     <span itemprop="title">Settings</span>
                 </a>
             </li>
             <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
-                <span class="nav_sep">→</span>
-                <a itemprop="url" title="Return toManage Attachments"
-                   href="/">
+                <span class="nav_sep">-></span>
+                <a itemprop="url" title="Return toManage Attachments" href="/">
                     <span itemprop="title">Manage Attachments</span>
                 </a>
             </li>
@@ -38,28 +35,7 @@
     <br/>
     <div class="ipsBox">
         <div class="ipsLayout ipsLayout_withleft ipsLayout_smallleft ipsVerticalTabbed clearfix usercp_body">
-            <div id="usercp_tabs" class="ipsVerticalTabbed_tabs ipsLayout_left">
-                <ul>
-                    <li>
-                        <a href="/">Profile Settings</a>
-                    </li>
-                    <li>
-                        <a href="/">Email &amp; Password</a>
-                    </li>
-                    <li>
-                        <a href="/">Display Name</a>
-                    </li>
-                    <li>
-                        <a href="/">Signature</a>
-                    </li>
-                    <li class="active">
-                        <a href="/">Manage Attachments</a>
-                    </li>
-                    <li>
-                        <a href="/">Your Notifications</a>
-                    </li>
-                </ul>
-            </div>
+            <jsp:include page="include-tab.jsp" flush="true"><jsp:param name="tab" value="attachments"/></jsp:include>
 
             <div id="usercp_content" class="ipsVerticalTabbed_content ipsLayout_content ipsBox_container">
                 <div class="ipsPad">
@@ -125,5 +101,5 @@
             <a title="Return toManage Attachments" href="">Manage Attachments</a>
         </li>
     </ol>
-    <div class="clear"/>
+    <div class="clear"></div>
 </div>

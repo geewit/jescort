@@ -15,13 +15,13 @@ import org.springframework.stereotype.Repository;
 public class DraftJpaDao extends GenericJpaDao<Draft, Integer> implements DraftDao
 {
     @SuppressWarnings("unchecked")
-    public List<Draft> findByUserId(int userId)
+    public List<Draft> findByUserId(String userId)
     {
         return entityManager.createQuery("SELECT * FROM Draft d WHERE d. = ?").setParameter(1, userId).getResultList();
     }
 
     @SuppressWarnings("unchecked")
-    public List<Draft> findByUserId(int userId, int offset, int limit)
+    public List<Draft> findByUserId(String userId, int offset, int limit)
     {
         Query query = entityManager.createNativeQuery("SELECT * FROM drafts WHERE user_id = ?");
         query.setParameter(1, userId);

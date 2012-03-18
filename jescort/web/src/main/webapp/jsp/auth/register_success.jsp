@@ -48,5 +48,5 @@
         </li>
         <li><span class="nav_sep">-></span>Registration</li>
     </ol>
-    <div class="clear"/>
+    <div class="clear"></div>
 </div>

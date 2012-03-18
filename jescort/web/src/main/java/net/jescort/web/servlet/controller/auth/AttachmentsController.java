@@ -1,6 +1,6 @@
 package net.jescort.web.servlet.controller.auth;
 
-import net.jescort.domain.user.User;
+import net.jescort.domain.user.ShiroUser;
 import net.jescort.repository.EscortRepository;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
@@ -20,14 +20,14 @@ import javax.annotation.Resource;
 @Controller
 public class AttachmentsController
 {
+    @Resource(name = "escortRepository")
+    private EscortRepository escortRepository;
+
     @RequestMapping(value = {"/auth/attachments/page/{pageNo}"}, method = RequestMethod.GET)
     public ModelAndView attachmentsHandler(@PathVariable("pageNo") Integer pageNo)
     {
-        User currentUser = (User) SecurityUtils.getSubject().getPrincipal();
+        final ShiroUser shiroUser = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
         ModelAndView mav = new ModelAndView("auth/attachments");
-        return escortRepository.attachmentView(currentUser.getId(), pageNo, 10, mav);
+        return escortRepository.attachmentView(shiroUser.getId(), pageNo, 10, mav);
     }
-
-    @Resource(name = "escortRepository")
-    private EscortRepository escortRepository;
 }

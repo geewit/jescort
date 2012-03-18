@@ -16,6 +16,9 @@ import javax.annotation.Resource;
 @SessionAttributes(types = Post.class)
 public class PostShow
 {
+    @Resource(name = "escortRepository")
+    private EscortRepository escortRepository;
+
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
     public ModelAndView postHandler(@PathVariable("id") Integer id)
     {
@@ -25,7 +28,4 @@ public class PostShow
         long totalPages = totalTopics / 10 + 1;
         return new ModelAndView(new RedirectView("/topics/" + topicId + "/page/" + totalPages + "#" + id, true));
     }
-
-    @Resource(name = "escortRepository")
-    private EscortRepository escortRepository;
 }

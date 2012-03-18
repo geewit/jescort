@@ -205,5 +205,5 @@
             <a title="Return toMy Conversations" href="<spring:url value="/"/>">My Conversations</a>
         </li>
     </ol>
-    <div class="clear"/>
+    <div class="clear"></div>
 </div>

@@ -13,6 +13,5 @@ INSERT INTO `id_generator` VALUES ('forum_id', 10);
 INSERT INTO `id_generator` VALUES ('message_id', 10);
 INSERT INTO `id_generator` VALUES ('post_id', 10);
 INSERT INTO `id_generator` VALUES ('ranking_id', 10);
-INSERT INTO `id_generator` VALUES ('user_id', 10);
 INSERT INTO `id_generator` VALUES ('topic_id', 10);
 

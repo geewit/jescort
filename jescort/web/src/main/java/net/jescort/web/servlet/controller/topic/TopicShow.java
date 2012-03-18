@@ -16,6 +16,9 @@ import javax.annotation.Resource;
 @SessionAttributes(types = Topic.class)
 public class TopicShow
 {
+    @Resource(name = "escortRepository")
+    private EscortRepository escortRepository;
+
     @RequestMapping(value = {"/topics"}, method = RequestMethod.GET)
     public ModelAndView topicHandler()
     {
@@ -46,7 +49,4 @@ public class TopicShow
         ModelAndView mav = new ModelAndView("topics/show");
         return escortRepository.topicView(id, pageNo, pageSize, mav);
     }
-
-    @Resource(name = "escortRepository")
-    private EscortRepository escortRepository;
 }

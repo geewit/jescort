@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <div id="body">
     <div class="clearfix" id="secondary_navigation">
         <ol class="breadcrumb top ipsList_inline">
@@ -142,5 +143,5 @@
         </li>
         <li><span class="nav_sep">-></span> Viewing Profile: ${user.nickname}</li>
     </ol>
-    <div class="clear"/>
+    <div class="clear"></div>
 </div>

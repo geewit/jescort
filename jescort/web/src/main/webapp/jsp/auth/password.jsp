@@ -18,21 +18,12 @@
             </li>
             <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
                 <span class="nav_sep">-></span>
-                <a itemprop="url" title="Return toSettings" href="<spring:url value="/"/>">
-                    <span itemprop="title">Settings</span>
-                </a>
-            </li>
-            <li itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
-                <span class="nav_sep">-></span>
-                <a itemprop="url" title="Return to nickname" href="<spring:url value="/"/>">
-                    <span itemprop="title">nickname</span>
-                </a>
+                <span itemprop="title">password</span>
             </li>
         </ol>
     </div>
     <br/>
     <form id="userCPForm" action="<spring:url value="/"/>" method="post">
-        <fieldset></fieldset>
         <h1 class="ipsType_pagetitle">My Settings</h1>
         <br/>
         <div class="ipsBox">
@@ -41,26 +32,28 @@
                 <div id="usercp_content" class="ipsVerticalTabbed_content ipsLayout_content ipsBox_container">
                     <div class="ipsPad">
                         <fieldset class="row1">
-                            <h3 class="ipsType_subtitle">Change nickname</h3>
-                            <p class="ipsType_pagedesc">You have made <strong>0</strong> of
-                                <strong>2</strong> nickname changes since 07 Dec 2011. You
-                                are permitted to make 2 changes in a 90 day period.<br/>Changing
-                                your display name will <strong>not</strong> affect your log in
-                                details.</p>
-                            <br/>
+                            <h3 class="ipsType_subtitle">Change password</h3>
                             <ul class="ipsForm ipsForm_horizontal">
-                                <li class="ipsField">
-                                    <label class="ipsField_title" for="nickname">New nickname</label>
-                                    <p class="ipsField_content">
-                                        <input type="text" size="30" value="" id="nickname" name="nickname" maxlength="26" class="input_text"/>
-                                        <br/>
-                                        <span class="desc lighter">This is the nickname you wish to now use. Characters not permitted: [ ] | , ; $</span>
-                                    </p>
-                                </li>
                                 <li class="ipsField">
                                     <label class="ipsField_title" for="password">Current password</label>
                                     <p class="ipsField_content">
-                                        <input type="password" size="30" value="" id="password" name="password" class="input_text"/>
+                                        <input id="password" name="password" type="text" size="30" value="" maxlength="26" class="input_text"/>
+                                        <br/>
+                                        <span class="desc lighter">This is to ensure security on your account</span>
+                                    </p>
+                                </li>
+                                <li class="ipsField">
+                                    <label class="ipsField_title" for="newPassword">Current password</label>
+                                    <p class="ipsField_content">
+                                        <input id="newPassword" name="newPassword" type="password" size="30" value="" class="input_text"/>
+                                        <br/>
+                                        <span class="desc lighter">This is the password you wish to now use.</span>
+                                    </p>
+                                </li>
+                                <li class="ipsField">
+                                    <label class="ipsField_title" for="passwordConfirm">Password Confirm</label>
+                                    <p class="ipsField_content">
+                                        <input id="passwordConfirm" name="passwordConfirm" type="password" size="30" value="" class="input_text"/>
                                         <br/>
                                         <span class="desc lighter">This is to ensure security on your account</span>
                                     </p>
@@ -92,5 +85,5 @@
             <a title="Return to <spring:url value="/"/>" href="<spring:url value="/"/>">nickname Name</a>
         </li>
     </ol>
-    <div class="clear"/>
+    <div class="clear"></div>
 </div>

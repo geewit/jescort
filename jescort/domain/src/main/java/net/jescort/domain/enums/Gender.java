@@ -10,15 +10,15 @@ public enum Gender
 {
     MALE(true), FEMALE(false);
 
-    Gender(boolean isMale)
+    Gender(Boolean isMale)
     {
         this.isMale = isMale;
     }
 
-    public boolean getIsMale()
+    public Boolean getIsMale()
     {
         return isMale;
     }
 
-    private final boolean isMale;
+    private final Boolean isMale;
 }

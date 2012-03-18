@@ -45,13 +45,13 @@ public class PostJpaDao extends GenericJpaDao<Post, Integer> implements PostDao
     }
 
     @SuppressWarnings("unchecked")
-    public List<Post> findByUserId(int userId)
+    public List<Post> findByUserId(String userId)
     {
         return entityManager.createQuery("select t from Post t where t.poster.id = :userId").setParameter("userId", userId).getResultList();
     }
 
     @SuppressWarnings("unchecked")
-    public List<Post> findByUserId(int userId, int offset, int limit)
+    public List<Post> findByUserId(String userId, int offset, int limit)
     {
         Query query = entityManager.createQuery("select t from Post t where t.poster.id = :userId");
         query.setParameter("userId", userId);

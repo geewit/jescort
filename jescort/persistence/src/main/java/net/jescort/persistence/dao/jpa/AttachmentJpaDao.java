@@ -18,14 +18,14 @@ public class AttachmentJpaDao extends GenericJpaDao<Attachment, Integer> impleme
 {
     @SuppressWarnings("unchecked")
     @Override
-    public List<Attachment> findByUser(int userId)
+    public List<Attachment> findByUser(String userId)
     {
         return entityManager.createQuery("select a from Attachment a where a.owner.id = :userId").setParameter("userId", userId).getResultList();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Attachment> findByUser(int userId, int offset, int limit)
+    public List<Attachment> findByUser(String userId, int offset, int limit)
     {
         Query query = entityManager.createQuery("select a from Attachment a where a.owner.id = :userId");
         query.setParameter("userId", userId);
@@ -36,7 +36,7 @@ public class AttachmentJpaDao extends GenericJpaDao<Attachment, Integer> impleme
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Attachment> findByUser(int userId, Pageable pageable)
+    public List<Attachment> findByUser(String userId, Pageable pageable)
     {
         Query query = entityManager.createQuery("select a from Attachment a where a.owner.id = :userId");
         query.setParameter("userId", userId);
@@ -46,7 +46,7 @@ public class AttachmentJpaDao extends GenericJpaDao<Attachment, Integer> impleme
     }
 
     @Override
-    public long countByUserId(int userId)
+    public long countByUserId(String userId)
     {
         return (Long) entityManager.createQuery("select count(a.id) from Attachment a where a.owner.id = :userId").setParameter("userId", userId).getSingleResult();
     }

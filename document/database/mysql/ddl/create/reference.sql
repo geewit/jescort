@@ -28,6 +28,5 @@ ALTER TABLE locations ADD CONSTRAINT `locations.parent_fk` FOREIGN KEY (`parent_
 ALTER TABLE permissions ADD CONSTRAINT `permissions.role_fk` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE user_group_map ADD CONSTRAINT `user_group_map.user_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE user_group_map ADD CONSTRAINT `user_group_map.group_fk` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
-ALTER TABLE user_profiles ADD CONSTRAINT `user_profiles.user_fk` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 ALTER TABLE user_properties ADD CONSTRAINT `user_properties.user_fk` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 

@@ -3,7 +3,7 @@ package net.jescort.web.servlet.controller.post;
 import net.jescort.domain.forum.Post;
 import net.jescort.domain.user.User;
 import net.jescort.repository.EscortRepository;
-import org.apache.shiro.SecurityUtils;
+import net.jescort.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +18,12 @@ import javax.validation.Valid;
 @RequestMapping("/posts/{id}/edit")
 public class PostEditController
 {
+    @Resource(name = "escortRepository")
+    private EscortRepository escortRepository;
+
+    @Resource(name = "userRepository")
+    private UserRepository userRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     public String setupForm(@PathVariable("id") Integer id, Model model)
     {
@@ -47,13 +53,10 @@ public class PostEditController
             return "posts/edit";
         } else
         {
-            User currentUser = (User) SecurityUtils.getSubject().getPrincipal();
+            User currentUser = userRepository.getCurrentUser();
             escortRepository.savePost(post, currentUser);
             status.setComplete();
             return "redirect:/posts/" + post.getId();
         }
     }
-
-    @Resource(name = "escortRepository")
-    private EscortRepository escortRepository;
 }

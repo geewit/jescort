@@ -1,15 +1,9 @@
 package net.jescort.web.servlet.controller.auth;
 
+import net.gelif.kernel.core.util.BeanUtils;
 import net.gelif.kernel.core.util.TimeZoneUtils;
-import net.jescort.domain.enums.Gender;
-import net.jescort.domain.forum.Post;
-import net.jescort.domain.user.Name;
-import net.jescort.domain.user.Profile;
 import net.jescort.domain.user.User;
-import net.jescort.repository.EscortRepository;
 import net.jescort.repository.UserRepository;
-import org.apache.commons.lang.LocaleUtils;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,6 +24,9 @@ import javax.validation.Valid;
 @RequestMapping("/auth/profile")
 public class ProfileController
 {
+    @Resource(name = "userRepository")
+    private UserRepository userRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     public String setupForm(Model model)
     {
@@ -62,17 +59,12 @@ public class ProfileController
             return "auth/profile";
         } else
         {
-            User currentUser = (User) SecurityUtils.getSubject().getPrincipal();
-            currentUser.setNickname(user.getNickname());
-            currentUser.getProfile().setBirthday(user.getProfile().getBirthday());
-            currentUser.getProfile().setGender(user.getProfile().getGender());
-            currentUser.getProfile().setName(user.getProfile().getName());
+
+            User currentUser = userRepository.getCurrentUser();
+            BeanUtils.copyProperties(user, currentUser);
             userRepository.updateUser(currentUser);
             status.setComplete();
             return "redirect:/auth/profile";
         }
     }
-
-    @Resource(name = "userRepository")
-    private UserRepository userRepository;
 }

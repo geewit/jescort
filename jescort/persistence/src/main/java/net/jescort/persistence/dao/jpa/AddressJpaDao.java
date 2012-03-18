@@ -15,7 +15,7 @@ import java.util.List;
 public class AddressJpaDao extends GenericJpaDao<Address, Integer> implements AddressDao
 {
     @SuppressWarnings("unchecked")
-    public List<Address> findByUserId(int userId)
+    public List<Address> findByUserId(String userId)
     {
         Query query = entityManager.createQuery("SELECT t FROM Address t WHERE t.userId = :userId");
         query.setParameter("userId", userId);
@@ -23,7 +23,7 @@ public class AddressJpaDao extends GenericJpaDao<Address, Integer> implements Ad
     }
 
     @SuppressWarnings("unchecked")
-    public List<Address> findByUserId(int userId, int offset, int limit)
+    public List<Address> findByUserId(String userId, int offset, int limit)
     {
         Query query = entityManager.createQuery("SELECT t FROM Address t WHERE t.userId = :userId");
         query.setParameter("userId", userId);
