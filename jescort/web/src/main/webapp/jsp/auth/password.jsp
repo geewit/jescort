@@ -37,25 +37,7 @@
         <br/>
         <div class="ipsBox">
             <div class="ipsLayout ipsLayout_withleft ipsLayout_smallleft ipsVerticalTabbed clearfix usercp_body">
-                <div id="usercp_tabs" class="ipsVerticalTabbed_tabs ipsLayout_left">
-                    <ul>
-                        <li>
-                            <a href="<spring:url value="/"/>">Profile Settings</a>
-                        </li>
-                        <li>
-                            <a href="<spring:url value="/"/>">Email &amp; Password</a>
-                        </li>
-                        <li class="active">
-                            <a href="<spring:url value="/"/>">nickname</a>
-                        </li>
-                        <li>
-                            <a href="<spring:url value="/"/>">Signature</a>
-                        </li>
-                        <li>
-                            <a href="<spring:url value="/"/>">Manage Attachments</a>
-                        </li>
-                    </ul>
-                </div>
+                <jsp:include page="include-tab.jsp"><jsp:param name="tab" value="password"/></jsp:include>
                 <div id="usercp_content" class="ipsVerticalTabbed_content ipsLayout_content ipsBox_container">
                     <div class="ipsPad">
                         <fieldset class="row1">

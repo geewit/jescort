@@ -1,4 +1,4 @@
-package net.jescort.seurity.shiro.realm;
+package net.jescort.security.shiro.realm;
 
 import net.jescort.domain.user.Role;
 import net.jescort.domain.user.User;

@@ -18,7 +18,7 @@ import javax.annotation.Resource;
  * Time: 下午12:16
  */
 @Controller
-public class MyAttachmentsController
+public class AttachmentsController
 {
     @RequestMapping(value = {"/auth/attachments/page/{pageNo}"}, method = RequestMethod.GET)
     public ModelAndView attachmentsHandler(@PathVariable("pageNo") Integer pageNo)

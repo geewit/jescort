@@ -28,7 +28,7 @@ import javax.validation.Valid;
 @Controller
 @SessionAttributes("profile")
 @RequestMapping("/auth/profile")
-public class ProfileEditController
+public class ProfileController
 {
     @RequestMapping(method = RequestMethod.GET)
     public String setupForm(Model model)
@@ -46,32 +46,16 @@ public class ProfileEditController
             return "error";
         }
         */
-        ProfileCommand command = new ProfileCommand();
-        command.setUsername(currentUser.getUsername());
-        command.setNickname(currentUser.getNickname());
-        command.setTimezone(currentUser.getTimezone());
         //command.setLocale(currentUser.getLocale().toString());
-        Profile profile = currentUser.getProfile();
-        if(null != profile)
-        {
-            Name name = profile.getName();
-            if(null != name)
-            {
-                command.setFamaliyName(name.getFamaliyName());
-                command.setGivenName(name.getGivenName());
-            }
-            command.setGender(profile.getGender().name());
-            command.setBirthday(profile.getBirthday());
-        }
 
-        model.addAttribute("command", command);
+        model.addAttribute("user", currentUser);
         model.addAttribute("timeZones", TimeZoneUtils.ALL_TIMEZONES);
         return "auth/profile";
     }
 
 
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
-    public String processSubmit(@ModelAttribute("command") @Valid ProfileCommand command, BindingResult result, SessionStatus status)
+    public String processSubmit(@ModelAttribute("user") @Valid User user, BindingResult result, SessionStatus status)
     {
         if (result.hasErrors())
         {
@@ -79,10 +63,10 @@ public class ProfileEditController
         } else
         {
             User currentUser = (User) SecurityUtils.getSubject().getPrincipal();
-            currentUser.setNickname(command.getNickname());
-            currentUser.getProfile().setBirthday(command.getBirthday());
-            currentUser.getProfile().setGender(Gender.valueOf(command.getGender().toUpperCase()));
-            currentUser.getProfile().setName(new Name(command.getFamaliyName(), command.getGivenName()));
+            currentUser.setNickname(user.getNickname());
+            currentUser.getProfile().setBirthday(user.getProfile().getBirthday());
+            currentUser.getProfile().setGender(user.getProfile().getGender());
+            currentUser.getProfile().setName(user.getProfile().getName());
             userRepository.updateUser(currentUser);
             status.setComplete();
             return "redirect:/auth/profile";

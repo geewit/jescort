@@ -2,7 +2,7 @@ package net.gelif.kernel.core.util;
 
 import java.io.File;
 
-public final class FilenameUtils
+public final class FilepathUtils
 {
     public static String idToFilepath(Integer id)
     {
