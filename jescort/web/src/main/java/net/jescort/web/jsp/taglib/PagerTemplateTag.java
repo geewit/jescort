@@ -1,6 +1,8 @@
 package net.jescort.web.jsp.taglib;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.NoSuchMessageException;
 import org.springframework.data.domain.Page;
@@ -23,7 +25,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class PagerTemplateTag extends TagSupport implements TryCatchFinally
 {
-    //private transient final Log logger = LogFactory.getLog(PagerTemplateTag.class);
+   private transient final Log logger = LogFactory.getLog(PagerTemplateTag.class);
 
     private Page<?> page;
     private String requestUrl;
@@ -96,7 +98,8 @@ public class PagerTemplateTag extends TagSupport implements TryCatchFinally
     private String writeHtml() throws JspException
     {
         int totalPages = page.getTotalPages();
-        if (totalPages == 1)
+        logger.debug("totalPages == " + totalPages);
+        if (totalPages <= 1)
         {
             return StringUtils.EMPTY;
         }

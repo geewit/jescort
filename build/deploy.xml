@@ -2,65 +2,54 @@
 <project name="jescort.deploy" xmlns:ivy="antlib:org.apache.ivy.ant">
     <target name="jescort.resetting">
         <propertyfile file="${exploded.classes.dir}/log4j.properties">
-            <entry key="log4j.rootCategory" value="WARN"/>
+            <entry key="log4j.rootLogger" value="FILE"/>
             <entry key="log4j.logger.org.springframework" value="ERROR, FILE"/>
             <entry key="log4j.logger.net.sf" value="ERROR, FILE"/>
             <entry key="log4j.logger.com.sun" value="ERROR, FILE"/>
+            <entry key="log4j.logger.com.google" value="ERROR, FILE"/>
+            <entry key="log4j.logger.javax.mail" value="ERROR, FILE"/>
+            <entry key="log4j.logger.javax.persistence" value="ERROR, FILE"/>
+            <entry key="log4j.logger.javax.servlet" value="ERROR, FILE"/>
+            <entry key="log4j.logger.javax.transaction" value="ERROR, FILE"/>
             <entry key="log4j.logger.org.apache" value="ERROR, FILE"/>
-            <entry key="log4j.logger.org.springframework.security" value="ERROR, FILE"/>
-            <entry key="log4j.logger.freemarker" value="ERROR, FILE"/>
+            <entry key="log4j.logger.org.aspectj" value="ERROR, FILE"/>
+            <entry key="log4j.logger.org.eclipse" value="ERROR, FILE"/>
+            <entry key="log4j.logger.net.java" value="ERROR, FILE"/>
+            <entry key="log4j.logger.net.spy.memcached" value="ERROR, FILE"/>
+            <entry key="log4j.logger.com.thimbleware.jmemcached" value="ERROR, FILE"/>
             <entry key="log4j.logger.java.sql.Connection" value="ERROR, FILE"/>
             <entry key="log4j.logger.java.sql.Statement" value="ERROR, FILE"/>
             <entry key="log4j.logger.java.sql.PreparedStatement" value="ERROR, FILE"/>
             <entry key="log4j.logger.java.sql.ResultSet" value="ERROR, FILE"/>
             <entry key="log4j.logger.com.mysql.jdbc" value="ERROR, FILE"/>
-            <entry key="log4j.logger.net.gelif" value="WARN, FILE, MAIL"/>
-            <entry key="log4j.logger.net.jescort" value="WARN, FILE, MAIL"/>
+            <entry key="log4j.logger.net.gelif" value="WARN, FILE"/>
+            <entry key="log4j.logger.net.jescort" value="WARN, FILE"/>
             <entry key="log4j.appender.FILE" value="org.apache.log4j.DailyRollingFileAppender"/>
-            <entry key="log4j.appender.FILE.Threshold" value="WARN"/>
+            <entry key="log4j.appender.FILE.Threshold" value="ERROR"/>
             <entry key="log4j.appender.FILE.File" value="./log4j.log"/>
             <entry key="log4j.appender.FILE.DatePattern" value="'.'yyyy-MM-dd"/>
-            <entry key="log4j.appender.FILE.MaxFileSize" value="10MB"/>
-            <entry key="log4j.appender.FILE.MaxBackupIndex" value="60"/>
             <entry key="log4j.appender.FILE.layout" value="org.apache.log4j.PatternLayout"/>
-            <entry key="log4j.appender.FILE.layout.ConversionPattern"
-                   value="%d{yyyy-MM-dd HH:mm:ss} [%-5p] %-30.30c{1} %M-%L  %m%n"/>
+            <entry key="log4j.appender.FILE.layout.ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%-5p] %-30.30c{1} %M-%L  %m%n"/>
             <entry key="log4j.appender.FILE.Append" value="true"/>
-
-            <entry key="log4j.appender.MAIL" value="org.apache.log4j.net.SMTPAppender"/>
-            <entry key="log4j.appender.MAIL.To" value="admin@gelif.net"/>
-            <entry key="log4j.appender.MAIL.From" value="admin@gelif.net"/>
-            <entry key="log4j.appender.MAIL.SMTPHost" value="127.0.0.1"/>
-            <entry key="log4j.appender.MAIL.SMTPUsername" value="root"/>
-            <entry key="log4j.appender.MAIL.SMTPPassword" value="root"/>
-            <entry key="log4j.appender.MAIL.Threshold" value="ERROR"/>
-            <entry key="log4j.appender.MAIL.BufferSize" value="16"/>
-            <entry key="log4j.appender.MAIL.Subject" value="error"/>
-            <entry key="log4j.appender.MAIL.layout" value="org.apache.log4j.PatternLayout"/>
-            <entry key="log4j.appender.MAIL.layout.ConversionPattern"
-                   value="%p[%d{yyyy-MM-dd HH:mm:ss}] [%-5p] %-30.30c{1} %M-%L %m%n"/>
+            <entry key="log4j.appender.stdout" operation="del"/>
+            <entry key="log4j.appender.stdout.layout" operation="del"/>
+            <entry key="log4j.appender.stdout.layout.ConversionPattern" operation="del"/>
         </propertyfile>
-
-        <propertyfile file="${exploded.classes.dir}/freemarker.properties">
-            <entry key="template_update_delay" value="60000"/>
-        </propertyfile>
-
-        <input privateMessage="MySQL Password:" addproperty="jdbc.mysql.password"/>
+        <!---->
+        <input message="MySQL Password:" addproperty="jdbc_mysql_password"/>
 
         <propertyfile file="${exploded.classes.dir}/jescort.properties">
-            <entry key="jdbc.mysql.password" value="${jdbc.mysql.password}"/>
+            <entry key="jdbc.mysql.password" value="${jdbc_mysql_password}"/>
         </propertyfile>
+        <!--
         <replace dir="${exploded.spring.dir}">
             <include name="applicationContext-mail.xml"/>
             <replacetoken>MockMailService</replacetoken>
             <replacevalue>GenericMailService</replacevalue>
-        </replace>
+        </replace>-->
         <replace dir="${exploded.dir}">
-            <include name="**/*.ftl"/>
-            <include name="**/*.html"/>
+            <include name="**/*.jsp"/>
             <replacefilter token="jquery.js" value="jquery.min.js"/>
-            <replacefilter token="ui.datepicker.js" value="ui.datepicker.min.js"/>
-            <replacefilter token="timeentry.js" value="timeentry.min.js"/>
         </replace>
     </target>
 
@@ -69,38 +58,40 @@
         <delete includeemptydirs="true">
             <fileset dir="${exploded.dir}">
                 <include name="**/*.js"/>
-                <exclude name="**/dojo/**"/>
-                <exclude name="**/datepicker/*.js"/>
-                <exclude name="**/timeentry/*.js"/>
                 <exclude name="**/*.pack.js"/>
                 <exclude name="**/*-pack.js"/>
                 <exclude name="**/*.min.js"/>
                 <exclude name="**/*-min.js"/>
             </fileset>
+            <fileset dir="${exploded.temp.dir}"/>
         </delete>
-        <apply executable="java" failonerror="true" parallel="false" logerror="true">
-            <fileset dir="${exploded.dir}">
+        <mkdir dir="${exploded.temp.dir}"/>
+        <copy todir="${exploded.temp.dir}" includeEmptyDirs="no">
+            <fileset dir="${jescort.web.webapp.dir}">
+                <include name="**/*.js"/>
+                <exclude name="**/*.iml"/>
+            </fileset>
+        </copy>
+        <apply executable="java" failonerror="true" parallel="false" logerror="false">
+            <fileset dir="${exploded.temp.dir}">
                 <patternset>
-                    <include name="**/*.js"/>
-                    <exclude name="**/.svn/**"/>
-                    <exclude name="**/dojo/**"/>
-                    <exclude name="**/datepicker/*.js"/>
-                    <exclude name="**/timeentry/*.js"/>
-                    <exclude name="**/*.pack.js"/>
-                    <exclude name="**/*-pack.js"/>
-                    <exclude name="**/*.min.js"/>
-                    <exclude name="**/*-min.js"/>
+                    <include name="/static/**/*.js"/>
+                    <exclude name="**/jquery.js"/>
+                    <exclude name="/static/**/*.pack.js"/>
+                    <exclude name="/static/**/*-pack.js"/>
+                    <exclude name="/static/**/*.min.js"/>
+                    <exclude name="/static/**/*-min.js"/>
                 </patternset>
             </fileset>
             <arg line="-jar"/>
             <arg path="${yuicompressor.jar}"/>
             <arg line="--type js"/>
-            <arg line="--charset" />
-            <arg line="utf-8" />
+            <arg line="--charset utf-8" />
+            <arg line="--verbose" />
             <srcfile/>
             <arg value="-o"/>
-            <globmapper from="*.js" to="${exploded.dir}/*.js"/>
             <targetfile/>
+            <globmapper from="*.js" to="${exploded.dir}/*.js"/>
         </apply>
     </target>
 
@@ -110,24 +101,30 @@
             <fileset dir="${exploded.dir}">
                 <include name="**/*.css"/>
             </fileset>
+            <fileset dir="${exploded.temp.dir}"/>
         </delete>
-        <apply executable="java" failonerror="true" parallel="false" logerror="true">
-            <fileset dir="${exploded.dir}">
+        <mkdir dir="${exploded.temp.dir}"/>
+        <copy todir="${exploded.temp.dir}" includeEmptyDirs="no">
+            <fileset dir="${jescort.web.webapp.dir}">
+                <include name="**/*.css"/>
+                <exclude name="**/*.iml"/>
+            </fileset>
+        </copy>
+        <apply executable="java" failonerror="true" parallel="false" logerror="false">
+            <fileset dir="${exploded.temp.dir}">
                 <patternset>
-                    <include name="**/*.css"/>
-                    <exclude name="**/.svn/**"/>
-                    <exclude name="**/*.iml"/>
+                    <include name="/static/css/*.css"/>
                 </patternset>
             </fileset>
             <arg line="-jar"/>
             <arg path="${yuicompressor.jar}"/>
             <arg line="--type css"/>
-            <arg line="--charset" />
-            <arg line="utf-8" />
+            <arg line="--charset utf-8" />
+            <arg line="--verbose" />
             <srcfile/>
             <arg value="-o"/>
-            <globmapper from="*.css" to="${exploded.dir}/*.css"/>
             <targetfile/>
+            <globmapper from="*.css" to="${exploded.dir}/*.css"/>
         </apply>
     </target>
 
@@ -137,8 +134,7 @@
                 <include name="**/messages_*.properties"/>
             </fileset>
         </delete>
-        <native2ascii encoding="UTF-8" src="${jescort.web.main.resources.dir}" dest="${exploded.classes.dir}"
-                      includes="**/messages_*.properties" ext=".properties"/>
+        <native2ascii encoding="UTF-8" src="${jescort.web.main.resources.dir}" dest="${exploded.classes.dir}" includes="**/messages_*.properties" ext=".properties"/>
     </target>
 
     <!--build web exploded &build-web-exploded;-->
@@ -146,31 +142,32 @@
         <sequential>
             <antcall target="jescort.compile"/>
             <antcall target="jescort.copy-static-file"/>
-            <antcall target="jescort.delete-temp"/>
             <antcall target="jescort.native2ascii"/>
+            <antcall target="jescort.delete-temp"/>
         </sequential>
     </target>
 
     <!-- build web war &build-war;-->
     <target name="war">
-        <war destfile="${env.CATALINA_HOME}/webapps/ROOT.war" webxml="${exploded.web-inf.dir}/web.xml">
+        <war destfile="${basedir}/ROOT.war" webxml="${exploded.web-inf.dir}/web.xml">
             <fileset dir="${exploded.dir}">
                 <include name="**/*"/>
-                <exclude name="**/.svn/**"/>
+                <exclude name="**/.git"/>
             </fileset>
         </war>
     </target>
 
-    <target name="jescort.deploy">
+    <target name="deploy">
         <sequential>
             <antcall target="clean"/>
             <antcall target="jescort.compile"/>
             <antcall target="jescort.copy-static-file"/>
-            <antcall target="jescort.delete-temp"/>
             <antcall target="jescort.js.minify"/>
             <antcall target="jescort.css.minify"/>
             <antcall target="jescort.resetting"/>
+            <antcall target="jescort.native2ascii"/>
             <antcall target="war"/>
+            <antcall target="jescort.delete-temp"/>
         </sequential>
     </target>
 
@@ -179,6 +176,6 @@
         <ivy:cleancache/>
         <delete quiet="true" dir="${exploded.dir}"/>
         <delete quiet="true" dir="${env.CATALINA_HOME}/webapps/ROOT"/>
-        <delete quiet="true" file="${env.CATALINA_HOME}/webapps/ROOT.war"/>
+        <delete quiet="true" file="${basedir}/ROOT.war"/>
     </target>
 </project>

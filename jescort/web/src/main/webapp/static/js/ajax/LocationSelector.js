@@ -13,7 +13,8 @@ function updateLocations(element, selectedId)
     if(selectedId)
     {
         var len = temp.length;
-        for(var i = 0; i < len; i++)
+        var i = 0;
+        for(i = 0; i < len; i++)
         {
             if(temp[i].id == selectedId)
             {

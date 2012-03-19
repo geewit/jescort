@@ -40,7 +40,7 @@
         <mkdir dir="${exploded.dir}"/>
         <copy todir="${exploded.dir}" includeEmptyDirs="no">
             <fileset dir="${jescort.web.webapp.dir}">
-                <exclude name="**/.svn"/>
+                <exclude name="**/.git"/>
                 <exclude name="**/*.iml"/>
             </fileset>
         </copy>
@@ -48,7 +48,7 @@
         <mkdir dir="${exploded.web-inf.dir}"/>
         <copy todir="${exploded.web-inf.dir}" includeEmptyDirs="no">
             <fileset dir="${jescort.web.webapp.web-inf.dir}">
-                <exclude name="**/.svn"/>
+                <exclude name="**/.git"/>
                 <exclude name="**/*.iml"/>
             </fileset>
         </copy>
@@ -65,7 +65,7 @@
                 <include name="net/gelif/**/*.properties"/>
                 <include name="net/jescort/**/*.xml"/>
                 <include name="net/jescort/**/*.properties"/>
-                <exclude name="**/.svn"/>
+                <exclude name="**/.git"/>
                 <exclude name="**/*.iml"/>
             </fileset>
         </copy>

@@ -15,7 +15,7 @@
             </li>
             <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
                 <span class="nav_sep">-></span>
-                <a href="<spring:url value="/forums/${forum.id}"/>" title="${forum.subject}" itemprop="url"><span itemprop="title">${forum.subject}</span></a>
+                <span itemprop="title">${forum.subject}</span>
             </li>
         </ol>
     </div>
@@ -118,7 +118,7 @@
     <div id="forum_footer" class="statistics clear clearfix"></div>
     <ol class="breadcrumb bottom ipsList_inline clearfix clear">
         <li><a href="<spring:url value="/categories/${forum.category.id}"/>" itemprop="url">${forum.category.subject}</a></li>
-        <li><span class="nav_sep">-></span> <a href="<spring:url value="/forums/${forum.id}"/>" title="Return to ${forum.subject}">${forum.subject}</a></li>
+        <li><span class="nav_sep">-></span> ${forum.subject}</li>
     </ol>
     <div class="clear"></div>
 </div>
