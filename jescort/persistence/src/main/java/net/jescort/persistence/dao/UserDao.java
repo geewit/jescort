@@ -10,7 +10,11 @@ public interface UserDao extends JpaRepository<User, String>
 {
     public User findByUsername(String username);
 
+    public String findPasswordByUserId(String userId);
+
     public String findPasswordByUsername(String username);
+
+    public void updatePassword(String password, String userId);
 
     public void increasePostsById(String userId);
 

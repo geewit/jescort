@@ -81,6 +81,11 @@ public class UserRepositoryImpl implements UserRepository
             return null;
         }
     }
+    
+    public String getPassword(String userId)
+    {
+        return userDao.findPasswordByUserId(userId);
+    }
 
     @Override
     @Transactional
@@ -98,6 +103,7 @@ public class UserRepositoryImpl implements UserRepository
     public void updateUser(User user)
     {
         userDao.save(user);
+        deleteUserFromMemcached(user.getId());
     }
 
     @Transactional
@@ -120,6 +126,13 @@ public class UserRepositoryImpl implements UserRepository
         return user;
     }
 
+    @Transactional
+    public void changePassword(final String password, final String userId)
+    {
+        userDao.updatePassword(password, userId);
+        deleteUserFromMemcached(userId);
+    }
+
     @Override
     public User getUser(String id)
     {
@@ -131,17 +144,23 @@ public class UserRepositoryImpl implements UserRepository
             return userDao.findOne(id);
         }
     }
-
-    private User getUserFromMemcached(String id)
+    
+    private void deleteUserFromMemcached(String userId)
     {
-        String key = MemcachedObjectType.USER.getPrefix() + id;
+        String key = MemcachedObjectType.USER.getPrefix() + userId;
+        memcachedClient.delete(key);
+    }
+
+    private User getUserFromMemcached(String userId)
+    {
+        String key = MemcachedObjectType.USER.getPrefix() + userId;
 
         User user;
         String jsonString = memcachedClient.get(key);
 
         if (jsonString == null)
         {
-            user = userDao.findOne(id);
+            user = userDao.findOne(userId);
             if (user != null)
             {
                 jsonString = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create().toJson(user);
@@ -196,7 +215,7 @@ public class UserRepositoryImpl implements UserRepository
             logger.warn(e.toString());
         }
         userDao.updateAvatar(avatarName, shiroUser.getId());
-
+        deleteUserFromMemcached(shiroUser.getId());
         return avatarName;
     }
 
@@ -214,8 +233,7 @@ public class UserRepositoryImpl implements UserRepository
         }
     }
 
-    @Override
-    public String convertAvatarPath(String avatar)
+    private String convertAvatarPath(String avatar)
     {
         return FilepathUtils.filenameTofullFilepath(absolutePath + avatarPrefixPath, avatar);
     }

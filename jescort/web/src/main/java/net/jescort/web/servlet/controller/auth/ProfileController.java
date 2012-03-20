@@ -36,13 +36,6 @@ public class ProfileController
             //TODO return some error or throw exception
             return "error";
         }
-        /*
-        if (!post.getPoster().equals(SecurityUtils.getCurrentUser()))
-        {
-            //TODO return some error or throw exception
-            return "error";
-        }
-        */
         //command.setLocale(currentUser.getLocale().toString());
 
         model.addAttribute("user", currentUser);

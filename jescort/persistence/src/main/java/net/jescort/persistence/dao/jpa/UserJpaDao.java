@@ -24,9 +24,23 @@ public class UserJpaDao extends GenericJpaDao<User, String> implements UserDao
     }
 
     @Override
+    public String findPasswordByUserId(String userId)
+    {
+        return (String) entityManager.createQuery("SELECT user.password FROM User user WHERE user.id = :id").setParameter("id", userId).getSingleResult();
+    }
+
+    @Override
     public String findPasswordByUsername(String username)
     {
         return (String) entityManager.createQuery("SELECT user.password FROM User user WHERE user.username = :username").setParameter("username", username).getSingleResult();
+    }
+    
+    public void updatePassword(String password, String userId)
+    {
+        Query query = entityManager.createNativeQuery("UPDATE users set password = ? where id = ?");
+        query.setParameter(1, password);
+        query.setParameter(2, userId);
+        query.executeUpdate();
     }
 
     @Override

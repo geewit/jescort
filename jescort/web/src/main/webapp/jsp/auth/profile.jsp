@@ -103,10 +103,10 @@
                                     </li>
                                     <li class="custom">
                                         <label for="province" class="ipsSettings_fieldtitle">Location</label>
-                                        <select id="province" name="province" onChange="updateLocations('city', $(this).val());">
+                                        <select id="province" name="province" onChange="updateLocations('province', 'city', $(this).val());">
                                             <option value="0"><spring:message code="message.select_province"/></option>
                                         </select>
-                                        <select id="city" name="city" onChange="updateLocations('district', $(this).val());">
+                                        <select id="city" name="city" onChange="updateLocations('city', 'district', $(this).val());">
                                             <option value="0"><spring:message code="message.select_city"/></option>
                                         </select>
                                         <select id="district" name="district">

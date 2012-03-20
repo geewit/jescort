@@ -6,6 +6,6 @@
 <script type="text/javascript">
     $(function()
     {
-        updateLocations("province");
+        updateLocations("province", "province");
     });
 </script>

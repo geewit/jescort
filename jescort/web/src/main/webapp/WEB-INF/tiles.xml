@@ -52,6 +52,7 @@
 
     <definition name="auth/profile" extends=".layout">
         <put-attribute name="title" value="messages.auth.profile.title"/>
+        <put-attribute name="head"  value="/jsp/auth/profile_head.jsp" type="template"/>
         <put-attribute name="content" value="/jsp/auth/profile.jsp"/>
     </definition>
 

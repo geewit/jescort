@@ -18,9 +18,13 @@ public interface UserRepository
 {
     public User getCurrentUser();
 
+    public String getPassword(String userId);
+
     public void createUser(final User user);
 
     public User createUser(final String username, final String password, String nickname, final String email);
+
+    public void changePassword(final String password, final String userId);
 
     public void updateUser(final User user);
     
@@ -35,8 +39,6 @@ public interface UserRepository
     public String uploadAvatar(final MultipartFile multipartFile);
 
     public String findAvatarPath(final String userId);
-
-    public String convertAvatarPath(String avatar);
 
     public Message getMessage(final Integer messageId);
 

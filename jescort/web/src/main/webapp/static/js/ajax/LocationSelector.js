@@ -1,45 +1,52 @@
-var locations = [];
-var temp = [];
+var locations_level = 1;
+var locations_temp = [];
 
-function updateLocations(element, selectedId)
+function updateLocations(thiselement, element, selectedId)
 {
-    if(!locations || locations.length == 0)
+    if(thiselement == "province")
     {
-        $.getJSON('/api/locations/all', function(data) {
-            locations = data;
-        });
+        locations_level = 1;
     }
-    temp = locations;
-    if(selectedId)
+    var firstOption = $("#" + element).find("option:first")[0];
+    $("#" + element).find("option").remove().end().append(firstOption);
+    if(element != "province" && $("#province").val() < 10)
     {
-        var len = temp.length;
-        var i = 0;
-        for(i = 0; i < len; i++)
+        return;
+    }
+    $.getJSON('/api/locations/all', function(data) {
+        if(locations_level == 1)
         {
-            if(temp[i].id == selectedId)
+            locations_temp = data;
+        }
+        if(selectedId)
+        {
+            for(var i = 0; i < locations_temp.length; i++)
             {
-                temp = temp[i].children;
-                break;
+                if(locations_temp[i].id == selectedId)
+                {
+                    locations_temp = locations_temp[i].children;
+                    locations_level++;
+                    break;
+                }
             }
         }
-    }
-    $.each(temp, function(i, item)
-    {
-        var option = new Option(item.name, item.id);
-        $("#" + element).append(option);
+        $.each(locations_temp, function(i, item)
+        {
+            var notappend = false;
+            $("#" + element).children().each(function()
+            {
+                if($(this).val() == item.id)
+                {
+                    notappend = true;
+                    return false;
+                }
+            });
+            if(!notappend)
+            {
+                var option = new Option(item.name, item.id);
+                $("#" + element).append(option);
+            }
+        });
     });
 }
 
-
-function updateLocations(element)
-{
-    if (!locations || locations.length == 0)
-    {
-        locations = jQuery.parseJSON("/api/locations/all");
-    }
-    $.each(locations, function(i, item)
-    {
-        var option = new Option(item.name, item.id);
-        $("#" + element).append(option);
-    });
-}

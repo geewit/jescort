@@ -29,7 +29,7 @@ public class GsonView extends WebApplicationObjectSupport implements View, BeanN
 
     private String requestContextAttribute;
 
-    private boolean disableCaching = true;
+    private boolean disableCaching = false;
 
     public final static GsonView instance = new GsonView();
 
@@ -95,11 +95,6 @@ public class GsonView extends WebApplicationObjectSupport implements View, BeanN
     @Override
     public void render(Map<String, ?> model, HttpServletRequest request, HttpServletResponse response) throws Exception
     {
-        if (logger.isTraceEnabled())
-        {
-            logger.trace("Rendering view with name '" + this.beanName + "' with model " + model);
-        }
-
         // Consolidate static and dynamic model attributes.
         Map<String, Object> mergedModel = new HashMap<String, Object>(model != null ? model.size() : 0);
         if (model != null)
