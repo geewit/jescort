@@ -11,7 +11,7 @@
                 <generated-value strategy="IDENTITY"/>
             </id>
             <basic name="name">
-                <column name="name" insertable="true" updatable="true" unique="false"/>
+                <column name="location_name" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="abbr">
                 <column name="abbr" insertable="true" updatable="true" unique="false"/>

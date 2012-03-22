@@ -40,8 +40,8 @@
                 <convert>forumStatus</convert>
             </basic>
             <basic-map name="properties" fetch="LAZY">
-                <key-column name="key"/>
-                <value-column name="value"/>
+                <key-column name="pkey"/>
+                <value-column name="pvalue"/>
                 <collection-table name="forum_properties">
                     <primary-key-join-column name="id" referenced-column-name="id"/>
                 </collection-table>

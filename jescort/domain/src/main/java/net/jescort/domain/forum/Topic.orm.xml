@@ -46,14 +46,17 @@
                 <temporal>TIMESTAMP</temporal>
             </basic>
             <basic-map name="properties" fetch="LAZY">
-                <key-column name="key"/>
-                <value-column name="value"/>
+                <key-column name="pkey"/>
+                <value-column name="pvalue"/>
                 <collection-table name="topic_properties">
                     <primary-key-join-column name="id" referenced-column-name="id"/>
                 </collection-table>
             </basic-map>
             <one-to-one name="rootPost" target-entity="net.jescort.domain.forum.Post" fetch="LAZY">
                 <join-column name="root_post_id" referenced-column-name="id" insertable="false" updatable="false"/>
+                <cascade>
+                    <cascade-all/>
+                </cascade>
             </one-to-one>
             <one-to-one name="lastPost" target-entity="net.jescort.domain.forum.Post" fetch="LAZY">
                 <join-column name="last_post_id" referenced-column-name="id" insertable="false" updatable="false"/>

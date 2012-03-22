@@ -46,7 +46,14 @@ public final class FilepathUtils
     public static String filenameTofullFilepath(String prefix, String filename)
     {
         int pos = filename.indexOf(".");
-        return idTofullFilepath(prefix, filename.substring(pos + 1), filename.substring(0, pos), 8);
+        if(pos > 0)
+        {
+            return idTofullFilepath(prefix, filename.substring(pos + 1), filename.substring(0, pos), 8);
+        }
+        else
+        {
+            return prefix + filename;
+        }
     }
     
     public static String idTofullFilepath(String prefix, String suffix, String id, int length)

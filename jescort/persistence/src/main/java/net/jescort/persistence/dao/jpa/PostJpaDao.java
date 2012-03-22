@@ -30,13 +30,13 @@ public class PostJpaDao extends GenericJpaDao<Post, Integer> implements PostDao
     @SuppressWarnings("unchecked")
     public List<Post> findByTopicId(int topicId)
     {
-        return entityManager.createQuery("select t from Post t where t.topic.id = :topicId").setParameter("topicId", topicId).getResultList();
+        return entityManager.createQuery("select t from Post t where t.topic.id = :topicId order by t.createdate").setParameter("topicId", topicId).getResultList();
     }
 
     @SuppressWarnings("unchecked")
     public List<Post> findByTopicId(int topicId, Pageable pageable)
     {
-        String jpql = "select t from Post t where t.topic.id = :topicId";
+        String jpql = "select t from Post t where t.topic.id = :topicId order by t.createdate";
         Query query = entityManager.createQuery(jpql);
         query.setParameter("topicId", topicId);
         query.setFirstResult(pageable.getOffset());
@@ -47,7 +47,7 @@ public class PostJpaDao extends GenericJpaDao<Post, Integer> implements PostDao
     @SuppressWarnings("unchecked")
     public List<Post> findByUserId(String userId)
     {
-        return entityManager.createQuery("select t from Post t where t.poster.id = :userId").setParameter("userId", userId).getResultList();
+        return entityManager.createQuery("select t from Post t where t.poster.id = :userId order by t.createdate").setParameter("userId", userId).getResultList();
     }
 
     @SuppressWarnings("unchecked")

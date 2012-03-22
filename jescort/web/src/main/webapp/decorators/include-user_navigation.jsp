@@ -10,7 +10,7 @@
 
     <shiro:authenticated>
     <c:set var="user_id"><shiro:principal property="id"/></c:set>
-    <c:set var="avatar"><shiro:principal property="avatar"/></c:set>
+    <c:set var="avatar"><shiro:principal property="avatar" defaultValue=""/></c:set>
     <!-- User Menu -->
     <span class="nav-user-avatar"><img alt="<shiro:principal property="username"/>'s Photo" src="<jescort:avatar avatar="${avatar}"/>"/></span>
     <span id="nav-user">

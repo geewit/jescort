@@ -31,8 +31,8 @@
                 <convert>postStatus</convert>
             </basic>
             <basic-map name="properties" fetch="LAZY">
-                <key-column name="key"/>
-                <value-column name="value"/>
+                <key-column name="pkey"/>
+                <value-column name="pvalue"/>
                 <collection-table name="post_properties">
                     <primary-key-join-column name="id" referenced-column-name="id"/>
                 </collection-table>
@@ -45,6 +45,9 @@
             </many-to-one>
             <one-to-one name="edit" target-entity="net.jescort.domain.forum.PostEdit" fetch="LAZY">
                 <join-column name="id" referenced-column-name="id" insertable="false" updatable="false"/>
+                <cascade>
+                    <cascade-all/>
+                </cascade>
             </one-to-one>
             <many-to-many name="attachments" target-entity="net.jescort.domain.forum.Attachment" fetch="LAZY">
                 <order-by>id ASC</order-by>

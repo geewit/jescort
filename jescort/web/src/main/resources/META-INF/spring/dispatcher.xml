@@ -22,7 +22,14 @@
         <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>
         <property name="validationMessageSource" ref="messageSource"/>
     </bean>
-    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"  />
+
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="net.jescort.web.binding.CalendarConverter"/>
+            </list>
+        </property>
+    </bean>
     <!--
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>-->
 

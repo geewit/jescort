@@ -2,6 +2,7 @@ package net.jescort.domain.user;
 
 import java.util.*;
 
+import com.google.gson.annotations.Expose;
 import net.gelif.kernel.core.data.domain.AbstractPersistable;
 import net.gelif.kernel.core.util.DateUtils;
 import net.jescort.domain.enums.Gender;
@@ -31,24 +32,43 @@ public class User extends AbstractPersistable<String>
         this.id = id;
     }
 
+    @Expose
     private String id;
+    @Expose
     private String username;
+    @Expose
     private String password;
+    @Expose
     private String nickname;
+    @Expose
     private Integer posts;
+    @Expose
     private Integer reputation;
+    @Expose
     private Gender gender;
+    @Expose
     private Name name;
+    @Expose
     private Calendar birthday;
+    @Expose
     private String avatar;
+    @Expose
     private String signature;
+    @Expose
     private String timezone;
+    @Expose
     private Locale locale;
+    @Expose
     private Calendar createdate;
+    @Expose
     private Calendar lastActive;
+    @Expose
     private List<Email> emails = new ArrayList<Email>();
+    @Expose
     private List<Address> addresses = new ArrayList<Address>();
+    @Expose
     private Set<Group> groups = new HashSet<Group>();
+    @Expose
     private Map<String, String> properties;
 
     public String getId()

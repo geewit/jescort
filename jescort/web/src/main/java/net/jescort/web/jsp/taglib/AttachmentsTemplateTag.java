@@ -81,7 +81,7 @@ public class AttachmentsTemplateTag extends TagSupport implements TryCatchFinall
             sb.append(contextPath).append("/attachments/").append(attachment.getId());
             sb.append("\">").append(attachment.getOriginalName());
             sb.append("</a><span class=\"desc\"><strong>(").append(attachment.getKiloBytes()).append("KB)</strong></span>\n");
-            sb.append("<br><span class=\"desc info\">").append(resolveMessage("message.number_of_downloads", StringUtils.EMPTY)).append(attachment.getDownloads()).append("</span>\n");
+            sb.append("<br><span class=\"desc info\">").append(resolveMessage("message.number_of_downloads", StringUtils.EMPTY)).append("&nbsp;").append(attachment.getDownloads()).append("</span>\n");
             sb.append("</li>\n");
         }
         sb.append("</ul>\n");

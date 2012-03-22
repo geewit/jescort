@@ -2,6 +2,8 @@ package net.jescort.web.jsp.taglib;
 
 import net.jescort.domain.user.Group;
 import net.jescort.domain.user.User;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.support.JspAwareRequestContext;
 import org.springframework.web.servlet.support.RequestContext;
 import javax.servlet.jsp.JspException;
@@ -18,6 +20,8 @@ import java.io.IOException;
  */
 public class UserTemplateTag extends TagSupport implements TryCatchFinally
 {
+    private transient final static Log logger = LogFactory.getLog(UserTemplateTag.class);
+
     private static final String REQUEST_CONTEXT_PAGE_ATTRIBUTE = "org.springframework.web.servlet.tags.REQUEST_CONTEXT";
     private RequestContext requestContext;
 
@@ -42,6 +46,17 @@ public class UserTemplateTag extends TagSupport implements TryCatchFinally
         {
             this.requestContext = new JspAwareRequestContext(this.pageContext);
             this.pageContext.setAttribute(REQUEST_CONTEXT_PAGE_ATTRIBUTE, this.requestContext);
+        }
+        if(logger.isDebugEnabled())
+        {
+            if(null != null)
+            {
+                logger.debug("user == " + user.toString());
+            }
+            else
+            {
+                logger.debug("user == null");
+            }
         }
         String html = writeHtml();
         if (null == this.var)
@@ -77,21 +92,28 @@ public class UserTemplateTag extends TagSupport implements TryCatchFinally
 
     private String writeHtml()
     {
-        String contextPath = requestContext.getContextPath();
         StringBuffer sb = new StringBuffer();
-        Group mainGroup = user.getMainGroup();
-        if(Integer.valueOf(4).equals(mainGroup.getId()))
+        if(null != user)
         {
-            sb.append("<img alt=\"vet\" style=\"vertical-align:middle;\" src=\"");
-            sb.append(contextPath).append("/static/images/vetstar.gif\"/>");
+            String contextPath = requestContext.getContextPath();
+            Group mainGroup = user.getMainGroup();
+            if(null != mainGroup)
+            {
+                if(Integer.valueOf(4).equals(mainGroup.getId()))
+                {
+                    sb.append("<img alt=\"vet\" style=\"vertical-align:middle;\" src=\"");
+                    sb.append(contextPath).append("/static/images/vetstar.gif\"/>");
+                }
+                sb.append("<span class=\"").append(user.getMainGroup().getName().toLowerCase()).append("\">");
+                if(mainGroup.getId() == 2 || mainGroup.getId() == 3)
+                {
+                    sb.append("+");
+                }
+            }
+            sb.append(user.getNickname());
+            sb.append("</span>");
         }
-        sb.append("<span class=\"").append(user.getMainGroup().getName().toLowerCase()).append("\">");
-        if(mainGroup.getId() == 2 || mainGroup.getId() == 3)
-        {
-            sb.append("+");
-        }
-        sb.append(user.getNickname());
-        sb.append("</span>");
+
         return sb.toString();
     }
 }

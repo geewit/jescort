@@ -13,7 +13,7 @@
                 <table-generator name="groupIdGenerator" table="pk_gen" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="group_id" allocation-size="1" initial-value="1"/>-->
             </id>
             <basic name="name">
-                <column name="name" insertable="true" updatable="true" unique="true"/>
+                <column name="group_name" insertable="true" updatable="true" unique="true"/>
             </basic>
             <basic name="description">
                 <column name="description" insertable="true" updatable="true" unique="false"/>

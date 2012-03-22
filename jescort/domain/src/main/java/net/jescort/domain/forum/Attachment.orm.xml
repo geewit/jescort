@@ -29,7 +29,7 @@
                 <lob/>
             </basic>
             <basic name="size">
-                <column name="size" insertable="true" updatable="true" unique="false"/>
+                <column name="file_size" insertable="true" updatable="true" unique="false"/>
             </basic>
             <basic name="downloads">
                 <column name="downloads" insertable="true" updatable="true" unique="false"/>
@@ -39,8 +39,8 @@
                 <temporal>TIMESTAMP</temporal>
             </basic>
             <basic-map name="properties" fetch="LAZY">
-                <key-column name="key"/>
-                <value-column name="value"/>
+                <key-column name="pkey"/>
+                <value-column name="pvalue"/>
                 <collection-table name="attachment_properties">
                     <primary-key-join-column name="id" referenced-column-name="id"/>
                 </collection-table>

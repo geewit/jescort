@@ -126,6 +126,7 @@ public class EscortRepositoryImpl implements EscortRepository
         topic.getRootPost().setAttachments(attachments);
         forumDao.increaseTopics(forumId);
         //attachmentDao.save(attachments);
+        //postDao.save(topic.getRootPost());
         topicDao.save(topic);
     }
 

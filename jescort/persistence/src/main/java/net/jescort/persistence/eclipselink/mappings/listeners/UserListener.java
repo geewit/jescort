@@ -5,10 +5,14 @@ import java.util.*;
 import net.jescort.domain.user.Group;
 import net.jescort.domain.user.Role;
 import net.jescort.domain.user.User;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class UserListener implements EventListener
 {
-    //private transient final Log logger = LogFactory.getLog(UserListener.class);
+    private transient final Log logger = LogFactory.getLog(UserListener.class);
+
     public void prePersist(User user)
     {
         if (null == user)
@@ -32,6 +36,7 @@ public class UserListener implements EventListener
         {
             user.setReputation(0);
         }
+
     }
 
     public void postLoad(User user)

@@ -17,6 +17,8 @@ import java.util.Set;
 public interface UserRepository
 {
     public User getCurrentUser();
+    
+    public User getFullCurrentUser();
 
     public String getPassword(String userId);
 

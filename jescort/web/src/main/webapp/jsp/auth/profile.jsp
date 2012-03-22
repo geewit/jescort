@@ -59,7 +59,7 @@
                                 <ul class="ipsForm ipsForm_horizontal">
                                     <li class="ipsField">
                                         <label for="timezone"/>
-                                        <select id="timezone" name="profile.timezone" class="input_select">
+                                        <select id="timezone" name="timezone" class="input_select">
                                             <c:forEach var="timeZone" items="${timeZones}" varStatus="status">
                                                 <option value="<c:if test="${timeZone.offset > 0}">+</c:if>${timeZone.offset}"<c:if test="${not empty user.timezone && user.timezone == timeZone.offset}"> selected="selected"</c:if>>(GMT <c:if test="${timeZone.offset > 0}">+</c:if>${timeZone.offset} hours) ${timeZone.locale}</option>
                                             </c:forEach>
@@ -94,7 +94,7 @@
                                 <ul>
                                     <li class="custom">
                                         <label for="gender" class="ipsSettings_fieldtitle">Gender</label>
-                                        <select id="gender" name="profile.gender" class="input_select">
+                                        <select id="gender" name="gender" class="input_select">
                                             <c:set value="${user.gender}" var="gender" />
                                             <option value="MALE"<c:if test="gender == 'MALE'"> selected</c:if>>Male</option>
                                             <option value="FEMALE"<c:if test="gender == 'FEMALE'"> selected</c:if>>Female</option>

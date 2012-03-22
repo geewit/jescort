@@ -4,6 +4,8 @@ package net.jescort.web.jsp.taglib;
 import net.gelif.kernel.core.config.JescortConfig;
 import net.gelif.kernel.core.util.FilepathUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.support.RequestContext;
 
 import javax.servlet.jsp.JspException;
@@ -20,7 +22,7 @@ import java.io.IOException;
  */
 public class AvatarTemplateTag extends TagSupport implements TryCatchFinally
 {
-    //private transient final static Log logger = LogFactory.getLog(AvatarTemplateTag.class);
+    private transient final static Log logger = LogFactory.getLog(AvatarTemplateTag.class);
 
     private static final String REQUEST_CONTEXT_PAGE_ATTRIBUTE = "org.springframework.web.servlet.tags.REQUEST_CONTEXT";
 
@@ -52,6 +54,7 @@ public class AvatarTemplateTag extends TagSupport implements TryCatchFinally
             this.pageContext.setAttribute(REQUEST_CONTEXT_PAGE_ATTRIBUTE, this.requestContext);
         }
         String out = writeHtml();
+        logger.debug("out == " + out);
         if (null == this.var)
         {
             try
@@ -85,15 +88,17 @@ public class AvatarTemplateTag extends TagSupport implements TryCatchFinally
 
     private String writeHtml()
     {
-        String contextPath = requestContext.getContextPath();
-        StringBuffer sb = new StringBuffer(contextPath);
-        if(StringUtils.isNotBlank(avatar))
+        logger.debug("avatar == " + avatar);
+        StringBuffer sb = new StringBuffer();
+        if(StringUtils.isBlank(avatar) || !(avatar.length() > 32))
         {
-            sb.append(FilepathUtils.convertSeparator(FilepathUtils.filenameTofullFilepath(avatarPrefixPath, avatar)));
+            sb.append(defaultAvatarPath);
         }
         else
         {
-            sb.append(defaultAvatarPath);
+            String contextPath = requestContext.getContextPath();
+            sb.append(contextPath);
+            sb.append(FilepathUtils.convertSeparator(FilepathUtils.filenameTofullFilepath(avatarPrefixPath, avatar)));
         }
         return sb.toString();
     }

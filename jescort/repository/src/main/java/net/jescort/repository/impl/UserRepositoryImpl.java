@@ -81,6 +81,19 @@ public class UserRepositoryImpl implements UserRepository
             return null;
         }
     }
+
+    @Override
+    public User getFullCurrentUser()
+    {
+        final ShiroUser shiroUser = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
+        if (shiroUser != null)
+        {
+            return userDao.findOne(shiroUser.getId());
+        } else
+        {
+            return null;
+        }
+    }
     
     public String getPassword(String userId)
     {
@@ -160,6 +173,7 @@ public class UserRepositoryImpl implements UserRepository
 
         if (jsonString == null)
         {
+            logger.debug("user not found in memcached");
             user = userDao.findOne(userId);
             if (user != null)
             {
@@ -168,6 +182,7 @@ public class UserRepositoryImpl implements UserRepository
             }
         } else
         {
+            logger.debug("user found in memcached");
             user = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create().fromJson(jsonString, User.class);
         }
         return user;

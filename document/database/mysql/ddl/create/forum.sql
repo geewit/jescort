@@ -4,7 +4,7 @@ CREATE TABLE attachments (
     original_name   VARCHAR(127)                NOT NULL,
     content_type    CHAR(63)                    NOT NULL,
     content         BLOB                        NOT NULL,
-    `size`          LONG                        NOT NULL,
+    file_size       LONG                        NOT NULL,
     downloads       INT                         NOT NULL,
     createdate      DATETIME                    NOT NULL,
     PRIMARY KEY  (id)
@@ -12,10 +12,10 @@ CREATE TABLE attachments (
 
 
 CREATE TABLE attachment_properties (
-    id                   INT                    NOT NULL,
-    `key`                VARCHAR(63)            NOT NULL,
-    `value`              VARCHAR(255)           NOT NULL,
-    PRIMARY KEY (id, `key`)
+    id                  INT                    NOT NULL,
+    pkey                VARCHAR(63)            NOT NULL,
+    pvalue              VARCHAR(255)           NOT NULL,
+    PRIMARY KEY (id, pkey)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
@@ -37,9 +37,9 @@ CREATE TABLE category_moderator_map (
 
 create table category_properties (
     id                   INT                    NOT NULL,
-    `key`                VARCHAR(63)            NOT NULL,
-    `value`              VARCHAR(255)           NOT NULL,
-    PRIMARY KEY (id, `key`)
+    pkey                 VARCHAR(63)            NOT NULL,
+    pvalue               VARCHAR(255)           NOT NULL,
+    PRIMARY KEY (id, pkey)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
@@ -62,9 +62,9 @@ CREATE TABLE drafts (
 
 create table draft_properties (
     id                      INT                 NOT NULL,
-    `key`                   VARCHAR(63)         NOT NULL,
-    `value`                 VARCHAR(255)        NOT NULL,
-    PRIMARY KEY (id, `key`)
+    pkey                    VARCHAR(63)         NOT NULL,
+    pvalue                  VARCHAR(255)        NOT NULL,
+    PRIMARY KEY (id, pkey)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
@@ -101,9 +101,9 @@ CREATE TABLE forum_moderator_map (
 
 create table forum_properties (
     id                   INT                    NOT NULL,
-    `key`                VARCHAR(63)            NOT NULL,
-    `value`              VARCHAR(255)           NOT NULL,
-    PRIMARY KEY (id, `key`)
+    pkey                 VARCHAR(63)            NOT NULL,
+    pvalue               VARCHAR(255)           NOT NULL,
+    PRIMARY KEY (id, pkey)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
@@ -129,9 +129,9 @@ CREATE TABLE message_attachment_map (
 
 create table message_properties (
     id                   INT                    NOT NULL,
-    `key`                VARCHAR(63)            NOT NULL,
-    `value`              VARCHAR(255)           NOT NULL,
-    PRIMARY KEY (id, `key`)
+    pkey                 VARCHAR(63)            NOT NULL,
+    pvalue               VARCHAR(255)           NOT NULL,
+    PRIMARY KEY (id, pkey)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
@@ -173,9 +173,9 @@ CREATE TABLE post_edits (
 
 create table post_properties (
     id                   INT                    NOT NULL,
-    `key`                VARCHAR(63)            NOT NULL,
-    `value`              VARCHAR(255)           NOT NULL,
-    PRIMARY KEY (id, `key`)
+    pkey                 VARCHAR(63)            NOT NULL,
+    pvalue               VARCHAR(255)           NOT NULL,
+    PRIMARY KEY (id, pkey)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
@@ -183,7 +183,7 @@ CREATE TABLE rankings (
     id                   INT                    NOT NULL,
     min_score            INT                    NOT NULL,
     max_score            INT                    NOT NULL,
-    `name`               VARCHAR(255)           NOT NULL,
+    ranking_name         VARCHAR(255)           NOT NULL,
     image                VARCHAR(255)           NOT NULL,
     status               INT                    NOT NULL,
     PRIMARY KEY  (id)
@@ -191,9 +191,9 @@ CREATE TABLE rankings (
 
 create table tags (
     id                  INT                     NOT NULL,
-    `name`              CHAR(63)                NOT NULL,
-    primary key (id),
-    UNIQUE (`name`)
+    tag_name            CHAR(63)                NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE (tag_name)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE topics (
@@ -215,7 +215,7 @@ CREATE TABLE topics (
 
 create table topic_properties (
     id                  INT                     NOT NULL,
-    `key`               VARCHAR(63)             NOT NULL,
-    `value`             VARCHAR(255)            NOT NULL,
-    PRIMARY KEY (id, `key`)
+    pkey                VARCHAR(63)             NOT NULL,
+    pvalue              VARCHAR(255)            NOT NULL,
+    PRIMARY KEY (id, pkey)
 ) ENGINE=InnoDB CHARSET=utf8;
