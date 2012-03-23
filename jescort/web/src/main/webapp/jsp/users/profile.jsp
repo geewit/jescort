@@ -78,7 +78,7 @@
                                             <div class="row_data">
                                                 <c:choose><c:when test="${not empty user.gender}">
                                                     <c:set value="${user.gender}" var="gender"/>
-                                                    <img alt="${gender}" src="<spring:url value="/static/images/${fn:toLowerCase(gender)}.gif"/>"><spring:message code="message.gender_${gender}"/>
+                                                    <img alt="${gender}" src="<spring:url value="/static/images/${fn:toLowerCase(gender)}.png"/>"><spring:message code="message.gender_${gender}"/>
                                                 </c:when><c:otherwise>
                                                     <img src="<spring:url value="/static/images/mystery.png"/>" alt="Not Telling">Not Telling
                                                 </c:otherwise></c:choose>

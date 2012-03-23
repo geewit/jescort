@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="<spring:url value="/static/css/calendar_select.css"/>" type="text/css" media="screen,print"/>
     <link rel="stylesheet" href="<spring:url value="/static/css/prettify.css"/>" type="text/css" media="screen,print"/>
     <link rel="stylesheet" href="<spring:url value="/static/css/ipb_auth.css"/>" type="text/css" media="screen,print"/>
-    <script type="text/javascript" src="<spring:url value="/static/js/jquery/1.7.1/jquery.js"/>"></script>
+    <script type="text/javascript" src="<spring:url value="/static/js/jquery/1.7.2/jquery.js"/>"></script>
     <tiles:insertAttribute name="head"/>
 </head>
 

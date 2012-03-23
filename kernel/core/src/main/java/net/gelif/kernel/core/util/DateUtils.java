@@ -227,7 +227,7 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils
         }
         int day1 = now.get(Calendar.DAY_OF_YEAR);
         int day2 = birthday.get(Calendar.DAY_OF_YEAR);
-        int age = birthday.get(Calendar.YEAR) - now.get(Calendar.YEAR);
+        int age = now.get(Calendar.YEAR) - birthday.get(Calendar.YEAR);
         if (day2 < day1)
         {
             age--;
