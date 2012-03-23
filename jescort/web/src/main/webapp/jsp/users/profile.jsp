@@ -109,6 +109,13 @@
                                                 <a href="tencent://message/?uin=<c:out value="${user.properties['qq']}"/>" class="url"><c:out value="${user.properties['qq']}"/></a>
                                             </span>
                                         </li>
+                                        <li>
+                                            <span class="row_title">Website</span>
+                                            <span class="row_data">
+                                                <img alt="QQ" src="<spring:url value="/static/images/profile_website.jpg"/>"/>
+                                                <a href="tencent://message/?uin=<c:out value="${user.properties['website']}"/>" class="url"><c:out value="${user.properties['website']}"/></a>
+                                            </span>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="general_box clearfix">
