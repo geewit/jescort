@@ -104,7 +104,7 @@
         <yuicompressor.version>2.4.7</yuicompressor.version>
         <velocity.version>1.7</velocity.version>
 
-        <copyright.year>2008</copyright.year>
+        <copyright.year>2012</copyright.year>
     </properties>
 
     <repositories>
@@ -642,23 +642,6 @@
                 <artifactId>spring-data-jpa</artifactId>
                 <version>${spring-data-jpa.version}</version>
             </dependency>
-            <!--
-            <dependency>
-                <groupId>org.springframework.webflow</groupId>
-                <artifactId>spring-binding</artifactId>
-                <version>${spring.webflow.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.webflow</groupId>
-                <artifactId>spring-js</artifactId>
-                <version>${spring.webflow.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.webflow</groupId>
-                <artifactId>spring-webflow</artifactId>
-                <version>${spring.webflow.version}</version>
-            </dependency>
-            -->
             <dependency>
                 <groupId>org.subethamail</groupId>
                 <artifactId>subethasmtp</artifactId>
@@ -781,28 +764,42 @@
             <artifactId>cglib-nodep</artifactId>
         </dependency>
         <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
-        </dependency>
-        <dependency>
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>commons-logging</artifactId>
+            		<groupId>commons-logging</groupId>
+            	</exclusion>
+            	<exclusion>
+            		<artifactId>commons-lang</artifactId>
+            		<groupId>commons-lang</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>commons-digester</groupId>
             <artifactId>commons-digester</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>commons-logging</artifactId>
+            		<groupId>commons-logging</groupId>
+            	</exclusion>
+            	<exclusion>
+            		<artifactId>commons-beanutils</artifactId>
+            		<groupId>commons-beanutils</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>commons-pool</artifactId>
+            		<groupId>commons-pool</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>commons-fileupload</groupId>
@@ -811,18 +808,6 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-pool</groupId>
-            <artifactId>commons-pool</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -835,6 +820,12 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>slf4j-api</artifactId>
+            		<groupId>org.slf4j</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.netty</groupId>
@@ -842,15 +833,27 @@
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
             <artifactId>slf4j-jcl</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>commons-logging</artifactId>
+            		<groupId>commons-logging</groupId>
+            	</exclusion>
+            	<exclusion>
+            		<artifactId>slf4j-api</artifactId>
+            		<groupId>org.slf4j</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>slf4j-api</artifactId>
+            		<groupId>org.slf4j</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>javax.ws.rs</groupId>
@@ -859,10 +862,12 @@
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>activation</artifactId>
+            		<groupId>javax.activation</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>javax.transaction</groupId>
@@ -871,6 +876,20 @@
         <dependency>
             <groupId>com.octo.captcha</groupId>
             <artifactId>jcaptcha</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>commons-logging</artifactId>
+            		<groupId>commons-logging</groupId>
+            	</exclusion>
+            	<exclusion>
+            		<artifactId>commons-collections</artifactId>
+            		<groupId>commons-collections</groupId>
+            	</exclusion>
+            	<exclusion>
+            		<artifactId>servlet-api</artifactId>
+            		<groupId>javax.servlet</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
@@ -901,19 +920,33 @@
         <!---->
         <dependency>
             <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>lucene-core</artifactId>
+            		<groupId>org.apache.lucene</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-smartcn</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>lucene-core</artifactId>
+            		<groupId>org.apache.lucene</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-grouping</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>lucene-core</artifactId>
+            		<groupId>org.apache.lucene</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -922,6 +955,16 @@
         <dependency>
             <groupId>spy</groupId>
             <artifactId>spymemcached</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>netty</artifactId>
+            		<groupId>org.jboss.netty</groupId>
+            	</exclusion>
+            	<exclusion>
+            		<artifactId>commons-codec</artifactId>
+            		<groupId>commons-codec</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
 			<groupId>com.thimbleware.jmemcached</groupId>
@@ -930,14 +973,32 @@
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>commons-beanutils</artifactId>
+            		<groupId>commons-beanutils</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>shiro-core</artifactId>
+            		<groupId>org.apache.shiro</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>shiro-core</artifactId>
+            		<groupId>org.apache.shiro</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -966,6 +1027,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>commons-logging</artifactId>
+            		<groupId>commons-logging</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -986,6 +1053,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>commons-lang</artifactId>
+            		<groupId>commons-lang</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -1013,23 +1086,15 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>org.springframework.webflow</groupId>
-            <artifactId>spring-binding</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.webflow</groupId>
-            <artifactId>spring-js</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.webflow</groupId>
-            <artifactId>spring-webflow</artifactId>
-        </dependency>
-        -->
         <dependency>
             <groupId>org.subethamail</groupId>
             <artifactId>subethasmtp</artifactId>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>activation</artifactId>
+            		<groupId>javax.activation</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
