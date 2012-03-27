@@ -256,7 +256,7 @@ public class UserRepositoryImpl implements UserRepository
     }
     
     @Override
-    public void sendMessage(String senderId, String subject, String content, String... recipientIds)
+    public void sendMessage(final String senderId, final String subject, final String content, final String... recipientIds)
     {
         Message message = new Message();
         message.setSender(new User(senderId));
