@@ -135,19 +135,10 @@
     <target name="create.schema" description="excute create sql" depends="retrieve">
         <sql driver="${jdbc.mysql.driverClassName}" url="${jdbc.mysql.url}" userid="${jdbc.mysql.username}" password="${jdbc.mysql.password}" encoding="UTF-8" print="no" onerror="continue">
             <fileset dir="${database.create.dir}">
-                <include name="*.sql"/>
-            </fileset>
-            <classpath>
-                <path refid="compile.classpath"/>
-            </classpath>
-        </sql>
-    </target>
-
-    <target name="alter.schema" description="excute alter sql" depends="retrieve">
-        <sql driver="${jdbc.mysql.driverClassName}" url="${jdbc.mysql.url}" userid="${jdbc.mysql.username}"
-             password="${jdbc.mysql.password}" encoding="UTF-8" print="no" onerror="continue">
-            <fileset dir="${database.alter.dir}">
-                <include name="*.sql"/>
+                <include name="user.sql"/>
+                <include name="id_generator.sql"/>
+                <include name="forum.sql"/>
+                <include name="reference.sql"/>
             </fileset>
             <classpath>
                 <path refid="compile.classpath"/>
@@ -159,19 +150,9 @@
         <sql driver="${jdbc.mysql.driverClassName}" url="${jdbc.mysql.url}" userid="${jdbc.mysql.username}"
              password="${jdbc.mysql.password}" encoding="UTF-8" print="no" onerror="continue">
             <fileset dir="${database.insert.dir}">
-                <include name="*.sql"/>
-            </fileset>
-            <classpath>
-                <path refid="compile.classpath"/>
-            </classpath>
-        </sql>
-    </target>
-
-    <target name="update.schema" description="excute update sql" depends="retrieve">
-        <sql driver="${jdbc.mysql.driverClassName}" url="${jdbc.mysql.url}" userid="${jdbc.mysql.username}"
-             password="${jdbc.mysql.password}" encoding="UTF-8" print="no" onerror="continue">
-            <fileset dir="${database.update.dir}">
-                <include name="*update.sql"/>
+                <include name="insert-groups.sql"/>
+                <include name="insert-locations.sql"/>
+                <include name="test.sql"/>
             </fileset>
             <classpath>
                 <path refid="compile.classpath"/>
@@ -182,9 +163,7 @@
     <target name="initdb">
         <sequential>
             <antcall target="create.schema"/>
-            <!--<antcall target="alter.schema" />-->
             <antcall target="insert.schema"/>
-            <!--<antcall target="update.schema" />-->
         </sequential>
     </target>
 </project>

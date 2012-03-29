@@ -157,6 +157,10 @@
         </war>
     </target>
 
+    <target name="setup" description="setup database">
+        <antcall target="initdb"/>
+    </target>
+
     <target name="deploy">
         <sequential>
             <antcall target="clean"/>
@@ -170,6 +174,8 @@
             <antcall target="jescort.delete-temp"/>
         </sequential>
     </target>
+
+
 
     <!-- build clean &build-clean;-->
     <target name="clean">
