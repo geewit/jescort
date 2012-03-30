@@ -1,31 +1,37 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ *  contributor license agreements.  The ASF licenses this file to You
+ * under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.  For additional information regarding
+ * copyright in this work, please see the NOTICE file in the top level
+ * directory of this distribution.
+ */
 package net.gelif.modules.bbcode;
 
 /**
- * Класс источник для парсинга BB-кодов
- *
- * @author Kefir
+ * @author admin@gelif.net
  */
 public class Source
 {
     private static final int BUFF_SIZE = 4096;
 
-    /**
-     * Текст ждля парсинга
-     */
     private final CharSequence text;
     private final int textLength;
 
-    /**
-     * Смещение
-     */
+
     private int offset = 0;
     private char currentChar;
 
-    /**
-     * Создает класс источник
-     *
-     * @param text исходный текст
-     */
+
     public Source(CharSequence text)
     {
         this.text = text;
@@ -98,11 +104,6 @@ public class Source
         return index;
     }
 
-    /**
-     * Возвращает следующий симвойл и увеличивает смещение
-     *
-     * @return символ
-     */
     public char next()
     {
         char c = current();
@@ -116,11 +117,7 @@ public class Source
         return currentChar;
     }
 
-    /**
-     * Возвращает текущее смещение
-     *
-     * @return смещение от начала
-     */
+
     public int getOffset()
     {
         return offset;
@@ -143,65 +140,33 @@ public class Source
         }
     }
 
-    /**
-     * Увеличивает смещение
-     *
-     * @param increment на сколько нужно увеличить смещение
-     */
     public void incOffset(int increment)
     {
         offset += increment;
         updateCurrentChar();
     }
 
-    /**
-     * Устанавливает смещение
-     *
-     * @param offset смещение
-     */
     public void setOffset(int offset)
     {
         this.offset = offset;
         updateCurrentChar();
     }
 
-    /**
-     * Есть ли еще что-то в строке
-     *
-     * @return true - если есть false если достигнут конец строки
-     */
     public boolean hasNext()
     {
         return offset < textLength;
     }
 
-    /**
-     * Есть ли еще count символов в строке
-     *
-     * @param count количчество символов которое должно остаться в строке
-     * @return true - если есть false если достигнут конец строки
-     */
     public boolean hasNext(int count)
     {
         return (textLength - offset) >= count;
     }
 
-    /**
-     * Return length of sorce text
-     *
-     * @return length of source text
-     */
     public int getLength()
     {
         return textLength;
     }
 
-    /**
-     * Получает строку от текущего смещения до значения <code>end</code>
-     *
-     * @param end последний индекс
-     * @return подстрока
-     */
     public CharSequence sub(int end)
     {
         return text.subSequence(getOffset(), end);
@@ -235,6 +200,6 @@ public class Source
 
     public String toString()
     {
-        return "ru.perm.kefir.bbcode.Source,length:" + String.valueOf(textLength);
+        return "net.gelif.modules.bbcode.Source,length:" + String.valueOf(textLength);
     }
 }

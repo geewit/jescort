@@ -1,11 +1,26 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ *  contributor license agreements.  The ASF licenses this file to You
+ * under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.  For additional information regarding
+ * copyright in this work, please see the NOTICE file in the top level
+ * directory of this distribution.
+ */
 package net.gelif.modules.bbcode;
 
 import java.io.IOException;
 
 /**
- * Класс текста, который подлежит парсингу
- *
- * @author Kefir
+ * @author admin@gelif.net
  */
 public class WText extends WNamedElement implements WPatternElement
 {
@@ -20,13 +35,6 @@ public class WText extends WNamedElement implements WPatternElement
      */
     private final boolean transparent;
 
-    /**
-     * Создает именованный элемент
-     *
-     * @param name        имя переменной
-     * @param transparent mark that scope variable must be accessible from parent
-     *                    context
-     */
     public WText(String name, boolean transparent)
     {
         super(name);
@@ -41,12 +49,6 @@ public class WText extends WNamedElement implements WPatternElement
         this.transparent = transparent;
     }
 
-    /**
-     * Парсит элемент
-     *
-     * @param context контекст
-     * @return true - если удалось распарсить константу false - если не удалось
-     */
     public boolean parse(Context context, WPatternElement terminator)
     {
         Context child = new Context(context);
@@ -72,14 +74,6 @@ public class WText extends WNamedElement implements WPatternElement
         return true;
     }
 
-    /**
-     * Определяет, что дальше в разбираемой строке находится нужная
-     * последовательность
-     *
-     * @param source source text
-     * @return true если следующие символы в строке совпадают с pattern false
-     *         если не совпадают или строка кончилась
-     */
     public boolean isNextIn(Source source)
     {
         return false;

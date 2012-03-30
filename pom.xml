@@ -764,6 +764,14 @@
             <artifactId>cglib-nodep</artifactId>
         </dependency>
         <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+        <dependency>
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>
             <exclusions>
@@ -808,6 +816,14 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -914,10 +930,9 @@
             <artifactId>log4j</artifactId>
         </dependency>
         <dependency>
-            <groupId>rome</groupId>
-            <artifactId>rome</artifactId>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
         </dependency>
-        <!---->
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers</artifactId>
@@ -951,6 +966,10 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>rome</groupId>
+            <artifactId>rome</artifactId>
         </dependency>
         <dependency>
             <groupId>spy</groupId>

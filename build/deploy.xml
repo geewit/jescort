@@ -58,6 +58,7 @@
         <delete includeemptydirs="true">
             <fileset dir="${exploded.dir}">
                 <include name="**/*.js"/>
+                <exclude name="**/js/ui/**/*.js"/>
                 <exclude name="**/*.pack.js"/>
                 <exclude name="**/*-pack.js"/>
                 <exclude name="**/*.min.js"/>
@@ -77,6 +78,7 @@
                 <patternset>
                     <include name="/static/**/*.js"/>
                     <exclude name="**/jquery.js"/>
+                    <exclude name="**/js/ui/**/*.js"/>
                     <exclude name="/static/**/*.pack.js"/>
                     <exclude name="/static/**/*-pack.js"/>
                     <exclude name="/static/**/*.min.js"/>
