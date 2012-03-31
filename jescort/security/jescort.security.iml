@@ -96,8 +96,8 @@
     <orderEntry type="library" name="Maven: org.apache.tiles:tiles-template:2.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.velocity:velocity:1.7" level="project" />
     <orderEntry type="module" module-name="jescort.domain" />
-    <orderEntry type="module" module-name="modules.bbcode" />
     <orderEntry type="module" module-name="kernel.persistence" />
+    <orderEntry type="module" module-name="modules.bbcode" />
     <orderEntry type="module" module-name="jescort.persistence" />
     <orderEntry type="module" module-name="jescort.repository" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.9" level="project" />

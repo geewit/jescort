@@ -28,7 +28,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="jescort.domain" />
-    <orderEntry type="module" module-name="modules.bbcode" />
+    <orderEntry type="module" module-name="kernel.persistence" />
     <orderEntry type="module" module-name="kernel.core" />
     <orderEntry type="library" name="Maven: asm:asm:4.0" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.6.12" level="project" />
@@ -108,7 +108,7 @@
     <orderEntry type="library" name="Maven: org.apache.tiles:tiles-servlet:2.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tiles:tiles-template:2.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.velocity:velocity:1.7" level="project" />
-    <orderEntry type="module" module-name="kernel.persistence" />
+    <orderEntry type="module" module-name="modules.bbcode" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.9" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:3.1.1.RELEASE" level="project" />
   </component>

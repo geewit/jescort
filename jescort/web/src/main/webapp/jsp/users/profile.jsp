@@ -105,14 +105,14 @@
                                         <li>
                                             <span class="row_title">QQ</span>
                                             <span class="row_data">
-                                                <img alt="QQ" src="<spring:url value="/static/images/profile_qq.jpg"/>"/>
+                                                <img alt="QQ" src="<spring:url value="/static/images/profile_qq.gif"/>"/>
                                                 <a href="tencent://message/?uin=<c:out value="${user.properties['qq']}"/>" class="url"><c:out value="${user.properties['qq']}"/></a>
                                             </span>
                                         </li>
                                         <li>
                                             <span class="row_title">Website</span>
                                             <span class="row_data">
-                                                <img alt="QQ" src="<spring:url value="/static/images/profile_website.jpg"/>"/>
+                                                <img alt="QQ" src="<spring:url value="/static/images/profile_website.gif"/>"/>
                                                 <a href="tencent://message/?uin=<c:out value="${user.properties['website']}"/>" class="url"><c:out value="${user.properties['website']}"/></a>
                                             </span>
                                         </li>

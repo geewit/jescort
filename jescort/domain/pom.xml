@@ -21,6 +21,10 @@
     <dependencies>
         <dependency>
             <groupId>net.gelif</groupId>
+            <artifactId>kernel.persistence</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.gelif</groupId>
             <artifactId>modules.bbcode</artifactId>
         </dependency>
     </dependencies>

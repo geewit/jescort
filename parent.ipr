@@ -49,8 +49,8 @@
             <element id="archive" name="jescort.domain-0.1.jar">
               <element id="module-output" name="jescort.domain" />
             </element>
-            <element id="archive" name="modules.bbcode-0.1.jar">
-              <element id="module-output" name="modules.bbcode" />
+            <element id="archive" name="kernel.persistence-0.1.jar">
+              <element id="module-output" name="kernel.persistence" />
             </element>
             <element id="archive" name="kernel.core-0.1.jar">
               <element id="module-output" name="kernel.core" />
@@ -133,8 +133,8 @@
             <element id="library" level="project" name="Maven: org.apache.tiles:tiles-servlet:2.2.2" />
             <element id="library" level="project" name="Maven: org.apache.tiles:tiles-template:2.2.2" />
             <element id="library" level="project" name="Maven: org.apache.velocity:velocity:1.7" />
-            <element id="archive" name="kernel.persistence-0.1.jar">
-              <element id="module-output" name="kernel.persistence" />
+            <element id="archive" name="modules.bbcode-0.1.jar">
+              <element id="module-output" name="modules.bbcode" />
             </element>
             <element id="archive" name="jescort.persistence-0.1.jar">
               <element id="module-output" name="jescort.persistence" />
