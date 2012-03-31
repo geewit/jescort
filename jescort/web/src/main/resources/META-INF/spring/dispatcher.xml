@@ -25,9 +25,9 @@
 
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
-            <list>
+            <set>
                 <bean class="net.jescort.web.binding.CalendarConverter"/>
-            </list>
+            </set>
         </property>
     </bean>
     <!--
@@ -53,6 +53,16 @@
     <mvc:interceptors>
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <property name="paramName" value="lang"/>
+        </bean>
+        <bean class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+            <property name="cacheSeconds" value="0"/>
+            <property name="alwaysUseFullPath" value="true"/>
+            <property name="cacheMappings">
+                <props>
+                    <!-- cache for one month -->
+                    <prop key="/api/locations/**">2592000</prop>
+                </props>
+            </property>
         </bean>
     </mvc:interceptors>
 

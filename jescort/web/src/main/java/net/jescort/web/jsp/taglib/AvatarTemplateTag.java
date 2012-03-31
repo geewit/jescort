@@ -30,6 +30,7 @@ import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.TagSupport;
 import javax.servlet.jsp.tagext.TryCatchFinally;
 import java.io.IOException;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by IntelliJ IDEA.
@@ -42,6 +43,7 @@ public class AvatarTemplateTag extends TagSupport implements TryCatchFinally
     private transient final static Log logger = LogFactory.getLog(AvatarTemplateTag.class);
 
     private static final String REQUEST_CONTEXT_PAGE_ATTRIBUTE = "org.springframework.web.servlet.tags.REQUEST_CONTEXT";
+    private static final ThreadLocal<ConcurrentHashMap<String, String>> AVATAR_HTML_THREADLOCAL = new ThreadLocal<ConcurrentHashMap<String, String>>();
 
     private RequestContext requestContext;
 
@@ -70,7 +72,25 @@ public class AvatarTemplateTag extends TagSupport implements TryCatchFinally
         {
             this.pageContext.setAttribute(REQUEST_CONTEXT_PAGE_ATTRIBUTE, this.requestContext);
         }
-        String out = writeHtml();
+        ConcurrentHashMap<String, String> threadLocalMap = AVATAR_HTML_THREADLOCAL.get();
+        String out = null;
+        if(null == avatar)
+        {
+            avatar = StringUtils.EMPTY;
+        }
+        if (threadLocalMap != null)
+        {
+            out = threadLocalMap.get(avatar);
+        } else
+        {
+            threadLocalMap = new ConcurrentHashMap<String, String>();
+        }
+        if (StringUtils.isBlank(out))
+        {
+            out = writeHtml();
+            threadLocalMap.put(avatar, out);
+            AVATAR_HTML_THREADLOCAL.set(threadLocalMap);
+        }
         logger.debug("out == " + out);
         if (null == this.var)
         {

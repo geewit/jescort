@@ -44,15 +44,15 @@ public class PagerTemplateTag extends TagSupport implements TryCatchFinally
 {
    private transient final Log logger = LogFactory.getLog(PagerTemplateTag.class);
 
-    private Page<?> page;
+    private Page<Object> page;
     private String requestUrl;
 
     private static final String REQUEST_CONTEXT_PAGE_ATTRIBUTE = "org.springframework.web.servlet.tags.REQUEST_CONTEXT";
-    private static final ThreadLocal<ConcurrentHashMap<Page<?>, String>> PAGER_HTML_THREADLOCAL = new ThreadLocal<ConcurrentHashMap<Page<?>, String>>();
+    private static final ThreadLocal<ConcurrentHashMap<Page<Object>, String>> PAGER_HTML_THREADLOCAL = new ThreadLocal<ConcurrentHashMap<Page<Object>, String>>();
 
     private RequestContext requestContext;
 
-    public void setPage(Page<?> page)
+    public void setPage(Page<Object> page)
     {
         this.page = page;
     }
@@ -94,16 +94,16 @@ public class PagerTemplateTag extends TagSupport implements TryCatchFinally
 
     private String getPagerHtml() throws JspException
     {
-        ConcurrentHashMap<Page<?>, String> threadLocalMap = PAGER_HTML_THREADLOCAL.get();
+        ConcurrentHashMap<Page<Object>, String> threadLocalMap = PAGER_HTML_THREADLOCAL.get();
         String html = null;
         if (threadLocalMap != null)
         {
             html = threadLocalMap.get(page);
         } else
         {
-            threadLocalMap = new ConcurrentHashMap<Page<?>, String>();
+            threadLocalMap = new ConcurrentHashMap<Page<Object>, String>();
         }
-        if (org.apache.commons.lang.StringUtils.isBlank(html))
+        if (StringUtils.isBlank(html))
         {
             html = writeHtml();
             threadLocalMap.put(page, html);
