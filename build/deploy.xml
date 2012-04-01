@@ -159,6 +159,41 @@
         </war>
     </target>
 
+    <target name="create.schema" description="excute create sql" depends="retrieve">
+        <sql driver="${jdbc.mysql.driverClassName}" url="${jdbc.mysql.url}" userid="${jdbc.mysql.username}" password="${jdbc.mysql.password}" encoding="UTF-8" print="no" onerror="continue">
+            <fileset dir="${database.create.dir}">
+                <include name="user.sql"/>
+                <include name="id_generator.sql"/>
+                <include name="forum.sql"/>
+                <include name="reference.sql"/>
+            </fileset>
+            <classpath>
+                <path refid="compile.classpath"/>
+            </classpath>
+        </sql>
+    </target>
+
+    <target name="insert.schema" description="excute insert sql" depends="retrieve">
+        <sql driver="${jdbc.mysql.driverClassName}" url="${jdbc.mysql.url}" userid="${jdbc.mysql.username}"
+             password="${jdbc.mysql.password}" encoding="UTF-8" print="no" onerror="continue">
+            <fileset dir="${database.insert.dir}">
+                <include name="insert-groups.sql"/>
+                <include name="insert-locations.sql"/>
+                <include name="test.sql"/>
+            </fileset>
+            <classpath>
+                <path refid="compile.classpath"/>
+            </classpath>
+        </sql>
+    </target>
+
+    <target name="initdb">
+        <sequential>
+            <antcall target="create.schema"/>
+            <antcall target="insert.schema"/>
+        </sequential>
+    </target>
+
     <target name="setup" description="setup database">
         <antcall target="initdb"/>
     </target>
