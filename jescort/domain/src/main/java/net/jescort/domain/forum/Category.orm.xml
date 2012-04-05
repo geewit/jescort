@@ -25,8 +25,8 @@
                 <convert>categoryStatus</convert>
             </basic>
             <basic-map name="properties" fetch="LAZY">
-                <key-column name="pkey"/>
-                <value-column name="pvalue"/>
+                <key-column name="`key`"/>
+                <value-column name="`value`"/>
                 <collection-table name="category_properties">
                     <primary-key-join-column name="id" referenced-column-name="id"/>
                 </collection-table>

@@ -35,7 +35,7 @@
         <properties>
             <!--<property name="jpa.session.customizer"                  value=""/>
             <property name="jpa.session-event-listener"              value=""/>-->
-
+            <property name="eclipselink.database.delimiters"        value="true"/>
             <property name="eclipselink.logging.level"              value="OFF"/>
             <property name="eclipselink.jpa.uppercase-column-names" value="false"/>
             <!--

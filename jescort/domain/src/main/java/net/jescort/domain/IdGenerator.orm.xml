@@ -4,10 +4,10 @@
         <table name="id_generator"/>
         <attributes>
             <id name="name">
-                <column name="gen_name" unique="true"/>
+                <column name="`name`" unique="true"/>
             </id>
             <basic name="value">
-                <column name="gen_value" insertable="true" updatable="true" unique="false"/>
+                <column name="`value`" insertable="true" updatable="true" unique="false"/>
             </basic>
         </attributes>
     </entity>

@@ -5,7 +5,7 @@
     <entity metadata-complete="true" name="Post" class="net.jescort.domain.forum.Post" access="PROPERTY">
         <table name="posts"/>
         <converter name="postStatus" class="net.jescort.persistence.eclipselink.mappings.converters.PostStatusConverter"/>
-        <!--<table-generator name="postIdGenerator" table="id_generator" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="post_id" allocation-size="1" initial-value="1000"/>-->
+        <!--<table-generator name="postIdGenerator" table="id_generator" pk-column-name="`name`" value-column-name="`value`" pk-column-value="post_id" allocation-size="1" initial-value="1000"/>-->
         <entity-listeners>
             <entity-listener class="net.jescort.persistence.eclipselink.mappings.listeners.PostListener">
                 <pre-persist method-name="prePersist"/>
@@ -31,8 +31,8 @@
                 <convert>postStatus</convert>
             </basic>
             <basic-map name="properties" fetch="LAZY">
-                <key-column name="pkey"/>
-                <value-column name="pvalue"/>
+                <key-column name="`key"/>
+                <value-column name="`value`"/>
                 <collection-table name="post_properties">
                     <primary-key-join-column name="id" referenced-column-name="id"/>
                 </collection-table>

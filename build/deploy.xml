@@ -159,7 +159,18 @@
         </war>
     </target>
 
-    <target name="create.schema" description="excute create sql" depends="retrieve">
+    <target name="create.database" description="excute create database sql" depends="retrieve">
+        <sql driver="${jdbc.mysql.driverClassName}" url="jdbc:mysql://localhost:3306" userid="${jdbc.mysql.username}" password="${jdbc.mysql.password}" encoding="UTF-8" print="no" onerror="continue">
+            <fileset dir="${database.dir}">
+                <include name="jescort_db.sql"/>
+            </fileset>
+            <classpath>
+                <path refid="compile.classpath"/>
+            </classpath>
+        </sql>
+    </target>
+
+    <target name="create.schema" description="excute create table sql" depends="retrieve">
         <sql driver="${jdbc.mysql.driverClassName}" url="${jdbc.mysql.url}" userid="${jdbc.mysql.username}" password="${jdbc.mysql.password}" encoding="UTF-8" print="no" onerror="continue">
             <fileset dir="${database.create.dir}">
                 <include name="user.sql"/>
@@ -189,6 +200,7 @@
 
     <target name="initdb">
         <sequential>
+            <antcall target="create.database"/>
             <antcall target="create.schema"/>
             <antcall target="insert.schema"/>
         </sequential>

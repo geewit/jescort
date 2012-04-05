@@ -2,8 +2,7 @@
 <entity-mappings version="2.3" xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_3.xsd">
-    <entity metadata-complete="true" name="Group" class="net.jescort.domain.user.Group" access="PROPERTY"
-            cacheable="true">
+    <entity metadata-complete="true" name="Group" class="net.jescort.domain.user.Group" access="PROPERTY" cacheable="true">
         <table name="groups"/>
         <attributes>
             <id name="id">
@@ -13,7 +12,7 @@
                 <table-generator name="groupIdGenerator" table="pk_gen" pk-column-name="gen_name" value-column-name="gen_value" pk-column-value="group_id" allocation-size="1" initial-value="1"/>-->
             </id>
             <basic name="name">
-                <column name="group_name" insertable="true" updatable="true" unique="true"/>
+                <column name="`name`" insertable="true" updatable="true" unique="true"/>
             </basic>
             <basic name="description">
                 <column name="description" insertable="true" updatable="true" unique="false"/>

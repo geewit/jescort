@@ -44,7 +44,6 @@ import org.apache.lucene.util.Version;
 /**
  * Lucene implementation of IndexManager. This is the central entry point
  * into the Lucene searching API.
- *
  * @author: admin@gelif.net
  */
 public class IndexManagerImpl implements IndexManager
@@ -171,8 +170,7 @@ public class IndexManagerImpl implements IndexManager
 
             if (isInconsistentAtStartup())
             {
-                logger.info(
-                        "Index was inconsistent. Rebuilding index in the background...");
+                logger.info("Index was inconsistent. Rebuilding index in the background...");
                 try
                 {
                     rebuildTopicIndex();
@@ -243,9 +241,6 @@ public class IndexManagerImpl implements IndexManager
         }
     }
 
-    /**
-     * @param operation
-     */
     public void executeIndexOperationNow(final IndexOperation operation)
     {
         // only if search is enabled
@@ -361,7 +356,7 @@ public class IndexManagerImpl implements IndexManager
                     Analyzer analyzer = SearchHelper.getAnalyzer();
                     IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Version.LUCENE_34, analyzer);
                     writer = new IndexWriter(fsdir, indexWriterConfig);
-                    writer.addIndexes(new Directory[]{dir});
+                    writer.addIndexes(dir);
                     indexConsistencyMarker.delete();
                 } catch (IOException e)
                 {

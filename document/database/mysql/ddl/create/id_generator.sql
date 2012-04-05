@@ -1,8 +1,8 @@
 
 CREATE TABLE id_generator (
-    gen_name      CHAR(31)       NOT NULL,
-    gen_value     BIGINT         DEFAULT NULL,
-    PRIMARY KEY  (gen_name)
+    `name`      CHAR(31)       NOT NULL,
+    `value`     BIGINT         DEFAULT NULL,
+    PRIMARY KEY  (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `id_generator` VALUES ('address_id', 1000);

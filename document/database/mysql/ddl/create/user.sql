@@ -6,7 +6,7 @@ CREATE TABLE addresses (
     postal_code          VARCHAR(15)            NOT NULL,
     street               VARCHAR(255)           NOT NULL,
     priority             INTEGER                NOT NULL,
-    address_type         VARCHAR(31)            NOT NULL,
+    `type`               VARCHAR(31)            NOT NULL,
     PRIMARY KEY  (id),
     INDEX address_idx (priority)
 ) ENGINE=InnoDB CHARSET=utf8;
@@ -24,12 +24,12 @@ CREATE TABLE emails (
 
 CREATE TABLE groups (
     id            INT            NOT NULL,
-    group_name    VARCHAR(127)   NOT NULL,
+    `name`        VARCHAR(127)   NOT NULL,
     description   VARCHAR(255)   NOT NULL,
     priority      INT            NOT NULL,
     parent_id     INT            NULL,
     PRIMARY KEY (id),
-    UNIQUE (group_name),
+    UNIQUE (`name`),
     INDEX group_idx (priority)
 ) ENGINE=InnoDB CHARSET=utf8;
 
@@ -43,7 +43,7 @@ CREATE TABLE group_role_map (
 
 CREATE TABLE locations (
     id                   INT                    NOT NULL,
-    location_name        VARCHAR(255)           NOT NULL,
+    `name`               VARCHAR(255)           NOT NULL,
     abbr                 CHAR(2)                NOT NULL,
     parent_id            INT                    NULL,
     level                TINYINT(1)             NOT NULL,
@@ -101,8 +101,8 @@ CREATE TABLE user_group_map (
 
 
 create table user_properties (
-    id                   CHAR(32)             NOT NULL,
-    pkey                 VARCHAR(63)          NOT NULL,
-    pvalue               VARCHAR(255)         NOT NULL,
-    PRIMARY KEY (id, pkey)
+    id                 CHAR(32)             NOT NULL,
+    `key`              VARCHAR(63)          NOT NULL,
+    `value`            VARCHAR(255)         NOT NULL,
+    PRIMARY KEY (id, `key`)
 ) ENGINE=InnoDB CHARSET=utf8;
